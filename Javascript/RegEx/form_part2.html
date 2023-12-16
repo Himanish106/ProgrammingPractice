@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="form-style.css" />
+    <title>Form Validation</title>
+  </head>
+  <body>
+    <div class="form">
+      <div class="header">
+        <h1>Registration</h1>
+        <p>Please fill in this form to create an account</p>
+      </div>
+      <table>
+        <form action="">
+          <tr>
+            <td><label for="username">UserName:</label></td>
+            <td>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="Enter Your Name"
+              />
+            </td>
+            <td><p class="error-user" id="errorUser"></p></td>
+          </tr>
+          <tr>
+            <td><label for="email">Email:</label></td>
+            <td>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Enter Your Email Address"
+              />
+            </td>
+            <td><p class="error-email" id="errorEmail"></p></td>
+          </tr>
+          <tr>
+            <td><label for="password">Password:</label></td>
+            <td>
+              <input
+                type="text"
+                name="password"
+                id="password"
+                placeholder="Enter a Password"
+              />
+            </td>
+            <td><p class="error-password" id="errorPassword"></p></td>
+          </tr>
+          <tr>
+            <td><label for="confirm-password">Confirm Password:</label></td>
+            <td>
+              <input
+                type="password"
+                name="confirm-password"
+                id="confirmPassword"
+                placeholder="Confirm Password"
+              />
+            </td>
+            <td>
+              <p class="confirm-error-password" id="confirmErrorPassword"></p>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="contact">Contact:</label></td>
+            <td>
+              <input
+                type="number"
+                name="contact"
+                id="contact"
+                placeholder="Enter Your Phone Number"
+              />
+            </td>
+            <td><p class="error-contact" id="errorContact"></p></td>
+          </tr>
+          <tr>
+            <td>
+              <input
+                type="submit"
+                value="Register"
+                class="submit"
+                id="submit"
+              />
+            </td>
+          </tr>
+        </form>
+      </table>
+    </div>
+    <script src="validate.js"></script>
+  </body>
+</html>

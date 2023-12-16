@@ -1,0 +1,74 @@
+Step 1: JS compilation takes place first
+Step 2: Then code gets executed
+
+Compilation phase:- 1) Tokenizing/Lexing:- This means dividing the code into small chunks 2) Parsing:- Checking the small chunks and create an Abstract Syntax Tree. This abstract syntax tree now generates an executable code.
+3)Code Generation
+
+Though in ecmascript nothing as such as written to compile the code but it is written indirectly. This is written in ecmascript which is the official documentation of javascript:-
+
+1. Early Error Checking
+2. Determining appropriate scope for the variable
+
+So this two things are done before code gets executed
+
+Javascript first looks if a variable is present within a function scope. If not then it is present in the global scope.
+
+console.log(this);
+console.log(window);
+console.log(firstName);
+var firstName = "Harshit";
+
+So if we consider this example at first Early error checking is done. Then the second step is determining appropriate scope for the variable. In this case the variable is firstName. At first javascript checks whether this variable exists within a function scope if it does not then it is obviously present in its global scope. firstName here obviously exists in global scope.
+
+So this was all about the compilation phase.
+
+2) Code execution Phase.
+
+In js code executes inside an execution context. The first context which gets created is global execution context. Global Execution Context gets added to a stack
+
+![Alt text](image-1.png)
+
+console.log(this); // returns a window object in global context
+console.log(window);
+console.log(firstName);
+var firstName = "Harshit";
+console.log(firstName);
+
+Global execution context can be divided into 2 phases:-
+
+1) Creation Phase
+2) Code execution Phase
+
+Let us run the code by with the help of these 2 phases
+
+Creation Phase/Storage in Global Memory                Code execution phase                              Output/console
+          window:{}                                          Executed                                          {}
+          window:{}                                          Executed                                          {}
+          firstName: undefined                               Executed                                      undefined
+var firstName="Harshit":- So undefined                       Executed
+gets overrided
+         firstName: Harshit                                  Executed                                       Harshit
+
+Please note here undefined is overriden as harshit no new variable creation is done. The last step is written just for understanding.
+
+NOTE: Javascript is a synchronous single threaded language but with the help of event-loop and promises, JavaScript is used to do asynchronous programming. We will talk about its asynchronous nature later. 
+
+When we say that JavaScript is a synchronous single-threaded language, it means that JavaScript executes one operation at a time, following a specific order, and does not perform tasks concurrently or in parallel. Let's break down this concept:
+
+Synchronous Execution:
+
+In JavaScript, code is executed in a synchronous manner, meaning that each line of code is executed one after another, in a sequential order.
+The subsequent line of code will not be executed until the previous line has finished executing.
+This synchronous execution ensures that JavaScript code follows a predictable flow and allows for proper control over the order of operations.
+Single-Threaded Nature:
+
+JavaScript operates within a single thread, meaning it has only one call stack and one event loop.
+A thread refers to an individual sequence of executable instructions that can be scheduled and executed by the CPU.
+In a single-threaded environment, only one set of instructions is executed at any given time.
+This single thread in JavaScript processes tasks one by one, sequentially.
+Due to JavaScript's synchronous and single-threaded nature, certain tasks can block the execution of subsequent code until they are completed. For example, if an operation takes a long time to execute, such as making a network request or performing a time-consuming calculation, it can cause the browser to become unresponsive until the task is finished.
+
+To handle potentially long-running or blocking tasks without freezing the user interface, JavaScript provides asynchronous mechanisms such as callbacks, Promises, and async/await. These mechanisms allow for non-blocking operations, where the code can initiate a task and continue executing other tasks while waiting for the completion of the asynchronous operation.
+
+It's important to note that although JavaScript itself is synchronous and single-threaded, web browsers employ techniques like Web Workers to introduce multithreading capabilities and parallelism for specific tasks. These techniques enable running certain operations concurrently in separate threads, but the JavaScript code itself remains synchronous and single-threaded by default.
+![Alt text](image.png)

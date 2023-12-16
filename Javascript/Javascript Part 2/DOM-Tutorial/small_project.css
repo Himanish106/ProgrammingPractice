@@ -1,0 +1,76 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  background-color: rgb(175, 162, 162);
+}
+.my-contact-list {
+  text-align: center;
+  font-size: 2rem;
+  margin: 50px auto;
+  width: 50rem;
+  padding: 2rem;
+  background-color: black;
+  color: rgb(255, 252, 252);
+}
+
+.my-contact-list h1 {
+  padding-bottom: 1.2rem;
+}
+
+.my-contact-list input[type="submit"] {
+  padding: 0.5rem;
+  cursor: pointer;
+  background-color: rgb(82, 77, 77);
+  color: rgba(255, 255, 255, 0.849);
+}
+
+.my-contact-list input[type="submit"]:hover {
+  background-color: rgba(54, 53, 53, 0.849);
+}
+.my-contact-list input[type="submit"]:active {
+  color: red;
+  background: black;
+}
+
+input:focus {
+  padding: 0.5rem;
+  font-weight: bold;
+}
+input {
+  font-size: 16px;
+  background-color: rgba(121, 106, 106, 0.349);
+  color: white;
+  border: 2px solid white;
+}
+
+.added-items {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.added-items ul {
+  padding: 0;
+}
+
+.added-items li {
+  font-size: 3rem;
+  color: white;
+  width: 100vh;
+  text-align: center;
+  margin: 50px auto;
+  /* line-height: 10rem; */
+}
+
+span {
+  display: block;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}

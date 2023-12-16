@@ -1,0 +1,31 @@
+Hoisting is a behavior in JavaScript where variable and function declarations are moved to the top of their containing scope during the compilation phase before the code is executed. This means that regardless of where variables and functions are declared in the code, they are conceptually moved to the top of their scope.
+
+Here are a few key points about hoisting:
+
+Variable Hoisting:
+
+When variables are hoisted, only the declaration is moved to the top, not the initialization or assignment.
+This means that you can access a variable before it is declared in the code, but its value will be undefined until the assignment is encountered.
+Example:
+
+console.log(myVariable); // undefined
+var myVariable = "Hello";
+console.log(myVariable); // "Hello"
+In this example, even though myVariable is accessed before its declaration, it doesn't cause an error due to hoisting. However, its value is undefined until it is assigned the value "Hello".
+Function Hoisting:
+
+Function declarations are hoisted entirely, including both the name and the body of the function.
+This allows you to call a function before its actual declaration in the code.
+Example:
+
+sayHello(); // "Hello"
+function sayHello() {
+  console.log("Hello");
+}
+In this example, the sayHello() function is called before its declaration, but it works due to hoisting. The function declaration is moved to the top, allowing it to be invoked anywhere within its scope.
+Hoisting in Different Scopes:
+
+Hoisting occurs at the level of the containing scope, such as the global scope or function scope.
+Variables and functions declared within a block scope (e.g., inside an if statement or a loop) are hoisted to the top of their respective scope, not the top of the code block.
+It's important to be aware of scoping rules and the potential implications of hoisting in different contexts.
+It's crucial to understand that hoisting is a JavaScript behavior that occurs during the compilation phase, and it affects how variables and function declarations are processed. However, it is recommended to declare variables and functions at the top of their respective scopes to improve code readability and avoid potential confusion caused by hoisting.
