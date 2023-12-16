@@ -1,0 +1,10 @@
+Command to compile all programs and create all packages using a single Command
+--> javac -d . *.javac
+This . operator is very important because it means to put the class file under the particular declared package 
+otherwise the declared package comes under another folder
+For example:- javac -d abc *.javac
+In this case the declared package in the particular programs comes under another package named abc
+Hence this . operator is very important because the declared package remains a parent file and not a sub file
+
+To get the output of a file in the different package
+java PackageName.FileName ---> This is the syntax
