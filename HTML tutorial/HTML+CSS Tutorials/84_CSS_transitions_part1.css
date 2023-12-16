@@ -1,0 +1,18 @@
+.box1 {
+  width: 100px;
+  height: 100px;
+  background: lightpink;
+  /* transition-property: background; */
+  /* Transition property which we want to apply */
+  /* transition-duration: 1s;
+    transition-timing-function: ease-in-out; */
+  /* transition: background 1s ease-in-out, width 1s ease-in-out, height 3s ease-in-out; */
+  /* Now instead of writing like this what I mean to say is consider you have a many many properties then what you can do is instead of writing like that you can write like this  */
+  transition: all 1s ease-in-out;
+}
+
+.box1:hover {
+  background: lightcoral;
+  width: 200px;
+  height: 300px;
+}

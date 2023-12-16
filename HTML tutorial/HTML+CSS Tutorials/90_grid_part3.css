@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  height: 600px;
+  border: 20px solid red;
+  margin: 100px auto;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, 150px);
+  grid-template-rows: 100px 100px;
+  grid-auto-rows: 100px;
+  /* justify items property works along the x-axis */
+  /* justify-items: stretch; ---> default */
+  /* justify-items: start; */
+  /* justify-items: center; */
+  /* justify-items: end; */
+
+  /* align-items works along y axis  */
+  /* align-items: stretch; ---> default */
+  /* align-items: center; */
+  /* align-items: start; */
+  /* align-items: end; */
+
+  /* Shorthand for justify and align property */
+  /* place-items: end center; First value is align-items second is justify-items */
+
+  /* Now here we were dealing with each items within each grid i.e. item1,item2 etc. But we can also affect the whole grid box. Here are some properties.  */
+
+  /* justify-content: center;
+  align-content: center; */
+  /* place-content: center space-between; */
+  /* 1st property is align items.And second property is justify content */
+}
+
+.item {
+  background: #487eb0;
+  color: #fff;
+  border: 2px solid black;
+  padding: 10px;
+}
+
+.item1 {
+  /* align-self: center;
+  justify-self: center; */
+  /* These are some of the properties which can be used to deal with a single item. We also have a short hand for this. */
+  place-self: center end;
+}

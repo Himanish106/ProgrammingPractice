@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+.fav-musicians {
+  border: 10px solid green;
+}
+/* So in our previous program we were using only 2 divs...Here we will be dealing with 4 divs. We want this 4 divs in this way:- mozart,.beethoven,bach,paganini. That is it will get stacked one after the another. So best way is to set all those as float left. Then it will get set from left to right as a stack */
+.mozart {
+  width: 25%;
+  background-color: lightgoldenrodyellow;
+  float: left;
+  padding: 20px;
+}
+.beethoven {
+  width: 25%;
+  background-color: lightsalmon;
+  float: left;
+  padding: 20px;
+}
+
+.bach {
+  width: 25%;
+  background-color: lightseagreen;
+  float: left;
+  padding: 20px;
+}
+.paganini {
+  width: 25%;
+  background-color: lightcyan;
+  float: left;
+  padding: 20px;
+}
+/* .clearfix {
+  clear: both;
+} */
+
+/* Another process to do the clearfix */
+.fav-musicians::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* ::after: This is a pseudo-element in CSS that allows you to insert content after the selected element. It creates a virtual element that appears after the content of the selected element.
+
+content: "";: This property sets the content to be inserted by the ::after pseudo-element. In this case, it is set to an empty string, which means no content will be displayed. The pseudo-element is used here for its layout properties rather than displaying actual content.
+
+display: block;: This property specifies that the ::after pseudo-element should be displayed as a block-level element. Block-level elements take up the full width available and create a line break before and after the element.
+
+clear: both;: This property specifies that the ::after pseudo-element should clear any floated elements that appear before it. It ensures that no floated elements are allowed on either side of the ::after pseudo-element.
+
+Overall, this code is commonly used as a clearfix technique. By adding the ::after pseudo-element with clear: both, it ensures that the element with the class .fav-musicians properly contains any floated child elements within it. This helps prevent layout issues where the parent element collapses or does not fully contain its floated children. */

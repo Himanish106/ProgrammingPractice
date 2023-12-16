@@ -1,0 +1,8 @@
+.head-tag {
+  display: flex;
+  justify-content: center;
+}
+body {
+  background-color: aliceblue;
+  font-size: 20px;
+}

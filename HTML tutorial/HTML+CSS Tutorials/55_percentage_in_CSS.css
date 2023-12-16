@@ -1,0 +1,22 @@
+/* div {
+  font-size: 20px;
+}
+p {
+  font-size: 200%;
+  /* So here 200% means the font size is 200% of the font size of its parent element. So this means here font-size of div is given 20px. So 200% of 20px is 40px 
+}
+*/
+/* But we rarely use percentage with font-size. We basically use it with width and in some cases margins etc. */
+
+div {
+  width: 100%;
+  border: 3px solid red;
+  font-size: 20px;
+}
+p {
+  border: 2px solid green;
+  width: 50%; /* 50% means 50% of div width */
+  background: lightblue;
+  margin: 10px auto;
+  text-align: center;
+}

@@ -1,0 +1,14 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.box1,.box2{
+    border: 2px solid #444;
+    padding: 10px;
+}
+.box1{
+    margin-bottom: 40px;
+}
+.box2{
+    margin-top: 50px;
+}
+/* So here the margins are collapsing as margin-bottom of box1 is 40 px while margin-top of box2 is 50px. So the total space in between this 2 boxes are 50px i.e the max size among the two margins are considered */

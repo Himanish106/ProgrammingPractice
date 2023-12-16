@@ -1,0 +1,18 @@
+/* Let us see the major problems of inline elements */
+/* a{
+    margin: 20px; ----> Only applies to the left and right but not in top and bottom
+    padding: 20px;
+    border: 2px solid black; ---> Kind of getting overlapped
+    height: 200px; ---> Does'nt apply on inline elements
+    width: 200px; ---> Does'nt apply on inline elements
+} */
+
+/* So solution is set the inline element's display as inline block */
+a{
+    display: inline-block;
+    padding: 20px;
+    border: 2px solid black; 
+    height: 100px;
+    width: 100px;
+}
+/* So now each and every properties are working */

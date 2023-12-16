@@ -1,0 +1,34 @@
+/* 1 rem means the default size of the root element. Lets talk about font-size first  */
+
+/* default font size of root element is 16px.*/
+
+/* .box1{
+    font-size: 2rem;
+    /* 2rem means 16x2=32px */
+/* }*/
+
+/* We can set the default size of the root element like this */
+html {
+    font-size: 10px;
+    /* You can also write the font-size as 62.5% */
+    /* font-size: 62.5%; */
+    /* 16px ----> 100% */
+    /* 10px ----> 100/16*10=62.5% */
+    /* The reason to write 62.5% is sometimes the user goes to the settings of his browser to change the default font-size. If we write the size in pixels it will have no effect. But if we write in % it will definately have effect */
+}
+
+.box1 {
+    /* 2 rem now means 10x2=20px */
+    font-size: 2rem;
+}
+
+.text-content {
+    /* 3 rem now means 10x3=30px */
+    font-size: 3rem;
+    /* So 1 rem means 10px as mentioned in root element */
+    border: 1rem solid red;
+    margin: 0.5rem;
+    /*----> 5px */
+    padding: 4.5rem;
+    /*----> 45px */
+}

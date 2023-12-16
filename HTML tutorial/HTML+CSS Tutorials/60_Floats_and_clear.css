@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box; /* This means the padding margin or border within our specified width and not on the whole webpage */
+}
+.fav-musicians {
+  border: 10px solid green;
+}
+.mozart{
+    width: 45%;
+    border: 4px solid red;
+    background-color: lightgoldenrodyellow;
+    float: left; /* before working on beethoven we can see that when we are setiing float left the content is going out of the div box. So as it is going out of the div box the css is considering that the .mozart div does not exists within the "fav-musicians" div. So that is the reason why the beethoven class is starting from the top even though .mozart is a block level element. */
+}
+.beethoven{
+    width: 55%;
+    background-color: lightsalmon;
+    float: right; /* Now even the beethoven class is going out of the div box. Now the div fav-musicians is empty. */
+ }
+
+/* .box{
+    /* clear: left; ----> It clears the float on the left side and starts from a new flow */
+
+    /* clear: right; ----> It clears the float on the right side and starts from a new flow */
+
+    /* clear: both; Best to use */
+/* } */
+
+/* Now question comes what to do with both the divs that has gone out of its parent div. Now go to the html file again */
+
+.clearfix{
+    clear: both;
+} /* This is something you should use after applying float to maintain the normal flow of the document. In 99% cases you should be using this

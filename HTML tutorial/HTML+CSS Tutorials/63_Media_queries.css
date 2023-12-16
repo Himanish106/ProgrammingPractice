@@ -1,0 +1,72 @@
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: lightcyan;
+}
+
+h1 {
+  font-size: 10rem;
+}
+
+p {
+  font-size: 5rem;
+}
+
+@media (max-width: 500px) {
+  html {
+    font-size: 5px;
+  }
+  body {
+    background: lightcoral;
+  }
+}
+
+/* This code snippet is a CSS @media rule with a breakpoint defined for devices with a maximum width of 500px. It is used to apply specific styles to the HTML (html) element when the screen size is equal to or smaller than 500px. This is typically used for responsive web design to adjust the font size based on the device's screen size.
+
+@media (max-width: 500px) { ... }: This is the syntax for a CSS media query. The @media rule is used to apply styles based on certain conditions, in this case, the screen width. (max-width: 500px) is a media feature that specifies the maximum width of the screen at which the styles within the media query block will be applied.
+
+By using this media query, you can control the font size for different screen sizes. As the screen width decreases and reaches 500px or less, the font size will be adjusted to 5px, making the text appear larger and easier to read on smaller screens.
+
+*/
+
+/* Always write media queries after you have written the main css */
+
+/* If we want that we want to apply a seperate background colour if the width is less than or equal to 768px but also keeping the condition that if the width is less than or equal to 500px the background colour should persist */
+
+/* @media (max-width: 768px) {
+  html {
+    font-size: 5px;
+  }
+  body {
+    background: lightgoldenrodyellow;
+  }
+} ---> But if we write like this our requirement would not be fulfilled because if we write like this the condition for 500px will be overrided */
+
+/* So now we can write like this  */
+
+@media (min-width: 501px) and (max-width: 768px) {
+  body {
+    background: blue;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  body {
+    background: pink;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1200px) {
+  body {
+    background: lightsalmon;
+  }
+}
+
+@media (min-width: 1201px) {
+  body {
+    background: lightskyblue;
+  }
+} /* This means any width after 1200px, this styles will be applied on the webpage */
+
+

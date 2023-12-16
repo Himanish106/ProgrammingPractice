@@ -1,0 +1,53 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Suppose we want to give each of the boxes(box1...box5) a width of 500px. But the width will not be applied. So for that we have to wrap the elements inside the flexbox using the flex-wrap property */
+
+.box-wrapper {
+  border: 10px solid #222;
+  display: flex;
+  /* flex-wrap: wrap; */
+  /* In this property if a certain width is applied that does not fits the screen then the elements get aligned along the cross axis */
+
+  /* flex-wrap: wrap-reverse; */
+  /* The direction of cross axis changes so the alignment of the boxes also change i.e from top to bottom */
+
+  /* height: 500px; */
+  /* Suppose if we set the height of the flex-container the flex-items takes the complete height of the container which was not the case in normal elements */
+
+  /* flex-wrap: nowrap; -----> Default */
+
+/* Practice */
+
+  flex-direction: column;
+  height: 400px; 
+  /* Now as soon as we set the height of the flexbox to 400px the items inside the flexbox does not fits as the required height of the flex-items is not satisfied by the flex-container hence the contents overflows. So here we can use flex-wrap property to fix this */
+  flex-wrap: wrap;
+  /* The items came first upto the main axis and those who was not fitting in a single column got aligned across the cross axis */
+}
+
+.box {
+  border: 1px solid #666;
+  width: 500px;
+}
+
+.box1 {
+  background: lightblue;
+}
+
+.box2 {
+  background: lightcoral;
+}
+
+.box3 {
+  background: lightgrey;
+}
+
+.box4 {
+  background: lightsalmon;
+}
+
+.box5 {
+  background: lightslategray;
+}

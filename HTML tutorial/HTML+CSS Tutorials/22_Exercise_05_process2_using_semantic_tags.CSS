@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:wght@300&display=swap");
+body {
+  font-family: "Montserrat", "Poppins", sans-serif;
+  font-weight: 500;
+}
+.bg-gray {
+  background-color: rgb(190, 178, 178);
+}
+.txt-colour-sea-green {
+  color: rgb(27, 85, 52);
+}
+span {
+  background-color: aqua;
+}

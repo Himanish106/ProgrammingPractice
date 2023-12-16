@@ -1,0 +1,24 @@
+hr {
+  width: 500px;
+  border: 0.5px dashed black;
+  margin-left: 0px;
+}
+.box2 {
+  /* First refer to box1 for understanding */
+  width: 500px;
+  background-color: lightcoral;
+  border: 10px solid red;
+  padding: 50px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+
+  /* Now we can see the overall content along with the width,padding and margin is 500px. As soon as we set the box-sizing: border-box property this thing happened. The content width adjusts itself then along with padding,border, margin the total width gets set to 500px. We can understand by the line we had drawn before using the hr tag whose width we have also set 500px. If we match the width of both then we will understand properly  */
+}
+.box1 {
+  width: 500px; /* Initially we are setting our width as 500 px. But in later part a problem will occur */
+  background-color: lightcoral;
+  border: 10px solid red;
+  padding: 50px;
+
+  /* So after adding border and padding the width increases. That is the content width is 500px but there is seperate width for border and padding. Our job now is to if we set the content width as 500px then after adding padding or border the width should not change. So now we will be adding another box to solve the current problem. Now refer to box2 of HTML file. */
+}

@@ -1,0 +1,31 @@
+/* h1 {
+  border: 4px solid red;
+  /* viewport means the amount of content we can see in our screen  */
+/* viewport width */
+/* width: 50vw; This means 50% of the width of the screen */
+/* } */
+
+/* .box1{
+    border: 4px solid red;
+    width: 50%;
+    padding: 5px;
+} */
+
+/* h1{
+    border: 2px solid green; */
+/* width: 50%; ---> This means it takes the 50% width of its parent element's width.*/
+/* width: 80vw;  ---> when we use vw this means it has no relation with its parent element. It only depends upon the width of the screen */
+/* } */
+
+.box2 {
+  background-color: cadetblue;
+  /* height: 100px; */
+  height: 100vh; /* This means the height of the screen of whichever device we use the first 100% of the screen will be blue then our paragraph tag will start */
+}
+/* vmin--> Suppose we have set both vh and vw.
+we set
+height : 100vmin;
+This means whichever i.e vh or vw is minimum it will take 100% of that unit.
+
+vmax--> Just reverse of vmin
+*/

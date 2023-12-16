@@ -1,0 +1,22 @@
+@media print {
+  body {
+    color: blue;
+  }
+}
+/* If we want to print our webpage then this kind of stylings can appear. We can do a lot with this  */
+
+@media all and (max-width: 500px) {
+  body {
+    background: blue;
+  }
+}
+
+/* Used to apply in all devices */
+
+@media screen and (max-width: 500px) {
+  body {
+    background: blue;
+  }
+}
+
+/* Used to apply in screen devices */

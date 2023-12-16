@@ -1,0 +1,24 @@
+/* ::before is used to add some text before some element  */
+
+.cool::before{
+    content: 'Hello ';
+    /* We can select the paragraph tag with the help of cursor but not the pseudo element because pseudo elements can't be selected */
+    /* The content comes insidethe paragraph tag itself. If we inspect in our browser we can check that  */
+    /* display: block; */
+    /* By default pseudo elements before and after are inline elements. You can change its display to block and work it accordingy */
+    border: 2px solid black;
+}
+.cool::after{
+    content: ' Hi';
+    border: 2px solid  black;
+}
+
+.main-heading::before{
+    content: 'before ';
+    border: 2px solid red;
+}
+
+.main-heading::after{
+    content: ' after';
+    border: 2px solid red;
+}

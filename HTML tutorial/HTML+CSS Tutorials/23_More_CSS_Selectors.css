@@ -1,0 +1,34 @@
+/* *{
+    color: blue;
+} ----> So this * is called the universal selector which is used to select all the HTML elements and affect it. */
+header{
+    background-color: bisque;
+}
+section.my-articles{
+    background-color: #f2e9e9;
+}
+/* p{
+    color: red;
+} */
+/* But we only want to change the color of that paragraph that is in the header tag */
+header p{
+    color: red;
+ } /* This is known as descendent selectors or combinators */
+ li a{
+    color: red;
+ }
+ /* section.my-articles h2{
+    color: green;
+ } This changes the colour of all h2 tags inside the section tag */
+/* But we want to change the colour of the h2 tag outside the article tag.  */
+section.my-articles > h2{
+    color: green;
+} /* This is known as direct child selector or combinator */
+
+/* Suppose we want to change the colour of those paragraphs that comes just after h2 tag */
+h2+p{
+    color: crimson;
+} /* This is known as adjacent selectors. NOTE that it changes the colour of those p tags that comes directly after h2. If you add another paragraph tag just after the first p tag then there will be no change of colour */
+ul+p{
+    color: green;
+}

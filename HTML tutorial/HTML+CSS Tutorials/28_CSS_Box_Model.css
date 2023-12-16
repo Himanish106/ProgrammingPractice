@@ -1,0 +1,27 @@
+h1 {
+  border: 20px red dotted;
+  /* The space between border and content is called padding */
+  /* Suppose if we want space between our text i.e. "Heading here" */
+  /* padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px; */
+  /* padding: 40px; ----> This adds 40px in all dimensions */
+  /* padding: 20px 40px; ---> This adds 20px on top and bottom and 40px on left and right */
+  /* padding: 20px 30px 40px 50px; */
+  /* Just imagine of a clock and start moving in a clockwise direction. You first start from top then move to the right and then to the bottom and then to the left. So in this way you can add padding */
+  padding: 10px;
+  /* Margin is just outside the border.It is basically the first layer of box model. Top margin and bottom margin by default has a width of 21.440 */
+  /* margin-left: 20px;
+    margin-right: 40px;
+    margin-top: 35px;
+    margin-bottom: 70px; */
+  /* margin: 40px 50px; ---> This adds 20px on top and bottom and 40px on left and right */
+  /* margin: 20px 30px 40px 50px; */
+  /* Just imagine of a clock and start moving in a clockwise direction. You first start from top then move to the right and then to the bottom and then to the left. So in this way you can add margin */
+  width: 500px; /* This can be used to set the box width of h1 tag */
+  margin: 20px auto ; /* Trick to centre elements setting the top and bottom and leave left and right as auto */
+  text-align: center;
+  background-color: aqua;
+  /* So now if you observe carefully in your browser you can see that the background colour starts from where the border starts */
+}

@@ -1,0 +1,19 @@
+h1 {
+    font-size: 46px;
+    /* text-decoration: underline solid red; ---> If you are mentioning underline you do not need to mention solid as by default underline property is solid  */
+    /* text-decoration: underline wavy red; */
+    /* text-decoration: overline wavy red; */
+    /* text-decoration: overline wavy red; */
+    /* text-decoration:line-through wavy red; */
+    letter-spacing: 4px;
+}
+
+p {
+    /* line-height property is the property which is use to alter the space between 2 lines */
+    line-height: 30px;
+    /* word-spacing property is used to increase the space between 2 words */
+    word-spacing: 8px;
+    /* letter-spacing property is used to increase the space between letters */
+    letter-spacing: 5px;
+    /* We mainly use letter spacing property in headings */
+}

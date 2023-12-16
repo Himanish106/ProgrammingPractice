@@ -1,0 +1,22 @@
+/* For pseudo elements we use :: double colons */
+/* p::first-letter{
+    font-size: 32px;
+} */
+p::first-line {
+  font-size: 32px;
+}
+/* ::first-line and ::first-letter elements works with block level elements only  */
+
+p::selection {
+  background: black;
+  color: white;
+}
+h1::selection {
+  background-color: darkmagenta;
+  color: white;
+}
+/* So basically when we select something we generally see the background turns blue and text turns white. We can change that using the selection property */
+
+/* ::selection{
+
+} ---> This syntax is used to apply properties on each and every element */

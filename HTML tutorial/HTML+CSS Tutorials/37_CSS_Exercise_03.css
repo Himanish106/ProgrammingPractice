@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: #444;
+  padding: 0px 40px;
+}
+a {
+  color: #444;
+  text-decoration: none; /* By default text of link is always underlined so we are setting it to none for our convinience */
+}
+h1,
+h2,
+h3 {
+  color: #222;
+}
+h2 {
+  border-bottom: 1px solid #444;
+}
+nav {
+  background: #cecece;
+  margin-top: -14px;
+}
+nav ul {
+  text-align: center;
+  padding-left: 0px;
+}
+nav li {
+  display: inline-block;
+  list-style: none;
+  border-bottom: 1px solid black;
+  margin: 15px 20px;
+  font-size: 20px; /* By default it is 16px always */
+  text-transform: uppercase;
+}
+section {
+  margin-top: 50px;
+}

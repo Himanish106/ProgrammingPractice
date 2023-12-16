@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+body{
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: red;
+    background-color: black;
+}
+body h1{
+    color: purple;
+}
+/* So when we use import we do not need to specify the link in HTML */

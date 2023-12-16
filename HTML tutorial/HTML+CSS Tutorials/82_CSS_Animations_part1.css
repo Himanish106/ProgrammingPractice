@@ -1,0 +1,50 @@
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  animation-name: change-bg-color;
+  /* We need to give animation a name so that we can use it in keyframes */
+  animation-duration: 6s;
+  /* animation duration means that the animation will continue for 6s */
+  animation-delay: 3s;
+  /* animation delay means that the animation will start after 3s */
+
+  animation-iteration-count: 4;
+  /* This is used to decide number of times the animation is used to run */
+
+  animation-fill-mode: forwards;
+  /* This property is used such that if one element gets changed to some other property it persists and it does not changes back to its initial property */
+}
+
+/* Keyframes in CSS are used to define specific points during an animation where styles are gradually applied to an element, allowing you to create smooth and dynamic animations.*/
+
+@keyframes change-bg-color {
+  from {
+    background: orange;
+  }
+  to {
+    background: yellow;
+  }
+}
+
+/* This was with background color. Lets see some other properties. Uncomment box1 in HTML file to visualize the above animation made  */
+
+.box2 {
+  width: 15px;
+  height: 10px;
+  background: blue;
+  animation-name: grow-width;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+  animation-direction: reverse;
+  /* By default animation is occuring from "from" to "to". But as we set it reverse animation is occuring from "from" to "to" */
+}
+
+@keyframes grow-width {
+  from {
+    width: 0;
+  }
+  to {
+    width: 300px;
+  }
+}

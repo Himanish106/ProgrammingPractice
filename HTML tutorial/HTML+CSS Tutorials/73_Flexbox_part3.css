@@ -1,0 +1,53 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* When we set the width of the flex items as 300px then we can see there is lot of space left in the right side of the box. In this kind of cases we can use the justify-content property. Justify-content property adjust the flex-items along the main axis  */
+
+.box-wrapper {
+  border: 10px solid #222;
+  display: flex;
+  /* justify-content: flex-start; */
+  /* This is my default property */
+
+  /* justify-content: flex-end; */
+  /* Flex-items aligns upto the end of the main axis. */
+
+  /* justify-content: center; */
+  /* Aligns to the center of main axis */
+
+  /* justify-content: space-between; */
+  /* Mostly used property. Used to add equal space between each items */
+
+  /* justify-content: space-around; */
+  /* Equal space to the left and right of each items */
+
+  justify-content: space-evenly;
+  /* The "space-evenly" value for the justify-content property distributes the space between items evenly. It is similar to space-around but provides equal instead of half-sized space on the edges. Can be used in both CSS flexbox & grid.
+ */
+}
+
+.box {
+  border: 1px solid #666;
+  width: 300px;
+}
+
+.box1 {
+  background: lightblue;
+}
+
+.box2 {
+  background: lightcoral;
+}
+
+.box3 {
+  background: lightgrey;
+}
+
+.box4 {
+  background: lightsalmon;
+}
+
+.box5 {
+  background: lightslategray;
+}

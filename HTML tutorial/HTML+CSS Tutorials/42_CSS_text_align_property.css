@@ -1,0 +1,13 @@
+h1{
+    background-color: aqua;
+    /* text-align: center; */
+    text-align: right;
+    width: 500px;
+    padding-right: 10px;
+    /* So in text-align property in case of block level elements the center or any other property works according to the allocated width */
+}
+
+a{
+    background-color: lightcoral;
+    /* text-align: center; ---> This property would not work in inline elements because the content occupies the complete width of the element so text-align would not work here. We can make it work if we use display-inline-block followed by setting a paticular width of the element */ 
+}

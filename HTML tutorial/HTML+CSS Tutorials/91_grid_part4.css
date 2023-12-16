@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #444;
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 64px 1fr 64px;
+  height: 100vh;
+  gap: 1rem;
+  /* Make the changes after visiting the commented header */
+  grid-template-areas:
+    "header header"
+    "content sidebar"
+    "footer footer";
+  /* Written header header twice as there are 2 columns so it expands upto that. Same for above. */
+}
+
+body > * {
+  padding: 1rem;
+  border: 2px solid #bbb;
+}
+
+/* header,
+footer {
+  grid-column: 1 / -1;
+} ----> Instead of doing this you can use the concept of grid-template-areas. Make the chages in the body */
+header {
+  grid-area: header;
+}
+footer {
+  grid-area: footer;
+}
+aside {
+  grid-area: sidebar;
+}
+main {
+  grid-area: content;
+}
+@media (max-width: 768px) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-rows: 64px 1fr 1fr 64px;
+    grid-template-areas:
+      "header"
+      "content"
+      "sidebar"
+      "footer";
+  }
+}

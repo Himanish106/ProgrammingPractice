@@ -1,0 +1,40 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.box-wrapper {
+  border: 10px solid #222;
+  display: flex;
+  max-width: 1200px;
+}
+
+.box {
+  border: 1px solid #666;
+  flex-basis: 600px;
+  /* flex-shrink: 1; */
+  /* Even if we do not mention the flex-shrink in this case automatically the containers would have shrinked because we have width of container set to 1200px and flex-items width is 600px. So automatically the width of the flex-items gets shrinked to fit inside the container  */
+
+  /* flex: 1 1 400px; */
+  /* This means first value is flex grow, the second value is flex-shrink and the third value is flex-basis */
+}
+.box1 {
+  background: lightblue;
+  flex-shrink: 1;
+}
+
+.box2 {
+  background: lightcoral;
+  flex-shrink: 2;
+}
+
+.box3 {
+  background: lightgrey;
+  flex-shrink: 3;
+}
+
+.box4 {
+  background: lightsalmon;
+}
+
+.box5 {
+  background: lightslategray;
+}

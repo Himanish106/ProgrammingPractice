@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .box-wrapper {
+    border: 10px solid #222;
+    display: flex;
+    height: 400px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .box {
+    border: 1px solid #666;
+    width: 400px;
+  }
+  
+  .box1 {
+    background: lightblue;
+    /* align-self: flex-start; */
+  }
+  
+  .box2 {
+    background: lightcoral;
+    align-self: center;
+    /* align self is a property of flex-items that basically overrides the align-items property of flexbox. Like align-items align-self also works along the cross axis */
+  }
+  
+  .box3 {
+    background: lightgrey;
+    /* align-self: flex-end; */
+  }
+  
+  .box4 {
+    background: lightsalmon;
+  }
+  
+  .box5 {
+    background: lightslategray;
+  }
+  

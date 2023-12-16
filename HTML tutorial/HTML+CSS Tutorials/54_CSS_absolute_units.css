@@ -1,0 +1,21 @@
+p{
+    /* font-size: 16px; ---> Default size */
+    font-size: 32px;
+    font-size: 96px;
+
+    /* 1 inch == 96px */
+    font-size: 1in;
+    /* 1 inch == 2.54cm */
+    /* 96px == 2.54cm */
+    font-size: 2.54cm;
+    
+    /* 1px == 0.75pt */
+    /* 16px == 0.75*16 (12pt) */
+    /* 96px == 0.75*96 (72pt) */
+    /* 1inch == 72pt */
+    font-size: 12pt;
+    font-size: 72pt;
+    /* font-size: 1in; */
+    border: 12pt solid red;
+}
+/* We rarely use absolute units in modern web development */

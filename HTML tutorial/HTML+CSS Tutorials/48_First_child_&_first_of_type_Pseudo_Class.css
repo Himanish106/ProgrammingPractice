@@ -1,0 +1,14 @@
+/* p:first-child {
+  color: red;
+} */
+/* The p tag inside the first header is the first child of element header so it turned red and the p tag inside the div class container also turned red as it is the first child of the class div. But the first p tag inside the body tag did not turned red as it is not the first child of body tag. The first child of the body tag is header. */
+
+p:first-of-type {
+  color: red;
+}
+/* :first-of-type:- This means the the first mentioned tag type inside a parent tag gtes affected. 
+The first p tag inside the header gets changed as it is the first p type tag inside header
+The first p tag inside the second header tag gets changed as it is the first p type tag inside second header
+The first p tag inside the body tag gets changed as it is the first p type tag inside body
+The first p tag inside the div class container tag gets changed as it is the first p type tag inside div class container
+*/

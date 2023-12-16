@@ -1,0 +1,9 @@
+/* We know in inline elements we cannot set the width and height of the elements. But this was the case only for text documents. But img tag is an image tag so the case is different here */
+
+img{
+    width: 381px;
+    /* height: 300px; When we set the width automatically the browser sets the height and vice versa. Hence we may not mention the other property until and unless we need to set it on our own */
+    border: 10px solid black;
+    padding: 10px;
+    margin: 10px;
+}

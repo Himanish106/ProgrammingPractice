@@ -1,0 +1,13 @@
+/* Utility classes are CSS class names that serve one particular purpose, and are named as such. Typically a class like . bg-blue would give you background-color: blue , for example. */
+
+.Lorem{
+    color: chocolate;
+}
+.lorem20{
+    color: rgb(163, 16, 16);
+}
+.bg-black{
+    background-color: black;
+}
+
+/* So .bg-black here is an utility class which has one purpose i.e. to turn the background colour black */

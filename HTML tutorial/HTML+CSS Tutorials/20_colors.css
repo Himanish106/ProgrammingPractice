@@ -1,0 +1,15 @@
+h1{
+    color: rgba(43, 23, 78); /* so this gives pure red color max limit of every rgb is 255. If all this values are set to 0 we get black colour. Setting all values to 255 gives white colour */
+    /* r- red g-green b-blue */
+}
+h2{
+    /* Using color picker from google we are using the hex code */
+    color: #ff4237;
+    /* So here also we use the concept of rgb 
+      hex means 6 values
+      the first 2 values denotes red
+      the 2nd two values denotes green
+      the third two denotes blue
+      Maximum value in rgb was 255 and in hex is f    
+    */
+} 

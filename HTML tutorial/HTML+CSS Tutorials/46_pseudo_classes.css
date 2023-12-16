@@ -1,0 +1,26 @@
+/* link, visited, hover, active ---> lvha. Remember the order */
+a:link {
+  color: red;
+} /* Before visiting the link */
+
+a:visited {
+  color: cornflowerblue;
+} /* After link been visited */
+
+a:hover {
+  color: rgb(24, 70, 47);
+} /* When we bring our cursor on the link */
+
+a:active {
+  color: gold;
+} /* When we click on the link we can see this colour */
+
+/* Not necessary you can use pseudo classes in case of links only. You can use it in case of any element */
+p:hover {
+  background-color: aqua;
+} /* Before visiting the link */
+
+p:active {
+  background-color: cornflowerblue;
+}
+/* link and visited will not work in other tags as they are specially for links */

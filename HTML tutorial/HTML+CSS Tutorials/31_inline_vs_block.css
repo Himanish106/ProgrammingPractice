@@ -1,0 +1,31 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #444;
+}
+
+h1,h2{
+    border: 2px solid #e40606;
+    /* Suppose we decrease the width of block level elements */
+    width: 500px;
+    /* Then also we see that the elements starts from a new line */
+
+    /* You can also set the height of the elements */
+    /* height: 100px; */
+    display: inline; /* This is a technique with the help of which we can use block elements as inline elements */
+}
+h1{
+    margin: 100px;
+    padding: 100px;
+}
+/* h2{
+    padding: 180px ---> No problem. Uncomment it when you need to understand the difference in padding;
+} */
+a{
+    border: 2px solid #222;
+    /* width: 500px;
+    height: 100px; ----> So this is a major difference between block and inline level elements that width and height has no effect in case of inline level elements*/
+    margin: 100px;
+    /* padding: 50px;----> So if you see that padding top and bottom is overflowing and is affecting the other elements. You can use padding left and padding right but don't use padding top and padding bottom */
+    display: block; /* This is a technique with the help of which we can use inline elements as block level elements */
+}
+/* So there is a major difference in case of margins between block and inline level elements because in inline level elements margin only applies in the left and right direction. Even if you mention margin-top and margin-bottom then also it will not work. But in block level elements margin applies in all direction */

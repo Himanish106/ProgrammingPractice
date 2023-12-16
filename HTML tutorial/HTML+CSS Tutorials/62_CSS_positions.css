@@ -1,0 +1,82 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  position: relative;
+  width: 800px;
+  height: 500px;
+  border: 8px solid green;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.container h1 {
+  border: 4px solid red;
+  background: lightyellow;
+
+  /* position: static; */
+  /* HTML elements are positioned static by default.Static positioned elements are not affected by the top, bottom, left, and right properties.An element with position: static; is not positioned in any special way; it is always positioned according to the normal flow of the page: */
+
+  position: relative;
+
+  /* top: 50px; ---> This means it moves 50px down from the top. */
+  /* left: 50px;  ---> This means it moves 50px right that means a space of 50px gets added in the left */
+
+  /* An element with position: relative; is positioned relative to its normal position.Setting the top, right, bottom, and left properties of a relatively-positioned element will cause it to be adjusted away from its normal position. Other content will not be adjusted to fit into any gap left by the element. */
+
+  /* z-index */
+  /* top: 150px; Before setting z-index we will see that the h1 has come over the paragraph inside the ,container div */
+  /* So by default the z-index: of every elements of html is 0. */
+  /* z-index: -1; This just goes behind the paragraph tag hence not visible */
+
+  /* The z-index property in CSS determines the stacking order of elements on a web page. It affects how elements are layered or stacked on top of each other, especially when they overlap.
+
+Imagine you have multiple layers of paper stacked on a table. The z-index property works in a similar way. Each HTML element can be considered as a layer, and the z-index value determines the order of these layers.
+
+Here's a simple explanation:
+
+Each HTML element is assigned a default z-index value of 0.
+Elements with higher z-index values will be stacked on top of elements with lower z-index values.
+If two elements have the same z-index value, the one that comes later in the HTML markup will be stacked on top.
+Negative z-index values are also allowed. Elements with negative z-index values are stacked below elements with positive z-index values. */
+
+  /* position: absolute;  */
+  /* An element with position: absolute; is positioned relative to the nearest positioned ancestor (instead of positioned relative to the viewport, like fixed).However; if an absolute positioned element has no positioned ancestors, it uses the document body, and moves along with page scrolling.
+Note: Absolute positioned elements are removed from the normal flow, and can overlap elements */
+
+  /* Trick to centre elements */
+  /* position: absolute; /* To understand this comment out the h3 tag and p tag inside the .container class. */
+
+  /* Step 1: Set the position as absolute. You will see the height of div has become 0. Only the height of the border is present. The h1 tag "Hello there" has moved out of the box as we know if we set absolute the element goes out of its normal flow. So better give some height to the div box.*/
+
+  /* Step 2: Set the position of the parent element as relative and the element which you want to centre as absolute. Previously when we had not set the position of its parent element as relative then the element which we had set position as absolute was adjusting its position relative to its whole webpage. Now as its parent's position has been set relative it will adjust is position relative to its parent */
+
+  /* left: 50px;--> This would move 50px from the left side relative to its parent */
+  /* bottom: 50px; --> This would move 50px from the bottom side relative to its parent */
+
+  /* top: 50%; */
+  /* left: 50%; But even after setting this two as 50% centre is not occuring because both the position gets set relative to its parent element */
+  /* transform: translate(
+    -50%,
+    -50%
+  ); So after setting this we get the element in the centre. transfrom property has no effect on its parent element. It sets the position based on the position of the actual element on which we want to apply. First value denotes x-axis 2nd denotes y axis. */
+}
+
+.container h3 {
+  background: black;
+  color: #fff;
+  /* Suppose you want to keep the h3 tag always on the top or bottom. But whenever you scroll it must be always visible */
+  /* position: fixed; Like absolute it also goes out of its normal document flow. Hence we can also set top bottom left right like absolute */
+  /* top: 0px; */
+  /* bottom: 0px; */
+  /* Sometimes it may happen when we set the top and bottom of the position: fixed; elements it may go behind another element. Hence at that cases you may make those elements visible by increasing the z-index */
+
+  /* position: sticky; Before setting top bottom or any other properties it behaves as a normal relative element. */
+  /* top: 0px; But as soon as we set the position as top 0px or any other kind of properties we can see that it gets kinda stick to its div box. As we scroll we will see the sticked element till we are within its parent element. But as soon while scrolling we come out of its div it is no more visible. Thus it is always best to apply on those elements whose effect is present throughout its whole web page */
+}
+
+.container p {
+  border: 4px solid purple;
+  background: transparent;
+}

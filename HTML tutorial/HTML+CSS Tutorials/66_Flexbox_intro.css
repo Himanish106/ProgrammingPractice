@@ -1,0 +1,49 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* So in flexbox we have 2 terms i.e flex-container and another is flex-items. In this example .box-wrapper is our flex container and .box1 .... box5 are our flex items. Previously we were using floats to align items left to right or right to left. Now we can use the concept of flex.  */
+
+.box-wrapper {
+  border: 10px solid #222;
+  display: flex; /* box1...box5 just got aligned so easily. While using floats was such a long process */
+
+  /* Before reading flex-direction keep one thing in mind that cross axis and main axis should always remain perpendicular to each other */
+
+  /* flex-direction: row; */
+
+  /*   flex-direction: row; This is the default direction. See the 68th file. The items get aligned according to the direction of main axis. Cross axis has no role here */
+
+  /* flex-direction: row-reverse; */
+  /* The direction of the main axis just got changed. Refer to 69th file */
+
+  /* flex-direction: column;  */
+  /* The direction of main axis and cross axis just changed. Refer to file 70. */
+
+  flex-direction: column-reverse;
+  /* Refer to file 71. */
+}
+
+.box {
+  border: 1px solid #666;
+}
+
+.box1 {
+  background: lightblue;
+}
+
+.box2 {
+  background: lightcoral;
+}
+
+.box3 {
+  background: lightgrey;
+}
+
+.box4 {
+  background: lightsalmon;
+}
+
+.box5 {
+  background: lightslategray;
+}

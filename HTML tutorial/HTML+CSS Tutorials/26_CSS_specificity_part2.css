@@ -1,0 +1,50 @@
+/* Specificity precedence:- inline style attribute > id selector > class selector > element selector */
+
+/* Now let us select all the li tags */
+
+div#container ul.my-songs li {
+  color: brown;
+  background-color: yellow;
+}
+
+/* How to calculate specificity?
+We actually have 4 places
+
+----------------------, -----------, --------------, ---------------
+Inline style attribute, id selector, class selector, element selector
+
+So let us calculate specificity of the above code
+
+Inline style attribute-0
+id selector-1
+class selector-1
+element selector-3
+So the specificity is- 0113
+*/
+
+.favourite {
+  color: yellow;
+  background-color: brown;
+}
+/* Let us calculate specificity
+Inline style attribute-0
+id selector-0
+class selector-1
+element selector-0
+So the specificity is- 0010
+Since 0113>0010 so there will not be any change in colour
+*/
+
+div#container ul.my-songs li.favourite {
+  color: yellow;
+  background-color: brown;
+}
+
+/* Let us calculate specificity
+Inline style attribute-0
+id selector-1
+class selector-2
+element selector-3
+So the specificity is- 0123
+Since 0123>0113 so there will be change in colour
+*/

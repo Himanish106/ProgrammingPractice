@@ -1,0 +1,8 @@
+/* p:last-child{
+    color: green;
+} */
+p:last-of-type{
+    color: red;
+}
+
+/* Same concept as first type just reverse in case of last type */

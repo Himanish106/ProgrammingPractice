@@ -1,0 +1,16 @@
+/* :focus---> Suppose we put our cursor in the email box then our focus is on the email. This is the concept of focus class. */
+
+input:focus{
+    background-color: rgba(165, 42, 42, 0.411);
+    color: green;
+    padding: 7px;
+    outline: none;
+    border: 5px solid red;
+}
+/* :required --> This field is used to target only those input fields that has requied attributes
+ */
+input:required{
+    background-color: aqua;
+    color: coral;
+    border: 5px solid blue;
+}

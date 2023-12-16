@@ -1,0 +1,78 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.title {
+  text-align: center;
+  margin: 1rem auto;
+}
+.box {
+  max-width: 500px;
+  margin: auto;
+  position: relative;
+}
+
+.box img {
+  display: block;
+  width: 100%;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  background: #454545;
+  color: #fff;
+  padding: 0.5em 1.2em;
+  margin-top: 0.8rem;
+  transition: all 0.4s ease-in;
+}
+.btn:hover {
+  background: #232323;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.472);
+}
+.box-content {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center;
+  opacity: 0;
+  /* This is used such that the text written is not visible it will only be visible when we hover on it */
+  /* Suppose if we set the opacity to 1 then we can see that the text of box-content is not properly visible. This is because the background color of the after pseudo class is coming above the text content. So for that we need to set z-index. */
+  z-index: 2;
+  transition: all 0.4s ease-in-out;
+}
+.box-content h3 {
+  font-size: 18px;
+}
+.box:hover .box-content {
+  opacity: 1;
+  left: 50%;
+}
+.box::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.623);
+  opacity: 0;
+  /* This is used such that the text written is not visible it will only be visible when we hover on it */
+  z-index: 1;
+  transition: opacity 0.2s ease-in;
+}
+
+.box:hover::after {
+  opacity: 1;
+}

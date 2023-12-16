@@ -1,0 +1,31 @@
+/* Suppose if we want to change the colour of those attributes whose input type is text. i.e. the text should be typed in some colours then */
+input[type="text"] {
+  color: red;
+  background-color: aliceblue
+}
+input[type="password"]{
+    background-color: cyan;
+    color: red;
+}
+
+/* Suppose if we want change the colour of all google links */
+/* a[href="https://www.google.co.in"]{
+    color: red;
+} Changing the colour like this is a difficult job */ 
+
+/* a[href *= "google"]{
+    color: red;
+} */
+
+/* This syntax changes the colour of those links that has the word "google" in it */
+
+/* You can also use the caret symbol("^") to change the colour */
+
+/* a[href ^= "https"]{
+    color: green;
+} */
+
+/* Suppose we want to change the colour of those links that ends with .com */
+a[href $=".com"]{
+    color: green;
+}

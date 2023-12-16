@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,400;0,700;0,900;1,100;1,300;1,900&display=swap');
+
+p {
+    font-weight: normal;
+    /* font-weight: 400; */
+    /* Either we set font-weight as normal or 400 it is same. normal or 400 is the default weight of the fonts which the browser gives us */
+    /* font-weight: bold; */
+    /* font-weight: 700; */
+    /* bold or 700 is the same thing */
+}
+
+h1 {
+    /* we know h1 tag is already bold so if we change it to normal then it will be displayed as a normal text not a bold */
+    /* font-weight: normal; */
+    /* font-weight: 100; */
+    /* So different font styles have different weight effects. I mean to say that in this case when i am using the default font of google chrome browser font-weight effect is same from 100-500 i.e. light then bold property persists from 600-900 and there is not any scenario of extra bold or something like that. But this thing varies from font to font. Let us understand this by importing various fonts */
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-style: italic;
+}

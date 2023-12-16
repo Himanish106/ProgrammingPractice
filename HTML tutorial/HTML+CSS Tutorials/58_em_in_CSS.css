@@ -1,0 +1,17 @@
+h1 {
+  font-size: 2em;
+  /* em means it sets the size according to the default font size of its parent element. Default font size of the parent element of first h1 tag which is body tag and second h1 tag whose parent is the .box1 div is 16px. So 2em means 16x2=32px */
+
+  /* But em works differently in case of all other properties. In case of other properties it first looks on the font size of the tag on which we want to apply a change, in this case h1 then change it based on its font size  */
+
+  border: 2em solid black;
+
+  /* h1 outside div: font size is 2em that is 32 px. Now when border is 2em it means 32x2=64px.*/
+
+  /* h1 inside div:  font size is 2em that is 20 px x 2=40px . Now when border is 2em it means 40x2=80px.  */
+  padding: 3em;
+}
+.box1 {
+  font-size: 20px;
+  /* When we set the font size of body as 20px then the font-size: of h1 tag inside box1 is 2x20=40px */
+}

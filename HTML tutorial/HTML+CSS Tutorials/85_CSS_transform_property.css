@@ -1,0 +1,42 @@
+.box1 {
+  width: 100px;
+  height: 100px;
+  background: rgb(94, 208, 247);
+  font-size: 1.5rem;
+  margin: 100px auto;
+  /* Some properies of transform */
+  /* rotate, skew, scale, translate */
+
+  
+/* The transform-origin property in CSS is used to define the origin point or the anchor point around which an element is transformed using the transform property. It specifies the point where the transformation is applied relative to the element's box. */
+
+  /* transform-origin: top right; */
+  /* This means the box will rotate around its top-right */
+  transform-origin: 0% 100%;
+  /* This means the box will rotate from bottom left */
+  transition: transform 2s ease-in-out;
+}
+.box1:hover {
+  /* transform: rotate(-60deg); */
+  /* Positive degree means it will rotate clockwise and negative degree means it will rotate anticlockwise */
+  /* transform: scaleX(2);  */
+  /* width increases 2 times the mentioned width */
+  /* transform: scaleY(2); */
+  /* height increases 2 times the mentioned height */
+  /* transform: scale(2); */
+  /* Use to increase both width and height */
+  /* transform: scale(1.5, 2); */
+  /* Used to mention both width and height */
+  /* transform: translate(100px, 50px); */
+  /* we can use translateX and translate Y if we need to specify only the X or Y. Sometimes we use % in this means 
+    transform: translate(100%, 50%);
+  it is 100% of specified width and 50% height of the box. This means the box will move 100% in X axis and 50% in Y axis from the origin  */
+
+  /* In CSS transitions, the skew transformation allows you to smoothly change the skewing (shearing) angle of an element over a specified duration. Skewing is a transformation that tilts an element along the horizontal or vertical axis, giving it a slanted appearance. */
+
+  /* transform: skewX(30deg); */
+  /* transform: skew(20deg, 50deg); */
+
+  transform: rotate(360deg);
+  /* By default it is rotating from the centre. We can rotate this box from any side instead from the centre or origin point. */
+}

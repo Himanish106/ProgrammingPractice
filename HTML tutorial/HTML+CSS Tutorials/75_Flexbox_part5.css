@@ -1,0 +1,52 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.box-wrapper {
+  border: 10px solid #222;
+  display: flex;
+  height: 400px;
+  /* flex-wrap: wrap; */
+  /* align-items: flex-start; */
+  /* We see the boxes are split into multiple rows. We use align-content property if and only if we have multiple rows. It also works along the cross axis. */
+  /* align-content: center; */
+  /* align-content: flex-start; */
+  /* align-content: flex-end; */
+  /* align-content: space-between; */
+  /* align-content: space-around;
+  justify-content: space-between; */
+
+  /* Practice */
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  /* align-content: flex-start; */
+  /* align-content: flex-end; */
+  /* align-content: space-around; */
+  align-content: space-between;
+  justify-content: space-evenly;
+}
+
+.box {
+  border: 1px solid #666;
+  width: 500px;
+}
+
+.box1 {
+  background: lightblue;
+}
+
+.box2 {
+  background: lightcoral;
+}
+
+.box3 {
+  background: lightgrey;
+}
+
+.box4 {
+  background: lightsalmon;
+}
+
+.box5 {
+  background: lightslategray;
+}

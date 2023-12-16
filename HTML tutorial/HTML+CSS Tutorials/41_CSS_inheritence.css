@@ -1,0 +1,17 @@
+body {
+  color: red;
+  /* So all the elements which are the child of body turns red */
+}
+.container1 {
+  color: green;
+  /* Hence the colour of all the child elements of the classes are changing */
+}
+.container2 {
+  color: blue;
+}
+
+/* So even though we have set the colour of the body as red but the colour of a tag is not changing as the browser provides a default rgb value that overrides the colour we have provided. So we can change the colour by individually selecting the element */
+a{
+    color: brown;
+    text-decoration: none;
+}

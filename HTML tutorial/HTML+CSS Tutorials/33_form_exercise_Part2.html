@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="33_forrm_exerise_Part2.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 class="header">Form for Library Registration</h1>
+    <form action="34_form_exercise_Part3.html">
+      <label for="Name">Name:</label>
+      <input type="text" id="Name" placeholder="Enter Name" required />
+      <br />
+      <br />
+      <label for="sid">Student-Id:</label>
+      <input type="text" id="sid" placeholder="Enter Student-Id" required />
+      <br />
+      <br />
+      <label for="Contact">Contact-number:</label>
+      <input
+        type="number"
+        id="Contact"
+        placeholder="Enter Contact-number"
+        required
+      />
+      <br />
+      <br />
+      <label for="mname">Mother's Name:</label>
+      <input type="text" id="mname" placeholder="Mother's Name" required />
+      <br />
+      <br />
+      <label for="fname">Father's Name:</label>
+      <input type="text" id="fname" placeholder="Father's Name" required />
+      <br />
+      <br />
+      <p>Select Your Gender</p>
+      <label for="Male">Male</label>
+      <input type="radio" name="gender" id="Male" />
+      <label for="Female">Female</label>
+      <input type="radio" name="gender" id="Female" />
+      <label for="Other">Other</label>
+      <input type="radio" name="gender" id="Other" />
+      <br />
+      <br />
+      <label for="salary">Family Income:</label>
+      <input type="number" id="salary" required />
+      <br />
+      <br />
+      <label for="age">Select Your age:</label>
+      <select name="age-group" id="age" required>
+        <option value="">Select Your Age</option>
+        <option value="10-20">10-20</option>
+        <option value="21-30">21-30</option>
+        <option value="31-40">31-40</option>
+        <option value="41-50">41-50</option>
+        <option value="Above 50">Above 50</option>
+      </select>
+      <br />
+      <br />
+      <label for="plan">Select Membership Plan:</label>
+      <select name="Membership" id="plan" required>
+        <option value="">Select Your plan</option>
+        <option value="Rs 250/mo">Rs 250/mo</option>
+        <option value="Rs 350/mo">Rs 350/mo</option>
+        <option value="Rs 400/mo">Rs 400/mo</option>
+        <option value="Rs 500/mo">Rs 500/mo</option>
+        <option value="Above Rs 500/mo">Above Rs 500/mo</option>
+      </select>
+      <br />
+      <br />
+      <input type="submit" value="submit" />
+    </form>
+  </body>
+</html>

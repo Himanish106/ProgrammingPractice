@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .box-wrapper {
+    border: 10px solid #222;
+    display: flex;
+    height: 400px;
+    /* flex-direction: row;
+    flex-wrap: wrap; */
+    /* You can write this using a shorthand */
+    /* flex-flow: row wrap; */
+    flex-flow: column-reverse wrap;
+  }
+  
+  .box {
+    border: 1px solid #666;
+    width: 500px;
+  }
+  
+  .box1 {
+    background: lightblue;
+  }
+  
+  .box2 {
+    background: lightcoral;
+  }
+  
+  .box3 {
+    background: lightgrey;
+  }
+  
+  .box4 {
+    background: lightsalmon;
+  }
+  
+  .box5 {
+    background: lightslategray;
+  }
+  

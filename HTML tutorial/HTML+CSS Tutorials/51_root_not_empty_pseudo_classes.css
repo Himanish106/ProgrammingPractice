@@ -1,0 +1,31 @@
+/* This means all the other tags turn blue except paragraph tag */
+/* :not(p) {
+  color: blue;
+} */
+/* But this will result to cause all the elements turn blue because here we meant  all the other tags turn blue except paragraph tag. This also includes the body tag. If the body tag turns blue automatically all the tags inside it will turn blue. So this will not work  */
+/* 
+body :not(p){
+    color: blue;
+} */
+/* This means under the body tag all the other tags except the p tag will be blue. Space is necessary between body and colon(:) */
+
+div:empty{
+    background: #222;
+    border: 2px solid red;
+    height: 100px;
+    width: 100px;
+}
+/* In this way we can work with empty tags */
+
+/* :root means the full html body  */
+:root{
+    background: #333;
+    color: #eee;
+}
+
+/* You can also write in this way */
+html{
+    background: red;
+    color: white;
+}
+/* The color of the root  element did not change even though we had written the html tag after the root element because the specifity of pseudo class root is greater than html tag  */

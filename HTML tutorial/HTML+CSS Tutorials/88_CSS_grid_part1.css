@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  border: 2px solid red;
+  margin: 100px auto;
+  display: grid;
+  /* grid-template-columns: 33% 33% 33%;
+  column-gap: 50px; ---> Now as we set the column gap we are seeing that the grid items are going out of the box. We should never set grid-template-columns in terms of pixels */
+  /* The grid-template-columns property specifies the number (and the widths) of columns in a grid layout. The values are a space separated list, where each value specifies the size of the respective column. */
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  /* Instead of this you can write like this */
+  /* grid-template-columns: repeat(3, 1fr); */
+  /* column-gap: 50px;
+  row-gap: 10px; */
+  gap: 10px 20px; /* Shorthand for row-gap and column-gap */
+  /* gap: 10px; ----> This means the row gap and column gap is 10px */
+  grid-template-rows: 100px 100px; /* Here the first 2 rows of each columns gets affected but other rows does not gets affected as we are defining the 2 rows explicitly and the other rows were being created by the browser implicitly. So if we want to also change the property of the implicitly created rows we can use a property */
+  grid-auto-rows: 100px;
+
+  /* Now one thing we can see whenever we are resizing our screen we can see the boxes are shrinking. We an keep it fixed */
+  grid-template-columns: 300px repeat(2, 1fr);
+}
+
+.item {
+  background: #487eb0;
+  color: #fff;
+  border: 2px solid black;
+  padding: 10px;
+}

@@ -1,0 +1,46 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.box-wrapper {
+  border: 10px solid #222;
+  display: flex;
+  width: 1200px;
+}
+
+.box {
+  border: 1px solid #666;
+  flex-basis: 300px;
+  /* flex-grow: 1; */
+  /* Total width=1200px 
+  width of 3 box-300px x 3 = 900px
+  So total space left = 300px
+  Now as we set the flex-grow as 1 then the width of each box becomes 400px and occupies the full width of the flex-box
+  */
+}
+.box1 {
+  background: lightblue;
+  flex-grow: 2;
+  /* Total space left was 300px.
+    Since its flex-grow has been set to two so whats happening is it takes half of the width of the box that is 150px. So total width of box 1 is 300+150=450px(approximately). So now left width is 150px
+  */
+}
+
+.box2 {
+  background: lightcoral;
+  flex-grow: 1;
+  /* So this takes 75px */
+}
+
+.box3 {
+  background: lightgrey;
+  flex-grow: 1;
+  /* So this takes 75px */
+}
+
+.box4 {
+  background: lightsalmon;
+}
+
+.box5 {
+  background: lightslategray;
+}

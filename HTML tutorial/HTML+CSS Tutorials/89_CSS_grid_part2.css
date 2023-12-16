@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  border: 2px solid red;
+  margin: 100px auto;
+  display: grid;
+  gap: 10px 20px;
+  /* grid-template-columns: repeat(3, 1fr); */
+  /* grid-template-columns: repeat(
+    auto-fill,
+    150px
+  ); As we were fixing the number of columns in our previous property here in this auto-fill property the number of boxes per column will be adjusted on the basis of screen size */
+  /* grid-template-columns: repeat(auto-fit, 150px); */
+  /* The major difference between auto-fill and auto-fit is that autofill by default creates extra columns while auto fit does not do that. It only produces that number of columns that is mentioned.  */
+
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  /* minmax(150px, 1fr): This is the column sizing function minmax(). It defines the acceptable range of column sizes for each column.
+
+150px: This is the minimum size of each column. It ensures that each column will be at least 150 pixels wide.
+
+1fr: This is the maximum size of each column. It uses the fractional unit fr, which means that each column will expand and share the available space equally within the grid container, taking up any extra space beyond the minimum 150 pixels. */
+  grid-template-rows: 100px 100px;
+  grid-auto-rows: 100px;
+  grid-auto-flow: dense; /* Refer this after seeing class item8 */
+}
+
+.item {
+  background: #487eb0;
+  color: #fff;
+  border: 2px solid black;
+  padding: 10px;
+}
+.item1 {
+  /* grid-column-start: 1;
+  grid-column-end: 3; */
+  /* Shorthand of above 2 */
+  grid-column: 1/3;
+  /* grid-column: span 2; */
+  /* grid-column: 1/-1; This means from start to end */
+  /* grid-row-start: 1;
+  grid-row-end: 3; */
+  /* grid-row: 1/3; */
+  grid-row: span 2;
+}
+.item8 {
+  grid-column: 1/-1;
+  /* As we set this we can see there are many empty spaces left we can solve this problem such that all the empty spaces are covered. Go to .container. */
+}
