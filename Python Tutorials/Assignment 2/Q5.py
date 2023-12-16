@@ -1,0 +1,6 @@
+rice = float(input("Enter price of 1kg of rice:"))
+sugar = float(input("Enter price of 1kg of sugar:"))
+print("***LIST OF ITEMS***")
+print("Item  Price")
+print(f"Rice  Rs.{rice}")
+print(f"Sugar Rs.{sugar}")
