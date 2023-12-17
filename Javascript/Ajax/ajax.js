@@ -7,7 +7,7 @@ function buttonClickHandler() {
   const xhr = new XMLHttpRequest();
 
   // open the object
-  xhr.open("GET", "himanish2.txt", true);
+  xhr.open("GET", "himanish.txt", true);
 
   // What to do on progress(Optional)
   xhr.onprogress = function () {
