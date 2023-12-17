@@ -7,7 +7,7 @@ function buttonClickHandler() {
   const xhr = new XMLHttpRequest();
 
   // open the object
-  xhr.open("GET", "himanish.txt", true);
+  xhr.open("GET", "himanish2.txt", true);
 
   // What to do on progress(Optional)
   xhr.onprogress = function () {
@@ -16,7 +16,12 @@ function buttonClickHandler() {
 
   //   What to do when response will be ready
   xhr.onload = function () {
-    console.log(this.responseText);
+    if (this.status === 200) {
+      // Reason of doing this is if instead of himanish.txt I write himanish2.txt which is not present then else block gets executed.
+      console.log(this.responseText);
+    } else {
+      console.log("Some error Occured");
+    }
   };
   // Send the generated response as a request to the server
   xhr.send();
