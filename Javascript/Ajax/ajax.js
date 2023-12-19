@@ -7,7 +7,11 @@ function buttonClickHandler() {
   const xhr = new XMLHttpRequest();
 
   // open the object
-  xhr.open("GET", "himanish.txt", true);
+  //   xhr.open("GET", "himanish.txt", true);
+  //   xhr.open("GET", "https://jsonplaceholder.typicode.com/todos/1", true);
+
+  // POST
+  xhr.open("POST", "https://dummy.restapiexample.com/api/v1/create", true);
 
   // What to do on progress(Optional)
   xhr.onprogress = function () {
