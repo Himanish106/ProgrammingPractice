@@ -3,7 +3,7 @@ import PropTypes from "prop-types"; // PropTypes means type of the property i.e.
 export default function Navbar(props) {
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary mx-2">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
             {props.pageTitle}
