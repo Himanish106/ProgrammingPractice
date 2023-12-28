@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "addition",
+            "request": "launch",
+            "mainClass": "addition",
+            "projectName": "JAVA_67e66b69"
+        },
+        {
+            "type": "java",
             "name": "Launch add_3_numbers",
             "request": "launch",
             "mainClass": "add_3_numbers",
