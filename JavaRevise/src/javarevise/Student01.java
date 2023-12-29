@@ -9,7 +9,7 @@ package javarevise;
  *
  * @author hp
  */
-public class Student {
+public class Student01 {
 
     public static void main(String[] args) {
         StudentInfo kunal = new StudentInfo(55, "Kunal", 45.2f);
@@ -20,6 +20,9 @@ public class Student {
         System.out.println(Ravi.marks);
         System.out.println(Ravi.name);
         System.out.println(Ravi.rollNo);
+
+        StudentInfo Nitin = new StudentInfo();
+        System.out.println(Nitin.name);
     }
 }
 
@@ -40,4 +43,11 @@ class StudentInfo {
         this.rollNo = other.rollNo;
         this.marks = other.marks;
     }
+
+    public StudentInfo() {
+//        Calling a Constructor from another constructor
+//        Internally: new Student(13,"Nitin Kumar",75.2f)
+        this(13, "Nitin Kumar", 75.2f);
+    }
+
 }
