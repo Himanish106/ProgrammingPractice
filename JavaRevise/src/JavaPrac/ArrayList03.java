@@ -25,3 +25,4 @@ public class ArrayList03 {
         System.out.println(list);
     }
 }
+// ArrayList takes initial size as the input and when the input exceeds the size of the list then a new size is added to the old size and the size of the arrayList is increased and this process continues until and unless the size of the array becomes full.
