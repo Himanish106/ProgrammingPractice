@@ -6,9 +6,11 @@ export default function TextForm(props) {
   const upperCaseClick = () => {
     // setText("Enter the text to change state");
     setText(text.toUpperCase());
+    props.showAlert("Converted to UpperCase!","success")
   };
   const lowerCaseClick = () => {
     setText(text.toLowerCase());
+    props.showAlert("Converted to LowerCase!","success")
   };
   const handleOnChange = (event) => {
     console.log("On change");
@@ -22,28 +24,29 @@ export default function TextForm(props) {
   };
   const speak = () => {
     const toggle = document.getElementById("toggle");
-  
+
     if (toggle.textContent === "Speak") {
       toggle.innerHTML = "Stop";
-  
+
       const readText = () => {
         let msg = new SpeechSynthesisUtterance(text);
-  
+
         // Attach an event listener to restart speech when it ends
         msg.addEventListener('end', readText);
-  
-        window.speechSynthesis.speak(msg);
+
+        window.speechSynthesis.speak(msg);      
       };
-  
+
       // Start reading for the first time
       readText();
     } else {
       toggle.innerHTML = "Speak";
       // Stop speech synthesis
       window.speechSynthesis.cancel();
+      props.showAlert("Speaking Stopped!","danger")
     }
   };
-  
+
   return (
     <>
       <div className="container">
@@ -58,8 +61,8 @@ export default function TextForm(props) {
             placeholder="Enter your text here"
             value={text}
             rows={8}
-            defaultValue={""}
             onChange={handleOnChange}
+            style={{ backgroundColor: props.mode === 'dark' ? '#e3e2de' : 'white' }}
           />
         </div>
         <button
@@ -95,7 +98,7 @@ export default function TextForm(props) {
           {(0.008 * calculateWordCount()).toFixed(2)}
         </p>
         <h3>Preview</h3>
-        <p>{text}</p>
+        <p>{text.length > 0 ? text : "Enter Something in the textbox above to preview"}</p>
       </div>
     </>
   );
