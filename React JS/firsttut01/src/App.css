@@ -1,0 +1,21 @@
+.blue:checked{
+    color: #acd9e3;
+    background-color: #acd9e3;
+    border: #acd9e3;
+}
+.green:checked{
+    color: #96ebad;
+    background-color: #96ebad;
+    border: #96ebad;
+}
+.dark:checked{
+    color: #555956;
+    background-color: #555956;
+    border: #555956;
+}
+.bg-Blue{
+    background-color: #0b1452;
+}
+.bg-Success{
+    background-color: #2e5736;
+}
