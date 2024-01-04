@@ -1,13 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types"; // PropTypes means type of the property i.e. whether String,array etc
+import { Link } from "react-router-dom";
 export default function Navbar(props) {
   return (
     <>
       <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
         <div className="container-fluid">
-          <a className={`navbar-brand text-${props.mode === 'light' ? 'dark' : 'light'}`} href="#">
+          <Link className={`navbar-brand text-${props.mode === 'light' ? 'dark' : 'light'}`} to="/">
             {props.pageTitle}
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -22,14 +23,14 @@ export default function Navbar(props) {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className={`nav-link active text-${props.mode === 'light' ? 'dark' : 'light'} `} aria-current="page" href="#">
+                <Link className={`nav-link active text-${props.mode === 'light' ? 'dark' : 'light'} `} aria-current="page" to="/">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className={`nav-link active text-${props.mode === 'light' ? 'dark' : 'light'} `} href="#">
+                <Link className={`nav-link active text-${props.mode === 'light' ? 'dark' : 'light'} `} to="/about">
                   {props.about}
-                </a>
+                </Link>
               </li>
             </ul>
             <div className="d-flex flex-row  gap-0 column-gap-3">
