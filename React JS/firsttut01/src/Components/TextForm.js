@@ -6,11 +6,11 @@ export default function TextForm(props) {
   const upperCaseClick = () => {
     // setText("Enter the text to change state");
     setText(text.toUpperCase());
-    props.showAlert("Converted to UpperCase!","success")
+    props.showAlert("Converted to UpperCase!", "success")
   };
   const lowerCaseClick = () => {
     setText(text.toLowerCase());
-    props.showAlert("Converted to LowerCase!","success")
+    props.showAlert("Converted to LowerCase!", "success")
   };
   const handleOnChange = (event) => {
     console.log("On change");
@@ -34,7 +34,7 @@ export default function TextForm(props) {
         // Attach an event listener to restart speech when it ends
         msg.addEventListener('end', readText);
 
-        window.speechSynthesis.speak(msg);      
+        window.speechSynthesis.speak(msg);
       };
 
       // Start reading for the first time
@@ -43,7 +43,7 @@ export default function TextForm(props) {
       toggle.innerHTML = "Speak";
       // Stop speech synthesis
       window.speechSynthesis.cancel();
-      props.showAlert("Speaking Stopped!","danger")
+      props.showAlert("Speaking Stopped!", "danger")
     }
   };
 
@@ -66,6 +66,7 @@ export default function TextForm(props) {
           />
         </div>
         <button
+          disabled={text.length === 0}
           type="button"
           className="btn btn-primary btn-dark mx-2 my-2"
           onClick={upperCaseClick}
@@ -76,6 +77,7 @@ export default function TextForm(props) {
           type="button"
           className="btn btn-primary btn-success mx-2 my-2"
           onClick={lowerCaseClick}
+          disabled={text.length === 0}
         >
           Convert to LowerCase
         </button>
@@ -84,6 +86,7 @@ export default function TextForm(props) {
           onClick={speak}
           className="btn btn-warning mx-2 my-2"
           id="toggle"
+          disabled={text.length === 0}
         >
           Speak
         </button>
