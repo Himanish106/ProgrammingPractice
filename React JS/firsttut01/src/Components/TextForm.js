@@ -67,14 +67,14 @@ export default function TextForm(props) {
         </div>
         <button
           type="button"
-          className="btn btn-primary btn-dark mx-2"
+          className="btn btn-primary btn-dark mx-2 my-2"
           onClick={upperCaseClick}
         >
           Convert to UpperCase
         </button>
         <button
           type="button"
-          className="btn btn-primary btn-success mx-2"
+          className="btn btn-primary btn-success mx-2 my-2"
           onClick={lowerCaseClick}
         >
           Convert to LowerCase
@@ -91,7 +91,7 @@ export default function TextForm(props) {
       <div className="container mt-3">
         <h2>Your text Summary</h2>
         <p>
-          {calculateWordCount()} words and {text.length} characters
+          {calculateWordCount()} words and {text.replace(/\s/g, '').length} characters
         </p>
         <p>
           Minimum minutes to read this:{" "}

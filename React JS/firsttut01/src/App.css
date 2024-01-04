@@ -19,3 +19,6 @@
 .bg-Success{
     background-color: #2e5736;
 }
+.accordion-item{
+    border: 2px solid black;
+}

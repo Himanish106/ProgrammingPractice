@@ -115,8 +115,8 @@ function App() {
       <Alert alert={alert} />
       <div className="container">
           <Routes>
-          <Route exact path="/" element={<TextForm heading="Enter your text to analyze below" />} />
-          <Route exact path="/about" element={<About />} />
+          <Route exact path="/" element={<TextForm heading="Enter your text to analyze below" mode={mode} />} />
+          <Route exact path="/about" element={<About mode={mode}/>} />
           </Routes>
       </div>
       </BrowserRouter>

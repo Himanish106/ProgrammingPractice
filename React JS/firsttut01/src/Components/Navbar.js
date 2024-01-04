@@ -11,7 +11,7 @@ export default function Navbar(props) {
           </Link>
           <button
             className="navbar-toggler"
-            type="button"
+            type="button" 
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent"
@@ -33,7 +33,7 @@ export default function Navbar(props) {
                 </Link>
               </li>
             </ul>
-            <div className="d-flex flex-row  gap-0 column-gap-3">
+            <div className="d-flex flex-md-row flex-column gap-0 column-gap-3">
               <div className="form-check form-switch">
                 <input className="form-check-input blue" type="checkbox" name="flexRadioDefault" id="flexRadioDefault1" checked={props.blue} onChange={() => props.isCheck('blue')} />
                 <label className="form-check-label" htmlFor="flexRadioDefault1">
