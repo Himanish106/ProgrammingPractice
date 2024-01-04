@@ -16,12 +16,24 @@ export default function TextForm(props) {
     console.log("On change");
     setText(event.target.value);
   };
+  const copyText = () => {
+    navigator.clipboard.writeText(text);
+    props.showAlert("Copied to Clipboard!", "success");
+  }
   const calculateWordCount = () => {
     if (text.trim() === "") {
       return 0;
     }
     return text.split(/\s+/).filter((word) => word !== "").length;
   };
+  const [textColour, setTextColor] = useState("");
+  const generateRandomColor = () => {
+    var red = Math.floor(Math.random() * 256)
+    var blue = Math.floor(Math.random() * 256)
+    var green = Math.floor(Math.random() * 256)
+    var rgbColor = 'rgb(' + red + ',' + green + ',' + blue + ')'
+    setTextColor(rgbColor)
+  }
   const speak = () => {
     const toggle = document.getElementById("toggle");
 
@@ -62,7 +74,7 @@ export default function TextForm(props) {
             value={text}
             rows={8}
             onChange={handleOnChange}
-            style={{ backgroundColor: props.mode === 'dark' ? '#e3e2de' : 'white' }}
+            style={{ backgroundColor: props.mode === 'dark' ? '#e3e2de' : 'white', color:textColour}}
           />
         </div>
         <button
@@ -80,6 +92,22 @@ export default function TextForm(props) {
           disabled={text.length === 0}
         >
           Convert to LowerCase
+        </button>
+        <button
+          type="button"
+          className="btn btn-primary btn-info mx-2 my-2"
+          onClick={copyText}
+          disabled={text.length === 0}
+        >
+          Copy Text
+        </button>
+        <button
+          type="button"
+          className="btn btn-primary mx-2 my-2"
+          onClick={generateRandomColor}
+          disabled={text.length === 0}
+        >
+          Random Text Colour
         </button>
         <button
           type="submit"
