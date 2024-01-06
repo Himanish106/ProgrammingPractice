@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author hp
  */
-public class StringLinearSearch10 {
+public class StringArrayLinearSearch10 {
 
     public static void main(String[] args) {
         String arr[] = {"Himanish", "Abhishek", "Mohit", "Rahul", "Rick", "Pratim"};
