@@ -21,7 +21,7 @@ public class LinearSearch09 {
         int position = LinearSearch(arr, target);
         if(position==0){
             System.out.println("Element not found in the array");
-//            return;
+            return;
         }
         System.out.println(target + " has been found at position: " + position);
     }
