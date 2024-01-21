@@ -61,3 +61,17 @@ public class Encapsulation15 {
         s.displayInfo();
     }
 }
+
+//In this example:
+//
+//The Student class has private fields (name, age, and grade).
+//
+//Public getter methods (getName(), getAge(), getGrade()) provide read access to these private fields.
+//
+//Public setter methods (setName(), setAge(), setGrade()) provide write access to these private fields.
+//
+//The displayInfo() method encapsulates the logic to display the student information.
+//
+//By encapsulating the fields and providing controlled access through getter and setter methods, we ensure
+//that the internal details of the Student class are hidden, and modifications to the class can be made 
+//in a controlled manner.
