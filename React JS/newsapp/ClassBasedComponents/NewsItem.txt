@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 
-const NewsItem=(props)=> {
-    let { title, description, imageUrl, newsURL, author, date,source } = props; // newsURL is used to uniquely identify each news
+export class NewsItem extends Component {
+  render() {
+    let { title, description, imageUrl, newsURL, author, date,source } = this.props; // newsURL is used to uniquely identify each news
     return (
       <div className="my-3">
         <div className="card h-100">
@@ -41,6 +42,7 @@ const NewsItem=(props)=> {
         </div>
       </div>
     );
+  }
 }
 
 export default NewsItem;

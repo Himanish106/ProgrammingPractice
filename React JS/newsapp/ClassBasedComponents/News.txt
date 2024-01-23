@@ -1,0 +1,144 @@
+import React, { Component } from "react";
+import NewsItem from "./NewsItem";
+import Spinner from "./Spinner";
+import PropTypes from "prop-types";
+import InfiniteScroll from "react-infinite-scroll-component";
+export class News extends Component {
+  static defaultProps = {
+    country: "in",
+    pageSize: "8",
+    category: "general",
+  };
+  static propTypes = {
+    country: PropTypes.string,
+    pageSize: PropTypes.string.isRequired,
+    category: PropTypes.string,
+  };
+  constructor(props) {
+    super(props); // super constructor i.e. the constructor of component class needs to be called first before using the constructor of the derived class.
+    this.state = {
+      article: [],
+      loading: false,
+      page: 1,
+      totalResults: 0,
+    };
+    // console.log("Constructor from class News")
+    document.title = `${
+      this.props.category.charAt(0).toUpperCase() + this.props.category.slice(1)
+    } - NewsMonkey`;
+  }
+  async updateNews() {
+    this.props.setProgress(10);
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    this.setState({ loading: true });
+    let data = await fetch(url);
+    this.props.setProgress(40);
+    let parsedData = await data.json();
+    this.props.setProgress(70);
+    console.log(parsedData);
+    this.setState({
+      article: parsedData.articles,
+      totalResults: parsedData.totalResults,
+      loading: false,
+    });
+    this.props.setProgress(100);
+  }
+  async componentDidMount() {
+    this.updateNews();
+  }
+  // handlePrevClick = async () => {
+  //   this.setState({ page: this.state.page - 1 });
+  //   this.updateNews();
+  // };
+  // handleNextClick = async () => {
+  //   this.setState({ page: this.state.page + 1 });
+  //   this.updateNews();
+  // };
+  fetchMoreData = async () => {
+    this.setState({ page: this.state.page + 1 });
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+    let data = await fetch(url);
+    let parsedData = await data.json();
+    console.log(parsedData);
+    this.setState({
+      article: this.state.article.concat(parsedData.articles),
+      totalResults: parsedData.totalResults,
+    });
+  };
+  render() {
+    console.log("render");
+    return (
+      <>
+        <h2 className="my-3 text-center">
+          NewsMonkey - Top Headlines from{" "}
+          {this.props.category.charAt(0).toUpperCase() +
+            this.props.category.slice(1)}
+        </h2>
+        {this.state.loading && <Spinner />}
+        {/* This statement is using a conditional rendering technique in React. It checks if this.state.loading is truthy (evaluates to true), and if so, it renders the Spinner component.
+
+Let's break it down:
+
+this.state.loading: It accesses the loading property from the component's state.
+&&: It's the logical AND operator in JavaScript. If the expression on the left side of && is truthy, it evaluates and returns the expression on the right side. If the left side is falsy, it returns the falsy value without evaluating the right side.
+So, the overall meaning is:
+
+If this.state.loading is true, the right-hand side of && (<Spinner/>) will be evaluated and rendered.
+If this.state.loading is false or any falsy value, nothing will be rendered (the Spinner won't be displayed).
+This is a common pattern in React for conditionally rendering components based on certain state values. In this case, it suggests that when the component is in a loading state (this.state.loading is true), you want to display a Spinner component to indicate that some asynchronous operation is in progress. */}
+        <InfiniteScroll
+          dataLength={this.state.article.length}
+          next={this.fetchMoreData}
+          hasMore={this.state.article.length !== this.state.totalResults}
+          loader={<Spinner />}
+          style={{ overflow: "hidden" }}
+        >
+          <div className="container">
+            <div className="row">
+              {this.state.article.map((element) => {
+                return (
+                  <div className="col-md-4" key={element.url}>
+                    <NewsItem
+                      title={element.title ? element.title + "..." : ""}
+                      description={
+                        element.description ? element.description + "..." : ""
+                      }
+                      imageUrl={element.urlToImage}
+                      newsURL={element.url}
+                      author={element.author}
+                      date={element.publishedAt}
+                      source={element.source.name}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </InfiniteScroll>
+        {/* <div className="container d-flex justify-content-between">
+          <button
+            type="button"
+            disabled={this.state.page <= 1}
+            className="btn btn-dark"
+            onClick={this.handlePrevClick}
+          >
+            &larr; Previous
+          </button>
+          <button
+            type="button"
+            className="btn btn-dark"
+            onClick={this.handleNextClick}
+            disabled={
+              this.state.page + 1 >
+              Math.ceil(this.state.totalResults / this.props.pageSize)
+            }
+          >
+            Next &rarr;
+          </button>
+        </div> */}
+      </>
+    );
+  }
+}
+
+export default News;
