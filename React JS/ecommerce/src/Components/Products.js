@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from "react";
 import Product from "./Item";
 
-const Products = () => {
+const Products = (props) => {
+  const category = props.category;
   const [items, setItems] = useState([]);
 
-  const fetchItems = async () => {
-    const url = "https://fakestoreapi.com/products";
-    let response = await fetch(url);
-    const data = await response.json();
-    setItems(data);
-    console.log(data);
-  };
+  const fetchItems = async (category) => {
+    props.setProgress(10);
+    const url = category
+      ? `https://fakestoreapi.com/products/category/${category}`
+      : `https://fakestoreapi.com/products`;
 
+    let response = await fetch(url);
+    props.setProgress(40);
+    const data = await response.json();
+    props.setProgress(70);
+    setItems(data);
+    props.setProgress(100);
+  };
+// eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    fetchItems();
-  }, []);
+    fetchItems(category);
+  },[category]);
 
   return (
     <>

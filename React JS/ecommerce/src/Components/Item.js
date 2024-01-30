@@ -28,7 +28,7 @@ const Product = (props) => {
             {truncatedDescription}
           </p>
           <h4 className="card-text">&#36; {price}</h4>
-          <a href="#" className="btn btn-dark">
+          <a href="/" className="btn btn-dark">
            Buy Now
           </a>
         </div>
