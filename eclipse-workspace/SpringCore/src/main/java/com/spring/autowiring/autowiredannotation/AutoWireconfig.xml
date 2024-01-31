@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:annotation-config />
+	<!--Autowiring in the context of the Spring Framework is a feature that allows the container to automatically inject dependencies into a Spring bean. This helps in reducing the need for explicit configuration and manual wiring of dependencies. Keep in mind autowiring doesnot work in case of primitive data types.-->
+	<bean class="com.spring.autowiring.autowiredannotation.Address"
+		name="address">
+		<property name="street" value="Street 1" />
+		<property name="city" value="Kolkata"></property>
+	</bean>
+	<bean class="com.spring.autowiring.autowiredannotation.Employee" name="emp1" />
+<!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+	<bean class="com.spring.autowiring.autowiredannotation.Address2" name="address1">
+	<property name="street" value="Street 2"/>
+	<property name="city" value="Kanpur"></property>
+</bean>
+<bean class="com.spring.autowiring.autowiredannotation.Address2" name="address2">
+	<property name="street" value="Street 3"/>
+	<property name="city" value="Lucknow"></property>
+</bean>
+<bean class="com.spring.autowiring.autowiredannotation.Employee2" name="emp2" />
+</beans>

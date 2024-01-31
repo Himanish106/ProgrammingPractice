@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	<bean class="com.springcore.Constructorinjection.Person" name="person">
+		<constructor-arg value="Himanish" />
+		<constructor-arg value="106" type="int" /> <!-- type if you want you may
+		mention else you can ignore because spring container automatically understands
+		this. But consider you have a constructor with two parameters of type
+		String then the problem occurs because the Spring container will by
+		default treat the value as a String. So type is basically used for
+		solving ambiguity -->
+	</bean>
+	<bean class="com.springcore.Constructorinjection.Certi" name="certificate">
+		<constructor-arg value="Mern Stack" />
+	</bean>
+	<bean class="com.springcore.Constructorinjection.Person" name="person1">
+		<constructor-arg value="Abhishek" />
+		<constructor-arg value="122" type="int" />
+		<constructor-arg ref="certificate" />
+	</bean>
+
+
+	<bean class="com.springcore.Constructorinjection.Certi" name="certificate1">
+		<constructor-arg value="Spring Boot" />
+	</bean>
+	<bean class="com.springcore.Constructorinjection.Person" name="person2">
+		<constructor-arg value="Nitin" />
+		<constructor-arg value="237" type="int" />
+		<constructor-arg ref="certificate" />
+		<constructor-arg>
+			<list>
+				<value>Core Java</value>
+				<value>JSP</value>
+				<value>Servlet</value>
+				<value>Hibernet</value>
+			</list>
+		</constructor-arg>
+	</bean>
+
+
+	<bean class="com.springcore.Constructorinjection.Addition" name="case1">
+		<!-- <constructor-arg value="12" />
+		<constructor-arg value="34" />
+		So if we do not mention the type spring calls the constructor based on their
+		order. But in case if we have constructor have same number of parameters
+		but is of data type String. Then that particular constructor will get
+		invoked first. Because by default spring accepts values in String. So we must
+		either mention the type or use the concept of order -->
+		<constructor-arg value="12" type="double" />
+		<constructor-arg value="34" type="double" />
+	</bean>
+
+</beans>
