@@ -13,6 +13,7 @@ public class Main {
 		System.out.println(emp1.getAddresses());
 		System.out.println(emp1.getPhoneNumbers());
 		System.out.println(emp1.getCourses());
+		System.out.println(emp1.getPhoneNumbers().getClass().getName());
 	}
 
 }
