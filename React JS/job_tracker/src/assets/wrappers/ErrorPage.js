@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Wrapper = styled.main`
   min-height: 100vh;
@@ -25,6 +25,10 @@ const Wrapper = styled.main`
   a {
     color: var(--primary-500);
     text-transform: capitalize;
+    transition: 0.3s all ease-in-out;
+  }
+  a:hover{
+    color: blue;
   }
 `;
 
