@@ -1,4 +1,4 @@
-package Quiz;
+package Week1;
 
 public class QuizApp {
 

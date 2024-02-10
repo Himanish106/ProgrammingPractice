@@ -1,4 +1,4 @@
-package Quiz;
+package Week1;
 
 import java.util.ArrayList;
 import java.util.Arrays;
