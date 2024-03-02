@@ -1,0 +1,61 @@
+.pricing {
+  padding: 10rem;
+  background-color: var(--background-col);
+}
+.pricing .price-heading {
+  font-size: 5rem;
+  text-align: center;
+  color: var(--text-color);
+  font-weight: 500;
+  padding-bottom: 1rem;
+}
+.pricing .events {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+  gap: 1.5rem;
+}
+.pricing .events .private-event,
+.pricing .events .public-event {
+  padding: 2rem;
+  background: #1a1919a9;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+.pricing .events .private-event .title,
+.pricing .events .public-event .title {
+  background: var(--emphasis-text);
+  color: #fff;
+  padding: 1.5rem 0;
+  font-size: 2rem;
+}
+
+.pricing .events .private-event .amount,
+.pricing .events .public-event .amount {
+  color: #fff;
+  padding-top: 2rem;
+  font-size: 4rem;
+  font-weight: 500;
+}
+
+.pricing .events .private-event ul,
+.pricing .events .public-event ul {
+  list-style-type: none;
+  padding: 1rem 0;
+}
+
+.pricing .events .private-event ul li,
+.pricing .events .public-event ul li {
+  font-size: 2rem;
+  color: #eee;
+  padding: 1rem 0;
+}
+
+.pricing .events .private-event ul li i,
+.pricing .events .public-event ul li i {
+  color: #3867d6;
+  padding-right: 0.5rem;
+}
+
+.pricing .private-event:hover,.pricing .public-event:hover{
+transform: scale(0.9);
+}

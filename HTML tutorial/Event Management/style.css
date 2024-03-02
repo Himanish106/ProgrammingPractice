@@ -171,7 +171,6 @@ body {
   flex-wrap: wrap;
   gap: 1.5rem;
 }
-
 .about .row .image {
   flex: 1 1 45rem;
   padding: 1rem;
@@ -519,7 +518,7 @@ textarea:focus {
   #menu-bar {
     display: initial;
   }
-  .header .fa-times{
+  .header .fa-times {
     transform: rotate(360deg);
   }
   .header .navbar {
@@ -531,8 +530,8 @@ textarea:focus {
     background: #333;
     clip-path: polygon(0 0, 100% 0, 0 0);
   }
-  .header .navbar.active{
-    clip-path: polygon(0 0, 100% 0,100% 100%, 0 100%);
+  .header .navbar.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
   .header .navbar a {
     display: flex;
@@ -542,18 +541,18 @@ textarea:focus {
     margin: 1.3rem;
     font-size: 2rem;
   }
-  .home .content h3{
+  .home .content h3 {
     font-size: 4rem;
   }
 }
-@media (max-width: 450px){
-  html{
+@media (max-width: 450px) {
+  html {
     font-size: 50%;
   }
-  .home .home-slider .swiper-slide{
+  .home .home-slider .swiper-slide {
     width: 27rem;
   }
-  .contact form .inputBox input{
+  .contact form .inputBox input {
     width: 100%;
   }
 }
