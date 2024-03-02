@@ -1,0 +1,61 @@
+.review {
+  padding: 8rem;
+  background-color: var(--background-col);
+}
+.review .heading {
+  padding-bottom: 3rem;
+  color: var(--text-color);
+}
+.review .box {
+  border-radius: 0.5rem;
+  background: #333;
+  padding: 3rem;
+  position: relative;
+}
+
+.review .box .fa-quote-right {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  color: var(--emphasis-text);
+  font-size: 5rem;
+}
+
+.review .box .user {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.review .box .user img {
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.review .box .user h3 {
+  color: #fff;
+  font-size: 2rem;
+}
+
+.review .box .user span {
+  font-size: 1.5rem;
+  color: #eee;
+}
+
+.review .box p {
+  line-height: 2;
+  color: #eee;
+  padding: 0.5rem 0;
+  font-size: 1.6rem;
+}
+@media (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+  .swiper-slide {
+    width: 27rem;
+  }
+}
