@@ -1,7 +1,9 @@
 import "./App.css";
 import About from "./Components/AboutBrief";
 import Contact from "./Components/ContactBrief";
+import FeedBack from "./Components/FeedbackBrief";
 import IntroSection from "./Components/IntroSection";
+import JoinUS from "./Components/Join";
 import Navbar from "./Components/Navbar";
 import ReviewSlider from "./Components/ReviewSlider";
 import Service from "./Components/ServiceBrief";
@@ -17,6 +19,8 @@ function App() {
       <Service />
       <Contact />
       <ReviewSlider />
+      <FeedBack />
+      <JoinUS />
     </>
   );
 }

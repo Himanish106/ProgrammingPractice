@@ -12,7 +12,9 @@
   padding: 3rem;
   position: relative;
 }
-
+.review-slider .swiper-wrapper .swiper-slide {
+  overflow: hidden;
+}
 .review .box .fa-quote-right {
   position: absolute;
   top: 2rem;
@@ -51,11 +53,8 @@
   padding: 0.5rem 0;
   font-size: 1.6rem;
 }
-@media (max-width: 450px) {
-  html {
-    font-size: 50%;
-  }
-  .swiper-slide {
-    width: 27rem;
+@media (max-width: 690px) {
+  .review-slider .swiper-wrapper .swiper-slide {
+    width: 68rem;
   }
 }

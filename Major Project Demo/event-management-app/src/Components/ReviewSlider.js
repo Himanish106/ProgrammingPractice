@@ -1,7 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "./CSS/ReviewSlider.css";
 import "../Global Files/global.css";
+import "./CSS/ReviewSlider.css";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -20,9 +20,9 @@ const ReviewSlider = () => {
       </h1>
       <div className="review-slider swiper-container">
         <Swiper
-          spaceBetween={5}
+          spaceBetween={10}
           grabCursor={true}
-          slidesPerView={3}
+          slidesPerView={1}
           loop={true}
           breakpoints={{
             0: {
