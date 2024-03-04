@@ -2,6 +2,7 @@ import "./App.css";
 import About from "./Components/AboutBrief";
 import Contact from "./Components/ContactBrief";
 import FeedBack from "./Components/FeedbackBrief";
+import Footer from "./Components/Footer";
 import IntroSection from "./Components/IntroSection";
 import JoinUS from "./Components/Join";
 import Navbar from "./Components/Navbar";
@@ -21,6 +22,7 @@ function App() {
       <ReviewSlider />
       <FeedBack />
       <JoinUS />
+      <Footer />
     </>
   );
 }

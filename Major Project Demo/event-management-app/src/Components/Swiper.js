@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -12,7 +12,7 @@ import "../Global Files/global.css"
 // import './styles.css';
 
 // import required modules
-import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
+import { EffectCoverflow, Pagination, Navigation} from "swiper/modules";
 import img1 from "./Images/home1.jpg";
 import img2 from "./Images/home2.jpg";
 import img3 from "./Images/home3.jpg";

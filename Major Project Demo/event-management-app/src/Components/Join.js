@@ -6,17 +6,17 @@ const JoinUS = () => {
   return (
     <section class="contact" id="contact">
       <div class="row">
+      <div class="image">
+          <img src={joinUS} alt="" />
+        </div>
         <div class="content">
-          <h3>Be Part of Our Journey!</h3>
+          <h3>Be Part of Our <span className="col">Journey!</span></h3>
           <p>
           Embrace the extraordinary. Join our event community today and be a part of crafting extraordinary experiences. Together, we'll turn visions into reality and make every moment unforgettable.
           </p>
           <a href="#" class="btn">
-            reach us
+            register today!
           </a>
-        </div>
-        <div class="image">
-          <img src={joinUS} alt="" />
         </div>
       </div>
     </section>

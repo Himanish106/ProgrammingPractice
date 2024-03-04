@@ -17,7 +17,7 @@ const FeedBack = () => {
             heard. Join us on this exciting journey of growth and collaboration!
           </p>
           <a href="#" class="btn">
-            reach us
+            FeedBack Please!
           </a>
         </div>
         <div class="image">
