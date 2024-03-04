@@ -7,10 +7,10 @@ const Footer = () => {
   <div className="box-container">
     <div className="box">
       <h3>Branches</h3>
-      <a href="#"><i className="fas fa-map-marker-alt" />Bangalore</a>
+      <a href="#"><i className="fas fa-map-marker-alt" />Kolkata</a>
       <a href="#"><i className="fas fa-map-marker-alt" />Hyderabad</a>
       <a href="#"><i className="fas fa-map-marker-alt" />Delhi</a>
-      <a href="#"><i className="fas fa-map-marker-alt" />Kolkata</a>
+      <a href="#"><i className="fas fa-map-marker-alt" />Bangalore</a>
       <a href="#"><i className="fas fa-map-marker-alt" />Chennai</a>
     </div>
     <div className="box">
