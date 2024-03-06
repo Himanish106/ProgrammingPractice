@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package JavaPrac;
+package DSA.Sorting;
 
 import java.util.Arrays;
 
@@ -11,7 +11,7 @@ import java.util.Arrays;
  *
  * @author Himanish
  */
-public class BubbleSort17 {
+public class BubbleSort {
 
     public static void main(String[] args) {
         int arr[] = {1, 2, 3, 4, 5};
