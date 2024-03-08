@@ -7,23 +7,23 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
-import "./CSS/Swiper.css";
-import "../Global Files/global.css"
 // import './styles.css';
 
 // import required modules
-import { EffectCoverflow, Pagination, Navigation} from "swiper/modules";
-import img1 from "./Images/home1.jpg";
-import img2 from "./Images/home2.jpg";
-import img3 from "./Images/home3.jpg";
-import img4 from "./Images/home4.jpg";
-import img5 from "./Images/home5.jpg";
-import img6 from "./Images/home6.jpg";
+import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
+import img1 from "../../Images/home1.jpg";
+import img2 from "../../Images/home2.jpg";
+import img3 from "../../Images/home3.jpg";
+import img4 from "../../Images/home4.jpg";
+import img5 from "../../Images/home5.jpg";
+import img6 from "../../Images/home6.jpg";
 
 function MySwiper() {
   return (
     <section className="container">
-      <h1 className="heading">Captured <span className="heading-imp">Moments</span> Collective</h1>
+      <h1 className="heading">
+        Captured <span className="heading-imp">Moments</span> Collective
+      </h1>
       <Swiper
         effect={"coverflow"}
         grabCursor={true}
@@ -38,9 +38,9 @@ function MySwiper() {
         }}
         pagination={{ el: ".swiper-pagination", clickable: true }}
         navigation={{
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-            clickable:true,
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+          clickable: true,
         }}
         modules={[EffectCoverflow, Pagination, Navigation]}
         className="swiper_container"

@@ -1,6 +1,4 @@
 import React from "react";
-import "../Global Files/global.css";
-import "./CSS/IntroSection.css"
 const IntroSection = () => {
   return (
     <section className="header-caption">

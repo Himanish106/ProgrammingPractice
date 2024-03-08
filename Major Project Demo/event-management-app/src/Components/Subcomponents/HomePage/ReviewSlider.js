@@ -1,16 +1,14 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "../Global Files/global.css";
-import "./CSS/ReviewSlider.css";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
-import imgReview1 from "./Images/img1.jpg";
-import imgReview2 from "./Images/img2.jpg";
-import imgReview3 from "./Images/img3.jpg";
-import imgReview4 from "./Images/img4.jpg";
+import imgReview1 from "../../Images/img1.jpg";
+import imgReview2 from "../../Images/img2.jpg";
+import imgReview3 from "../../Images/img3.jpg";
+import imgReview4 from "../../Images/img4.jpg";
 import { Autoplay } from "swiper/modules";
 const ReviewSlider = () => {
   return (

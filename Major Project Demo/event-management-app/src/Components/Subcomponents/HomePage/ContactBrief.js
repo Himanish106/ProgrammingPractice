@@ -1,7 +1,6 @@
 import React from "react";
-import contactImg from "./Images/contact-us.gif";
-import "../Global Files/global.css";
-import "./CSS/ContactBrief.css";
+import contactImg from "../../Images/contact-us.gif";
+
 const Contact = () => {
   return (
     <section className="contact" id="contact">

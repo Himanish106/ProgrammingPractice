@@ -1,6 +1,4 @@
 import React from "react";
-import "../Global Files/global.css";
-import "./CSS/ServiceBrief.css";
 const Service = () => {
   return (
     <section className="pricing">

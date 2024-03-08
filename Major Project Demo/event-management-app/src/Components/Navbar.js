@@ -1,26 +1,46 @@
 import React, { useState } from "react";
 import "./CSS/Navbar.css";
 import "../Global Files/global.css";
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
 
   const toggleMenu = () => {
     setIsActive(!isActive);
   };
-
+  // const navigate = useNavigate();
+  // const handlePath = (path) => {
+  //   navigate(path);
+  // };
   return (
     <header className="header">
-      <a href="#" className="logo">
+      <Link to="/" className="logo">
         <span>Event</span> Vista
-      </a>
+      </Link>
       <nav className={`navbar ${isActive ? "active" : ""}`}>
-        <a href="#home">Home</a>
-        <a href="#service">Services</a>
-        <a href="#about">About</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#price">Price</a>
-        <a href="#review">Review</a>
-        <a href="#contact">Contact</a>
+        <span>
+          <Link to="/">Home</Link>
+        </span>
+        <span>
+          <Link to="/services">Services</Link>
+        </span>
+        <span
+        >
+          <Link to="/about">About</Link>
+        </span>
+        <span>
+          <Link to="/gallery">Gallery</Link>
+        </span>
+        <span>
+          <Link to="/price">Price</Link>
+        </span>
+        <span>
+          <Link to="/review">Review</Link>
+        </span>
+        <span>
+          <Link to="/contact">Contact</Link>
+        </span>
       </nav>
       <div
         id="menu-bar"
@@ -30,4 +50,5 @@ const Navbar = () => {
     </header>
   );
 };
+
 export default Navbar;

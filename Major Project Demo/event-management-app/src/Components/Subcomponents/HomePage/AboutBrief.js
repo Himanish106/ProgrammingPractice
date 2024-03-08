@@ -1,7 +1,5 @@
 import React from "react";
-import aboutImg from "./Images/about-us.gif";
-import "../Global Files/global.css";
-import "./CSS/AboutBrief.css";
+import aboutImg from "../../Images/about-us.gif";
 const About = () => {
   return (
     <section className="about-web">

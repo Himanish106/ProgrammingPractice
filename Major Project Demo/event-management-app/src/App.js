@@ -1,28 +1,20 @@
 import "./App.css";
-import About from "./Components/AboutBrief";
-import Contact from "./Components/ContactBrief";
-import FeedBack from "./Components/FeedbackBrief";
+import AboutUs from "./Components/AboutUs";
 import Footer from "./Components/Footer";
-import IntroSection from "./Components/IntroSection";
-import JoinUS from "./Components/Join";
 import Navbar from "./Components/Navbar";
-import ReviewSlider from "./Components/ReviewSlider";
-import Service from "./Components/ServiceBrief";
-import MySwiper from "./Components/Swiper";
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./Components/Subcomponents/HomePage/HomePage";
 function App() {
   return (
     <>
-      <Navbar />
-      <IntroSection />
-      <MySwiper />
-      <About />
-      <Service />
-      <Contact />
-      <ReviewSlider />
-      <FeedBack />
-      <JoinUS />
-      <Footer />
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route exact path="/" element={<HomePage />}/>
+          <Route exact path="/about" element={<AboutUs />} />
+        </Routes>
+        <Footer />
+      </Router>
     </>
   );
 }
