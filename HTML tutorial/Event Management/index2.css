@@ -158,53 +158,59 @@ html {
   width: 100%;
   height: 37rem;
 }
-.pricing{
+.pricing {
   padding: 10rem;
 }
-.pricing .price-heading{
+.pricing .price-heading {
   font-size: 5rem;
   text-align: center;
 }
-.pricing .events{
+.pricing .events {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
   gap: 1.5rem;
 }
-.pricing .events .private-event,.pricing .events .public-event {
+.pricing .events .private-event,
+.pricing .events .public-event {
   padding: 2rem;
   background: #333;
   border-radius: 0.5rem;
   text-align: center;
 }
-.pricing .events .private-event .title,.pricing .events .public-event .title {
+.pricing .events .private-event .title,
+.pricing .events .public-event .title {
   background: var(--theme-color);
   color: #fff;
   padding: 1.5rem 0;
   font-size: 2rem;
 }
 
-.pricing .events .private-event .amount,.pricing .events .public-event .amount {
+.pricing .events .private-event .amount,
+.pricing .events .public-event .amount {
   color: #fff;
   padding-top: 2rem;
   font-size: 4rem;
 }
 
-.pricing .events .private-event ul,.pricing .events .public-event ul {
+.pricing .events .private-event ul,
+.pricing .events .public-event ul {
   list-style-type: none;
   padding: 1rem 0;
 }
 
-.pricing .events .private-event ul li,.pricing .events .public-event ul li {
+.pricing .events .private-event ul li,
+.pricing .events .public-event ul li {
   font-size: 2rem;
   color: #eee;
   padding: 1rem 0;
 }
 
-.pricing .events .private-event ul li i,.pricing .events .public-event ul li i{
-  color:  #3867d6;
+.pricing .events .private-event ul li i,
+.pricing .events .public-event ul li i {
+  color: #3867d6;
   padding-right: 0.5rem;
 }
-.contact{
+.contact {
   padding: 5rem;
 }
 .contact .row {
@@ -241,6 +247,27 @@ html {
   padding: 1rem 0;
   line-height: 2;
 }
+
+.gallery .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+  gap: 1.5rem;
+}
+.gallery .box-container .box {
+  border: 1rem solid #333;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  overflow: hidden;
+}
+.gallery .box-container .box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.gallery .box-container .box:hover img {
+  transform: scale(1.1);
+  filter: grayscale();
+}
 @media (max-width: 1250px) {
   .about-web .about-sub {
     width: 900px;
@@ -249,11 +276,11 @@ html {
   .about-web .about-sub .about-sub1 .about-content-head {
     font-size: 3.5rem;
   }
-  
+
   .about-web .about-sub .about-sub1 .about-content-body {
     font-size: 2rem;
   }
-  
+
   .about-web .about-sub .about-sub1 .about-content-foot {
     font-size: 2rem;
   }
@@ -261,7 +288,7 @@ html {
     height: 30rem;
   }
 }
-@media(max-width: 916px){
+@media (max-width: 916px) {
   .about-web .about-sub {
     width: 700px;
     padding-bottom: 1rem;
@@ -269,11 +296,11 @@ html {
   .about-web .about-sub .about-sub1 .about-content-head {
     font-size: 3.5rem;
   }
-  
+
   .about-web .about-sub .about-sub1 .about-content-body {
     font-size: 1.5rem;
   }
-  
+
   .about-web .about-sub .about-sub1 .about-content-foot {
     font-size: 1.5rem;
   }
@@ -281,72 +308,72 @@ html {
     height: 27rem;
   }
 }
-  @media (max-width: 768px) {
-    html {
-      font-size: 40%;
-    }
-    .explore-btn .btn {
-      margin-top: 1rem;
-      font-size: 3.5rem;
-    }
-    .header-caption .head-caption .caption p {
-      font-size: 9.2rem;
-    }
-    .about-web .about-sub {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column-reverse;
-      width: 490px;
-    }
-    .about-web .about-sub .about-sub2  {
-      width: 95%;
-    }
-    .about-web .about-sub .about-sub1{
-      width: 90%;
-    }
-    .about-web .about-sub .about-sub1 .about-content-head {
-      font-size: 6rem;
-      text-align: center;
-    }
-    
-    .about-web .about-sub .about-sub1 .about-content-body {
-      font-size: 2.5rem;
-    }
-    
-    .about-web .about-sub .about-sub1 .about-content-foot {
-      font-size: 2.5rem;
-    }
-    .contact .row .image img {
-      height: 290px;
-    }
+@media (max-width: 768px) {
+  html {
+    font-size: 40%;
   }
-  @media (max-width: 500px){
-    .about-web .about-sub {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column-reverse;
-      width: 430px;
-    }
-    .about-web .about-sub .about-sub1{
-      width: 90%;
-    }
-    .about-web .about-sub .about-sub2  {
-      width: 90%;
-    }
-    .about-web .about-sub .about-sub1 .about-content-head {
-      font-size: 8rem;
-      text-align: center;
-    }
-    .about-web .about-sub .about-sub1 .about-content-body {
-      font-size: 3rem;
-    }
-    
-    .about-web .about-sub .about-sub1 .about-content-foot {
-      font-size: 3rem;
-    }
-    .contact .row .image img {
-      height: 250px;
-    }
+  .explore-btn .btn {
+    margin-top: 1rem;
+    font-size: 3.5rem;
   }
+  .header-caption .head-caption .caption p {
+    font-size: 9.2rem;
+  }
+  .about-web .about-sub {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    width: 490px;
+  }
+  .about-web .about-sub .about-sub2 {
+    width: 95%;
+  }
+  .about-web .about-sub .about-sub1 {
+    width: 90%;
+  }
+  .about-web .about-sub .about-sub1 .about-content-head {
+    font-size: 6rem;
+    text-align: center;
+  }
+
+  .about-web .about-sub .about-sub1 .about-content-body {
+    font-size: 2.5rem;
+  }
+
+  .about-web .about-sub .about-sub1 .about-content-foot {
+    font-size: 2.5rem;
+  }
+  .contact .row .image img {
+    height: 290px;
+  }
+}
+@media (max-width: 500px) {
+  .about-web .about-sub {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    width: 430px;
+  }
+  .about-web .about-sub .about-sub1 {
+    width: 90%;
+  }
+  .about-web .about-sub .about-sub2 {
+    width: 90%;
+  }
+  .about-web .about-sub .about-sub1 .about-content-head {
+    font-size: 8rem;
+    text-align: center;
+  }
+  .about-web .about-sub .about-sub1 .about-content-body {
+    font-size: 3rem;
+  }
+
+  .about-web .about-sub .about-sub1 .about-content-foot {
+    font-size: 3rem;
+  }
+  .contact .row .image img {
+    height: 250px;
+  }
+}
