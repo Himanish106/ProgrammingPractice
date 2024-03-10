@@ -44,7 +44,7 @@ const ReviewSlider = () => {
               <div className="swiper-slide box">
                 <i className="fas fa-quote-right" />
                 <div className="user">
-                  <img src={imgReview1} alt />
+                  <img src={imgReview1} />
                   <div className="user-info">
                     <h3>nayana</h3>
                     <span>happy customer</span>
@@ -62,7 +62,7 @@ const ReviewSlider = () => {
               <div className="swiper-slide box">
                 <i className="fas fa-quote-right" />
                 <div className="user">
-                  <img src={imgReview2} alt />
+                  <img src={imgReview2}/>
                   <div className="user-info">
                     <h3>lisa</h3>
                     <span>happy customer</span>
@@ -80,7 +80,7 @@ const ReviewSlider = () => {
               <div className="swiper-slide box">
                 <i className="fas fa-quote-right" />
                 <div className="user">
-                  <img src={imgReview3} alt />
+                  <img src={imgReview3}/>
                   <div className="user-info">
                     <h3>mary</h3>
                     <span>happy customer</span>
@@ -98,7 +98,7 @@ const ReviewSlider = () => {
               <div className="swiper-slide box">
                 <i className="fas fa-quote-right" />
                 <div className="user">
-                  <img src={imgReview4} alt />
+                  <img src={imgReview4}/>
                   <div className="user-info">
                     <h3>rose</h3>
                     <span>happy customer</span>
