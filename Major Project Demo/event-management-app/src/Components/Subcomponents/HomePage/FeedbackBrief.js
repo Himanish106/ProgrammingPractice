@@ -5,7 +5,7 @@ const FeedBack = () => {
 <section className="contact" id="feedback">
   <div className="row">
     <div className="content">
-      <h3>Your <span classname="col">Opinion</span> Matters!</h3>
+      <h3>Your <span className="col">Opinion</span> Matters!</h3>
       <p>
         In our vibrant community, we cherish the insights and thoughts of
         each individual. Your feedback shapes our journey, guiding us
