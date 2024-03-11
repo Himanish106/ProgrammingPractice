@@ -1,0 +1,13 @@
+.bg-image {
+  height: 90vh;
+  background: linear-gradient(
+    rgba(8, 8, 8, 0.699),
+    rgba(43, 41, 41, 0.671)
+  ),url("../Images/About_us_head.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.color{
+    color: rgb(42, 247, 237);
+}

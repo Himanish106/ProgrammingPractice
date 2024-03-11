@@ -1,12 +1,14 @@
 import React from "react";
-const IntroSection = () => {
+import "../../CSS/IntroSection.css"
+import "../../CSS/AboutUsHead.css"
+const AboutHead = () => {
   return (
-    <section className="header-caption home-bg">
+    <section className="header-caption bg-image">
       <div className="head-caption">
         <div className="caption">
           <p id="content">
-            Where Every Occasion Finds Its 
-            <span className="col"> Perfect Stage.</span>
+          Discovering Our Journey
+            <span className="color">  Unveiling the Story</span>
           </p>
         </div>
         <div className="explore-btn">
@@ -16,4 +18,4 @@ const IntroSection = () => {
     </section>
   );
 };
-export default IntroSection;
+export default AboutHead;
