@@ -1,0 +1,179 @@
+.my-contact {
+  margin-top: 4.4rem;
+  color: var(--text-color);
+  padding: 2rem;
+  background-color: var(--background-col);
+}
+.my-contact form {
+  max-width: 70rem;
+  margin: 1rem auto;
+  text-align: center;
+}
+.my-contact .heading {
+  font-size: 5rem;
+  margin-bottom: 2rem;
+}
+.my-contact .contact-info {
+  width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+.my-contact .contact-info .contact-details {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #1a191928;
+  padding: 3rem;
+  border-radius: 20px;
+}
+.my-contact .contact-info .contact-details:hover{
+    transform: scale(0.9);
+}
+.my-contact .contact-info .contact-details .company-details {
+  display: flex;
+}
+.my-contact .contact-info .contact-details .company-details p {
+  font-size: 1.5rem;
+  text-transform: lowercase;
+}
+.my-contact .contact-info .contact-details .company-details p strong{
+    color: var(--emphasis-text);
+    font-size: 1.7rem;
+}
+.my-contact .contact-info .contact-details .company-details .address{
+    text-transform: capitalize;
+}
+i {
+  padding-right: 15px;
+  color: rgb(204, 203, 203);
+}
+.my-contact .contact-info .contact-form {
+  width: 45%;
+}
+.my-contact .heading {
+  text-align: center;
+}
+.my-contact form .inputBox {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.my-contact form .inputBox input,
+textarea {
+  width: 100%;
+  background: #333;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 0.7rem 0;
+  font-size: 1.5rem;
+  color: #fff;
+  text-transform: none;
+}
+.my-contact form .inputBox input::placeholder,
+.my-contact form .inputBox2 input::placeholder,
+textarea::placeholder {
+  color: #eee;
+  text-transform: capitalize;
+}
+.my-contact form .inputBox input:focus,
+textarea:focus {
+  background: #333;
+}
+
+.my-contact form .inputBox input {
+  width: 49%;
+}
+.my-contact form .inputBox2 input {
+  width: 100%;
+  background: #333;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 0.7rem 0;
+  color: #fff;
+}
+.my-contact form textarea {
+  resize: none;
+  position: relative;
+}
+.contact-form .contact-intro {
+  padding-top: 1rem;
+  font-size: 1.5rem;
+}
+iframe {
+  width: 100%;
+}
+.inputBox,
+.inputBox2 {
+  margin-bottom: 1.6rem;
+}
+.word-count {
+    position: absolute;
+    bottom: 15px;
+    right: 5px;
+    color: #cac8c8;
+    font-size: 14px;
+  }
+  
+  
+@media (max-width: 1270px) {
+  .my-contact .contact-info {
+    width: 1000px;
+  }
+}
+@media (max-width: 1070px) {
+  .my-contact .contact-info {
+    width: 850px;
+  }
+}
+
+@media (max-width: 922px) {
+  html {
+    font-size: 8px;
+  }
+  .my-contact{
+    margin-top: 5rem;
+  }
+  .my-contact.contact-info {
+    width: 700px;
+  }
+}
+  @media(max-width: 877px){
+    .my-contact .contact-info{
+        flex-direction: column;
+        width: 600px;
+    }
+    .my-contact .contact-info .contact-details {
+        width: 100%;
+        margin-bottom: 10rem;
+      }
+      .my-contact .contact-info .contact-form {
+        width: 100%;
+      }
+      .my-contact .contact-info .contact-details .company-details{
+        margin-bottom: 2rem;
+      }
+      .my-contact .contact-info .contact-details .company-details p {
+        font-size: 2rem;
+      }
+  }
+  @media(max-width: 761px){
+    .my-contact{
+        margin-top: 9rem;
+    }
+    .my-contact .contact-info{
+        width: 400px;
+       
+    }
+    .my-contact .contact-info .contact-details {
+        width: 100%;
+        margin-bottom: 10rem;
+      }
+      .my-contact .contact-info .contact-details .company-details p {
+        font-size: 1.6rem;
+      }
+      .contact-form .contact-intro{
+        font-size: 1.9rem;
+      }
+  }

@@ -268,6 +268,90 @@ html {
   transform: scale(1.1);
   filter: grayscale();
 }
+.contact form {
+  max-width: 70rem;
+  margin: 1rem auto;
+  text-align: center;
+}
+.contact .heading{
+  font-size: 5rem;
+}
+.contact .contact-info{
+  width: 1200px;
+  display: flex;
+  justify-content: space-between;
+}
+.contact .contact-info .contact-details{
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.contact .contact-info .contact-details .company-details{
+  display: flex;
+}
+.contact .contact-info .contact-details .company-details p{
+  font-size: 1.5rem;
+}
+i{
+  padding-right: 15px;
+}
+.contact .contact-info .contact-form{
+  width: 45%;
+}
+.contact .heading {
+  text-align: center;
+}
+.contact form .inputBox {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.contact form .inputBox input,
+textarea {
+  width: 100%;
+  background: #333;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 0.7rem 0;
+  font-size: 1.5rem;
+  color: #fff;
+  text-transform: none;
+}
+.contact form .inputBox input::placeholder,
+.contact form .inputBox2 input::placeholder,
+textarea::placeholder {
+  color: #eee;
+  text-transform: capitalize;
+}
+.contact form .inputBox input:focus,
+textarea:focus {
+  background: #333;
+}
+
+.contact form .inputBox input {
+  width: 49%;
+}
+.contact form .inputBox2 input {
+  width: 100%;
+  background: #333;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 0.7rem 0;
+}
+.contact form textarea {
+  resize: none;
+}
+.contact-form .contact-intro{
+  padding-top: 1rem;
+  font-size: 1.5rem;
+}
+iframe {
+  width: 100%;
+}
+.inputBox,.inputBox2{
+  margin-bottom: 1.6rem;
+}
 @media (max-width: 1250px) {
   .about-web .about-sub {
     width: 900px;

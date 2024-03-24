@@ -84,9 +84,7 @@
   }
 }
 @media (max-width: 768px) {
-  /* html {
-    font-size: 40%;
-  } */
+
   .about-web .about-sub {
     display: flex;
     justify-content: center;
@@ -114,6 +112,9 @@
   }
 }
 @media (max-width: 500px) {
+  html {
+    font-size: 40%;
+  }
   .about-web .about-sub {
     display: flex;
     justify-content: center;
@@ -128,14 +129,14 @@
     width: 90%;
   }
   .about-web .about-sub .about-sub1 .about-content-head {
-    font-size: 8rem;
+    font-size: 5rem;
     text-align: center;
   }
   .about-web .about-sub .about-sub1 .about-content-body {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 
   .about-web .about-sub .about-sub1 .about-content-foot {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 }
