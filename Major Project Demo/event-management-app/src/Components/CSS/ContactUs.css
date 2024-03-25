@@ -29,7 +29,7 @@
   border-radius: 20px;
 }
 .my-contact .contact-info .contact-details:hover {
-  transform: scale(0.9);
+  transform: scale(1.1);
 }
 .my-contact .contact-info .contact-details .company-details {
   display: flex;
