@@ -66,16 +66,16 @@ const ContactUs = () => {
             today to discuss your event needs and let us craft an unforgettable
             experience for you.
           </p>
-          <form action>
+          <form>
             <div className="inputBox">
-              <input type="text" name id placeholder="First Name" />
-              <input type="email" name id placeholder="Last Name" />
+              <input type="text"  placeholder="First Name" />
+              <input type="email"  placeholder="Last Name" />
             </div>
             <div className="inputBox2">
-              <input type="email" name id placeholder="Email" />
+              <input type="email"  placeholder="Email" />
             </div>
             <div className="inputBox2">
-              <input type="number" name id placeholder="Contact" />
+              <input type="number"  placeholder="Contact" />
             </div>
             <div style={{ position: "relative" }}>
               <textarea

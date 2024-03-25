@@ -28,8 +28,8 @@
   padding: 3rem;
   border-radius: 20px;
 }
-.my-contact .contact-info .contact-details:hover{
-    transform: scale(0.9);
+.my-contact .contact-info .contact-details:hover {
+  transform: scale(0.9);
 }
 .my-contact .contact-info .contact-details .company-details {
   display: flex;
@@ -38,12 +38,12 @@
   font-size: 1.5rem;
   text-transform: lowercase;
 }
-.my-contact .contact-info .contact-details .company-details p strong{
-    color: var(--emphasis-text);
-    font-size: 1.7rem;
+.my-contact .contact-info .contact-details .company-details p strong {
+  color: var(--emphasis-text);
+  font-size: 1.7rem;
 }
-.my-contact .contact-info .contact-details .company-details .address{
-    text-transform: capitalize;
+.my-contact .contact-info .contact-details .company-details .address {
+  text-transform: capitalize;
 }
 i {
   padding-right: 15px;
@@ -109,14 +109,26 @@ iframe {
   margin-bottom: 1.6rem;
 }
 .word-count {
-    position: absolute;
-    bottom: 15px;
-    right: 5px;
-    color: #cac8c8;
-    font-size: 14px;
-  }
-  
-  
+  position: absolute;
+  bottom: 15px;
+  right: 5px;
+  color: #cac8c8;
+  font-size: 14px;
+}
+
+form input:focus,
+form textarea:focus {
+  border: 1px solid #00fff0;
+  color: #00fff0;
+  transition: all 0.3s ease-in-out;
+}
+form .inputBox input:focus::placeholder,
+form .inputBox2 input:focus::placeholder,
+form textarea:focus::placeholder {
+  padding-left: 4px;
+  color: #00fff0;
+  transition: all 0.3s ease-in-out;
+}
 @media (max-width: 1270px) {
   .my-contact .contact-info {
     width: 1000px;
@@ -132,48 +144,47 @@ iframe {
   html {
     font-size: 8px;
   }
-  .my-contact{
+  .my-contact {
     margin-top: 5rem;
   }
   .my-contact.contact-info {
     width: 700px;
   }
 }
-  @media(max-width: 877px){
-    .my-contact .contact-info{
-        flex-direction: column;
-        width: 600px;
-    }
-    .my-contact .contact-info .contact-details {
-        width: 100%;
-        margin-bottom: 10rem;
-      }
-      .my-contact .contact-info .contact-form {
-        width: 100%;
-      }
-      .my-contact .contact-info .contact-details .company-details{
-        margin-bottom: 2rem;
-      }
-      .my-contact .contact-info .contact-details .company-details p {
-        font-size: 2rem;
-      }
+@media (max-width: 877px) {
+  .my-contact .contact-info {
+    flex-direction: column;
+    width: 600px;
   }
-  @media(max-width: 761px){
-    .my-contact{
-        margin-top: 9rem;
-    }
-    .my-contact .contact-info{
-        width: 400px;
-       
-    }
-    .my-contact .contact-info .contact-details {
-        width: 100%;
-        margin-bottom: 10rem;
-      }
-      .my-contact .contact-info .contact-details .company-details p {
-        font-size: 1.6rem;
-      }
-      .contact-form .contact-intro{
-        font-size: 1.9rem;
-      }
+  .my-contact .contact-info .contact-details {
+    width: 100%;
+    margin-bottom: 10rem;
   }
+  .my-contact .contact-info .contact-form {
+    width: 100%;
+  }
+  .my-contact .contact-info .contact-details .company-details {
+    margin-bottom: 2rem;
+  }
+  .my-contact .contact-info .contact-details .company-details p {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 761px) {
+  .my-contact {
+    margin-top: 9rem;
+  }
+  .my-contact .contact-info {
+    width: 400px;
+  }
+  .my-contact .contact-info .contact-details {
+    width: 100%;
+    margin-bottom: 10rem;
+  }
+  .my-contact .contact-info .contact-details .company-details p {
+    font-size: 1.6rem;
+  }
+  .contact-form .contact-intro {
+    font-size: 1.9rem;
+  }
+}
