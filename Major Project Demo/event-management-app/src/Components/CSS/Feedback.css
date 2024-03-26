@@ -23,18 +23,18 @@
   border-radius: 50px;
   margin-bottom: 3rem;
 }
-.feedback-container form {
+.feedback-container .feedback-form {
   width: 100%;
   text-align: center;
   padding: 25px 49px;
 }
-form h1 {
+.feedback-form h1 {
   padding: 10px 0;
   color: var(--text-color);
   font-size: 3rem;
 }
 
-form .id {
+.feedback-form .id {
   position: relative;
 }
 

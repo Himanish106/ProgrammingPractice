@@ -8,7 +8,7 @@ const FeedbackPage = () => {
          <span className="col">Share Your Thoughts </span> : Help Us Shape a Better Experience
       </h1>
         <div className="feedback-container">
-          <form action="">
+          <form action="" className="feedback-form">
             <h1>Give Your Feedback</h1>
             <div className="id">
               <input type="text" name="" id="" placeholder="Enter Your Name" className="feedback-username" />

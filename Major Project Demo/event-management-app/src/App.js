@@ -6,6 +6,7 @@ import HomePage from "./Components/Subcomponents/HomePage/HomePage";
 import AboutUs from "./Components/Subcomponents/AboutUS/AboutUs";
 import ContactUs from "./Components/Subcomponents/ContactUs/ContactUs";
 import FeedbackPage from "./Components/Subcomponents/Feedback/FeedbackPage";
+import Register from "./Components/Subcomponents/Register/Register";
 function App() {
   return (
     <>
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/about" element={<AboutUs />} />
           <Route exact path="/contact" element={<ContactUs />} />
           <Route exact path="/feedback" element={<FeedbackPage />} />
+          <Route exact path="/register" element={<Register />} />
         </Routes>
         <Footer />
       </Router>
