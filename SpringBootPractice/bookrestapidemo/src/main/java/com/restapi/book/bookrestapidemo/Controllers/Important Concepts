@@ -1,0 +1,28 @@
+A REST API (Representational State Transfer Application Programming Interface) is an architectural style for designing networked applications. It's an approach to building web services that are lightweight, scalable, and maintainable. REST APIs are commonly used in modern web development for exposing functionality and data to other systems or applications over HTTP.
+
+Key characteristics of REST APIs include:
+
+Statelessness: Each request from a client to the server must contain all the information needed to process the request. The server does not store any client state between requests. This simplifies server implementation and improves scalability.
+
+Resource-based: Resources are identified by URIs (Uniform Resource Identifiers). A resource can be any entity that can be named, such as a document, an image, or a service. REST APIs expose resources as endpoints, and clients interact with these endpoints using standard HTTP methods (GET, POST, PUT, DELETE, etc.).
+
+Representation: Resources are represented in a format such as JSON (JavaScript Object Notation) or XML (eXtensible Markup Language). Clients can request different representations of the same resource, such as JSON or XML, based on their preferences or capabilities.
+
+Uniform Interface: REST APIs use a uniform interface for communication between clients and servers. This includes standard HTTP methods (GET, POST, PUT, DELETE) for CRUD (Create, Read, Update, Delete) operations, as well as standard HTTP status codes for indicating the result of a request (e.g., 200 for success, 404 for not found).
+
+State Transfer: Clients interact with the server by transferring representations of resources. The server transfers state to the client in response to client requests.
+
+REST APIs are widely used for building web services that can be consumed by various clients, including web browsers, mobile devices, and other applications. They provide a flexible and interoperable way to integrate different systems and services over the internet.
+
+
+return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); : Explanation
+ResponseEntity: ResponseEntity is a Spring class representing an HTTP response entity, which includes the response status code, headers, and body. It allows you to customize the HTTP response returned by your Spring MVC controller methods.
+
+status(HttpStatus.NOT_FOUND): This sets the HTTP status code of the response to "404 Not Found". The HttpStatus enum is used to represent standard HTTP status codes, and HttpStatus.NOT_FOUND specifically represents the "404 Not Found" status code, indicating that the requested resource was not found on the server.
+
+build(): This method builds the ResponseEntity object with the specified status code and no body. It creates a response entity without any additional content in the response body.
+
+return ResponseEntity.of(Optional.of(list))  :  Explain
+Optional.of(list): This wraps the list object inside an Optional. An Optional is a container object that may or may not contain a non-null value. Using Optional.of() ensures that the list is not null and is present in the Optional.
+
+ResponseEntity.of(...): This static method of ResponseEntity is used to create an ResponseEntity object containing the value provided. It constructs an ResponseEntity with an HTTP status code of 200 (OK) and includes the provided value in the body of the response.
