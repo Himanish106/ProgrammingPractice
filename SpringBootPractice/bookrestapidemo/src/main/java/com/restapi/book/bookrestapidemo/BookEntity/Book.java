@@ -1,12 +1,28 @@
 package com.restapi.book.bookrestapidemo.BookEntity;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "books")
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "book_id")
     private int id;
     private String bookName;
-    private String authorName;
+    // private String authorName;
+    @OneToOne(cascade = CascadeType.ALL) // Required to save all the data to author
+    private Author authorName;
     private double price;
 
-    public Book(int id, String bookName, String authorName, double price) {
+    public Book(int id, String bookName, Author authorName, double price) {
         this.id = id;
         this.bookName = bookName;
         this.authorName = authorName;
@@ -34,11 +50,11 @@ public class Book {
         this.bookName = bookName;
     }
 
-    public String getAuthorName() {
+    public Author getAuthorName() {
         return authorName;
     }
 
-    public void setAuthorName(String authorName) {
+    public void setAuthorName(Author authorName) {
         this.authorName = authorName;
     }
 
