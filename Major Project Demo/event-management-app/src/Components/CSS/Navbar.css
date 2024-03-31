@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 9%;
+  padding: 1.5rem 4%;
 }
 
 .header .logo {
@@ -29,14 +29,29 @@
 .header .navbar a:hover {
   color: var(--theme-color);
 }
-
+.event-btn-margin{
+  margin-left: 2rem;
+}
+.event-btn-margin .event-btn{
+  display: inline-block;
+  border-radius: 0.5rem;
+  background: #4269e9;
+  color: #fff;
+  cursor: pointer;
+  padding: 1rem;
+  font-weight: 600;
+}
+.event-btn-margin .event-btn:hover {
+  background: #023dff;
+  color: #fff !important;
+}
 #menu-bar {
   font-size: 3rem;
   color: #fff;
   cursor: pointer;
   display: none;
 }
-@media (max-width: 768px) {
+@media (max-width: 793px) {
   #menu-bar {
     display: initial;
   }

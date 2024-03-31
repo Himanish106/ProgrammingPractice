@@ -36,10 +36,13 @@ const Navbar = () => {
           <Link to="/price">Price</Link>
         </span>
         <span>
-          <Link to="/register">Register</Link>
+          <Link to="/contact">Contact</Link>
         </span>
         <span>
-          <Link to="/contact">Contact</Link>
+          <Link to="/register">Register</Link>
+        </span>
+        <span className="event-btn-margin">
+          <Link to="/register" className="event-btn">Plan an Event</Link>
         </span>
       </nav>
       <div
