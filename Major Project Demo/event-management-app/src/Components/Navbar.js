@@ -42,7 +42,7 @@ const Navbar = () => {
           <Link to="/register">Register</Link>
         </span>
         <span className="event-btn-margin">
-          <Link to="/register" className="event-btn">Plan an Event</Link>
+          <Link to="/eventselection" className="event-btn">Plan an Event</Link>
         </span>
       </nav>
       <div
