@@ -1,0 +1,18 @@
+.event-selection .event-selection-heading{
+    color: var(--text-color);
+    text-align: center;
+    margin-top: 1.4rem;
+    font-weight: 500;
+    font-size: 5rem;
+}
+.event-selection .event-selection-heading-emphasis{
+    text-align: center;
+    font-size: 5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+.event-selection .events .event-private,
+.event-selection .events .event-public {
+    width: 74%;
+    margin: 0 auto;
+}

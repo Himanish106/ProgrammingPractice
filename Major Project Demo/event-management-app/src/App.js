@@ -7,6 +7,7 @@ import AboutUs from "./Components/Subcomponents/AboutUS/AboutUs";
 import ContactUs from "./Components/Subcomponents/ContactUs/ContactUs";
 import FeedbackPage from "./Components/Subcomponents/Feedback/FeedbackPage";
 import Register from "./Components/Subcomponents/Register/Register";
+import EventSelection from "./Components/Subcomponents/EventSelection/EventSelection";
 function App() {
   return (
     <>
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/contact" element={<ContactUs />} />
           <Route exact path="/feedback" element={<FeedbackPage />} />
           <Route exact path="/register" element={<Register />} />
+          <Route exact path="/eventselection" element={<EventSelection />} />
         </Routes>
         <Footer />
       </Router>
