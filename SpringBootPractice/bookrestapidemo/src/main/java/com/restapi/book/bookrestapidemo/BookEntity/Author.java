@@ -1,10 +1,13 @@
 package com.restapi.book.bookrestapidemo.BookEntity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,6 +22,15 @@ public class Author {
     private String authorLastName;
     @Column(name = "Spoken_Language")
     private String spokeLanguage;
+    @OneToOne(mappedBy = "authorName")
+    @JsonBackReference
+    private Book book;
+    public Book getBook() {
+        return book;
+    }
+    public void setBook(Book book) {
+        this.book = book;
+    }
     public Author() {
     }
     public Author(int authorID, String authorFirstName, String authorLastName, String spokeLanguage) {
