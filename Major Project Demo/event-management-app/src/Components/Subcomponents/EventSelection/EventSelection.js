@@ -1,6 +1,7 @@
 import React from "react";
 import "../../CSS/ServiceBrief.css";
 import "../../CSS/EventSelection.css";
+import { Link } from "react-router-dom";
 const EventSelection = () => {
   return (
     <section className="pricing event-selection">
@@ -14,18 +15,18 @@ const EventSelection = () => {
           <h3 className="amount">
             Starting from <span className="col">$500</span>
           </h3>
-          <a href="#" className="btn">
+          <Link to="/privateeventbooking" className="btn">
             check out
-          </a>
+          </Link>
         </div>
         <div className="public-event event-public">
           <h3 className="title">Public Events</h3>
           <h3 className="amount">
             Starting from <span className="col">$800</span>
           </h3>
-          <a href="#" className="btn">
+          <Link to="/publiceventbooking" className="btn">
             check out
-          </a>
+          </Link>
         </div>
       </div>
     </section>

@@ -1,0 +1,68 @@
+.parent-private-form{
+    background-color: rgba(0, 0, 0, 0.637);
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+    border-radius: 20px;
+}
+.private-event-img img{
+width: 100%;
+border-radius: 10%;
+border: 1rem solid #333;
+}
+.private-event-img:hover img{
+    transform: scale(1.1);
+    filter: contrast(120%);
+}
+.parent-private-form .private-form {
+  margin: 0 auto;
+  width: 94%;
+}
+.parent-private-form .private-form h3{
+    color: var(--text-color);
+    text-align: center;
+    font-size: 3.2rem;
+    font-weight: 400;
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+}
+.parent-private-form .private-form .private-event-form label {
+  display: block;
+  color: var(--emphasis-text);
+  font-size: 2.5rem;
+}
+.parent-private-form .private-form .private-event-form select {
+  width: 100%;
+  padding: 1rem;
+  background-color: rgb(27, 27, 27);
+  color: var(--text-color);
+  font-size: 2.2rem;
+}
+.parent-private-form .private-form .private-event-form .venue-details label {
+  display: inline;
+}
+.parent-private-form .private-form .private-event-form .venue-details input {
+  display: inline;
+  border: none;
+  outline: none;
+  background: none;
+  color: var(--text-color);
+  padding-left: 2rem;
+  font-size: 2.2rem;
+}
+.parent-private-form .private-form .private-event-form input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 1rem;
+  accent-color: black;
+  padding: 0;
+}
+.parent-private-form .private-form .private-event-form .capacity input {
+  width: 50%;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  color: #fff;
+  background: #333;
+  font-size: 2rem;
+}
+

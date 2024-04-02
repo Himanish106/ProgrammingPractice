@@ -1,0 +1,19 @@
+{
+  "eventTypes": [
+    "Wedding",
+    "Birthday Party",
+    "Anniversary Celebration",
+    "Engagement Ceremony",
+    "Baby Shower",
+    "Bridal Shower",
+    "Housewarming Party",
+    "Graduation Party",
+    "Retirement Party",
+    "Prom",
+    "Reunion",
+    "Holiday Party",
+    "Farewell Party",
+    "Themed Party",
+    "Other"
+  ]
+}

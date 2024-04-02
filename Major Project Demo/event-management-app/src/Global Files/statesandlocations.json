@@ -1,0 +1,2182 @@
+{
+  "West Bengal": {
+    "Kolkata": [
+      {
+        "name": "City Banquet Hall",
+        "capacity": 200,
+        "location": "Salt Lake City",
+        "contact": "+91 9876543210",
+        "cateringServices": [
+          "Royal Caterers",
+          "Elite Catering Services",
+          "Gourmet Delights Catering",
+          "Spice of Life Catering",
+          "Classic Catering Company"
+        ],
+        "designServices": [
+          "Elegant Events",
+          "Dream Decor",
+          "Creative Concepts"
+        ],
+        "photoVideoServices": [
+          "Pixel Perfect Photography",
+          "Vivid Videography",
+          "Snapshot Studios"
+        ],
+        "price1": 3000,
+        "price2": 8000,
+        "price3": 5000
+      },
+      {
+        "name": "Royal Garden",
+        "capacity": 300,
+        "location": "Rajarhat",
+        "contact": "+91 9876543211",
+        "cateringServices": [
+          "Royal Treats Catering",
+          "Diamond Delights Catering",
+          "Grandeur Catering Services",
+          "Signature Cuisine Caterers",
+          "Blissful Eats Catering"
+        ],
+        "designServices": [
+          "Royal Designs",
+          "Elegance Events",
+          "Enchanted Events"
+        ],
+        "photoVideoServices": [
+          "Royal Shots Photography",
+          "Regal Videography",
+          "Magic Moments Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Grand Plaza",
+        "capacity": 150,
+        "location": "Park Street",
+        "contact": "+91 9876543212",
+        "cateringServices": [
+          "Royal Repertoire Catering",
+          "Platinum Platter Catering",
+          "Elite Eats Catering",
+          "Flavor Fusion Catering",
+          "Classic Cuisine Caterers"
+        ],
+        "designServices": [
+          "Grandeur Events",
+          "Creative Concepts",
+          "Dream Decor"
+        ],
+        "photoVideoServices": [
+          "Celestial Photography",
+          "Eternal Videography",
+          "Fancy Films"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Marriott Hotel",
+        "capacity": 500,
+        "location": "EM Bypass",
+        "contact": "+91 9876543213",
+        "cateringServices": [
+          "Royal Raj Cuisine Catering",
+          "Emerald Eats Catering",
+          "Diamond Delicacies Catering",
+          "Gourmet Gateway Catering",
+          "Spice Valley Catering"
+        ],
+        "designServices": ["Marriott Designs", "Luxury Events", "Gala Decor"],
+        "photoVideoServices": [
+          "Marriott Moments Photography",
+          "Luxury Films",
+          "Opulence Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Star Banquet",
+        "capacity": 250,
+        "location": "Camac Street",
+        "contact": "+91 9876543214",
+        "cateringServices": [
+          "Royal Repertoire Catering",
+          "Platinum Platter Catering",
+          "Gourmet Galleria Catering",
+          "Diamond Delicacies Catering",
+          "Emerald Eats Catering"
+        ],
+        "designServices": ["Star Designs", "Glamour Events", "Sparkle Decor"],
+        "photoVideoServices": [
+          "Starlight Photography",
+          "Glossy Videography",
+          "Shimmer Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      }
+    ],
+    "Howrah": [
+      {
+        "name": "Silver Star Hall",
+        "capacity": 150,
+        "location": "Howrah Maidan",
+        "contact": "+91 9876543220",
+        "cateringServices": [
+          "Royal Treats Catering",
+          "Diamond Delights Catering",
+          "Grandeur Catering Services",
+          "Signature Cuisine Caterers",
+          "Blissful Eats Catering"
+        ],
+        "designServices": ["Silver Designs", "Twinkle Events", "Charm Decor"],
+        "photoVideoServices": [
+          "Silver Moments Photography",
+          "Twinkle Films",
+          "Charm Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Golden Palace",
+        "capacity": 250,
+        "location": "Shibpur",
+        "contact": "+91 9876543221",
+        "cateringServices": [
+          "Royal Raj Cuisine Catering",
+          "Emerald Eats Catering",
+          "Diamond Delicacies Catering",
+          "Gourmet Gateway Catering",
+          "Spice Valley Catering"
+        ],
+        "designServices": ["Golden Designs", "Regal Events", "Majestic Decor"],
+        "photoVideoServices": [
+          "Golden Frames Photography",
+          "Regal Films",
+          "Majesty Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Crystal Ballroom",
+        "capacity": 200,
+        "location": "Salkia",
+        "contact": "+91 9876543222",
+        "cateringServices": [
+          "Royal Repertoire Catering",
+          "Platinum Platter Catering",
+          "Elite Eats Catering",
+          "Flavor Fusion Catering",
+          "Classic Cuisine Caterers"
+        ],
+        "designServices": ["Crystal Designs", "Royal Events", "Mystic Decor"],
+        "photoVideoServices": [
+          "Crystal Clear Photography",
+          "Royal Films",
+          "Mystic Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Moonlight Gardens",
+        "capacity": 300,
+        "location": "Botanical Garden",
+        "contact": "+91 9876543223",
+        "cateringServices": [
+          "Royal Raj Cuisine Catering",
+          "Emerald Eats Catering",
+          "Diamond Delicacies Catering",
+          "Gourmet Gateway Catering",
+          "Spice Valley Catering"
+        ],
+        "designServices": [
+          "Moonlight Designs",
+          "Enchanting Events",
+          "Majestic Decor"
+        ],
+        "photoVideoServices": [
+          "Moonlight Photography",
+          "Enchantment Films",
+          "Majesty Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Sunrise Banquet",
+        "capacity": 200,
+        "location": "Howrah Station",
+        "contact": "+91 9876543224",
+        "cateringServices": [
+          "Royal Treats Catering",
+          "Diamond Delights Catering",
+          "Grandeur Catering Services",
+          "Signature Cuisine Caterers",
+          "Blissful Eats Catering"
+        ],
+        "designServices": [
+          "Sunrise Designs",
+          "Radiant Events",
+          "Splendid Decor"
+        ],
+        "photoVideoServices": [
+          "Sunrise Photography",
+          "Radiance Films",
+          "Splendor Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      }
+    ],
+    "Durgapur": [
+      {
+        "name": "Royal Regency",
+        "capacity": 300,
+        "location": "City Centre",
+        "contact": "+91 9876543230",
+        "cateringServices": [
+          "Regal Feast Catering",
+          "Diamond Delicacies Catering",
+          "Grandeur Gastronomy",
+          "Elite Eats Catering",
+          "Flavor Fusion Catering"
+        ],
+        "designServices": ["Regal Designs", "Royal Events", "Opulent Decor"],
+        "photoVideoServices": [
+          "Regal Photography",
+          "Royal Films",
+          "Opulence Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Diamond Hall",
+        "capacity": 200,
+        "location": "Benachity",
+        "contact": "+91 9876543231",
+        "cateringServices": [
+          "Royal Treats Catering",
+          "Emerald Eats Catering",
+          "Crystal Cuisine Caterers",
+          "Signature Sizzle Catering",
+          "Gourmet Gateway Catering"
+        ],
+        "designServices": [
+          "Diamond Designs",
+          "Emerald Events",
+          "Crystal Decor"
+        ],
+        "photoVideoServices": [
+          "Diamond Photography",
+          "Emerald Films",
+          "Crystal Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Silver Star Hall",
+        "capacity": 150,
+        "location": "Bidhannagar",
+        "contact": "+91 9876543232",
+        "cateringServices": [
+          "Royal Raj Cuisine Catering",
+          "Diamond Delights Catering",
+          "Grandeur Gourmet Catering",
+          "Blissful Bites Catering",
+          "Spice Valley Catering"
+        ],
+        "designServices": [
+          "Silver Star Designs",
+          "Grandeur Events",
+          "Divine Decor"
+        ],
+        "photoVideoServices": [
+          "Silver Star Photography",
+          "Grandeur Films",
+          "Divine Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Grand Palace",
+        "capacity": 250,
+        "location": "DPL Colony",
+        "contact": "+91 9876543233",
+        "cateringServices": [
+          "Royal Repertoire Catering",
+          "Platinum Platter Catering",
+          "Elite Eats Catering",
+          "Flavor Fusion Catering",
+          "Classic Cuisine Caterers"
+        ],
+        "designServices": ["Grand Designs", "Royal Events", "Majestic Decor"],
+        "photoVideoServices": [
+          "Grand Photography",
+          "Royal Films",
+          "Majestic Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Royal Residency",
+        "capacity": 200,
+        "location": "City Centre",
+        "contact": "+91 9876543234",
+        "cateringServices": [
+          "Regal Feast Catering",
+          "Diamond Delicacies Catering",
+          "Grandeur Gastronomy",
+          "Elite Eats Catering",
+          "Flavor Fusion Catering"
+        ],
+        "designServices": ["Royal Designs", "Elegance Events", "Gala Decor"],
+        "photoVideoServices": [
+          "Royal Moments Photography",
+          "Luxury Films",
+          "Opulence Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      }
+    ]
+  },
+  "Maharashtra": {
+    "Mumbai": [
+      {
+        "name": "Grand Ballroom",
+        "capacity": 400,
+        "location": "Bandra",
+        "contact": "+91 9876543201",
+        "cateringServices": [
+          "Royal Feast Catering",
+          "Golden Delights Catering",
+          "Elegant Eats Catering",
+          "Mumbai Masala Catering",
+          "Saffron Spice Catering"
+        ],
+        "designServices": [
+          "Grand Designs",
+          "Royal Decorators",
+          "Elegance Events"
+        ],
+        "photoVideoServices": [
+          "Grand Shots Photography",
+          "Vivid Videography",
+          "Magic Moments Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Golden Hall",
+        "capacity": 300,
+        "location": "Andheri",
+        "contact": "+91 9876543202",
+        "cateringServices": [
+          "Crystal Cuisine Caterers",
+          "Diamond Delicacies Catering",
+          "Regal Repertoire Catering",
+          "Platinum Platter Catering",
+          "Sapphire Spice Catering"
+        ],
+        "designServices": [
+          "Golden Designs",
+          "Crystal Creations",
+          "Regal Events"
+        ],
+        "photoVideoServices": [
+          "Golden Moments Photography",
+          "Diamond Films",
+          "Regal Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Royal Palace",
+        "capacity": 250,
+        "location": "Churchgate",
+        "contact": "+91 9876543203",
+        "cateringServices": [
+          "Royal Raj Cuisine Catering",
+          "Emerald Eats Catering",
+          "Grandeur Gastronomy",
+          "Elite Eats Catering",
+          "Flavor Fusion Catering"
+        ],
+        "designServices": ["Royal Designs", "Regal Decor", "Elegant Events"],
+        "photoVideoServices": [
+          "Royal Frames Photography",
+          "Emerald Films",
+          "Grandeur Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Emerald Gardens",
+        "capacity": 350,
+        "location": "Powai",
+        "contact": "+91 9876543204",
+        "cateringServices": [
+          "Crystal Cuisine Caterers",
+          "Diamond Delicacies Catering",
+          "Regal Repertoire Catering",
+          "Platinum Platter Catering",
+          "Sapphire Spice Catering"
+        ],
+        "designServices": ["Emerald Designs", "Diamond Decor", "Regal Events"],
+        "photoVideoServices": [
+          "Emerald Shots Photography",
+          "Crystal Clear Films",
+          "Regal Moments Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Sapphire Banquet",
+        "capacity": 200,
+        "location": "Malad",
+        "contact": "+91 9876543205",
+        "cateringServices": [
+          "Royal Raj Cuisine Catering",
+          "Emerald Eats Catering",
+          "Grandeur Gastronomy",
+          "Elite Eats Catering",
+          "Flavor Fusion Catering"
+        ],
+        "designServices": [
+          "Sapphire Designs",
+          "Emerald Decor",
+          "Grandeur Events"
+        ],
+        "photoVideoServices": [
+          "Sapphire Photography",
+          "Emerald Films",
+          "Grandeur Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      }
+    ],
+    "Pune": [
+      {
+        "name": "Crystal Hall",
+        "capacity": 300,
+        "location": "Koregaon Park",
+        "contact": "+91 9876543206",
+        "cateringServices": [
+          "Royal Treats Catering",
+          "Pearl Platter Catering",
+          "Crystal Clear Catering",
+          "Diamond Dining Caterers",
+          "Emerald Elegance Catering"
+        ],
+        "designServices": ["Crystal Designs", "Pearl Decor", "Royal Events"],
+        "photoVideoServices": [
+          "Crystal Shots Photography",
+          "Pearl Films",
+          "Royal Moments Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Pearl Palace",
+        "capacity": 250,
+        "location": "Baner",
+        "contact": "+91 9876543207",
+        "cateringServices": [
+          "Regal Repast Catering",
+          "Golden Gourmet Catering",
+          "Platinum Pantry Catering",
+          "Sapphire Spices Catering",
+          "Royal Raj Cuisine Catering"
+        ],
+        "designServices": ["Pearl Designs", "Regal Decor", "Golden Events"],
+        "photoVideoServices": [
+          "Pearl Photography",
+          "Regal Films",
+          "Golden Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Diamond Ballroom",
+        "capacity": 200,
+        "location": "Aundh",
+        "contact": "+91 9876543208",
+        "cateringServices": [
+          "Emerald Eats Catering",
+          "Grand Gourmet Catering",
+          "Diamond Delights Catering",
+          "Regal Repertoire Catering",
+          "Crystal Cuisine Caterers"
+        ],
+        "designServices": ["Diamond Designs", "Emerald Decor", "Grand Events"],
+        "photoVideoServices": [
+          "Diamond Photography",
+          "Emerald Films",
+          "Grand Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Jade Gardens",
+        "capacity": 350,
+        "location": "Kothrud",
+        "contact": "+91 9876543209",
+        "cateringServices": [
+          "Sapphire Spice Catering",
+          "Elite Eats Catering",
+          "Flavor Fusion Catering",
+          "Crystal Clear Catering",
+          "Royal Treats Catering"
+        ],
+        "designServices": ["Jade Designs", "Elite Decor", "Flavorful Events"],
+        "photoVideoServices": [
+          "Jade Photography",
+          "Elite Films",
+          "Flavorful Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Sunrise Hall",
+        "capacity": 150,
+        "location": "Viman Nagar",
+        "contact": "+91 9876543210",
+        "cateringServices": [
+          "Platinum Platter Catering",
+          "Royal Raj Cuisine Catering",
+          "Emerald Elegance Catering",
+          "Diamond Dining Caterers",
+          "Golden Gourmet Catering"
+        ],
+        "designServices": ["Sunrise Designs", "Royal Decor", "Emerald Events"],
+        "photoVideoServices": [
+          "Sunrise Photography",
+          "Royal Films",
+          "Emerald Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      }
+    ],
+    "Nagpur": [
+      {
+        "name": "Royal Retreat",
+        "capacity": 200,
+        "location": "Ramdaspeth",
+        "contact": "+91 9876543211",
+        "cateringServices": [
+          "Royal Feast Catering",
+          "Regal Cuisine Catering",
+          "Diamond Delights Catering",
+          "Emerald Eats Catering",
+          "Sapphire Spice Catering"
+        ],
+        "designServices": ["Royal Designs", "Regal Decor", "Diamond Events"],
+        "photoVideoServices": [
+          "Royal Frames Photography",
+          "Regal Films",
+          "Diamond Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Crystal Banquet",
+        "capacity": 250,
+        "location": "Dharampeth",
+        "contact": "+91 9876543212",
+        "cateringServices": [
+          "Crystal Clear Catering",
+          "Emerald Elegance Catering",
+          "Grand Gourmet Catering",
+          "Platinum Pantry Catering",
+          "Royal Treats Catering"
+        ],
+        "designServices": ["Crystal Designs", "Emerald Decor", "Grand Events"],
+        "photoVideoServices": [
+          "Crystal Photography",
+          "Emerald Films",
+          "Grand Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Emerald Hall",
+        "capacity": 300,
+        "location": "Civil Lines",
+        "contact": "+91 9876543213",
+        "cateringServices": [
+          "Emerald Eats Catering",
+          "Diamond Dining Caterers",
+          "Regal Repast Catering",
+          "Sapphire Spice Catering",
+          "Crystal Cuisine Caterers"
+        ],
+        "designServices": ["Emerald Designs", "Diamond Decor", "Regal Events"],
+        "photoVideoServices": [
+          "Emerald Photography",
+          "Diamond Films",
+          "Regal Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Grand Plaza",
+        "capacity": 350,
+        "location": "Sadar",
+        "contact": "+91 9876543214",
+        "cateringServices": [
+          "Grand Gourmet Catering",
+          "Royal Raj Cuisine Catering",
+          "Platinum Platter Catering",
+          "Golden Gourmet Catering",
+          "Royal Feast Catering"
+        ],
+        "designServices": ["Grand Designs", "Royal Decor", "Platinum Events"],
+        "photoVideoServices": [
+          "Grand Photography",
+          "Royal Films",
+          "Platinum Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Silver Sands",
+        "capacity": 200,
+        "location": "Trimurti Nagar",
+        "contact": "+91 9876543215",
+        "cateringServices": [
+          "Silver Service Catering",
+          "Crystal Clear Catering",
+          "Regal Repertoire Catering",
+          "Emerald Eats Catering",
+          "Diamond Delights Catering"
+        ],
+        "designServices": ["Silver Designs", "Crystal Decor", "Regal Events"],
+        "photoVideoServices": [
+          "Silver Photography",
+          "Crystal Films",
+          "Regal Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      }
+    ]
+  },
+  "Delhi": {
+    "New Delhi": [
+      {
+        "name": "Royal Palace",
+        "capacity": 300,
+        "location": "Connaught Place",
+        "contact": "+91 9876543301",
+        "cateringServices": [
+          "Royal Feasts Catering",
+          "Regal Delights Catering",
+          "Golden Platter Catering",
+          "Crystal Cuisine Catering",
+          "Diamond Dining Catering"
+        ],
+        "designServices": [
+          "Royal Decorators",
+          "Regal Events",
+          "Crystal Creations"
+        ],
+        "photoVideoServices": [
+          "Royal Memories Photography",
+          "Regal Films",
+          "Crystal Capture Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Grand Banquet",
+        "capacity": 250,
+        "location": "Karol Bagh",
+        "contact": "+91 9876543302",
+        "cateringServices": [
+          "Grand Gourmet Catering",
+          "Royal Repast Catering",
+          "Platinum Pantry Catering",
+          "Emerald Eats Catering",
+          "Sapphire Spice Catering"
+        ],
+        "designServices": ["Grand Designs", "Royal Decor", "Platinum Events"],
+        "photoVideoServices": [
+          "Grand Moments Photography",
+          "Royal Films",
+          "Platinum Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Regal Hall",
+        "capacity": 200,
+        "location": "Paharganj",
+        "contact": "+91 9876543303",
+        "cateringServices": [
+          "Regal Repertoire Catering",
+          "Platinum Platter Catering",
+          "Golden Gourmet Catering",
+          "Royal Raj Cuisine Catering",
+          "Crystal Clear Catering"
+        ],
+        "designServices": ["Regal Designs", "Platinum Decor", "Golden Events"],
+        "photoVideoServices": [
+          "Regal Photography",
+          "Platinum Films",
+          "Golden Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Golden Plaza",
+        "capacity": 350,
+        "location": "Chanakyapuri",
+        "contact": "+91 9876543304",
+        "cateringServices": [
+          "Golden Gourmet Catering",
+          "Royal Treats Catering",
+          "Crystal Cuisine Caterers",
+          "Diamond Delights Catering",
+          "Emerald Elegance Catering"
+        ],
+        "designServices": ["Golden Designs", "Royal Decor", "Crystal Events"],
+        "photoVideoServices": [
+          "Golden Photography",
+          "Royal Films",
+          "Crystal Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Crystal Gardens",
+        "capacity": 150,
+        "location": "Rajpath",
+        "contact": "+91 9876543305",
+        "cateringServices": [
+          "Crystal Clear Catering",
+          "Diamond Dining Caterers",
+          "Regal Repast Catering",
+          "Sapphire Spice Catering",
+          "Platinum Pantry Catering"
+        ],
+        "designServices": ["Crystal Designs", "Diamond Decor", "Regal Events"],
+        "photoVideoServices": [
+          "Crystal Photography",
+          "Diamond Films",
+          "Regal Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      }
+    ],
+    "Noida": [
+      {
+        "name": "Diamond Hall",
+        "capacity": 300,
+        "location": "Sector 18",
+        "contact": "+91 9876543306",
+        "cateringServices": [
+          "Diamond Delicacies Catering",
+          "Platinum Palate Catering",
+          "Emerald Eats Catering",
+          "Sapphire Savory Catering",
+          "Golden Gourmet Catering"
+        ],
+        "designServices": [
+          "Diamond Designs",
+          "Platinum Decor",
+          "Emerald Events"
+        ],
+        "photoVideoServices": [
+          "Diamond Photography",
+          "Platinum Films",
+          "Emerald Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Emerald Gardens",
+        "capacity": 250,
+        "location": "Sector 62",
+        "contact": "+91 9876543307",
+        "cateringServices": [
+          "Emerald Elegance Catering",
+          "Crystal Cuisine Catering",
+          "Royal Repast Catering",
+          "Diamond Dining Caterers",
+          "Platinum Pantry Catering"
+        ],
+        "designServices": ["Emerald Designs", "Crystal Decor", "Royal Events"],
+        "photoVideoServices": [
+          "Emerald Photography",
+          "Crystal Films",
+          "Royal Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Sapphire Palace",
+        "capacity": 200,
+        "location": "Greater Noida",
+        "contact": "+91 9876543308",
+        "cateringServices": [
+          "Sapphire Spice Catering",
+          "Golden Gourmet Catering",
+          "Crystal Clear Catering",
+          "Regal Repertoire Catering",
+          "Royal Raj Cuisine Catering"
+        ],
+        "designServices": [
+          "Sapphire Designs",
+          "Golden Decor",
+          "Crystal Events"
+        ],
+        "photoVideoServices": [
+          "Sapphire Photography",
+          "Golden Films",
+          "Crystal Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Pearl Banquet",
+        "capacity": 350,
+        "location": "Mayur Vihar",
+        "contact": "+91 9876543309",
+        "cateringServices": [
+          "Pearl Platter Catering",
+          "Emerald Eats Catering",
+          "Diamond Delicacies Catering",
+          "Regal Repast Catering",
+          "Crystal Cuisine Catering"
+        ],
+        "designServices": ["Pearl Designs", "Emerald Decor", "Diamond Events"],
+        "photoVideoServices": [
+          "Pearl Photography",
+          "Emerald Films",
+          "Diamond Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Sunrise Hall",
+        "capacity": 150,
+        "location": "Indirapuram",
+        "contact": "+91 9876543310",
+        "cateringServices": [
+          "Sunrise Savory Catering",
+          "Crystal Clear Catering",
+          "Golden Gourmet Catering",
+          "Royal Treats Catering",
+          "Diamond Delicacies Catering"
+        ],
+        "designServices": ["Sunrise Designs", "Crystal Decor", "Golden Events"],
+        "photoVideoServices": [
+          "Sunrise Photography",
+          "Crystal Films",
+          "Golden Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      }
+    ],
+    "Gurgaon": [
+      {
+        "name": "Grand Royale",
+        "capacity": 300,
+        "location": "Cyber City",
+        "contact": "+91 9876543311",
+        "cateringServices": [
+          "Grand Gourmet Catering",
+          "Royalty Foods Catering",
+          "Regal Repast Catering",
+          "Crystal Cuisine Catering",
+          "Diamond Delicacies Catering"
+        ],
+        "designServices": ["Grand Designs", "Royal Decor", "Regal Events"],
+        "photoVideoServices": [
+          "Grand Photography",
+          "Royal Films",
+          "Regal Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Silver Banquet",
+        "capacity": 250,
+        "location": "Sector 29",
+        "contact": "+91 9876543312",
+        "cateringServices": [
+          "Silver Spoon Catering",
+          "Platinum Palate Catering",
+          "Emerald Eats Catering",
+          "Royal Raj Cuisine Catering",
+          "Golden Gourmet Catering"
+        ],
+        "designServices": [
+          "Silver Designs",
+          "Platinum Decor",
+          "Emerald Events"
+        ],
+        "photoVideoServices": [
+          "Silver Photography",
+          "Platinum Films",
+          "Emerald Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Crystal Hall",
+        "capacity": 200,
+        "location": "Sohna Road",
+        "contact": "+91 9876543313",
+        "cateringServices": [
+          "Crystal Clear Catering",
+          "Crystal Cuisine Catering",
+          "Diamond Dining Caterers",
+          "Royal Treats Catering",
+          "Emerald Elegance Catering"
+        ],
+        "designServices": [
+          "Crystal Designs",
+          "Crystal Decor",
+          "Diamond Events"
+        ],
+        "photoVideoServices": [
+          "Crystal Photography",
+          "Crystal Films",
+          "Diamond Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Emerald Palace",
+        "capacity": 350,
+        "location": "Udyog Vihar",
+        "contact": "+91 9876543314",
+        "cateringServices": [
+          "Emerald Eats Catering",
+          "Royal Repast Catering",
+          "Emerald Elegance Catering",
+          "Diamond Delicacies Catering",
+          "Regal Repertoire Catering"
+        ],
+        "designServices": ["Emerald Designs", "Royal Decor", "Emerald Events"],
+        "photoVideoServices": [
+          "Emerald Photography",
+          "Royal Films",
+          "Emerald Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Diamond Gardens",
+        "capacity": 150,
+        "location": "DLF Phase 3",
+        "contact": "+91 9876543315",
+        "cateringServices": [
+          "Diamond Delicacies Catering",
+          "Diamond Dining Caterers",
+          "Diamond Dishes Catering",
+          "Diamond Dining Delights",
+          "Diamond Delicacies Catering"
+        ],
+        "designServices": [
+          "Diamond Designs",
+          "Diamond Decor",
+          "Diamond Events"
+        ],
+        "photoVideoServices": [
+          "Diamond Photography",
+          "Diamond Films",
+          "Diamond Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      }
+    ]
+  },
+  "Telangana": {
+    "Hyderabad": [
+      {
+        "name": "Royal Palace",
+        "capacity": 300,
+        "location": "Banjara Hills",
+        "contact": "+91 9876543301",
+        "cateringServices": [
+          "Royal Feasts Catering",
+          "Palatial Plates Catering",
+          "Regal Repast Catering",
+          "Golden Gourmet Catering",
+          "Imperial Indulgence Catering"
+        ],
+        "designServices": ["Royal Designs", "Palatial Decor", "Regal Events"],
+        "photoVideoServices": [
+          "Royal Photography",
+          "Palatial Films",
+          "Regal Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Grand Banquet",
+        "capacity": 250,
+        "location": "Jubilee Hills",
+        "contact": "+91 9876543302",
+        "cateringServices": [
+          "Grand Gourmet Catering",
+          "Regal Raj Cuisine Catering",
+          "Platinum Palate Catering",
+          "Sapphire Savories Catering",
+          "Royal Rajah Catering"
+        ],
+        "designServices": ["Grand Designs", "Regal Decor", "Platinum Events"],
+        "photoVideoServices": [
+          "Grand Photography",
+          "Regal Films",
+          "Platinum Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Regal Hall",
+        "capacity": 200,
+        "location": "Madhapur",
+        "contact": "+91 9876543303",
+        "cateringServices": [
+          "Regal Repertoire Catering",
+          "Regal Raj Cuisine Catering",
+          "Regal Repast Catering",
+          "Regal Rajah Catering",
+          "Regal Treats Catering"
+        ],
+        "designServices": ["Regal Designs", "Regal Decor", "Regal Events"],
+        "photoVideoServices": [
+          "Regal Photography",
+          "Regal Films",
+          "Regal Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Golden Plaza",
+        "capacity": 350,
+        "location": "Gachibowli",
+        "contact": "+91 9876543304",
+        "cateringServices": [
+          "Golden Gourmet Catering",
+          "Golden Delicacies Catering",
+          "Golden Gastronomy Catering",
+          "Golden Platter Catering",
+          "Golden Elegance Catering"
+        ],
+        "designServices": ["Golden Designs", "Golden Decor", "Golden Events"],
+        "photoVideoServices": [
+          "Golden Photography",
+          "Golden Films",
+          "Golden Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Crystal Gardens",
+        "capacity": 150,
+        "location": "Hitech City",
+        "contact": "+91 9876543305",
+        "cateringServices": [
+          "Crystal Clear Catering",
+          "Crystal Cuisine Catering",
+          "Crystal Delights Catering",
+          "Crystal Platter Catering",
+          "Crystal Elegance Catering"
+        ],
+        "designServices": [
+          "Crystal Designs",
+          "Crystal Decor",
+          "Crystal Events"
+        ],
+        "photoVideoServices": [
+          "Crystal Photography",
+          "Crystal Films",
+          "Crystal Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      }
+    ],
+    "Warangal": [
+      {
+        "name": "Diamond Hall",
+        "capacity": 300,
+        "location": "Hanamkonda",
+        "contact": "+91 9876543306",
+        "cateringServices": [
+          "Diamond Delicacies Catering",
+          "Diamond Dining Caterers",
+          "Diamond Delights Catering",
+          "Diamond Dishes Catering",
+          "Diamond Dining Delights"
+        ],
+        "designServices": [
+          "Diamond Designs",
+          "Diamond Decor",
+          "Diamond Events"
+        ],
+        "photoVideoServices": [
+          "Diamond Photography",
+          "Diamond Films",
+          "Diamond Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Emerald Gardens",
+        "capacity": 250,
+        "location": "Kazipet",
+        "contact": "+91 9876543307",
+        "cateringServices": [
+          "Emerald Eats Catering",
+          "Emerald Elegance Catering",
+          "Emerald Epicure Catering",
+          "Emerald Entrees Catering",
+          "Emerald Extravaganza Catering"
+        ],
+        "designServices": [
+          "Emerald Designs",
+          "Emerald Decor",
+          "Emerald Events"
+        ],
+        "photoVideoServices": [
+          "Emerald Photography",
+          "Emerald Films",
+          "Emerald Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Sapphire Palace",
+        "capacity": 200,
+        "location": "Gopalpur",
+        "contact": "+91 9876543308",
+        "cateringServices": [
+          "Sapphire Savories Catering",
+          "Sapphire Savor Catering",
+          "Sapphire Spice Catering",
+          "Sapphire Spread Catering",
+          "Sapphire Special Catering"
+        ],
+        "designServices": [
+          "Sapphire Designs",
+          "Sapphire Decor",
+          "Sapphire Events"
+        ],
+        "photoVideoServices": [
+          "Sapphire Photography",
+          "Sapphire Films",
+          "Sapphire Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Pearl Banquet",
+        "capacity": 350,
+        "location": "Bheemaram",
+        "contact": "+91 9876543309",
+        "cateringServices": [
+          "Pearl Plates Catering",
+          "Pearl Palate Catering",
+          "Pearl Perfection Catering",
+          "Pearl Paradise Catering",
+          "Pearl Party Catering"
+        ],
+        "designServices": ["Pearl Designs", "Pearl Decor", "Pearl Events"],
+        "photoVideoServices": [
+          "Pearl Photography",
+          "Pearl Films",
+          "Pearl Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Sunrise Hall",
+        "capacity": 150,
+        "location": "Ramannapet",
+        "contact": "+91 9876543310",
+        "cateringServices": [
+          "Sunrise Special Catering",
+          "Sunrise Savor Catering",
+          "Sunrise Spread Catering",
+          "Sunrise Sustenance Catering",
+          "Sunrise Supreme Catering"
+        ],
+        "designServices": [
+          "Sunrise Designs",
+          "Sunrise Decor",
+          "Sunrise Events"
+        ],
+        "photoVideoServices": [
+          "Sunrise Photography",
+          "Sunrise Films",
+          "Sunrise Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      }
+    ],
+    "Karimnagar": [
+      {
+        "name": "Grand Royale",
+        "capacity": 300,
+        "location": "Jagital",
+        "contact": "+91 9876543311",
+        "cateringServices": [
+          "Royal Repast Catering",
+          "Grand Gourmet Catering",
+          "Regal Raj Cuisine Catering",
+          "Grand Gastronomy Catering",
+          "Royal Rajah Catering"
+        ],
+        "designServices": ["Grand Designs", "Royal Decor", "Grand Events"],
+        "photoVideoServices": [
+          "Grand Photography",
+          "Royal Films",
+          "Grand Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Silver Banquet",
+        "capacity": 250,
+        "location": "Peddapalli",
+        "contact": "+91 9876543312",
+        "cateringServices": [
+          "Silver Spoon Catering",
+          "Silver Savories Catering",
+          "Silver Service Catering",
+          "Silver Spread Catering",
+          "Silver Savor Catering"
+        ],
+        "designServices": ["Silver Designs", "Silver Decor", "Silver Events"],
+        "photoVideoServices": [
+          "Silver Photography",
+          "Silver Films",
+          "Silver Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Crystal Hall",
+        "capacity": 200,
+        "location": "Manakondur",
+        "contact": "+91 9876543313",
+        "cateringServices": [
+          "Crystal Clear Catering",
+          "Crystal Cuisine Catering",
+          "Crystal Cooking Catering",
+          "Crystal Cooking Catering",
+          "Crystal Creations Catering"
+        ],
+        "designServices": [
+          "Crystal Designs",
+          "Crystal Decor",
+          "Crystal Events"
+        ],
+        "photoVideoServices": [
+          "Crystal Photography",
+          "Crystal Films",
+          "Crystal Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Emerald Palace",
+        "capacity": 350,
+        "location": "Huzurabad",
+        "contact": "+91 9876543314",
+        "cateringServices": [
+          "Emerald Eats Catering",
+          "Emerald Elegance Catering",
+          "Emerald Epicure Catering",
+          "Emerald Entrees Catering",
+          "Emerald Extravaganza Catering"
+        ],
+        "designServices": [
+          "Emerald Designs",
+          "Emerald Decor",
+          "Emerald Events"
+        ],
+        "photoVideoServices": [
+          "Emerald Photography",
+          "Emerald Films",
+          "Emerald Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Diamond Gardens",
+        "capacity": 150,
+        "location": "Koratla",
+        "contact": "+91 9876543315",
+        "cateringServices": [
+          "Diamond Delicacies Catering",
+          "Diamond Dining Caterers",
+          "Diamond Delights Catering",
+          "Diamond Dishes Catering",
+          "Diamond Dining Delights"
+        ],
+        "designServices": [
+          "Diamond Designs",
+          "Diamond Decor",
+          "Diamond Events"
+        ],
+        "photoVideoServices": [
+          "Diamond Photography",
+          "Diamond Films",
+          "Diamond Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      }
+    ]
+  },
+  "Karnataka": {
+    "Bengaluru": [
+      {
+        "name": "Royal Palace",
+        "capacity": 300,
+        "location": "Indiranagar",
+        "contact": "+91 9876543301",
+        "cateringServices": [
+          "Royal Feasts Catering",
+          "Palatial Plates Catering",
+          "Regal Repast Catering",
+          "Golden Gourmet Catering",
+          "Imperial Indulgence Catering"
+        ],
+        "designServices": ["Royal Designs", "Palatial Decor", "Regal Events"],
+        "photoVideoServices": [
+          "Royal Photography",
+          "Palatial Films",
+          "Regal Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Grand Banquet",
+        "capacity": 250,
+        "location": "Koramangala",
+        "contact": "+91 9876543302",
+        "cateringServices": [
+          "Grand Gourmet Catering",
+          "Regal Raj Cuisine Catering",
+          "Platinum Palate Catering",
+          "Sapphire Savories Catering",
+          "Royal Rajah Catering"
+        ],
+        "designServices": ["Grand Designs", "Regal Decor", "Platinum Events"],
+        "photoVideoServices": [
+          "Grand Photography",
+          "Regal Films",
+          "Platinum Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Regal Hall",
+        "capacity": 200,
+        "location": "Whitefield",
+        "contact": "+91 9876543303",
+        "cateringServices": [
+          "Regal Repertoire Catering",
+          "Regal Raj Cuisine Catering",
+          "Regal Repast Catering",
+          "Regal Rajah Catering",
+          "Regal Treats Catering"
+        ],
+        "designServices": ["Regal Designs", "Regal Decor", "Regal Events"],
+        "photoVideoServices": [
+          "Regal Photography",
+          "Regal Films",
+          "Regal Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Golden Plaza",
+        "capacity": 350,
+        "location": "JP Nagar",
+        "contact": "+91 9876543304",
+        "cateringServices": [
+          "Golden Gourmet Catering",
+          "Golden Delicacies Catering",
+          "Golden Gastronomy Catering",
+          "Golden Platter Catering",
+          "Golden Elegance Catering"
+        ],
+        "designServices": ["Golden Designs", "Golden Decor", "Golden Events"],
+        "photoVideoServices": [
+          "Golden Photography",
+          "Golden Films",
+          "Golden Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Crystal Gardens",
+        "capacity": 150,
+        "location": "Malleswaram",
+        "contact": "+91 9876543305",
+        "cateringServices": [
+          "Crystal Clear Catering",
+          "Crystal Cuisine Catering",
+          "Crystal Delights Catering",
+          "Crystal Platter Catering",
+          "Crystal Elegance Catering"
+        ],
+        "designServices": [
+          "Crystal Designs",
+          "Crystal Decor",
+          "Crystal Events"
+        ],
+        "photoVideoServices": [
+          "Crystal Photography",
+          "Crystal Films",
+          "Crystal Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      }
+    ],
+    "Mysuru": [
+      {
+        "name": "Diamond Hall",
+        "capacity": 300,
+        "location": "Kuvempunagar",
+        "contact": "+91 9876543306",
+        "cateringServices": [
+          "Diamond Delicacies Catering",
+          "Diamond Dining Caterers",
+          "Diamond Delights Catering",
+          "Diamond Dishes Catering",
+          "Diamond Dining Delights"
+        ],
+        "designServices": [
+          "Diamond Designs",
+          "Diamond Decor",
+          "Diamond Events"
+        ],
+        "photoVideoServices": [
+          "Diamond Photography",
+          "Diamond Films",
+          "Diamond Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Emerald Gardens",
+        "capacity": 250,
+        "location": "Saraswathipuram",
+        "contact": "+91 9876543307",
+        "cateringServices": [
+          "Emerald Eats Catering",
+          "Emerald Elegance Catering",
+          "Emerald Epicure Catering",
+          "Emerald Entrees Catering",
+          "Emerald Extravaganza Catering"
+        ],
+        "designServices": [
+          "Emerald Designs",
+          "Emerald Decor",
+          "Emerald Events"
+        ],
+        "photoVideoServices": [
+          "Emerald Photography",
+          "Emerald Films",
+          "Emerald Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Sapphire Palace",
+        "capacity": 200,
+        "location": "Vijaynagar",
+        "contact": "+91 9876543308",
+        "cateringServices": [
+          "Sapphire Savories Catering",
+          "Sapphire Savor Catering",
+          "Sapphire Spice Catering",
+          "Sapphire Spread Catering",
+          "Sapphire Special Catering"
+        ],
+        "designServices": [
+          "Sapphire Designs",
+          "Sapphire Decor",
+          "Sapphire Events"
+        ],
+        "photoVideoServices": [
+          "Sapphire Photography",
+          "Sapphire Films",
+          "Sapphire Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Pearl Banquet",
+        "capacity": 350,
+        "location": "Jayalakshmipuram",
+        "contact": "+91 9876543309",
+        "cateringServices": [
+          "Pearl Plates Catering",
+          "Pearl Palate Catering",
+          "Pearl Perfection Catering",
+          "Pearl Paradise Catering",
+          "Pearl Party Catering"
+        ],
+        "designServices": ["Pearl Designs", "Pearl Decor", "Pearl Events"],
+        "photoVideoServices": [
+          "Pearl Photography",
+          "Pearl Films",
+          "Pearl Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Sunrise Hall",
+        "capacity": 150,
+        "location": "Lakshmipuram",
+        "contact": "+91 9876543310",
+        "cateringServices": [
+          "Sunrise Special Catering",
+          "Sunrise Savor Catering",
+          "Sunrise Spread Catering",
+          "Sunrise Sustenance Catering",
+          "Sunrise Supreme Catering"
+        ],
+        "designServices": [
+          "Sunrise Designs",
+          "Sunrise Decor",
+          "Sunrise Events"
+        ],
+        "photoVideoServices": [
+          "Sunrise Photography",
+          "Sunrise Films",
+          "Sunrise Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      }
+    ],
+    "Hubballi-Dharwad": [
+      {
+        "name": "Grand Royale",
+        "capacity": 300,
+        "location": "Hubli",
+        "contact": "+91 9876543311",
+        "cateringServices": [
+          "Royal Repast Catering",
+          "Grand Gourmet Catering",
+          "Regal Raj Cuisine Catering",
+          "Grand Gastronomy Catering",
+          "Royal Rajah Catering"
+        ],
+        "designServices": ["Grand Designs", "Royal Decor", "Grand Events"],
+        "photoVideoServices": [
+          "Grand Photography",
+          "Royal Films",
+          "Grand Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Silver Banquet",
+        "capacity": 250,
+        "location": "Dharwad",
+        "contact": "+91 9876543312",
+        "cateringServices": [
+          "Silver Spoon Catering",
+          "Silver Savories Catering",
+          "Silver Service Catering",
+          "Silver Spread Catering",
+          "Silver Savor Catering"
+        ],
+        "designServices": ["Silver Designs", "Silver Decor", "Silver Events"],
+        "photoVideoServices": [
+          "Silver Photography",
+          "Silver Films",
+          "Silver Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Crystal Hall",
+        "capacity": 200,
+        "location": "Navanagar",
+        "contact": "+91 9876543313",
+        "cateringServices": [
+          "Crystal Clear Catering",
+          "Crystal Cuisine Catering",
+          "Crystal Cooking Catering",
+          "Crystal Cooking Catering",
+          "Crystal Creations Catering"
+        ],
+        "designServices": [
+          "Crystal Designs",
+          "Crystal Decor",
+          "Crystal Events"
+        ],
+        "photoVideoServices": [
+          "Crystal Photography",
+          "Crystal Films",
+          "Crystal Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Emerald Palace",
+        "capacity": 350,
+        "location": "Unkal",
+        "contact": "+91 9876543314",
+        "cateringServices": [
+          "Emerald Eats Catering",
+          "Emerald Elegance Catering",
+          "Emerald Epicure Catering",
+          "Emerald Entrees Catering",
+          "Emerald Extravaganza Catering"
+        ],
+        "designServices": [
+          "Emerald Designs",
+          "Emerald Decor",
+          "Emerald Events"
+        ],
+        "photoVideoServices": [
+          "Emerald Photography",
+          "Emerald Films",
+          "Emerald Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Diamond Gardens",
+        "capacity": 150,
+        "location": "Sattur",
+        "contact": "+91 9876543315",
+        "cateringServices": [
+          "Diamond Delicacies Catering",
+          "Diamond Dining Caterers",
+          "Diamond Delights Catering",
+          "Diamond Dishes Catering",
+          "Diamond Dining Delights"
+        ],
+        "designServices": [
+          "Diamond Designs",
+          "Diamond Decor",
+          "Diamond Events"
+        ],
+        "photoVideoServices": [
+          "Diamond Photography",
+          "Diamond Films",
+          "Diamond Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      }
+    ]
+  },
+  "Tamil Nadu": {
+    "Chennai": [
+      {
+        "name": "Marina Banquet Hall",
+        "capacity": 300,
+        "location": "Anna Nagar",
+        "contact": "+91 9876543401",
+        "cateringServices": [
+          "Marina Delights Catering",
+          "Marina Gourmet Catering",
+          "Marina Elegance Catering",
+          "Marina Indulgence Catering",
+          "Marina Royal Catering"
+        ],
+        "designServices": ["Marina Designs", "Marina Decor", "Marina Events"],
+        "photoVideoServices": [
+          "Marina Photography",
+          "Marina Films",
+          "Marina Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Surya Gardens",
+        "capacity": 250,
+        "location": "Velachery",
+        "contact": "+91 9876543402",
+        "cateringServices": [
+          "Surya Savories Catering",
+          "Surya Special Catering",
+          "Surya Supreme Catering",
+          "Surya Spice Catering",
+          "Surya Savor Catering"
+        ],
+        "designServices": ["Surya Designs", "Surya Decor", "Surya Events"],
+        "photoVideoServices": [
+          "Surya Photography",
+          "Surya Films",
+          "Surya Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Royal Palace",
+        "capacity": 200,
+        "location": "T. Nagar",
+        "contact": "+91 9876543403",
+        "cateringServices": [
+          "Royal Repertoire Catering",
+          "Royal Raj Cuisine Catering",
+          "Royal Repast Catering",
+          "Royal Rajah Catering",
+          "Royal Treats Catering"
+        ],
+        "designServices": ["Royal Designs", "Royal Decor", "Royal Events"],
+        "photoVideoServices": [
+          "Royal Photography",
+          "Royal Films",
+          "Royal Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Golden Hall",
+        "capacity": 350,
+        "location": "Mylapore",
+        "contact": "+91 9876543404",
+        "cateringServices": [
+          "Golden Gastronomy Catering",
+          "Golden Platter Catering",
+          "Golden Elegance Catering",
+          "Golden Plates Catering",
+          "Golden Delicacies Catering"
+        ],
+        "designServices": ["Golden Designs", "Golden Decor", "Golden Events"],
+        "photoVideoServices": [
+          "Golden Photography",
+          "Golden Films",
+          "Golden Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Platinum Banquet",
+        "capacity": 150,
+        "location": "Adyar",
+        "contact": "+91 9876543405",
+        "cateringServices": [
+          "Platinum Plates Catering",
+          "Platinum Palate Catering",
+          "Platinum Perfection Catering",
+          "Platinum Paradise Catering",
+          "Platinum Party Catering"
+        ],
+        "designServices": [
+          "Platinum Designs",
+          "Platinum Decor",
+          "Platinum Events"
+        ],
+        "photoVideoServices": [
+          "Platinum Photography",
+          "Platinum Films",
+          "Platinum Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      }
+    ],
+    "Coimbatore": [
+      {
+        "name": "Emerald Palace",
+        "capacity": 300,
+        "location": "RS Puram",
+        "contact": "+91 9876543406",
+        "cateringServices": [
+          "Emerald Eats Catering",
+          "Emerald Elegance Catering",
+          "Emerald Epicure Catering",
+          "Emerald Entrees Catering",
+          "Emerald Extravaganza Catering"
+        ],
+        "designServices": [
+          "Emerald Designs",
+          "Emerald Decor",
+          "Emerald Events"
+        ],
+        "photoVideoServices": [
+          "Emerald Photography",
+          "Emerald Films",
+          "Emerald Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Grand Banquet",
+        "capacity": 250,
+        "location": "Gandhipuram",
+        "contact": "+91 9876543407",
+        "cateringServices": [
+          "Grand Gourmet Catering",
+          "Grand Gastronomy Catering",
+          "Grand Platter Catering",
+          "Grand Elegance Catering",
+          "Grand Delicacies Catering"
+        ],
+        "designServices": ["Grand Designs", "Grand Decor", "Grand Events"],
+        "photoVideoServices": [
+          "Grand Photography",
+          "Grand Films",
+          "Grand Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Crystal Gardens",
+        "capacity": 200,
+        "location": "Peelamedu",
+        "contact": "+91 9876543408",
+        "cateringServices": [
+          "Crystal Clear Catering",
+          "Crystal Cuisine Catering",
+          "Crystal Cooking Catering",
+          "Crystal Cooking Catering",
+          "Crystal Creations Catering"
+        ],
+        "designServices": [
+          "Crystal Designs",
+          "Crystal Decor",
+          "Crystal Events"
+        ],
+        "photoVideoServices": [
+          "Crystal Photography",
+          "Crystal Films",
+          "Crystal Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Diamond Hall",
+        "capacity": 350,
+        "location": "Saravanampatti",
+        "contact": "+91 9876543409",
+        "cateringServices": [
+          "Diamond Delicacies Catering",
+          "Diamond Dining Caterers",
+          "Diamond Delights Catering",
+          "Diamond Dishes Catering",
+          "Diamond Dining Delights"
+        ],
+        "designServices": [
+          "Diamond Designs",
+          "Diamond Decor",
+          "Diamond Events"
+        ],
+        "photoVideoServices": [
+          "Diamond Photography",
+          "Diamond Films",
+          "Diamond Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Regal Plaza",
+        "capacity": 150,
+        "location": "Ramanathapuram",
+        "contact": "+91 9876543410",
+        "cateringServices": [
+          "Regal Repertoire Catering",
+          "Regal Raj Cuisine Catering",
+          "Regal Repast Catering",
+          "Regal Rajah Catering",
+          "Regal Treats Catering"
+        ],
+        "designServices": ["Regal Designs", "Regal Decor", "Regal Events"],
+        "photoVideoServices": [
+          "Regal Photography",
+          "Regal Films",
+          "Regal Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      }
+    ],
+    "Madurai": [
+      {
+        "name": "Pearl Banquet",
+        "capacity": 300,
+        "location": "Anna Nagar",
+        "contact": "+91 9876543411",
+        "cateringServices": [
+          "Pearl Plates Catering",
+          "Pearl Palate Catering",
+          "Pearl Perfection Catering",
+          "Pearl Paradise Catering",
+          "Pearl Party Catering"
+        ],
+        "designServices": ["Pearl Designs", "Pearl Decor", "Pearl Events"],
+        "photoVideoServices": [
+          "Pearl Photography",
+          "Pearl Films",
+          "Pearl Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Crystal Hall",
+        "capacity": 250,
+        "location": "Kamarajar Salai",
+        "contact": "+91 9876543412",
+        "cateringServices": [
+          "Crystal Clear Catering",
+          "Crystal Cuisine Catering",
+          "Crystal Cooking Catering",
+          "Crystal Cooking Catering",
+          "Crystal Creations Catering"
+        ],
+        "designServices": [
+          "Crystal Designs",
+          "Crystal Decor",
+          "Crystal Events"
+        ],
+        "photoVideoServices": [
+          "Crystal Photography",
+          "Crystal Films",
+          "Crystal Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Grand Royale",
+        "capacity": 200,
+        "location": "Goripalayam",
+        "contact": "+91 9876543413",
+        "cateringServices": [
+          "Grand Gourmet Catering",
+          "Grand Gastronomy Catering",
+          "Grand Platter Catering",
+          "Grand Elegance Catering",
+          "Grand Delicacies Catering"
+        ],
+        "designServices": ["Grand Designs", "Grand Decor", "Grand Events"],
+        "photoVideoServices": [
+          "Grand Photography",
+          "Grand Films",
+          "Grand Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Silver Palace",
+        "capacity": 350,
+        "location": "Simakkal",
+        "contact": "+91 9876543414",
+        "cateringServices": [
+          "Silver Service Catering",
+          "Silver Savory Catering",
+          "Silver Spread Catering",
+          "Silver Sensations Catering",
+          "Silver Splendor Catering"
+        ],
+        "designServices": ["Silver Designs", "Silver Decor", "Silver Events"],
+        "photoVideoServices": [
+          "Silver Photography",
+          "Silver Films",
+          "Silver Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      },
+      {
+        "name": "Sunrise Gardens",
+        "capacity": 150,
+        "location": "Thavittu Santhai",
+        "contact": "+91 9876543415",
+        "cateringServices": [
+          "Sunrise Special Catering",
+          "Sunrise Supreme Catering",
+          "Sunrise Splendid Catering",
+          "Sunrise Savories Catering",
+          "Sunrise Savory Catering"
+        ],
+        "designServices": [
+          "Sunrise Designs",
+          "Sunrise Decor",
+          "Sunrise Events"
+        ],
+        "photoVideoServices": [
+          "Sunrise Photography",
+          "Sunrise Films",
+          "Sunrise Studios"
+        ],
+        "price1": 4000,
+        "price2": 9000,
+        "price3": 7000
+      }
+    ]
+  }
+}

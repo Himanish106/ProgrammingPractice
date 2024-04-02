@@ -21,11 +21,14 @@ html {
   --theme-color: #42d0e9;
   --text-color: #c6ebf1;
   --emphasis-text: #319bff;
-  --background-col:#222222f6;
+  --background-col: #222222f6;
 }
 .col {
   color: var(--emphasis-text);
 }
-/* body{
-  background-color: #1f1e1ef6;
-} */
+/* Remove the default number input spinner */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0; /* Optional: You can also remove any margin */
+}
