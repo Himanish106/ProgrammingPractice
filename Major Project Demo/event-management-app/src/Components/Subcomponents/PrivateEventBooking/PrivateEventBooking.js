@@ -154,7 +154,7 @@ const PrivateEventBooking = () => {
               Event Photography and Videography
             </li>
           </ul>
-          <a href="#" className="btn">
+          <a href="#parentForm" className="btn">
             check out
           </a>
         </div>
@@ -162,7 +162,7 @@ const PrivateEventBooking = () => {
           <img src={privateImg} alt="private Image" />
         </div>
       </div>
-      <div className="parent-private-form">
+      <div className="parent-private-form" id="parentForm">
         <div className="private-form">
           <div className="private-form-heading">
           <h3>
