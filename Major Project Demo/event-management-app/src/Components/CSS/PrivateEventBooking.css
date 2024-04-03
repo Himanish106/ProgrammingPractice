@@ -90,7 +90,13 @@
   color: var(--text-color);
   font-size: 2rem;
 }
-
+.event-describe-count{
+  position: absolute;
+  bottom: 20px;
+  right: 9px;
+  color: #cac8c8;
+  font-size: 14px;
+}
 @media (max-width: 1211px) {
   .parent-private-form .private-form .private-event-form .submit-btn {
     width: 23%;

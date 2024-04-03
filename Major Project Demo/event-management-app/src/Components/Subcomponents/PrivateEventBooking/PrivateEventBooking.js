@@ -18,9 +18,20 @@ const PrivateEventBooking = () => {
   const [totalPrice, setTotalPrice] = useState(
     selectedVenue ? selectedVenue.price1 : 0
   );
-  const [eventDescription, setEventDescription] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
+  const [wordCount, setWordCount] = useState(0);
+  const [inputMessage, setInputMessage] = useState("");
+  const handleMessageChange = (event) => {
+    const inputMessage = event.target.value;
+    const inputWordCount = inputMessage.trim().match(/\S+/g)?.length || 0;
+    if (inputWordCount <= 1000) {
+      setInputMessage(inputMessage);
+      setWordCount(inputWordCount);
+    } else {
+      alert("Word limit should not be greater than 1000");
+    }
+  };
   const handleStateChange = (event) => {
     setSelectedState(event.target.value);
     setSelectedCity("");
@@ -93,7 +104,7 @@ const PrivateEventBooking = () => {
       cateringFacility &&
       designAndPhotoFacility &&
       capacity &&
-      eventDescription &&
+      inputMessage &&
       selectedDate &&
       (cateringFacility === "no" || selectedCaterer) &&
       (designAndPhotoFacility === "no" ||
@@ -119,7 +130,7 @@ const PrivateEventBooking = () => {
     selectedCaterer,
     selectedDesignServices,
     selectedPhotoVideoServices,
-    eventDescription,
+    inputMessage,
     selectedDate,
     capacity,
   ]);
@@ -165,11 +176,10 @@ const PrivateEventBooking = () => {
       <div className="parent-private-form" id="parentForm">
         <div className="private-form">
           <div className="private-form-heading">
-          <h3>
-            Want to Book Your Own Event?
-            
-          </h3>
-          <h3><span className="col">Fill the Details Below</span></h3>
+            <h3>Want to Book Your Own Event?</h3>
+            <h3>
+              <span className="col">Fill the Details Below</span>
+            </h3>
           </div>
           <form className="private-event-form">
             <div className="event-select facilities">
@@ -270,16 +280,21 @@ const PrivateEventBooking = () => {
                 </div>
               </div>
             )}
-            <div className="event-description facilities">
+            <div
+              className="event-description facilities"
+              style={{ position: "relative" }}
+            >
               <label htmlFor="eventDescription">Event Description</label>
               <textarea
                 id="eventDescription"
                 name="eventDescription"
-                rows="4"
+                rows="8"
                 cols="50"
                 placeholder="Describe your event..."
-                onChange={(e) => setEventDescription(e.target.value)}
+                value={inputMessage}
+                onChange={handleMessageChange}
               ></textarea>
+              <span className="event-describe-count">{`${wordCount}/1000 words`}</span>
             </div>
             {selectedVenue && (
               <div className="date-input-container facilities">
