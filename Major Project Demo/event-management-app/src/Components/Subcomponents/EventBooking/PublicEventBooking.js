@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import eventTypesData from "../../../Global Files/privateevent.json";
+import eventTypesData from "../../../Global Files/publicevent.json";
 import venueData from "../../../Global Files/statesandlocations.json";
 import "../../CSS/PrivateEventBooking.css";
 import privateImg from "../../Images/PrivateEventLogo.jpg";
-const PrivateEventBooking = () => {
+const PublicEventBooking = () => {
   const eventTypes = eventTypesData.eventTypes;
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
@@ -15,6 +15,8 @@ const PrivateEventBooking = () => {
   const [selectedPhotoVideoServices, setSelectedPhotoVideoServices] =
     useState("");
   const [capacity, setCapacity] = useState("");
+  const [advertising, setAdvertising] = useState("");
+  const [onsiteManagement, setOnsiteManagement] = useState("");
   const [totalPrice, setTotalPrice] = useState(
     selectedVenue ? selectedVenue.price1 : 0
   );
@@ -65,6 +67,16 @@ const PrivateEventBooking = () => {
     calculatedTotalPrice();
     checkFormValidity();
   };
+  const handleAdvertisingChange = (event) => {
+    setAdvertising(event.target.value);
+    calculatedTotalPrice();
+    checkFormValidity();
+  };
+  const handleSiteManagementChange = (event) => {
+    setOnsiteManagement(event.target.value);
+    calculatedTotalPrice();
+    checkFormValidity();
+  };
   const handleCapacityChange = (event) => {
     const enteredCapacity = parseInt(event.target.value);
     if (enteredCapacity > selectedVenue.capacity) {
@@ -81,15 +93,15 @@ const PrivateEventBooking = () => {
       if (cateringFacility === "yes") {
         totalPrice += selectedVenue.price2;
       }
-
       if (designAndPhotoFacility === "yes") {
         totalPrice += selectedVenue.price3;
       }
-
-      if (cateringFacility === "yes" && designAndPhotoFacility === "yes") {
-        totalPrice += selectedVenue.price2 + selectedVenue.price3;
+      if (advertising === "yes") {
+        totalPrice += selectedVenue.price4;
       }
-
+      if (onsiteManagement === "yes") {
+        totalPrice += selectedVenue.price5;
+      }
       setTotalPrice(totalPrice);
     }
   };
@@ -103,7 +115,9 @@ const PrivateEventBooking = () => {
       selectedVenue &&
       cateringFacility &&
       designAndPhotoFacility &&
+      advertising &&
       capacity &&
+      onsiteManagement &&
       inputMessage &&
       selectedDate &&
       (cateringFacility === "no" || selectedCaterer) &&
@@ -118,7 +132,13 @@ const PrivateEventBooking = () => {
   useEffect(() => {
     calculatedTotalPrice();
     checkFormValidity();
-  }, [selectedVenue, cateringFacility, designAndPhotoFacility]);
+  }, [
+    selectedVenue,
+    cateringFacility,
+    designAndPhotoFacility,
+    advertising,
+    onsiteManagement,
+  ]);
   useEffect(() => {
     checkFormValidity();
   }, [
@@ -126,7 +146,9 @@ const PrivateEventBooking = () => {
     selectedCity,
     selectedVenue,
     cateringFacility,
+    advertising,
     designAndPhotoFacility,
+    onsiteManagement,
     selectedCaterer,
     selectedDesignServices,
     selectedPhotoVideoServices,
@@ -138,31 +160,31 @@ const PrivateEventBooking = () => {
   return (
     <section className="pricing event-booking-private">
       <div className="events">
-        <div className="private-event manage-private-event">
-          <h3 className="title">Private Events</h3>
+        <div className="public-event manage-private-event">
+          <h3 className="title">Public Events</h3>
           <h3 className="amount">
-            Starting from <span className="col">$500</span>
+            Starting from <span className="col">$800</span>
           </h3>
           <ul>
             <li>
               <i className="fas fa-check" />
-              Planning and Coordination
+              Event Promotion and Marketing
             </li>
             <li>
               <i className="fas fa-check" />
-              Personalized Décor and Design
+              Ticketing and Registration Management
             </li>
             <li>
               <i className="fas fa-check" />
-              Catering and Culinary Services
+              Venue Selection and Logistics
             </li>
             <li>
               <i className="fas fa-check" />
-              Entertainment and Activities
+              On-Site Event Management
             </li>
             <li>
               <i className="fas fa-check" />
-              Event Photography and Videography
+              Vendor Coordination and Support
             </li>
           </ul>
           <a href="#parentForm" className="btn">
@@ -419,6 +441,62 @@ const PrivateEventBooking = () => {
               </div>
             )}
             {selectedVenue && (
+              <div className="design-media">
+                <div className="facilities">
+                  <label>
+                    Do you want to promote your event through advertising?
+                  </label>
+                  <label className="option-select">
+                    <input
+                      type="radio"
+                      name="advertisingFacility"
+                      value="yes"
+                      checked={advertising === "yes"}
+                      onChange={handleAdvertisingChange}
+                    />
+                    Yes
+                  </label>
+                  <label className="option-select">
+                    <input
+                      type="radio"
+                      name="advertisingFacility"
+                      value="no"
+                      checked={advertising === "no"}
+                      onChange={handleAdvertisingChange}
+                    />
+                    No
+                  </label>
+                </div>
+              </div>
+            )}
+            {selectedVenue && (
+              <div className="design-media">
+                <div className="facilities">
+                  <label>Do you want onsite event management facility?</label>
+                  <label className="option-select">
+                    <input
+                      type="radio"
+                      name="onsiteFacility"
+                      value="yes"
+                      checked={onsiteManagement === "yes"}
+                      onChange={handleSiteManagementChange}
+                    />
+                    Yes
+                  </label>
+                  <label className="option-select">
+                    <input
+                      type="radio"
+                      name="onsiteFacility"
+                      value="no"
+                      checked={onsiteManagement === "no"}
+                      onChange={handleSiteManagementChange}
+                    />
+                    No
+                  </label>
+                </div>
+              </div>
+            )}
+            {selectedVenue && (
               <div className="capacity facilities">
                 <label>Capacity(People)</label>
                 <input
@@ -449,4 +527,4 @@ const PrivateEventBooking = () => {
     </section>
   );
 };
-export default PrivateEventBooking;
+export default PublicEventBooking;

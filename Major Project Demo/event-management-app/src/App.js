@@ -8,7 +8,9 @@ import ContactUs from "./Components/Subcomponents/ContactUs/ContactUs";
 import FeedbackPage from "./Components/Subcomponents/Feedback/FeedbackPage";
 import Register from "./Components/Subcomponents/Register/Register";
 import EventSelection from "./Components/Subcomponents/EventSelection/EventSelection";
-import PrivateEventBooking from "./Components/Subcomponents/PrivateEventBooking/PrivateEventBooking";
+import PrivateEventBooking from "./Components/Subcomponents/EventBooking/PrivateEventBooking";
+import PublicEventBooking from "./Components/Subcomponents/EventBooking/PublicEventBooking";
+
 function App() {
   return (
     <>
@@ -22,6 +24,7 @@ function App() {
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/eventselection" element={<EventSelection />} />
           <Route exact path="/privateeventbooking" element={<PrivateEventBooking />} />
+          <Route exact path="/publiceventbooking" element={<PublicEventBooking />} />
         </Routes>
         <Footer />
       </Router>

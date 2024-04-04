@@ -25,7 +25,9 @@
         ],
         "price1": 3000,
         "price2": 8000,
-        "price3": 5000
+        "price3": 5000,
+        "price4": 5000,
+        "price5": 3000
       },
       {
         "name": "Royal Garden",
@@ -51,7 +53,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Grand Plaza",
@@ -77,7 +81,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Marriott Hotel",
@@ -99,7 +105,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Star Banquet",
@@ -121,7 +129,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       }
     ],
     "Howrah": [
@@ -145,7 +155,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Golden Palace",
@@ -167,7 +179,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Crystal Ballroom",
@@ -189,7 +203,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Moonlight Gardens",
@@ -215,7 +231,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Sunrise Banquet",
@@ -241,7 +259,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       }
     ],
     "Durgapur": [
@@ -265,7 +285,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Diamond Hall",
@@ -291,7 +313,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Silver Star Hall",
@@ -317,7 +341,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Grand Palace",
@@ -339,7 +365,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Royal Residency",
@@ -361,7 +389,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       }
     ]
   },
@@ -391,7 +421,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Golden Hall",
@@ -417,7 +449,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Royal Palace",
@@ -439,7 +473,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Emerald Gardens",
@@ -461,7 +497,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Sapphire Banquet",
@@ -487,7 +525,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       }
     ],
     "Pune": [
@@ -511,7 +551,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Pearl Palace",
@@ -533,7 +575,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Diamond Ballroom",
@@ -555,7 +599,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Jade Gardens",
@@ -577,7 +623,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Sunrise Hall",
@@ -599,7 +647,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       }
     ],
     "Nagpur": [
@@ -623,7 +673,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Crystal Banquet",
@@ -645,7 +697,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Emerald Hall",
@@ -667,7 +721,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Grand Plaza",
@@ -689,7 +745,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Silver Sands",
@@ -711,7 +769,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       }
     ]
   },
@@ -741,7 +801,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Grand Banquet",
@@ -763,7 +825,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Regal Hall",
@@ -785,7 +849,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Golden Plaza",
@@ -807,7 +873,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Crystal Gardens",
@@ -829,7 +897,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       }
     ],
     "Noida": [
@@ -857,7 +927,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Emerald Gardens",
@@ -879,7 +951,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Sapphire Palace",
@@ -905,7 +979,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Pearl Banquet",
@@ -927,7 +1003,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Sunrise Hall",
@@ -949,7 +1027,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       }
     ],
     "Gurgaon": [
@@ -973,7 +1053,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Silver Banquet",
@@ -999,7 +1081,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Crystal Hall",
@@ -1025,7 +1109,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Emerald Palace",
@@ -1047,7 +1133,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Diamond Gardens",
@@ -1073,7 +1161,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       }
     ]
   },
@@ -1099,7 +1189,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Grand Banquet",
@@ -1121,7 +1213,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Regal Hall",
@@ -1143,7 +1237,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Golden Plaza",
@@ -1165,7 +1261,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Crystal Gardens",
@@ -1191,7 +1289,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       }
     ],
     "Warangal": [
@@ -1219,7 +1319,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Emerald Gardens",
@@ -1245,7 +1347,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Sapphire Palace",
@@ -1271,7 +1375,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Pearl Banquet",
@@ -1293,7 +1399,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Sunrise Hall",
@@ -1319,7 +1427,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       }
     ],
     "Karimnagar": [
@@ -1343,7 +1453,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Silver Banquet",
@@ -1365,7 +1477,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Crystal Hall",
@@ -1391,7 +1505,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Emerald Palace",
@@ -1417,7 +1533,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Diamond Gardens",
@@ -1443,7 +1561,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       }
     ]
   },
@@ -1469,7 +1589,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Grand Banquet",
@@ -1491,7 +1613,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Regal Hall",
@@ -1513,7 +1637,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Golden Plaza",
@@ -1535,7 +1661,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Crystal Gardens",
@@ -1561,7 +1689,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       }
     ],
     "Mysuru": [
@@ -1589,7 +1719,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Emerald Gardens",
@@ -1615,7 +1747,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Sapphire Palace",
@@ -1641,7 +1775,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Pearl Banquet",
@@ -1663,7 +1799,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Sunrise Hall",
@@ -1689,7 +1827,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       }
     ],
     "Hubballi-Dharwad": [
@@ -1713,7 +1853,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Silver Banquet",
@@ -1735,7 +1877,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Crystal Hall",
@@ -1761,7 +1905,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Emerald Palace",
@@ -1787,7 +1933,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Diamond Gardens",
@@ -1813,7 +1961,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       }
     ]
   },
@@ -1839,7 +1989,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Surya Gardens",
@@ -1861,7 +2013,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Royal Palace",
@@ -1883,7 +2037,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Golden Hall",
@@ -1905,7 +2061,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Platinum Banquet",
@@ -1931,7 +2089,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       }
     ],
     "Coimbatore": [
@@ -1959,7 +2119,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Grand Banquet",
@@ -1981,7 +2143,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Crystal Gardens",
@@ -2007,7 +2171,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Diamond Hall",
@@ -2033,7 +2199,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Regal Plaza",
@@ -2055,7 +2223,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       }
     ],
     "Madurai": [
@@ -2079,7 +2249,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Crystal Hall",
@@ -2105,7 +2277,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Grand Royale",
@@ -2127,7 +2301,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Silver Palace",
@@ -2149,7 +2325,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       },
       {
         "name": "Sunrise Gardens",
@@ -2175,7 +2353,9 @@
         ],
         "price1": 4000,
         "price2": 9000,
-        "price3": 7000
+        "price3": 7000,
+        "price4": 6000,
+        "price5": 3000
       }
     ]
   }
