@@ -1,0 +1,186 @@
+.event-advertising {
+  background-color: var(--background-col);
+  padding-top: 7rem;
+}
+.event-advertising .event-advertising-heading {
+  font-size: 4.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--text-color);
+  margin-top: 4rem;
+}
+.event-advertising .event-advertising-box {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  margin-left: 20px;
+}
+.event-advertising .event-advertising-box .items {
+  width: calc(33.33% - 20px);
+  height: 540px;
+  /* background-color: #ccc; */
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  margin-right: 18px;
+}
+.event-advertising .event-advertising-box .items .item-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  width: 100%;
+  height: 100%;
+}
+.event-advertising .event-advertising-box .items .item-details img {
+  width: 100%;
+  height: 100%;
+}
+.event-advertising .event-advertising-box .items .item-details .event-details {
+  padding-left: 3.8rem;
+}
+.event-advertising .event-advertising-box .items .item-details .event-head {
+  font-size: 3rem;
+  font-weight: 500;
+  color: var(--theme-color);
+  text-align: center;
+}
+.event-advertising
+  .event-advertising-box
+  .items
+  .item-details
+  .event-location-head {
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--text-color);
+}
+.event-advertising .event-advertising-box .items .item-details .event-date {
+  font-size: 1.9rem;
+  color: var(--text-color);
+}
+.event-advertising .event-advertising-box .items .item-details .event-rate {
+  font-size: 1.7rem;
+  color: var(--text-color);
+}
+.loc-color {
+  color: rgb(124, 244, 255);
+}
+.selected-state {
+    width: 98%;
+    margin: 0 auto;
+}
+.selected-state select {
+    width: 100%;
+    padding: 1rem;
+    background-color: rgb(27, 27, 27);
+    color: var(--text-color);
+    font-size: 2.2rem;
+  }
+  .pdt-content {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+    opacity: 0;
+    z-index: 2;
+    transition: all 0.4s ease-in-out;
+}
+.pdt-content h3 {
+    width: 370px;
+    font-size: 2.2rem;
+}
+.overlay-box{
+    position: relative;
+}
+.overlay-box:hover .pdt-content {
+    opacity: 1;
+    left: 50%;
+}
+.overlay-box::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.623);
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.2s ease-in;
+}
+
+.overlay-box:hover::after {
+    opacity: 1;
+}
+@media (max-width: 920px) {
+  .event-advertising .event-advertising-box .items .item-details img {
+    height: 100%;
+  }
+  .event-advertising
+    .event-advertising-box
+    .items
+    .item-details
+    .event-location-head {
+    font-size: 1.9rem;
+  }
+}
+@media (max-width: 768px) {
+  .event-advertising .event-advertising-box .items {
+    width: calc(50% - 20px);
+  }
+}
+@media (max-width: 582px) {
+  .event-advertising .event-advertising-box .items .item-details .event-head {
+    font-size: 2.6rem;
+  }
+  .event-advertising
+    .event-advertising-box
+    .items
+    .item-details
+    .event-details {
+    padding-left: 0;
+  }
+  .event-advertising .event-advertising-box .items .item-details img {
+    height: 100%;
+  }
+  .event-advertising .event-advertising-box .items {
+    margin-top: -9rem;
+  }
+  .event-advertising .event-advertising-heading{
+    margin-top: 8rem;
+  }
+}
+@media (max-width: 480px) {
+  .event-advertising .event-advertising-box .items {
+    width: 100%;
+  }
+  .event-advertising .event-advertising-box .items .item-details img {
+    height: 100%;
+  }
+  .event-advertising
+    .event-advertising-box
+    .items
+    .item-details
+    .event-details {
+    padding-left: 0;
+    text-align: center;
+  }
+  .event-advertising .event-advertising-box .items .item-details .event-head {
+    font-size: 3rem;
+  }
+  .event-advertising
+    .event-advertising-box
+    .items
+    .item-details
+    .event-location-head {
+    font-size: 2rem;
+  }
+  .event-advertising .event-advertising-heading {
+    margin-top: 7rem;
+  }
+  .event-advertising .event-advertising-box .items {
+    margin-top: -4rem;
+  }
+}

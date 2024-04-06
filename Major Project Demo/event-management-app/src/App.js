@@ -10,6 +10,7 @@ import Register from "./Components/Subcomponents/Register/Register";
 import EventSelection from "./Components/Subcomponents/EventSelection/EventSelection";
 import PrivateEventBooking from "./Components/Subcomponents/EventBooking/PrivateEventBooking";
 import PublicEventBooking from "./Components/Subcomponents/EventBooking/PublicEventBooking";
+import EventShowcase from "./Components/Subcomponents/EventShowcase/EventShowcase";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/eventselection" element={<EventSelection />} />
           <Route exact path="/privateeventbooking" element={<PrivateEventBooking />} />
           <Route exact path="/publiceventbooking" element={<PublicEventBooking />} />
+          <Route exact path="/eventshowcase" element={<EventShowcase />} />
         </Routes>
         <Footer />
       </Router>
