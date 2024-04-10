@@ -110,7 +110,9 @@
     z-index: 1;
     transition: opacity 0.2s ease-in;
 }
-
+.book-btn{
+  text-align: center !important;
+}
 .overlay-box:hover::after {
     opacity: 1;
 }

@@ -3,6 +3,7 @@ import "../../CSS/EventShowcase.css";
 import eventimg from "../../Images/gallery1.jpg";
 import venueData from "../../../Global Files/statesandlocations.json";
 import "../../CSS/PrivateEventBooking.css";
+import { Link } from "react-router-dom";
 const EventShowcase = () => {
     const [selectedState, setSelectedState] = useState("");
     const handleStateChange = (event) => {
@@ -38,7 +39,7 @@ const EventShowcase = () => {
             <img src={eventimg} alt="event-image" />
             <div className="pdt-content">
                 <h3>Book Your Events Now</h3>
-                <button className="btn">Book</button>
+                <Link to="/ticketbooking" className="btn">Book</Link>
             </div>
             </div>
             <h1 className="event-head">Summer Concert Series</h1>
@@ -58,7 +59,7 @@ const EventShowcase = () => {
                 <span className="loc-color">&#8377; 900/person</span>
               </p>
             </div>
-            <button className="btn">Book Tickets Now</button>
+            <Link to="/ticketbooking" className="btn book-btn">Book Tickets Now</Link>
           </div>
         </div>
         <div className="items">
