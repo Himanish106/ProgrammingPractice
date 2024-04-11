@@ -119,3 +119,9 @@
     font-size: 2rem;
   }
 }
+
+@media(max-width:450px){
+    .login-wrapper {
+        min-height: 80vh;
+      }
+}
