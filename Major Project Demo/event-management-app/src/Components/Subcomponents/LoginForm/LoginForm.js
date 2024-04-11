@@ -51,7 +51,7 @@ const Loginform = () => {
             ></i>
           </div>
           <div className="remember-forgot">
-            <Link to="/forgetotp">Forgot password ?</Link>
+            <Link to="/forgetemail">Forgot password ?</Link>
           </div>
           <div className="login-submit-btn">
             <button
