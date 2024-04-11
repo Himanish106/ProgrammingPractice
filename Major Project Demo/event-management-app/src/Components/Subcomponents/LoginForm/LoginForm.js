@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../../CSS/Login.css";
 import { Link } from "react-router-dom";
 const Loginform = () => {
-  const [userName, setUserName] = useState(""); //state variable
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
   const togglePasswordVisibility = () => {
@@ -32,10 +32,10 @@ const Loginform = () => {
               type="text"
               value={userName}
               onChange={handleUserName}
-              placeholder="Username"
+              placeholder="Enter Your Email"
               required
             />
-            <i className="fa-solid fa-user"></i>
+            <i class="fa-solid fa-envelope"></i>
           </div>
           <div className="login-input-box">
             <input
@@ -51,7 +51,7 @@ const Loginform = () => {
             ></i>
           </div>
           <div className="remember-forgot">
-            <a href="#">Forgot password ?</a>
+            <Link to="/forgetotp">Forgot password ?</Link>
           </div>
           <div className="login-submit-btn">
             <button
