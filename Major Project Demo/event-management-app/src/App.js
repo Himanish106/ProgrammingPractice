@@ -12,6 +12,7 @@ import PrivateEventBooking from "./Components/Subcomponents/EventBooking/Private
 import PublicEventBooking from "./Components/Subcomponents/EventBooking/PublicEventBooking";
 import EventShowcase from "./Components/Subcomponents/EventShowcase/EventShowcase";
 import Ticketing from "./Components/Subcomponents/Ticketing/Ticketing";
+import Loginform from "./Components/Subcomponents/LoginForm/LoginForm";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route exact path="/publiceventbooking" element={<PublicEventBooking />} />
           <Route exact path="/eventshowcase" element={<EventShowcase />} />
           <Route exact path="/ticketbooking" element={<Ticketing />} />
+          <Route exact path="/login" element={<Loginform />} />
         </Routes>
         <Footer />
       </Router>
