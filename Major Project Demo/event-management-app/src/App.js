@@ -13,6 +13,7 @@ import PublicEventBooking from "./Components/Subcomponents/EventBooking/PublicEv
 import EventShowcase from "./Components/Subcomponents/EventShowcase/EventShowcase";
 import Ticketing from "./Components/Subcomponents/Ticketing/Ticketing";
 import Loginform from "./Components/Subcomponents/LoginForm/LoginForm";
+import ForgetPasswordOTP from "./Components/Subcomponents/ForgotPassword/ForgotPasswordOTP";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route exact path="/eventshowcase" element={<EventShowcase />} />
           <Route exact path="/ticketbooking" element={<Ticketing />} />
           <Route exact path="/login" element={<Loginform />} />
+          <Route exact path="/forgetotp" element={<ForgetPasswordOTP />} />
         </Routes>
         <Footer />
       </Router>
