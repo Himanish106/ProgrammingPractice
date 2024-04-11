@@ -39,7 +39,7 @@ const Navbar = () => {
           <Link to="/contact">Contact</Link>
         </span>
         <span>
-          <Link to="/register">Register</Link>
+          <Link to="/login">Login</Link>
         </span>
         <span className="event-btn-margin">
           <Link to="/eventselection" className="event-btn">Plan an Event</Link>
