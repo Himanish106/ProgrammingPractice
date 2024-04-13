@@ -15,6 +15,7 @@ import Ticketing from "./Components/Subcomponents/Ticketing/Ticketing";
 import Loginform from "./Components/Subcomponents/LoginForm/LoginForm";
 import ForgetPasswordOTP from "./Components/Subcomponents/ForgotPassword/ForgotPasswordOTP";
 import ForgetPasswordEmail from "./Components/Subcomponents/ForgotPassword/ForgotPasswordEmail";
+import ResetPassword from "./Components/Subcomponents/ForgotPassword/ResetPassword";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route exact path="/login" element={<Loginform />} />
           <Route exact path="/forgetemail" element={<ForgetPasswordEmail />} />
           <Route exact path="/forgetotp" element={<ForgetPasswordOTP />} />
+          <Route exact path="/resetpassword" element={<ResetPassword />} />
         </Routes>
         <Footer />
       </Router>
