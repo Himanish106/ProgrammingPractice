@@ -9,7 +9,7 @@ const ForgetPasswordOTP = () => {
     <form className="frgt-email-form">
     <input className="frgt-email-field" type="number" name="otp" id="otp" placeholder="Enter Your OTP" required />
       <div className="button-container">
-        <button className="btn" onclick="window.history.back()">
+        <button className="btn" onClick={() => window.history.back()}>
           Back
         </button>
         <button className="btn" type="submit">
