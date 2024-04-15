@@ -9,10 +9,6 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsActive(!isActive);
   };
-  // const navigate = useNavigate();
-  // const handlePath = (path) => {
-  //   navigate(path);
-  // };
   return (
     <header className="header">
       <Link to="/" className="logo">
@@ -25,8 +21,7 @@ const Navbar = () => {
         <span>
           <Link to="/services">Services</Link>
         </span>
-        <span
-        >
+        <span>
           <Link to="/about">About</Link>
         </span>
         <span>
@@ -42,7 +37,9 @@ const Navbar = () => {
           <Link to="/login">Login</Link>
         </span>
         <span className="event-btn-margin">
-          <Link to="/eventselection" className="event-btn">Plan an Event</Link>
+          <Link to="/eventselection" className="event-btn">
+            Plan an Event
+          </Link>
         </span>
       </nav>
       <div
