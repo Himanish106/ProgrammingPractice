@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { CirclesWithBar } from "react-loader-spinner";
 import "../../CSS/ContactUs.css";
 import "../../../Global Files/global.css";
 const ContactUs = () => {
   const [inputMessage, setInputMessage] = useState("");
   const [wordCount, setWordCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 800);
 
+    return () => clearTimeout(timer);
+  }, []);
   const handleMessageChange = (event) => {
     const inputMessage = event.target.value;
     const inputWordCount = inputMessage.trim().match(/\S+/g)?.length || 0;
@@ -16,6 +24,34 @@ const ContactUs = () => {
     }
   };
   return (
+    <>
+     {isLoading ? (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "#292827",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 9999,
+          }}
+        >
+          <CirclesWithBar
+            height="250"
+            width="200"
+            color=" var(--emphasis-text)"
+            outerCircleColor="var( --theme-color)"
+            innerCircleColor="var(--emphasis-text)"
+            barColor="var(--text-color)"
+            ariaLabel="circles-with-bar-loading"
+            visible={true}
+          />
+        </div>
+      ) : (
     <section className="my-contact" id="myContact">
       <h1 className="heading">
         <span className="col">contact</span> us
@@ -94,6 +130,8 @@ const ContactUs = () => {
         </div>
       </div>
     </section>
+    )}
+    </>
   );
 };
 export default ContactUs;

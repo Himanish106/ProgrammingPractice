@@ -1,3 +1,4 @@
+import React, { useState,useEffect } from "react";
 import "./App.css";
 import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
@@ -16,12 +17,25 @@ import Loginform from "./Components/Subcomponents/LoginForm/LoginForm";
 import ForgetPasswordOTP from "./Components/Subcomponents/ForgotPassword/ForgotPasswordOTP";
 import ForgetPasswordEmail from "./Components/Subcomponents/ForgotPassword/ForgotPasswordEmail";
 import ResetPassword from "./Components/Subcomponents/ForgotPassword/ResetPassword";
+import Loader from "./Components/Subcomponents/Loader/Loader";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <>
       <Router>
         <Navbar />
+        {isLoading ? (
+          <Loader isLoading={isLoading} />
+        ) : (
         <Routes>
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/about" element={<AboutUs />} />
@@ -29,8 +43,16 @@ function App() {
           <Route exact path="/feedback" element={<FeedbackPage />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/eventselection" element={<EventSelection />} />
-          <Route exact path="/privateeventbooking" element={<PrivateEventBooking />} />
-          <Route exact path="/publiceventbooking" element={<PublicEventBooking />} />
+          <Route
+            exact
+            path="/privateeventbooking"
+            element={<PrivateEventBooking />}
+          />
+          <Route
+            exact
+            path="/publiceventbooking"
+            element={<PublicEventBooking />}
+          />
           <Route exact path="/eventshowcase" element={<EventShowcase />} />
           <Route exact path="/ticketbooking" element={<Ticketing />} />
           <Route exact path="/login" element={<Loginform />} />
@@ -38,6 +60,7 @@ function App() {
           <Route exact path="/forgetotp" element={<ForgetPasswordOTP />} />
           <Route exact path="/resetpassword" element={<ResetPassword />} />
         </Routes>
+        )}
         <Footer />
       </Router>
     </>
