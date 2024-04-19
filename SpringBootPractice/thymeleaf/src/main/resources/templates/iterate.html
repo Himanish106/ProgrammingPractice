@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Looping Examples</title>
+  </head>
+  <body>
+    <h1>Going to traverse elements in a collection..</h1>
+    <h1 th:text="${names}"></h1>
+    <ul>
+      <li th:each=" n : ${names}">
+        <span th:text="${n}"></span>
+      </li>
+    </ul>
+    <p th:each="n : ${names}"><span th:text="${n} + ' '"></span></p>
+
+    <!-- This each function has a variable called status that can be used in case of collections:
+    
+        1) index: Current iteration index. Starting from 0
+        2) count: The number of lements processed so far.
+        3) size: The total no. of elements in the list
+        4) even/odd: Checks if the current iteration index is even or odd
+        5) first: Checks if the current iteration is the first one
+        6) last: Checks if the current iteration is the last one.
+    -->
+    <!-- DEMO of status -->
+    <h1 style="text-align: center; text-transform: uppercase">
+      Demo of Status
+    </h1>
+    <ul>
+      <li th:each="n,status : ${names}">
+        <span th:text="${status.index} + ' '+${n}"></span>
+      </li>
+    </ul>
+    <ul>
+      <li th:each="n,status : ${names}">
+        <span
+          th:style="${status.even} ? 'font-weight:bold' : '' "
+          th:text="${status.index}+' '+${n}"
+        ></span>
+      </li>
+    </ul>
+  </body>
+</html>

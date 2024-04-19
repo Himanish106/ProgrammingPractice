@@ -1,6 +1,7 @@
 package com.thymeleaf.thymeleaf.Controllers;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,5 +17,32 @@ public class ControllerThymeleaf {
         model.addAttribute("name", "Himanish"); // Key and value pair
         model.addAttribute("currentDate", new Date().toString());
         return "about";
+    }
+
+    // handler for looping
+    @GetMapping("/example-loop")
+    public String iterateHandler(Model m) {
+        // Create a collection
+        List<String> names = List.of("Ankit", "Laxmi", "Rahul", "Karan", "John");
+        m.addAttribute("names", names);
+        return "iterate";
+    }
+
+    // handler for conditional statements
+    @GetMapping("/condition")
+    public String conditionHandler(Model m) {
+        System.out.println("Conditional handler executed...");
+        m.addAttribute("isActive", true);
+        m.addAttribute("gender", "F");
+
+        List<Integer> list = List.of(23, 45);
+        m.addAttribute("numberList", list);
+        return "condition";
+    }
+
+    // handler for including fragments
+    @GetMapping("/service")
+    public String serviceHandler(Model m) {
+        return "service";
     }
 }
