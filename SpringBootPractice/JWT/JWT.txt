@@ -1,0 +1,19 @@
+JWT stands for JSON Web Token. In JWT, the data is not stored in a session or cookies. Instead, everything is encapsulated within a token, which consists of three parts: a header, a payload, and a signature. The payload contains claims, which are statements about an entity (usually the user) and additional data. The token is typically stored on the client side, in the browser's local storage, session storage, or cookies, and is passed from the client to the server and vice versa for verification and authentication. The server verifies the token's signature to ensure its authenticity and process the request accordingly. JWTs are commonly used for secure authentication and authorization in web applications without the need for the server to maintain a session or store user information.
+
+When the data passes from client end to server end then the data in the token is generally in JSON format but is encrypted using some algorithms.
+
+Using this JWT and details that are stored in the token we can decide which content of our pages the user can access.
+
+STEPS:
+
+1) Check the JWT is well formed or not
+
+2) Check Signature
+
+3) Validate the standard claims
+
+4) Checks the client permission
+
+Basically in JWT 2 things place one is authentication and another is authorization
+
+For the 1st time when user sends request to the server then the token gets created if authentication is successful. When the token is returned back to client then the user sends the token with additional request to access other content. But the user will only be allowed to access that content if the user is authorized to access it. If not then content not found response is returned.
