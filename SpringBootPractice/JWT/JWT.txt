@@ -16,4 +16,15 @@ STEPS:
 
 Basically in JWT 2 things place one is authentication and another is authorization
 
-For the 1st time when user sends request to the server then the token gets created if authentication is successful. When the token is returned back to client then the user sends the token with additional request to access other content. But the user will only be allowed to access that content if the user is authorized to access it. If not then content not found response is returned.
+For the first time when a user sends a request to the server:
+
+1) The server checks the user's credentials.
+2) If the authentication is successful, a JSON Web Token (JWT) is created.
+3) This token is then sent back to the client.
+
+For subsequent requests:
+
+1) The client includes the JWT in the request header.
+2) The server verifies the token to ensure it's valid and has not expired.
+3) If the token is valid and the user is authorized to access the requested content, the server processes the request and returns the requested content.
+4) If the token is invalid, expired, or the user is not authorized, the server returns a "Unauthorized" or "Not Found" response.
