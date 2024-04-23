@@ -9,10 +9,10 @@
 		<version>3.2.5</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.demo.datauploader</groupId>
-	<artifactId>demodataupload</artifactId>
+	<groupId>com.jwt.database</groupId>
+	<artifactId>jwtdatabase</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demodataupload</name>
+	<name>jwtdatabase</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
@@ -71,7 +71,7 @@
 			<scope>annotationProcessor</scope>
 		</dependency>
 
-		<dependency>
+	<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
@@ -80,9 +80,7 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>

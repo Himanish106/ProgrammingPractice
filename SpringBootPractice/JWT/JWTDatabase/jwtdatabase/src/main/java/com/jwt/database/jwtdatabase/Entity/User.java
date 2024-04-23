@@ -1,4 +1,4 @@
-package com.demo.datauploader.demodataupload.UserEntity;
+package com.jwt.database.jwtdatabase.Entity;
 
 import java.util.Collection;
 
@@ -15,15 +15,17 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 @Entity
 public class User implements UserDetails {
     @Id
-    private String id;
+    private String userId;
+    private String userName;
     private String email;
     private String password;
+    private String about;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -54,4 +56,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }
