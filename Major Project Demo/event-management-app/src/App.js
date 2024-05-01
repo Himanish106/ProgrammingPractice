@@ -13,11 +13,11 @@ import PrivateEventBooking from "./Components/Subcomponents/EventBooking/Private
 import PublicEventBooking from "./Components/Subcomponents/EventBooking/PublicEventBooking";
 import EventShowcase from "./Components/Subcomponents/EventShowcase/EventShowcase";
 import Ticketing from "./Components/Subcomponents/Ticketing/Ticketing";
-import Loginform from "./Components/Subcomponents/LoginForm/LoginForm";
 import ForgetPasswordOTP from "./Components/Subcomponents/ForgotPassword/ForgotPasswordOTP";
 import ForgetPasswordEmail from "./Components/Subcomponents/ForgotPassword/ForgotPasswordEmail";
 import ResetPassword from "./Components/Subcomponents/ForgotPassword/ResetPassword";
 import Loader from "./Components/Subcomponents/Loader/Loader";
+import ProtectedLogin from "./Components/Subcomponents/LoginForm/ProtectedLogin";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -55,7 +55,7 @@ function App() {
           />
           <Route exact path="/eventshowcase" element={<EventShowcase />} />
           <Route exact path="/ticketbooking" element={<Ticketing />} />
-          <Route exact path="/login" element={<Loginform />} />
+          <Route exact path="/login" element={<ProtectedLogin/>} />
           <Route exact path="/forgetemail" element={<ForgetPasswordEmail />} />
           <Route exact path="/forgetotp" element={<ForgetPasswordOTP />} />
           <Route exact path="/resetpassword" element={<ResetPassword />} />
