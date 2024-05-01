@@ -29,10 +29,10 @@
 .header .navbar a:hover {
   color: var(--theme-color);
 }
-.event-btn-margin{
+.event-btn-margin {
   margin-left: 2rem;
 }
-.event-btn-margin .event-btn{
+.event-btn-margin .event-btn {
   display: inline-block;
   border-radius: 0.5rem;
   background: #4269e9;
@@ -51,8 +51,32 @@
   cursor: pointer;
   display: none;
 }
-@media(max-width: 1000px){
-  .header .navbar a{
+/* Custom styles for SweetAlert */
+.logout-alert-popup {
+  width: 100% !important; /* Adjust the width as needed */
+  top: -270px !important;
+  transform: translate(-50%, 0) !important; /* Center horizontally */
+  left: 50% !important;
+  padding-bottom: 5rem !important;
+  padding-top: 18rem !important;
+  margin-left: 0 !important;
+  background-color: black;
+  color: var(--theme-color);
+}
+.custom-swal2-title {
+  font-size: 3rem !important;
+}
+/* Custom styles for SweetAlert buttons */
+.swal2-confirm{
+  margin-right: 2rem !important;
+}
+.swal2-confirm,
+.swal2-cancel {
+  min-width: 120px !important; /* Adjust the width as needed */
+  font-size: 1.4rem !important;
+}
+@media (max-width: 1000px) {
+  .header .navbar a {
     font-size: 1.5rem;
   }
 }
@@ -60,7 +84,7 @@
   #menu-bar {
     display: initial;
   }
-  .header{
+  .header {
     padding: 3rem;
   }
   .header .logo {

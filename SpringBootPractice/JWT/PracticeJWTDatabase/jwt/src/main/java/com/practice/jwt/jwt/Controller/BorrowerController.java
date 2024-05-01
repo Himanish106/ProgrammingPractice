@@ -1,5 +1,8 @@
 package com.practice.jwt.jwt.Controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,9 +43,20 @@ public class BorrowerController {
     @Autowired
     private LibraryRepository libraryRepository;
 
+
     @PostMapping("/register")
-    public ResponseEntity<User> saveBorrower(@RequestBody User borrower) {
-        return ResponseEntity.ok(libraryService.saveBorrower(borrower));
+    public ResponseEntity<Map<String, String>> saveBorrower(@RequestBody User borrower) {
+        // return ResponseEntity.ok(libraryService.saveBorrower(borrower));
+        libraryService.saveBorrower(borrower);
+        UserDetails userDetails = borrower;
+        String token = jwtHelper.generateToken(userDetails);
+                // Prepare response body with email and token
+        Map<String, String> responseBody = new HashMap<>();
+        responseBody.put("email", borrower.getEmail());
+        responseBody.put("token", token);
+
+        // Return ResponseEntity with response body and HttpStatus.OK
+        return ResponseEntity.ok(responseBody);
     }
 
     @PostMapping("/login")

@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import "../../CSS/Register.css";
+import axios from "axios";
+import Swal from "sweetalert2";
 const Register = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [firstName, setFirstName] = useState("");
@@ -70,6 +72,56 @@ const Register = () => {
       setPasswordVisible(false);
     }
   };
+  const handleRegistration = async (event) => {
+    event.preventDefault();
+  
+    try {
+      const response = await axios.post("http://localhost:8080/globalcontroller/register", {
+        firstName,
+        lastName,
+        email,
+        password,
+      });
+  
+      const token = response.data.token;
+      localStorage.setItem("token", token);
+      window.location.reload();
+      window.location.href = "/";
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        Swal.fire({
+          icon: 'error',
+          title: 'You are already registered !! \nPlease Login',
+          text: 'Please Login or try with a different email',
+          width: '500px',
+          heightAuto:false,
+          customClass: {
+            container: 'custom-swal-container',
+            popup: 'custom-swal-popup',
+            title: 'custom-swal-title',
+            text: 'custom-swal-content',
+            footer: 'custom-swal-footer',
+            confirmButton: 'custom-swal-confirm-button'
+          }
+        })      
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Registration Failed !! \nPlease try again',
+          width: '500px',
+          heightAuto:false,
+          customClass: {
+            container: 'custom-swal-container',
+            popup: 'custom-swal-popup',
+            title: 'custom-swal-title',
+            text: 'custom-swal-content',
+            footer: 'custom-swal-footer',
+            confirmButton: 'custom-swal-confirm-button'
+          }
+        })      
+      }
+    }
+  };
   const isRegisterDisabled =
     firstName === "" ||
     lastName === "" ||
@@ -93,7 +145,7 @@ const Register = () => {
           <div className="login-logo">
             Event <span className="col">Vista</span>
           </div>
-          <form className="register-form">
+          <form className="register-form" onSubmit={handleRegistration}>
             <div className="field">
               <label htmlFor="First Name">First Name</label>
               <input

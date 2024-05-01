@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { CirclesWithBar } from "react-loader-spinner";
 import "../../CSS/Login.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
 const Loginform = () => {
-  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -26,9 +28,70 @@ const Loginform = () => {
   };
   const handleUserName = (event) => {
     const newUserName = event.target.value;
-    setUserName(newUserName);
+    setEmail(newUserName);
   };
-  const isLoginDisabled = userName === "" || password === "";
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/globalcontroller/login",
+        {
+          email,
+          password,
+        }
+      );
+  
+      if (response.data && response.data.jwt) {
+        const token = response.data.jwt;
+        localStorage.setItem("token", token);
+        window.location.reload();
+        window.location.href = "/";
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Credentials Invalid !! \nPlease try again',
+          text: 'Please check the entered details and try again',
+          width: '500px',
+          heightAuto:false,
+          customClass: {
+            container: 'custom-swal-container',
+            popup: 'custom-swal-popup',
+            title: 'custom-swal-title',
+            text: 'custom-swal-content',
+            footer: 'custom-swal-footer',
+            confirmButton: 'custom-swal-confirm-button'
+          }
+        })        
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Login failed. Please try again.',
+        });
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Credentials Invalid !! \nPlease try again',
+          text: 'Please check the entered details and try again',
+          width: '500px',
+          heightAuto:false,
+          customClass: {
+            container: 'custom-swal-container',
+            popup: 'custom-swal-popup',
+            title: 'custom-swal-title',
+            content: 'custom-swal-content',
+            footer: 'custom-swal-footer',
+            confirmButton: 'custom-swal-confirm-button'
+          }
+        })   
+      }
+    }
+  };
+
+  const isLoginDisabled = email === "" || password === "";
 
   return (
     <>
@@ -61,18 +124,18 @@ const Loginform = () => {
       ) : (
         <section className="login-wrapper">
           <div className="form-login-wrapper">
-            <form action="">
+            <form onSubmit={handleLogin}>
               <h1>Welcome Back User!</h1>
 
               <div className="login-input-box">
                 <input
                   type="text"
-                  value={userName}
+                  value={email}
                   onChange={handleUserName}
                   placeholder="Enter Your Email"
                   required
                 />
-                <i class="fa-solid fa-envelope"></i>
+                <i className="fa-solid fa-envelope"></i>
               </div>
               <div className="login-input-box">
                 <input

@@ -27,6 +27,7 @@
 .login-wrapper .form-login-wrapper .login-input-box input {
   width: 100%;
   background: rgb(11, 2, 33);
+  text-transform: none;
 }
 .login-wrapper .form-login-wrapper .login-input-box i {
   position: absolute;
@@ -98,7 +99,19 @@
 .login-wrapper .form-login-wrapper .register_link p a:hover {
     color: var(--theme-color);
 }
-
+.custom-swal-title {
+  font-size: 2rem;
+}
+.custom-swal-confirm-button{
+  width: 150px !important; 
+}
+.custom-swal-popup{
+  background-color: black;
+  color: var(--text-color);
+}
+.custom-swal-content{
+  font-size: 5rem !important;
+}
 @media (max-width: 500px) {
   .login-wrapper .form-login-wrapper {
     width: 400px;

@@ -1,14 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./CSS/Navbar.css";
 import "../Global Files/global.css";
 import { Link } from "react-router-dom";
-
+import { jwtDecode } from "jwt-decode";
+import Swal from "sweetalert2";
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
+  const [firstName, setFirstName] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      const userFirstName = decodedToken.firstName; // Assuming the first name is stored in the token as "firstName"
+      setFirstName(userFirstName);
+    }
+  }, []);
 
   const toggleMenu = () => {
     setIsActive(!isActive);
   };
+
+  const handleLogout = () => {
+    Swal.fire({
+      icon: 'warning',
+      title: "Are you sure you want to logout?",
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+      width: '500px',
+          heightAuto:false,
+          customClass: {
+            popup: 'logout-alert-popup',
+            title: 'custom-swal2-title',
+            confirmButton: 'swal2-confirm',
+            cancelButton: '.swal2-cancel'
+          }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("token");
+        window.location.reload();
+        window.location.href = "/login";
+      }
+    });
+  };
+
   return (
     <header className="header">
       <Link to="/" className="logo">
@@ -17,9 +53,6 @@ const Navbar = () => {
       <nav className={`navbar ${isActive ? "active" : ""}`}>
         <span>
           <Link to="/">Home</Link>
-        </span>
-        <span>
-          <Link to="/services">Services</Link>
         </span>
         <span>
           <Link to="/about">About</Link>
@@ -33,9 +66,18 @@ const Navbar = () => {
         <span>
           <Link to="/contact">Contact</Link>
         </span>
-        <span>
-          <Link to="/login">Login</Link>
-        </span>
+        {localStorage.getItem("token") ? (
+          <>
+           <span>
+           <Link to="/profile">Welcome {firstName}</Link>   {/* Display first name */}
+            </span>
+            <span onClick={handleLogout}><Link to="#">Logout</Link></span>
+          </>
+        ) : (
+          <span>
+            <Link to="/login">Login</Link>
+          </span>
+        )}
         <span className="event-btn-margin">
           <Link to="/eventselection" className="event-btn">
             Plan an Event
