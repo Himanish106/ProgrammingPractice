@@ -1,7 +1,9 @@
 package com.event.backend.Controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -46,13 +49,14 @@ public class Controller {
         try {
             // Attempt to save the user
             User savedUser = eventService.saveUser(user);
-            
+
             // If user is successfully saved, generate token and return response
             UserDetails userDetails = savedUser;
             String token = jwtHelper.generateToken(userDetails);
             Map<String, String> responseBody = new HashMap<>();
             responseBody.put("email", savedUser.getEmail());
             responseBody.put("firstName", savedUser.getFirstName());
+            responseBody.put("role",savedUser.getRole().name());
             responseBody.put("token", token);
             return ResponseEntity.ok(responseBody);
         } catch (RuntimeException e) {
@@ -73,8 +77,13 @@ public class Controller {
         if (firstName != null) {
             claims.put("firstName", firstName);
         }
+        String role = userDetails.getAuthorities().stream()
+            .findFirst() // Assuming there's only one authority per user
+            .map(GrantedAuthority::getAuthority)
+            .orElse(null);
+        claims.put("role", role);
         String token = this.jwtHelper.generateTokenWithClaims(claims);
-        AuthenticationResponse response = new AuthenticationResponse(token, userDetails.getUsername(),firstName);
+        AuthenticationResponse response = new AuthenticationResponse(token, userDetails.getUsername(), firstName);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

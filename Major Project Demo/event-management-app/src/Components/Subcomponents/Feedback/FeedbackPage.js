@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { CirclesWithBar } from "react-loader-spinner";
 import "../../CSS/Feedback.css";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { jwtDecode } from "jwt-decode";
 const FeedbackPage = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [feedback, setFeedback] = useState("");
+  const token = localStorage.getItem("token");
+  const decodedToken = jwtDecode(token);
+  const loggedInEmail = decodedToken.email;
+  console.log(loggedInEmail);
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -10,6 +20,69 @@ const FeedbackPage = () => {
 
     return () => clearTimeout(timer);
   }, []);
+  const handleEmail = (event) => {
+    const newEmail = event.target.value;
+    setEmail(newEmail);
+  };
+  const handleName = (event) => {
+    const newName = event.target.value;
+    setName(newName);
+  };
+  const handleFeedback = (event) => {
+    const newFeedback = event.target.value;
+    setFeedback(newFeedback);
+  };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (email !== loggedInEmail) {
+      // Show alert using SweetAlert
+      Swal.fire({
+        icon: "error",
+        title: "Invalid Email!",
+        text: "Please enter your registered email.",
+        confirmButtonText: "OK",
+        width: "500px",
+        customClass: {
+          container: "custom-swal-container",
+          popup: "custom-swal-popup",
+          title: "custom-swal-title",
+          text: "custom-swal-content",
+          footer: "custom-swal-footer",
+          confirmButton: "custom-swal-confirm-button",
+        },
+      });
+      return;
+    }
+    try {
+      // Make POST request to your backend API
+      const response = await axios.post("http://localhost:8080/user/feedback", {
+        name,
+        email,
+        feedback,
+      });
+      console.log(response.data); // Log response from the backend
+      // Clear form fields after successful submission
+      setName("");
+      setEmail("");
+      setFeedback("");
+      Swal.fire({
+        icon: "success",
+        title: "Feedback submitted successfully!",
+        confirmButtonText: "OK",
+        width: "500px",
+        customClass: {
+          container: "custom-swal-container",
+          popup: "custom-swal-popup",
+          title: "custom-swal-title",
+          text: "custom-swal-content",
+          footer: "custom-swal-footer",
+          confirmButton: "custom-swal-confirm-button",
+        },
+      });
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
   return (
     <>
       {isLoading ? (
@@ -46,13 +119,15 @@ const FeedbackPage = () => {
               a Better Experience
             </h1>
             <div className="feedback-container">
-              <form action="" className="feedback-form">
+              <form action="" className="feedback-form" onSubmit={handleSubmit}>
                 <h1>Give Your Feedback</h1>
                 <div className="id">
                   <input
                     type="text"
                     name=""
                     id=""
+                    value={name}
+                    onChange={handleName}
                     placeholder="Enter Your Name"
                     className="feedback-username"
                   />
@@ -63,6 +138,8 @@ const FeedbackPage = () => {
                     type="email"
                     name=""
                     id=""
+                    value={email}
+                    onChange={handleEmail}
                     placeholder="Enter Your Email"
                     className="feedback-email"
                   />
@@ -73,6 +150,8 @@ const FeedbackPage = () => {
                   id=""
                   cols="15"
                   rows="5"
+                  value={feedback}
+                  onChange={handleFeedback}
                   placeholder="Enter Your Opinions Here"
                   className="feedback-textarea"
                 ></textarea>

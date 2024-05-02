@@ -98,7 +98,9 @@ form input:focus + i {
   color: #00fff0;
   transition: all 0.3s ease-in-out;
 }
-
+input{
+  text-transform: none;
+}
 @media (max-width: 850px) {
   .feedback-main-container .feedback-container {
     width: 700px;
