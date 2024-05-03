@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.event.backend.Entity.ContactUs;
 import com.event.backend.Entity.Feedback;
 import com.event.backend.Service.EventService;
 
@@ -24,5 +25,10 @@ public class UserController {
     public ResponseEntity<Feedback> createFeedback(@RequestBody Feedback feedback) {
         Feedback savedFeedback = eventService.saveFeedback(feedback);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedFeedback);
+    }
+    @PostMapping("/contact")
+    public ResponseEntity<ContactUs> createContact(@RequestBody ContactUs contact) {
+        ContactUs savedContact = eventService.saveContactUs(contact);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedContact);
     }
 }

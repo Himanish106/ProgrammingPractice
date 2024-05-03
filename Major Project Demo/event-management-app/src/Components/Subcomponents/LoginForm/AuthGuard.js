@@ -14,7 +14,7 @@ const AuthGuard = () => {
       Swal.fire({
         icon: "warning",
         title: "You're already logged in!",
-        text: "You need to logout to access the login page.",
+        text: "You need to logout to access this page.",
         confirmButtonText: "OK",
         width: '500px',
         customClass: {

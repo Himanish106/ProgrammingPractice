@@ -5,7 +5,6 @@ import Navbar from "./Components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./Components/Subcomponents/HomePage/HomePage";
 import AboutUs from "./Components/Subcomponents/AboutUS/AboutUs";
-import ContactUs from "./Components/Subcomponents/ContactUs/ContactUs";
 import Register from "./Components/Subcomponents/Register/Register";
 import EventSelection from "./Components/Subcomponents/EventSelection/EventSelection";
 import PrivateEventBooking from "./Components/Subcomponents/EventBooking/PrivateEventBooking";
@@ -18,6 +17,8 @@ import ResetPassword from "./Components/Subcomponents/ForgotPassword/ResetPasswo
 import Loader from "./Components/Subcomponents/Loader/Loader";
 import ProtectedLogin from "./Components/Subcomponents/LoginForm/ProtectedLogin";
 import ProtectedFeedback from "./Components/Subcomponents/Feedback/ProtectedFeedback";
+import ProtectedContactUs from "./Components/Subcomponents/ContactUs/ProtectedContactUs";
+import ProtectedRegister from "./Components/Subcomponents/Register/ProtectedRegister";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -39,9 +40,9 @@ function App() {
         <Routes>
           <Route exact path="/" element={<HomePage />} />
           <Route exact path="/about" element={<AboutUs />} />
-          <Route exact path="/contact" element={<ContactUs />} />
+          <Route exact path="/contact" element={<ProtectedContactUs />} />
           <Route exact path="/feedback" element={<ProtectedFeedback />} />
-          <Route exact path="/register" element={<Register />} />
+          <Route exact path="/register" element={<ProtectedRegister />} />
           <Route exact path="/eventselection" element={<EventSelection />} />
           <Route
             exact
