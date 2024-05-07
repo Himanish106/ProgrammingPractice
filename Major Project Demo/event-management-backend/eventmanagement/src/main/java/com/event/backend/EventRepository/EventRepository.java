@@ -17,4 +17,8 @@ public interface EventRepository extends JpaRepository<User, String> {
     User findByRole(Role role);
    @Query("SELECT u.firstName FROM User u WHERE u.email = :email")
     String findFirstNameByEmail(@Param("email") String email);
+   
+    @Query("SELECT u FROM User u WHERE u.otp = :otp")
+    Optional<User> findByOtp(@Param("otp") String otp);
+
 }

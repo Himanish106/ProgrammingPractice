@@ -14,6 +14,8 @@ import com.event.backend.Entity.User;
 import com.event.backend.EventRepository.ContactUsRepo;
 import com.event.backend.EventRepository.EventRepository;
 import com.event.backend.EventRepository.FeedbackRepository;
+import com.event.backend.Service.OTP.EmailSenderService;
+import com.event.backend.Service.OTP.OTPService;
 
 @Service
 public class EventService {
@@ -28,6 +30,12 @@ public class EventService {
 
     @Autowired
     private ContactUsRepo contactUsRepo;
+
+    @Autowired
+    private OTPService otpService;
+
+    @Autowired
+    private EmailSenderService emailSenderService;
 
     public User saveUser(User user) {
         Optional<User> existingUserOptional = eventRepository.findByEmail(user.getEmail());
@@ -52,5 +60,50 @@ public class EventService {
     public ContactUs saveContactUs(ContactUs contactUs) {
         contactUs.setId(UUID.randomUUID().toString());
         return contactUsRepo.save(contactUs);
+    }
+
+    public boolean sendOTPByEmail(String email){
+        Optional<User> optionalUser=eventRepository.findByEmail(email);
+        if(optionalUser.isPresent()){
+            User user = optionalUser.get();
+
+            String otp=otpService.generateOTP();
+
+            emailSenderService.sendOTP(user.getEmail(), otp);
+
+            user.setOtp(otp);
+
+            eventRepository.save(user);
+
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+
+    public boolean verifyAndDeleteOTP(String enteredOTP) {
+        Optional<User> optionalUser = eventRepository.findByOtp(enteredOTP);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            user.setOtp(null);
+            eventRepository.save(user);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean resetPassword(String email, String newPassword) {
+        Optional<User> optionalUser = eventRepository.findByEmail(email);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            // Update user's password
+            user.setPassword(passwordEncoder.encode(newPassword));
+            eventRepository.save(user);
+            return true; // Password changed successfully
+        } else {
+            return false; // User not found for the given email
+        }
     }
 }

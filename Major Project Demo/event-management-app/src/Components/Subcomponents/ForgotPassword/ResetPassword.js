@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../CSS/ForgetPassword.css";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const ResetPassword = () => {
   const [newPassword, setNewPassword] = useState("");
@@ -18,6 +20,7 @@ const ResetPassword = () => {
     useState(false);
   const [passwordsMatch, setPasswordsMatch] = useState(true);
   const [passwordStrength, setPasswordStrength] = useState("");
+  const [token, setToken] = useState("");
   const toggleNewPasswordVisibility = () => {
     setNewPasswordVisibility(!newPasswordVisibility);
   };
@@ -56,6 +59,55 @@ const ResetPassword = () => {
   const validatePasswords = (password, confirmPassword) => {
     setPasswordsMatch(password === confirmPassword);
   };
+  useEffect(() => {
+    const storedToken = localStorage.getItem("emailToken");
+    setToken(storedToken);
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:8080/globalcontroller/resetpassword", {
+        token: token,
+        password: newPassword,
+      });
+      Swal.fire({
+        icon: "success",
+        title: "Password Reset Successful!",
+        text: "Your password has been successfully reset.",
+        confirmButtonText: "OK",
+        width: "500px",
+        customClass: {
+          container: "custom-swal-container",
+          popup: "custom-swal-popup",
+          title: "custom-swal-title",
+          text: "custom-swal-content",
+          footer: "custom-swal-footer",
+          confirmButton: "custom-swal-confirm-button",
+      }}).then(() => {
+        // Remove token from local storage
+        localStorage.removeItem("emailToken");
+        window.location.reload();
+        window.location.href = "/login";
+      });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Something went wrong!",
+        confirmButtonText: "OK",
+        width: "500px",
+        customClass: {
+          container: "custom-swal-container",
+          popup: "custom-swal-popup",
+          title: "custom-swal-title",
+          text: "custom-swal-content",
+          footer: "custom-swal-footer",
+          confirmButton: "custom-swal-confirm-button",
+        },
+      });
+    }
+  };
+
   const isPasswordDisabled =
     newPassword === "" ||
     newConfirmPassword === "" ||
@@ -73,7 +125,7 @@ const ResetPassword = () => {
         <p className="font" style={{ paddingBottom: "1rem" }}>
           Enter your new password below.
         </p>
-        <form className="frgt-email-form">
+        <form className="frgt-email-form" onSubmit={handleSubmit}>
           <div className="password-input-container">
             <input
               type={newPasswordVisibility ? "text" : "password"}

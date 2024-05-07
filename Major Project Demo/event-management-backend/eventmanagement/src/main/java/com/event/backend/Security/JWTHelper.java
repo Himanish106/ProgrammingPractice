@@ -61,6 +61,9 @@ public class JWTHelper {
         return doGenerateToken(claims, userDetails.getUsername());
     }
 
+    public String getEmailFromToken(String token) {
+        return getClaimFromToken(token, claims -> claims.get("email", String.class));
+    }
     public String generateTokenWithClaims(Map<String, Object> claims) {
         return doGenerateTokenWithNoSubject(claims);
     }
