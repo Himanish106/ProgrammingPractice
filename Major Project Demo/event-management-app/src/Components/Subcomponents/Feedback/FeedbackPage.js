@@ -9,15 +9,17 @@ const FeedbackPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [feedback, setFeedback] = useState("");
-  const token = localStorage.getItem("token");
-  const decodedToken = jwtDecode(token);
-  const loggedInEmail = decodedToken.email;
-  console.log(loggedInEmail);
+  const [loggedInEmail,setLoggedInEmail] = useState("")
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 800);
-
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      setLoggedInEmail(decodedToken.email)
+    }
+  
     return () => clearTimeout(timer);
   }, []);
   const handleEmail = (event) => {
@@ -35,7 +37,6 @@ const FeedbackPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (email !== loggedInEmail) {
-      // Show alert using SweetAlert
       Swal.fire({
         icon: "error",
         title: "Invalid Email!",
@@ -54,14 +55,12 @@ const FeedbackPage = () => {
       return;
     }
     try {
-      // Make POST request to your backend API
       const response = await axios.post("http://localhost:8080/user/feedback", {
         name,
         email,
         feedback,
       });
-      console.log(response.data); // Log response from the backend
-      // Clear form fields after successful submission
+      console.log(response.data); 
       setName("");
       setEmail("");
       setFeedback("");

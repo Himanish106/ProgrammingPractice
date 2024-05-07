@@ -14,15 +14,16 @@ const ContactUs = () => {
   const [contact, setContact] = useState("")
   const [wordCount, setWordCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  const token = localStorage.getItem("token");
-  const decodedToken = jwtDecode(token);
-  const loggedInEmail = decodedToken.email;
-
+  const [loggedInEmail,setLoggedInEmail] = useState("")
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 800);
-
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      setLoggedInEmail(decodedToken.email)
+    }
     return () => clearTimeout(timer);
   }, []);
 
@@ -60,7 +61,6 @@ const ContactUs = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (email !== loggedInEmail) {
-      // Show alert using SweetAlert
       Swal.fire({
         icon: "error",
         title: "Invalid Email!",
@@ -79,7 +79,6 @@ const ContactUs = () => {
       return;
     }
     try {
-      // Make POST request to your backend API
       const response = await axios.post("http://localhost:8080/user/contact", {
         firstName,
         lastName,
@@ -87,8 +86,7 @@ const ContactUs = () => {
         contact,
         message: inputMessage,
       });
-      console.log(response.data); // Log response from the backend
-      // Clear form fields after successful submission
+      console.log(response.data);
       setFirstName("");
       setLastName("");
       setEmail("");
@@ -96,7 +94,8 @@ const ContactUs = () => {
       setInputMessage("");
       Swal.fire({
         icon: "success",
-        title: "Feedback submitted successfully!",
+        title: "Your request has been submitted successfully.!",
+        text:"We will contact you soon.",
         confirmButtonText: "OK",
         width: "500px",
         customClass: {

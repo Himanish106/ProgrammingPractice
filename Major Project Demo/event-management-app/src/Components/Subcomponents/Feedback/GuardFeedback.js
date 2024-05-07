@@ -9,17 +9,12 @@ const GuardFeedback = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      // Decode the JWT token to extract role
       const decodedToken = jwtDecode(token);
       const role = decodedToken.role;
-      // Check if the role is "user"
       if (role === "USER") {
-        // Role is user, allow access
         return;
       } else {
-        // Role is not user, deny access
         navigate("/");
-        // Show alert using SweetAlert
         Swal.fire({
           icon: "error",
           title: "Access Denied!",
@@ -37,9 +32,7 @@ const GuardFeedback = () => {
         });
       }
     } else {
-      // Token not found, redirect to login page
       navigate("/login");
-      // Show alert using SweetAlert
       Swal.fire({
         icon: "error",
         title: "Access Denied!",
@@ -58,7 +51,7 @@ const GuardFeedback = () => {
     }
   }, [navigate]);
 
-  return null; // Render nothing
+  return null; 
 };
 
 export default GuardFeedback;
