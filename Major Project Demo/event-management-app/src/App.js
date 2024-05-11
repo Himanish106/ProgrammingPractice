@@ -5,9 +5,7 @@ import Navbar from "./Components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./Components/Subcomponents/HomePage/HomePage";
 import AboutUs from "./Components/Subcomponents/AboutUS/AboutUs";
-import Register from "./Components/Subcomponents/Register/Register";
 import EventSelection from "./Components/Subcomponents/EventSelection/EventSelection";
-import PrivateEventBooking from "./Components/Subcomponents/EventBooking/PrivateEventBooking";
 import PublicEventBooking from "./Components/Subcomponents/EventBooking/PublicEventBooking";
 import EventShowcase from "./Components/Subcomponents/EventShowcase/EventShowcase";
 import Ticketing from "./Components/Subcomponents/Ticketing/Ticketing";
@@ -19,6 +17,7 @@ import ProtectedLogin from "./Components/Subcomponents/LoginForm/ProtectedLogin"
 import ProtectedFeedback from "./Components/Subcomponents/Feedback/ProtectedFeedback";
 import ProtectedContactUs from "./Components/Subcomponents/ContactUs/ProtectedContactUs";
 import ProtectedRegister from "./Components/Subcomponents/Register/ProtectedRegister";
+import ProtectedPrivateBooking from "./Components/Subcomponents/EventBooking/ProtectPrivateBooking";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -47,7 +46,7 @@ function App() {
           <Route
             exact
             path="/privateeventbooking"
-            element={<PrivateEventBooking />}
+            element={<ProtectedPrivateBooking />}
           />
           <Route
             exact
