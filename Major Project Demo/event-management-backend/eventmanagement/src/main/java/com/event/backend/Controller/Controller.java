@@ -58,6 +58,8 @@ public class Controller {
 
     @Autowired
     private PrivateEventService privateEventService;
+  
+
 
     @PostMapping("/register")
     public ResponseEntity<Map<String, String>> saveUser(@RequestBody User user) {

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { CirclesWithBar } from "react-loader-spinner";
-import eventTypesData from "../../../Global Files/publicevent.json";
-import venueData from "../../../Global Files/statesandlocations.json";
 import "../../CSS/PrivateEventBooking.css";
 import privateImg from "../../Images/PrivateEventLogo.jpg";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
+import Swal from "sweetalert2";
 const PublicEventBooking = () => {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
@@ -13,26 +14,52 @@ const PublicEventBooking = () => {
 
     return () => clearTimeout(timer);
   }, []);
-  const eventTypes = eventTypesData.eventTypes;
+  const [eventTypes, setEventTypes] = useState([]);
   const [selectedState, setSelectedState] = useState("");
+  const [states, setStates] = useState([]);
   const [selectedCity, setSelectedCity] = useState("");
-  const [selectedVenue, setSelectedVenue] = useState(null);
+  const [cities, setCities] = useState([]);
+  const [selectedVenue, setSelectedVenue] = useState("");
+  const [venues, setVenues] = useState([]);
   const [cateringFacility, setCateringFacility] = useState("");
   const [selectedCaterer, setSelectedCaterer] = useState("");
+  const [caterers, setCaterers] = useState([]);
   const [designAndPhotoFacility, setdesignAndPhotoFacility] = useState("");
+  const [designs, setDesigns] = useState([]);
   const [selectedDesignServices, setSelectedDesignServices] = useState("");
+  const [medias, setMedias] = useState([]);
   const [selectedPhotoVideoServices, setSelectedPhotoVideoServices] =
     useState("");
   const [capacity, setCapacity] = useState("");
   const [advertising, setAdvertising] = useState("");
   const [onsiteManagement, setOnsiteManagement] = useState("");
-  const [totalPrice, setTotalPrice] = useState(
-    selectedVenue ? selectedVenue.price1 : 0
-  );
   const [selectedDate, setSelectedDate] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
   const [wordCount, setWordCount] = useState(0);
   const [inputMessage, setInputMessage] = useState("");
+  const [venuePrice, setVenuePrice] = useState(0);
+  const [catererPrice, setCatererPrice] = useState(0);
+  const [mediaPrice, setMediaPrice] = useState(0);
+  const [designPrice, setDesignPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [userEmail, setUserEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      const email = decodedToken.email; 
+      setUserEmail(email);
+    }
+  }, []);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      const userFirstName = decodedToken.firstName; 
+      setFirstName(userFirstName);
+    }
+  }, []);
   const handleMessageChange = (event) => {
     const inputMessage = event.target.value;
     const inputWordCount = inputMessage.trim().match(/\S+/g)?.length || 0;
@@ -43,6 +70,119 @@ const PublicEventBooking = () => {
       alert("Word limit should not be greater than 1000");
     }
   };
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/privateeventcontroller/publiceventdisplay")
+      .then((response) => {
+        setEventTypes(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching event types:", error);
+      });
+  }, []);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/privateeventcontroller/states")
+      .then((response) => {
+        setStates(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching states:", error);
+      });
+  }, []);
+  useEffect(() => {
+    if (selectedState) {
+      axios
+        .get(
+          `http://localhost:8080/privateeventcontroller/cities/${encodeURIComponent(
+            selectedState
+          )}`
+        )
+        .then((response) => {
+          setCities(response.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching cities:", error);
+        });
+    }
+  }, [selectedState]);
+  useEffect(() => {
+    if (selectedCity) {
+      axios
+        .get(
+          `http://localhost:8080/privateeventcontroller/venues/${encodeURIComponent(
+            selectedCity
+          )}`
+        )
+        .then((response) => {
+          setVenues(response.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching cities:", error);
+        });
+    }
+  }, [selectedCity]);
+
+  useEffect(() => {
+    if (selectedVenue) {
+      const fetchCaterers = async () => {
+        try {
+          const caterersResponse = await axios.get(
+            `http://localhost:8080/privateeventcontroller/caterers/${encodeURIComponent(
+              selectedVenue.venueName
+            )}`
+          );
+          setCaterers(caterersResponse.data);
+          console.log(caterersResponse.data);
+        } catch (error) {
+          console.error("Error fetching caterers:", error);
+        }
+      };
+
+      fetchCaterers();
+    }
+  }, [selectedVenue]);
+  useEffect(() => {
+    if (selectedVenue) {
+      const fetchDesigns = async () => {
+        try {
+          const designsResponse = await axios.get(
+            `http://localhost:8080/privateeventcontroller/designs/${encodeURIComponent(
+              selectedVenue.venueName
+            )}`
+          );
+          setDesigns(designsResponse.data);
+        } catch (error) {
+          console.error("Error fetching caterers:", error);
+        }
+      };
+
+      fetchDesigns();
+    }
+  }, [selectedVenue]);
+  useEffect(() => {
+    if (selectedVenue) {
+      const fetchMedias = async () => {
+        try {
+          const mediasResponse = await axios.get(
+            `http://localhost:8080/privateeventcontroller/medias/${encodeURIComponent(
+              selectedVenue.venueName
+            )}`
+          );
+          setMedias(mediasResponse.data);
+        } catch (error) {
+          console.error("Error fetching caterers:", error);
+        }
+      };
+
+      fetchMedias();
+    }
+  }, [selectedVenue]);
+  useEffect(() => {
+    if (selectedVenue) {
+      setVenuePrice(selectedVenue.price);
+    }
+  }, [selectedVenue]);
   const handleStateChange = (event) => {
     setSelectedState(event.target.value);
     setSelectedCity("");
@@ -54,36 +194,64 @@ const PublicEventBooking = () => {
     setSelectedVenue(null);
   };
 
-  const handleVenueChange = (event) => {
-    const venueIndex = event.target.value;
-    const venues = venueData[selectedState][selectedCity];
-    setSelectedVenue(venues[venueIndex]);
-    calculatedTotalPrice();
+   const handleVenueChange = (event) => {
+    const selectedVenueName = event.target.value;
+    const foundVenue = venues.find(
+      (venue) => venue.venueName === selectedVenueName
+    );
+    setSelectedVenue(foundVenue);
     setCateringFacility("");
     setdesignAndPhotoFacility("");
     checkFormValidity();
   };
+  const selectedCatererChange = (event) => {
+    const catererName = event.target.value;
+    const selectedCaterer = caterers.find(
+      (caterer) => caterer.serviceName === catererName
+    );
+    setSelectedCaterer(selectedCaterer);
+    setCatererPrice(selectedCaterer.price); // Set the caterer price
+  };
   const handleCateringChange = (event) => {
-    setCateringFacility(event.target.value);
+    const cateringValue = event.target.value;
+    setCateringFacility(cateringValue);
     setSelectedCaterer("");
-    calculatedTotalPrice();
     checkFormValidity();
   };
   const handleDesignandPhotoServiceChange = (event) => {
     setdesignAndPhotoFacility(event.target.value);
     setSelectedDesignServices("");
     setSelectedPhotoVideoServices("");
-    calculatedTotalPrice();
     checkFormValidity();
+  };
+  const selectedDesignChange = (event) => {
+    const designerName = event.target.value;
+    const selectedDesign = designs.find(
+      (design) => design.serviceProviderName === designerName
+    );
+    console.log(selectedDesign);
+    setSelectedDesignServices(selectedDesign);
+    console.log(selectedDesign.price);
+    setDesignPrice(selectedDesign.price);
+  };
+  const selectedMediaChange = (event) => {
+    const mediaName = event.target.value;
+    const selectedMedia = medias.find(
+      (media) => media.serviceProviderName === mediaName
+    );
+    console.log(selectedMedia);
+    setSelectedPhotoVideoServices(selectedMedia);
+    console.log(selectedMedia.price);
+    setMediaPrice(selectedMedia.price);
   };
   const handleAdvertisingChange = (event) => {
     setAdvertising(event.target.value);
-    calculatedTotalPrice();
+
     checkFormValidity();
   };
   const handleSiteManagementChange = (event) => {
     setOnsiteManagement(event.target.value);
-    calculatedTotalPrice();
+
     checkFormValidity();
   };
   const handleCapacityChange = (event) => {
@@ -93,26 +261,8 @@ const PublicEventBooking = () => {
       return;
     }
     setCapacity(enteredCapacity);
-    calculatedTotalPrice();
+
     checkFormValidity();
-  };
-  const calculatedTotalPrice = () => {
-    if (selectedVenue) {
-      let totalPrice = selectedVenue.price1;
-      if (cateringFacility === "yes") {
-        totalPrice += selectedVenue.price2;
-      }
-      if (designAndPhotoFacility === "yes") {
-        totalPrice += selectedVenue.price3;
-      }
-      if (advertising === "yes") {
-        totalPrice += selectedVenue.price4;
-      }
-      if (onsiteManagement === "yes") {
-        totalPrice += selectedVenue.price5;
-      }
-      setTotalPrice(totalPrice);
-    }
   };
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
@@ -138,8 +288,80 @@ const PublicEventBooking = () => {
       setIsFormValid(false);
     }
   };
+  const handlePayment = async (event) => {
+    event.preventDefault();
+    try {
+      const options = {
+        key: "rzp_test_ks17mztWozd2AM",
+        amount: totalPrice * 100,
+        currency: "INR",
+        name: "Event Vista",
+        description: "Private Event Booking",
+        prefill: {
+          name: firstName,
+          email: userEmail,
+          contact: "9073889463",
+        },
+        theme: {
+          color: "#3399cc",
+        },
+        handler: function (response) {
+          submitForm();
+          Swal.fire({
+            icon: "success",
+            title: "Payment successfull!",
+            confirmButtonText: "OK",
+            width: "500px",
+            customClass: {
+              container: "custom-swal-container",
+              popup: "custom-swal-popup",
+              title: "custom-swal-title",
+              text: "custom-swal-content",
+              footer: "custom-swal-footer",
+              confirmButton: "custom-swal-confirm-button",
+            },
+          });
+          console.log("Payment successful:", response);
+        },
+      };
+      var pay = new window.Razorpay(options);
+      pay.open();
+    } catch (error) {
+      console.error("Error processing payment:", error);
+    }
+  };
+  const submitForm = async () => {
+    const formData = {
+      email: userEmail,
+      eventType: document.getElementById("eventType").value,
+      state: selectedState,
+      city: selectedCity,
+      venueName: selectedVenue ? selectedVenue.venueName : null,
+      eventDescription: inputMessage,
+      eventDate: selectedDate,
+      cateringFacility,
+      caterer: selectedCaterer ? selectedCaterer.serviceName : null,
+      designAndMediaFacility:designAndPhotoFacility,
+      advertisingFacility:advertising,
+      onsiteManagementFacility:onsiteManagement,
+      designService: selectedDesignServices ? selectedDesignServices.serviceProviderName : null,
+      mediaService: selectedPhotoVideoServices ? selectedPhotoVideoServices.serviceProviderName : null,
+      capacity,
+      totalPrice
+    };
+    try {
+      const response = await axios.post("http://localhost:8080/privateeventcontroller/bookpublicorder", formData);
+      console.log("Form submitted successfully:", response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   useEffect(() => {
-    calculatedTotalPrice();
+    const totalPrice = venuePrice + catererPrice + designPrice + mediaPrice;
+    setTotalPrice(totalPrice);
+  }, [venuePrice, catererPrice, designPrice, mediaPrice]);
+  useEffect(() => {
+
     checkFormValidity();
   }, [
     selectedVenue,
@@ -240,14 +462,17 @@ const PublicEventBooking = () => {
                   <span className="col">Fill the Details Below</span>
                 </h3>
               </div>
-              <form className="private-event-form">
+              <form className="private-event-form" onSubmit={handlePayment}>
                 <div className="event-select facilities">
                   <label htmlFor="eventType">Select Event Type:</label>
-                  <select id="eventType" name="eventType">
+                  <select id="eventType" name="eventType" >
                     <option value="">Select Event Type</option>
                     {eventTypes.map((eventType) => (
-                      <option key={eventType} value={eventType}>
-                        {eventType}
+                      <option
+                        key={eventType.eventType}
+                        value={eventType.eventType}
+                      >
+                        {eventType.eventType}
                       </option>
                     ))}
                   </select>
@@ -260,9 +485,9 @@ const PublicEventBooking = () => {
                     onChange={handleStateChange}
                   >
                     <option value="">Select State</option>
-                    {Object.keys(venueData).map((state) => (
-                      <option key={state} value={state}>
-                        {state}
+                    {states.map((state) => (
+                      <option key={state.stateName} value={state.stateName}>
+                        {state.stateName}
                       </option>
                     ))}
                   </select>
@@ -276,28 +501,28 @@ const PublicEventBooking = () => {
                       onChange={handleCityChange}
                     >
                       <option value="">Select City</option>
-                      {Object.keys(venueData[selectedState] || {}).map(
-                        (city) => (
-                          <option key={city} value={city}>
-                            {city}
-                          </option>
-                        )
-                      )}
+                      {cities.map((city) => (
+                        <option key={city.cityName} value={city.cityName}>
+                          {city.cityName}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 )}
                 {selectedCity && (
                   <div className="selected-venue facilities">
                     <label htmlFor="venue">Select Venue:</label>
-                    <select id="venue" onChange={handleVenueChange}>
+                    <select
+                      id="venue"
+                      onChange={handleVenueChange}
+                      value={selectedVenue ? selectedVenue.venueName : ""}
+                    >
                       <option value="">Select Venue</option>
-                      {venueData[selectedState][selectedCity].map(
-                        (venue, index) => (
-                          <option key={index} value={index}>
-                            {venue.name}
-                          </option>
-                        )
-                      )}
+                      {venues.map((venue) => (
+                        <option key={venue.venueName} value={venue.venueName}>
+                          {venue.venueName}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 )}
@@ -308,7 +533,7 @@ const PublicEventBooking = () => {
                       <input
                         id="venueName"
                         type="text"
-                        value={selectedVenue.name}
+                        value={selectedVenue.venueName}
                         disabled
                       />
                     </div>
@@ -397,17 +622,20 @@ const PublicEventBooking = () => {
                       <div className="select-caterer facilities">
                         <label>Select Caterer:</label>
                         <select
-                          value={selectedCaterer}
-                          onChange={(e) => setSelectedCaterer(e.target.value)}
+                          value={
+                            selectedCaterer ? selectedCaterer.serviceName : ""
+                          }
+                          onChange={selectedCatererChange}
                         >
                           <option value="">Select Caterer</option>
-                          {selectedVenue.cateringServices.map(
-                            (caterer, index) => (
-                              <option key={index} value={caterer}>
-                                {caterer}
-                              </option>
-                            )
-                          )}
+                          {caterers.map((caterer) => (
+                            <option
+                              key={caterer.serviceName}
+                              value={caterer.serviceName}
+                            >
+                              {caterer.serviceName}
+                            </option>
+                          ))}
                           <option value="Leave Upon Us">Leave Upon Us</option>
                         </select>
                       </div>
@@ -445,15 +673,20 @@ const PublicEventBooking = () => {
                       <div className="facilities">
                         <label>Select Design Service:</label>
                         <select
-                          value={selectedDesignServices}
-                          onChange={(e) =>
-                            setSelectedDesignServices(e.target.value)
+                          value={
+                            selectedDesignServices
+                              ? selectedDesignServices.serviceProviderName
+                              : ""
                           }
+                          onChange={selectedDesignChange}
                         >
                           <option value="">Select Design Service</option>
-                          {selectedVenue.designServices.map((design, index) => (
-                            <option key={index} value={design}>
-                              {design}
+                          {designs.map((design) => (
+                            <option
+                              key={design.serviceProviderName}
+                              value={design.serviceProviderName}
+                            >
+                              {design.serviceProviderName}
                             </option>
                           ))}
                           <option value="Leave Upon Us">Leave Upon Us</option>
@@ -464,19 +697,22 @@ const PublicEventBooking = () => {
                       <div className="facilities">
                         <label>Select Media Service:</label>
                         <select
-                          value={selectedPhotoVideoServices}
-                          onChange={(e) =>
-                            setSelectedPhotoVideoServices(e.target.value)
+                          value={
+                            selectedPhotoVideoServices
+                              ? selectedPhotoVideoServices.serviceProviderName
+                              : ""
                           }
+                          onChange={selectedMediaChange}
                         >
                           <option value="">Select Media Service</option>
-                          {selectedVenue.photoVideoServices.map(
-                            (photoVideoService, index) => (
-                              <option key={index} value={photoVideoService}>
-                                {photoVideoService}
-                              </option>
-                            )
-                          )}
+                          {medias.map((photoVideoService) => (
+                            <option
+                              key={photoVideoService.serviceProviderName}
+                              value={photoVideoService.serviceProviderName}
+                            >
+                              {photoVideoService.serviceProviderName}
+                            </option>
+                          ))}
                           <option value="Leave Upon Us">Leave Upon Us</option>
                         </select>
                       </div>

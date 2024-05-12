@@ -9,7 +9,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.csrf(csrf -> csrf.disable()).authorizeHttpRequests(auth -> auth.requestMatchers("/globalcontroller/**").permitAll().requestMatchers("/user/**").permitAll().anyRequest().authenticated());
+        httpSecurity.csrf(csrf -> csrf.disable()).authorizeHttpRequests(auth -> auth.requestMatchers("/globalcontroller/**").permitAll().requestMatchers("/user/**").permitAll().requestMatchers("/privateeventcontroller/**").permitAll().anyRequest().authenticated());
         return httpSecurity.build();
     }
 }
