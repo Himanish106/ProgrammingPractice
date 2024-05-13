@@ -1,17 +1,24 @@
 package com.event.backend.Controller;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.event.backend.Entity.PublicEventBooking.PublicCaterer;
 import com.event.backend.Entity.PublicEventBooking.PublicCity;
@@ -22,7 +29,6 @@ import com.event.backend.Entity.PublicEventBooking.PublicOrder;
 import com.event.backend.Entity.PublicEventBooking.PublicState;
 import com.event.backend.Entity.PublicEventBooking.PublicVenue;
 import com.event.backend.Service.PublicEventService;
-
 
 @RequestMapping(value = "/privateeventcontroller")
 @RestController
@@ -82,7 +88,8 @@ public class PublicEventController {
     }
 
     @PostMapping("/caterers/{venueName}")
-    public ResponseEntity<PublicCaterer> createCaterer(@PathVariable String venueName, @RequestBody PublicCaterer caterer) {
+    public ResponseEntity<PublicCaterer> createCaterer(@PathVariable String venueName,
+            @RequestBody PublicCaterer caterer) {
         PublicCaterer createdCaterer = publicEventService.createCaterer(venueName, caterer);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdCaterer);
     }
@@ -122,4 +129,41 @@ public class PublicEventController {
         PublicOrder order = publicEventService.savePrivateEventBooking(publicOrder);
         return ResponseEntity.status(HttpStatus.CREATED).body(order);
     }
+
+    @GetMapping("/allorder")
+    public ResponseEntity<List<PublicOrder>> getAllPublicOrders() {
+        List<PublicOrder> publicOrders = publicEventService.getAllPublicOrders();
+        return new ResponseEntity<>(publicOrders, HttpStatus.OK);
+    }
+
+    @GetMapping("/order/{id}")
+    public ResponseEntity<PublicOrder> getPublicOrderById(@PathVariable Long id) {
+        Optional<PublicOrder> optionalPublicOrder = publicEventService.getPublicOrderById(id);
+        return optionalPublicOrder.map(publicOrder -> new ResponseEntity<>(publicOrder, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @DeleteMapping("deleteorder/{id}")
+    public ResponseEntity<Void> deletePublicOrder(@PathVariable Long id) {
+        publicEventService.deletePublicOrder(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PostMapping("/{publicOrderId}/image")
+    public ResponseEntity<PublicOrder> addImageToPublicOrder(
+            @PathVariable Long publicOrderId,
+            @RequestParam("file") MultipartFile file) throws IOException {
+        PublicOrder updatedPublicOrder = publicEventService.addImageToPublicOrder(publicOrderId, file);
+        return new ResponseEntity<>(updatedPublicOrder, HttpStatus.OK);
+    }
+
+    @PutMapping("/{publicOrderId}/image")
+    public ResponseEntity<PublicOrder> updatePublicOrderWithImage(
+            @PathVariable Long publicOrderId,
+            @RequestParam("file") MultipartFile file) throws IOException {
+        PublicOrder updatedPublicOrder = publicEventService.updatePublicOrderWithImage(publicOrderId, file);
+        return new ResponseEntity<>(updatedPublicOrder, HttpStatus.OK);
+    }
+
+
 }

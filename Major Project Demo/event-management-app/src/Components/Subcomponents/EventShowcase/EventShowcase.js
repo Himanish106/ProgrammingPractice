@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { CirclesWithBar } from "react-loader-spinner";
 import "../../CSS/EventShowcase.css";
-import eventimg from "../../Images/gallery1.jpg";
 import venueData from "../../../Global Files/statesandlocations.json";
 import "../../CSS/PrivateEventBooking.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 const EventShowcase = () => {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
@@ -18,9 +18,40 @@ const EventShowcase = () => {
   const handleStateChange = (event) => {
     setSelectedState(event.target.value);
   };
+  const [publicOrders, setPublicOrders] = useState([]);
+  const fetchPublicOrders = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8080/privateeventcontroller/allorder"
+      );
+      const ordersWithData = response.data.filter((order) => order.data);
+      setPublicOrders(ordersWithData);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error fetching public orders:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchPublicOrders();
+  }, []);
+  const formatDate = (dateString) => {
+    const dateParts = dateString.split(" ")[0].split("-");
+    const year = parseInt(dateParts[0]);
+    const month = parseInt(dateParts[1]);
+    const day = parseInt(dateParts[2]);
+
+    // Create new Date object with date parts
+    const date = new Date(year, month - 1, day); // Months are 0-indexed in JavaScript
+
+    // Format date as required
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return date.toLocaleDateString("en-US", options);
+  };
+
   return (
     <>
-    {isLoading ? (
+      {isLoading ? (
         <div
           style={{
             position: "fixed",
@@ -47,438 +78,77 @@ const EventShowcase = () => {
           />
         </div>
       ) : (
-    <section className="event-advertising">
-      <h1 className="event-advertising-heading">
-        Live &nbsp;
-        <span className="col" style={{ textTransform: "uppercase" }}>
-          Events &nbsp;
-        </span>
-        Spotlight
-      </h1>
-      <div className="selected-state facilities">
-        <select id="state" value={selectedState} onChange={handleStateChange}>
-          <option value="">Select State to view events</option>
-          {Object.keys(venueData).map((state) => (
-            <option key={state} value={state}>
-              {state}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div className="event-advertising-box">
-        <div className="items">
-          <div className="item-details">
-            <div className="overlay-box">
-              <img src={eventimg} alt="event-image" />
-              <div className="pdt-content">
-                <h3>Book Your Events Now</h3>
-                <Link to="/ticketbooking" className="btn">
-                  Book
-                </Link>
-              </div>
-            </div>
-            <h1 className="event-head">Summer Concert Series</h1>
-            <div className="event-details">
-              <h3 className="event-location-head">
-                Location : &nbsp;
-                <span className="loc-color" style={{ fontWeight: 500 }}>
-                  Emerald Gardens
-                </span>
-              </h3>
-              <p className="event-date">
-                Date : &nbsp;
-                <span className="loc-color">11/05/24</span>
-              </p>
-              <p className="event-rate">
-                Ticket Rates : &nbsp;
-                <span className="loc-color">&#8377; 900/person</span>
-              </p>
-            </div>
-            <Link to="/ticketbooking" className="btn book-btn">
-              Book Tickets Now
-            </Link>
+        <section className="event-advertising">
+          <h1 className="event-advertising-heading">
+            Live &nbsp;
+            <span className="col" style={{ textTransform: "uppercase" }}>
+              Events &nbsp;
+            </span>
+            Spotlight
+          </h1>
+          <div className="selected-state facilities">
+            <select
+              id="state"
+              value={selectedState}
+              onChange={handleStateChange}
+            >
+              <option value="">Select State to view events</option>
+              {Object.keys(venueData).map((state) => (
+                <option key={state} value={state}>
+                  {state}
+                </option>
+              ))}
+            </select>
           </div>
-        </div>
-        <div className="items">
-          <div className="item-details">
-            <div className="overlay-box">
-              <img src={eventimg} alt="event-image" />
-              <div className="pdt-content">
-                <h3>Book Your Events Now</h3>
-                <button className="btn">Book</button>
+          <div className="event-advertising-box">
+            {publicOrders.map((publicOrder) => (
+              <div className="items">
+                <div className="item-details">
+                  <div className="overlay-box">
+                    <img
+                      src={`data:image/jpeg;base64,${publicOrder.data}`}
+                      alt="event-image"
+                    />
+                    <div className="pdt-content">
+                      <h3>Book Your Events Now</h3>
+                      <Link
+                        to={`/ticketbooking/${publicOrder.id}`}
+                        className="btn book-btn"
+                      >
+                        Book Tickets Now
+                      </Link>
+                    </div>
+                  </div>
+                  <h1 className="event-head">{publicOrder.event_type}</h1>
+                  <div className="event-details">
+                    <h3 className="event-location-head">
+                      Location : &nbsp;
+                      <span className="loc-color" style={{ fontWeight: 500 }}>
+                        {publicOrder.state},{publicOrder.venueName}
+                      </span>
+                    </h3>
+                    <p className="event-date">
+                      Date : &nbsp;
+                      <span className="loc-color">
+                        {publicOrder.eventDate
+                          ? formatDate(publicOrder.eventDate)
+                          : "Date not available"}
+                      </span>
+                    </p>
+                    <p className="event-rate">
+                      Ticket Rates : &nbsp;
+                      <span className="loc-color">&#8377; 900/person</span>
+                    </p>
+                  </div>
+                  <Link to="/ticketbooking" className="btn book-btn">
+                    Book Tickets Now
+                  </Link>
+                </div>
               </div>
-            </div>
-            <h1 className="event-head">Summer Concert Series</h1>
-            <div className="event-details">
-              <h3 className="event-location-head">
-                Location : &nbsp;
-                <span className="loc-color" style={{ fontWeight: 500 }}>
-                  Emerald Gardens
-                </span>
-              </h3>
-              <p className="event-date">
-                Date : &nbsp;
-                <span className="loc-color">11/05/24</span>
-              </p>
-              <p className="event-rate">
-                Ticket Rates : &nbsp;
-                <span className="loc-color">&#8377; 900/person</span>
-              </p>
-            </div>
-            <button className="btn">Book Tickets Now</button>
+            ))}
           </div>
-        </div>
-        <div className="items">
-          <div className="item-details">
-            <div className="overlay-box">
-              <img src={eventimg} alt="event-image" />
-              <div className="pdt-content">
-                <h3>Book Your Events Now</h3>
-                <button className="btn">Book</button>
-              </div>
-            </div>
-            <h1 className="event-head">Summer Concert Series</h1>
-            <div className="event-details">
-              <h3 className="event-location-head">
-                Location : &nbsp;
-                <span className="loc-color" style={{ fontWeight: 500 }}>
-                  Emerald Gardens
-                </span>
-              </h3>
-              <p className="event-date">
-                Date : &nbsp;
-                <span className="loc-color">11/05/24</span>
-              </p>
-              <p className="event-rate">
-                Ticket Rates : &nbsp;
-                <span className="loc-color">&#8377; 900/person</span>
-              </p>
-            </div>
-            <button className="btn">Book Tickets Now</button>
-          </div>
-        </div>
-        <div className="items">
-          <div className="item-details">
-            <div className="overlay-box">
-              <img src={eventimg} alt="event-image" />
-              <div className="pdt-content">
-                <h3>Book Your Events Now</h3>
-                <button className="btn">Book</button>
-              </div>
-            </div>
-            <h1 className="event-head">Summer Concert Series</h1>
-            <div className="event-details">
-              <h3 className="event-location-head">
-                Location : &nbsp;
-                <span className="loc-color" style={{ fontWeight: 500 }}>
-                  Emerald Gardens
-                </span>
-              </h3>
-              <p className="event-date">
-                Date : &nbsp;
-                <span className="loc-color">11/05/24</span>
-              </p>
-              <p className="event-rate">
-                Ticket Rates : &nbsp;
-                <span className="loc-color">&#8377; 900/person</span>
-              </p>
-            </div>
-            <button className="btn">Book Tickets Now</button>
-          </div>
-        </div>
-        <div className="items">
-          <div className="item-details">
-            <div className="overlay-box">
-              <img src={eventimg} alt="event-image" />
-              <div className="pdt-content">
-                <h3>Book Your Events Now</h3>
-                <button className="btn">Book</button>
-              </div>
-            </div>
-            <h1 className="event-head">Summer Concert Series</h1>
-            <div className="event-details">
-              <h3 className="event-location-head">
-                Location : &nbsp;
-                <span className="loc-color" style={{ fontWeight: 500 }}>
-                  Emerald Gardens
-                </span>
-              </h3>
-              <p className="event-date">
-                Date : &nbsp;
-                <span className="loc-color">11/05/24</span>
-              </p>
-              <p className="event-rate">
-                Ticket Rates : &nbsp;
-                <span className="loc-color">&#8377; 900/person</span>
-              </p>
-            </div>
-            <button className="btn">Book Tickets Now</button>
-          </div>
-        </div>
-        <div className="items">
-          <div className="item-details">
-            <div className="overlay-box">
-              <img src={eventimg} alt="event-image" />
-              <div className="pdt-content">
-                <h3>Book Your Events Now</h3>
-                <button className="btn">Book</button>
-              </div>
-            </div>
-            <h1 className="event-head">Summer Concert Series</h1>
-            <div className="event-details">
-              <h3 className="event-location-head">
-                Location : &nbsp;
-                <span className="loc-color" style={{ fontWeight: 500 }}>
-                  Emerald Gardens
-                </span>
-              </h3>
-              <p className="event-date">
-                Date : &nbsp;
-                <span className="loc-color">11/05/24</span>
-              </p>
-              <p className="event-rate">
-                Ticket Rates : &nbsp;
-                <span className="loc-color">&#8377; 900/person</span>
-              </p>
-            </div>
-            <button className="btn">Book Tickets Now</button>
-          </div>
-        </div>
-        <div className="items">
-          <div className="item-details">
-            <div className="overlay-box">
-              <img src={eventimg} alt="event-image" />
-              <div className="pdt-content">
-                <h3>Book Your Events Now</h3>
-                <button className="btn">Book</button>
-              </div>
-            </div>
-            <h1 className="event-head">Summer Concert Series</h1>
-            <div className="event-details">
-              <h3 className="event-location-head">
-                Location : &nbsp;
-                <span className="loc-color" style={{ fontWeight: 500 }}>
-                  Emerald Gardens
-                </span>
-              </h3>
-              <p className="event-date">
-                Date : &nbsp;
-                <span className="loc-color">11/05/24</span>
-              </p>
-              <p className="event-rate">
-                Ticket Rates : &nbsp;
-                <span className="loc-color">&#8377; 900/person</span>
-              </p>
-            </div>
-            <button className="btn">Book Tickets Now</button>
-          </div>
-        </div>
-        <div className="items">
-          <div className="item-details">
-            <div className="overlay-box">
-              <img src={eventimg} alt="event-image" />
-              <div className="pdt-content">
-                <h3>Book Your Events Now</h3>
-                <button className="btn">Book</button>
-              </div>
-            </div>
-            <h1 className="event-head">Summer Concert Series</h1>
-            <div className="event-details">
-              <h3 className="event-location-head">
-                Location : &nbsp;
-                <span className="loc-color" style={{ fontWeight: 500 }}>
-                  Emerald Gardens
-                </span>
-              </h3>
-              <p className="event-date">
-                Date : &nbsp;
-                <span className="loc-color">11/05/24</span>
-              </p>
-              <p className="event-rate">
-                Ticket Rates : &nbsp;
-                <span className="loc-color">&#8377; 900/person</span>
-              </p>
-            </div>
-            <button className="btn">Book Tickets Now</button>
-          </div>
-        </div>
-        <div className="items">
-          <div className="item-details">
-            <div className="overlay-box">
-              <img src={eventimg} alt="event-image" />
-              <div className="pdt-content">
-                <h3>Book Your Events Now</h3>
-                <button className="btn">Book</button>
-              </div>
-            </div>
-            <h1 className="event-head">Summer Concert Series</h1>
-            <div className="event-details">
-              <h3 className="event-location-head">
-                Location : &nbsp;
-                <span className="loc-color" style={{ fontWeight: 500 }}>
-                  Emerald Gardens
-                </span>
-              </h3>
-              <p className="event-date">
-                Date : &nbsp;
-                <span className="loc-color">11/05/24</span>
-              </p>
-              <p className="event-rate">
-                Ticket Rates : &nbsp;
-                <span className="loc-color">&#8377; 900/person</span>
-              </p>
-            </div>
-            <button className="btn">Book Tickets Now</button>
-          </div>
-        </div>
-        <div className="items">
-          <div className="item-details">
-            <div className="overlay-box">
-              <img src={eventimg} alt="event-image" />
-              <div className="pdt-content">
-                <h3>Book Your Events Now</h3>
-                <button className="btn">Book</button>
-              </div>
-            </div>
-            <h1 className="event-head">Summer Concert Series</h1>
-            <div className="event-details">
-              <h3 className="event-location-head">
-                Location : &nbsp;
-                <span className="loc-color" style={{ fontWeight: 500 }}>
-                  Emerald Gardens
-                </span>
-              </h3>
-              <p className="event-date">
-                Date : &nbsp;
-                <span className="loc-color">11/05/24</span>
-              </p>
-              <p className="event-rate">
-                Ticket Rates : &nbsp;
-                <span className="loc-color">&#8377; 900/person</span>
-              </p>
-            </div>
-            <button className="btn">Book Tickets Now</button>
-          </div>
-        </div>
-        <div className="items">
-          <div className="item-details">
-            <div className="overlay-box">
-              <img src={eventimg} alt="event-image" />
-              <div className="pdt-content">
-                <h3>Book Your Events Now</h3>
-                <button className="btn">Book</button>
-              </div>
-            </div>
-            <h1 className="event-head">Summer Concert Series</h1>
-            <div className="event-details">
-              <h3 className="event-location-head">
-                Location : &nbsp;
-                <span className="loc-color" style={{ fontWeight: 500 }}>
-                  Emerald Gardens
-                </span>
-              </h3>
-              <p className="event-date">
-                Date : &nbsp;
-                <span className="loc-color">11/05/24</span>
-              </p>
-              <p className="event-rate">
-                Ticket Rates : &nbsp;
-                <span className="loc-color">&#8377; 900/person</span>
-              </p>
-            </div>
-            <button className="btn">Book Tickets Now</button>
-          </div>
-        </div>
-        <div className="items">
-          <div className="item-details">
-            <div className="overlay-box">
-              <img src={eventimg} alt="event-image" />
-              <div className="pdt-content">
-                <h3>Book Your Events Now</h3>
-                <button className="btn">Book</button>
-              </div>
-            </div>
-            <h1 className="event-head">Summer Concert Series</h1>
-            <div className="event-details">
-              <h3 className="event-location-head">
-                Location : &nbsp;
-                <span className="loc-color" style={{ fontWeight: 500 }}>
-                  Emerald Gardens
-                </span>
-              </h3>
-              <p className="event-date">
-                Date : &nbsp;
-                <span className="loc-color">11/05/24</span>
-              </p>
-              <p className="event-rate">
-                Ticket Rates : &nbsp;
-                <span className="loc-color">&#8377; 900/person</span>
-              </p>
-            </div>
-            <button className="btn">Book Tickets Now</button>
-          </div>
-        </div>
-        <div className="items">
-          <div className="item-details">
-            <div className="overlay-box">
-              <img src={eventimg} alt="event-image" />
-              <div className="pdt-content">
-                <h3>Book Your Events Now</h3>
-                <button className="btn">Book</button>
-              </div>
-            </div>
-            <h1 className="event-head">Summer Concert Series</h1>
-            <div className="event-details">
-              <h3 className="event-location-head">
-                Location : &nbsp;
-                <span className="loc-color" style={{ fontWeight: 500 }}>
-                  Emerald Gardens
-                </span>
-              </h3>
-              <p className="event-date">
-                Date : &nbsp;
-                <span className="loc-color">11/05/24</span>
-              </p>
-              <p className="event-rate">
-                Ticket Rates : &nbsp;
-                <span className="loc-color">&#8377; 900/person</span>
-              </p>
-            </div>
-            <button className="btn">Book Tickets Now</button>
-          </div>
-        </div>
-        <div className="items">
-          <div className="item-details">
-            <div className="overlay-box">
-              <img src={eventimg} alt="event-image" />
-              <div className="pdt-content">
-                <h3>Book Your Events Now</h3>
-                <button className="btn">Book</button>
-              </div>
-            </div>
-            <h1 className="event-head">Summer Concert Series</h1>
-            <div className="event-details">
-              <h3 className="event-location-head">
-                Location : &nbsp;
-                <span className="loc-color" style={{ fontWeight: 500 }}>
-                  Emerald Gardens
-                </span>
-              </h3>
-              <p className="event-date">
-                Date : &nbsp;
-                <span className="loc-color">11/05/24</span>
-              </p>
-              <p className="event-rate">
-                Ticket Rates : &nbsp;
-                <span className="loc-color">&#8377; 900/person</span>
-              </p>
-            </div>
-            <button className="btn">Book Tickets Now</button>
-          </div>
-        </div>
-      </div>
-    </section>
-     )}
+        </section>
+      )}
     </>
   );
 };

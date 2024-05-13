@@ -42,5 +42,6 @@ public class PublicOrder {
     private double totalPrice;
     private String email;
     @Lob
-    private byte[] imageData;
+    @Column(columnDefinition = "LONGBLOB")
+    private byte[] data;
 }

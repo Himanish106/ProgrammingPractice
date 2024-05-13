@@ -18,6 +18,7 @@ import ProtectedContactUs from "./Components/Subcomponents/ContactUs/ProtectedCo
 import ProtectedRegister from "./Components/Subcomponents/Register/ProtectedRegister";
 import ProtectedPrivateBooking from "./Components/Subcomponents/EventBooking/ProtectPrivateBooking";
 import ProtectedPublicBooking from "./Components/Subcomponents/EventBooking/ProtectPublicBooking";
+import PublicOrderTable from "./Components/Subcomponents/Admin/PublicOrderTable";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -54,11 +55,12 @@ function App() {
             element={<ProtectedPublicBooking />}
           />
           <Route exact path="/eventshowcase" element={<EventShowcase />} />
-          <Route exact path="/ticketbooking" element={<Ticketing />} />
+          <Route exact path="/ticketbooking/:eventId" element={<Ticketing />} />
           <Route exact path="/login" element={<ProtectedLogin/>} />
           <Route exact path="/forgetemail" element={<ForgetPasswordEmail />} />
           <Route exact path="/forgetotp" element={<ForgetPasswordOTP />} />
           <Route exact path="/resetpassword" element={<ResetPassword />} />
+          <Route exact path="/upload" element={<PublicOrderTable />} />
         </Routes>
         )}
         <Footer />

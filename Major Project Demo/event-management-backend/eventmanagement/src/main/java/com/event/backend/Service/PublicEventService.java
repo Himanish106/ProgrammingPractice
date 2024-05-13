@@ -1,9 +1,13 @@
 package com.event.backend.Service;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.event.backend.Entity.PublicEventBooking.PublicCaterer;
 import com.event.backend.Entity.PublicEventBooking.PublicCity;
 import com.event.backend.Entity.PublicEventBooking.PublicDesign;
@@ -119,5 +123,45 @@ public class PublicEventService {
     }
     public PublicOrder savePrivateEventBooking(PublicOrder publicOrder){
       return publicOrderRepository.save(publicOrder);
+    }
+
+    public List<PublicOrder> getAllPublicOrders() {
+        return publicOrderRepository.findAll();
+    }
+
+    public Optional<PublicOrder> getPublicOrderById(Long id) {
+        return publicOrderRepository.findById(id);
+    }
+
+    public PublicOrder savePublicOrder(PublicOrder publicOrder) {
+        return publicOrderRepository.save(publicOrder);
+    }
+
+    public void deletePublicOrder(Long id) {
+        publicOrderRepository.deleteById(id);
+    }
+
+
+    public PublicOrder addImageToPublicOrder(Long publicOrderId, MultipartFile file) throws IOException {
+        Optional<PublicOrder> optionalPublicOrder = publicOrderRepository.findById(publicOrderId);
+        if (optionalPublicOrder.isPresent()) {
+            PublicOrder publicOrder = optionalPublicOrder.get();
+            publicOrder.setData(file.getBytes()); 
+            return publicOrderRepository.save(publicOrder);
+        } else {
+            throw new IllegalArgumentException("Public order not found with ID: " + publicOrderId);
+        }
+    }
+
+    // Method to update an existing public order with image data
+    public PublicOrder updatePublicOrderWithImage(Long publicOrderId, MultipartFile file) throws IOException {
+        Optional<PublicOrder> optionalPublicOrder = publicOrderRepository.findById(publicOrderId);
+        if (optionalPublicOrder.isPresent()) {
+            PublicOrder publicOrder = optionalPublicOrder.get();
+            publicOrder.setData(file.getBytes()); 
+            return publicOrderRepository.save(publicOrder);
+        } else {
+            throw new IllegalArgumentException("Public order not found with ID: " + publicOrderId);
+        }
     }
 }
