@@ -5,8 +5,12 @@ import venueData from "../../../Global Files/statesandlocations.json";
 import "../../CSS/PrivateEventBooking.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+
 const EventShowcase = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedState, setSelectedState] = useState("");
+  const [publicOrders, setPublicOrders] = useState([]);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -14,11 +18,11 @@ const EventShowcase = () => {
 
     return () => clearTimeout(timer);
   }, []);
-  const [selectedState, setSelectedState] = useState("");
+
   const handleStateChange = (event) => {
     setSelectedState(event.target.value);
   };
-  const [publicOrders, setPublicOrders] = useState([]);
+
   const fetchPublicOrders = async () => {
     try {
       const response = await axios.get(
@@ -35,19 +39,21 @@ const EventShowcase = () => {
   useEffect(() => {
     fetchPublicOrders();
   }, []);
+
   const formatDate = (dateString) => {
     const dateParts = dateString.split(" ")[0].split("-");
     const year = parseInt(dateParts[0]);
     const month = parseInt(dateParts[1]);
     const day = parseInt(dateParts[2]);
 
-    // Create new Date object with date parts
     const date = new Date(year, month - 1, day); // Months are 0-indexed in JavaScript
-
-    // Format date as required
     const options = { year: "numeric", month: "long", day: "numeric" };
     return date.toLocaleDateString("en-US", options);
   };
+
+  const filteredOrders = selectedState
+    ? publicOrders.filter((order) => order.state === selectedState)
+    : publicOrders;
 
   return (
     <>
@@ -101,8 +107,8 @@ const EventShowcase = () => {
             </select>
           </div>
           <div className="event-advertising-box">
-            {publicOrders.map((publicOrder) => (
-              <div className="items">
+            {filteredOrders.map((publicOrder) => (
+              <div className="items" key={publicOrder.id}>
                 <div className="item-details">
                   <div className="overlay-box">
                     <img
@@ -140,7 +146,7 @@ const EventShowcase = () => {
                       <span className="loc-color">&#8377; 900/person</span>
                     </p>
                   </div>
-                  <Link to="/ticketbooking" className="btn book-btn">
+                  <Link to={`/ticketbooking/${publicOrder.id}`} className="btn book-btn">
                     Book Tickets Now
                   </Link>
                 </div>
@@ -152,4 +158,5 @@ const EventShowcase = () => {
     </>
   );
 };
+
 export default EventShowcase;

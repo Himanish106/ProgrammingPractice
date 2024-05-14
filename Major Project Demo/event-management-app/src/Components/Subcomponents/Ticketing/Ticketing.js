@@ -3,6 +3,10 @@ import "../../CSS/Ticketing.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { CirclesWithBar } from "react-loader-spinner";
+import Swal from "sweetalert2";
+import { jwtDecode } from "jwt-decode";
+
+
 const Ticketing = () => {
   const { eventId } = useParams();
   const termsAndConditions = [
@@ -23,6 +27,28 @@ const Ticketing = () => {
   const [ticketCount, setTicketCount] = useState(0);
   const [eventDetails, setEventDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [userEmail, setUserEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [date, setEventDate] = useState("");
+  const [state, setEventState] = useState("");
+  const [venueName, setVenueName] = useState("");
+  const [cost, setTotalCost] = useState("");
+  const submitForm = async () => {
+    const formData = {
+      email: userEmail,
+      venue: venueName,
+      state: state,
+      date: date,
+      noOfPersons:ticketCount,
+      paidPrice:cost
+    };
+    try {
+      const response = await axios.post("http://localhost:8080/ticketing/postinfo", formData);
+      console.log("Form submitted successfully:", response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -30,8 +56,13 @@ const Ticketing = () => {
 
     return () => clearTimeout(timer);
   }, []);
+
   const pricePerPerson = 800;
-  console.log(eventId);
+  useEffect(() => {
+    const totalPrice = ticketCount * pricePerPerson;
+    setTotalCost(totalPrice);
+  }, [ticketCount, pricePerPerson]);
+
   const handleAddTicket = () => {
     if (ticketCount < 5) {
       setTicketCount(ticketCount + 1);
@@ -43,6 +74,7 @@ const Ticketing = () => {
       setTicketCount(ticketCount - 1);
     }
   };
+
   useEffect(() => {
     const fetchEventDetails = async () => {
       try {
@@ -51,7 +83,7 @@ const Ticketing = () => {
         );
         console.log(response.data);
         setEventDetails(response.data);
-        // setIsLoading(false);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching event details:", error);
         setIsLoading(false);
@@ -60,19 +92,79 @@ const Ticketing = () => {
 
     fetchEventDetails();
   }, [eventId]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      setUserEmail(decodedToken.email);
+      setFirstName(decodedToken.firstName);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (eventDetails) {
+      setEventDate(formatDate(eventDetails.eventDate));
+      setEventState(eventDetails.state);
+      setVenueName(eventDetails.venueName);
+    }
+  }, [eventDetails]);
+
   const formatDate = (dateString) => {
+    if (!dateString) return "";
     const dateParts = dateString.split(" ")[0].split("-");
     const year = parseInt(dateParts[0]);
     const month = parseInt(dateParts[1]);
     const day = parseInt(dateParts[2]);
 
-    // Create new Date object with date parts
     const date = new Date(year, month - 1, day); // Months are 0-indexed in JavaScript
-
-    // Format date as required
     const options = { year: "numeric", month: "long", day: "numeric" };
     return date.toLocaleDateString("en-US", options);
   };
+
+  const handlePayment = async (event) => {
+    event.preventDefault();
+    try {
+      const options = {
+        key: "rzp_test_ks17mztWozd2AM",
+        amount: ticketCount * pricePerPerson * 100,
+        currency: "INR",
+        name: "Event Vista",
+        description: "Private Event Booking",
+        prefill: {
+          name: firstName,
+          email: userEmail,
+          contact: "9073889463",
+        },
+        theme: {
+          color: "#3399cc",
+        },
+        handler: function (response) {
+          submitForm();
+          Swal.fire({
+            icon: "success",
+            title: "Payment successfull!",
+            confirmButtonText: "OK",
+            width: "500px",
+            customClass: {
+              container: "custom-swal-container",
+              popup: "custom-swal-popup",
+              title: "custom-swal-title",
+              text: "custom-swal-content",
+              footer: "custom-swal-footer",
+              confirmButton: "custom-swal-confirm-button",
+            },
+          });
+          console.log("Payment successful:", response);
+        },
+      };
+      var pay = new window.Razorpay(options);
+      pay.open();
+    } catch (error) {
+      console.error("Error processing payment:", error);
+    }
+  };
+
   return (
     <>
       {isLoading ? (
@@ -106,14 +198,14 @@ const Ticketing = () => {
           <div className="ticket-boxing">
             <div className="img-section">
               <img
-                src={`data:image/jpeg;base64,${eventDetails.data}`}
+                src={`data:image/jpeg;base64,${eventDetails?.data}`}
                 alt="selected-event-img"
               />
             </div>
             <div className="ticket-flex">
               <div className="ticket-body-section">
                 <div className="event-info">
-                  <h1>{eventDetails.eventType}</h1>
+                  <h1>{eventDetails?.eventType}</h1>
                   <p style={{ paddingBottom: "1rem" }}>
                     Book Your Tickets Today!
                   </p>
@@ -121,17 +213,41 @@ const Ticketing = () => {
                 <div className="ticket-main-info">
                   <p className="location-event">
                     <i className="fas fa-map-marker-alt fa-3x" />
-                    {eventDetails.venueName}, {eventDetails.state}
+                    {eventDetails?.venueName}, {eventDetails?.state}
                   </p>
                   <p className="event-date">
                     <i className="fa-solid fa-calendar-days" />
-                  {formatDate(eventDetails.eventDate)}
+                    {formatDate(eventDetails?.eventDate)}
                   </p>
                   <p className="ticket-price">
                     Ticket Price : &#8377; 800/person
                   </p>
                   <div className="slot-book">
-                    <form className="ticket-form">
+                    <form className="ticket-form" onSubmit={handlePayment}>
+                      <input
+                        type="hidden"
+                        id="userEmail"
+                        name="userEmail"
+                        value={userEmail}
+                      />
+                      <input
+                        type="hidden"
+                        id="userDate"
+                        name="userDate"
+                        value={date}
+                      />
+                      <input
+                        type="hidden"
+                        id="state"
+                        name="state"
+                        value={state}
+                      />
+                      <input
+                        type="hidden"
+                        id="venue"
+                        name="venue"
+                        value={venueName}
+                      />
                       <a
                         className="remove-button"
                         id="removeButton"
@@ -156,7 +272,7 @@ const Ticketing = () => {
                         <i className="fa-solid fa-square-plus" />
                       </a>
                       <span className="ticket-condition">
-                        (One person can book upto 5 tickets.)
+                        (One person can book up to 5 tickets.)
                       </span>
                       <button
                         type="submit"
@@ -166,7 +282,7 @@ const Ticketing = () => {
                           cursor: ticketCount === 0 ? "not-allowed" : "pointer",
                         }}
                       >
-                        Pay ₹{ticketCount * pricePerPerson}
+                        Pay ₹{cost}
                       </button>
                     </form>
                   </div>
@@ -177,14 +293,14 @@ const Ticketing = () => {
                   <h1>NOTE</h1>
                   <p>
                     Please note that tickets are non-refundable and
-                    non-transferable
+                    non-transferable.
                   </p>
                 </div>
                 <div className="about">
                   <h1>ABOUT</h1>
                   <p>
                     Book your tickets today exclusively from event vista. Please
-                    do not forget to bring your tickets on the day of event.
+                    do not forget to bring your tickets on the day of the event.
                     Piracy of tickets is strictly prohibited and unlawful. Any
                     individual found engaging in such activities will face legal
                     consequences and penalties. Seats are limited. Please book
@@ -211,4 +327,5 @@ const Ticketing = () => {
     </>
   );
 };
+
 export default Ticketing;
