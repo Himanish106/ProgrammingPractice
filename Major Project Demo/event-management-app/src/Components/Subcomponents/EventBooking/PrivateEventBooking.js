@@ -16,8 +16,10 @@ const PrivateEventBooking = () => {
   }, []);
   const [eventTypes, setEventTypes] = useState([]);
   const [selectedState, setSelectedState] = useState("");
+  const [selectedStateName, setSelectedStateName] = useState("");
   const [states, setStates] = useState([]);
   const [selectedCity, setSelectedCity] = useState("");
+  const [selectedCityName, setSelectedCityName] = useState("");
   const [cities, setCities] = useState([]);
   const [selectedVenue, setSelectedVenue] = useState("");
   const [venues, setVenues] = useState([]);
@@ -97,13 +99,6 @@ const PrivateEventBooking = () => {
       };
       var pay = new window.Razorpay(options);
       pay.open();
-      // pay.on("payment.success", async function (response) {
-      //   alert("Payment successful!");
-      //   console.log("Payment successful:", response);
-
-      //   // Call the function to submit the form data
-      //   await submitForm();
-      // });
     } catch (error) {
       console.error("Error processing payment:", error);
     }
@@ -112,21 +107,28 @@ const PrivateEventBooking = () => {
     const formData = {
       email: userEmail,
       eventType: document.getElementById("eventType").value,
-      state: selectedState,
-      city: selectedCity,
+      state: selectedStateName,
+      city: selectedCityName,
       venueName: selectedVenue ? selectedVenue.venueName : null,
       eventDescription: inputMessage,
       eventDate: selectedDate,
       cateringFacility,
       caterer: selectedCaterer ? selectedCaterer.serviceName : null,
-      designAndMediaFacility:designAndPhotoFacility,
-      designService: selectedDesignServices ? selectedDesignServices.serviceProviderName : null,
-      mediaService: selectedPhotoVideoServices ? selectedPhotoVideoServices.serviceProviderName : null,
+      designAndMediaFacility: designAndPhotoFacility,
+      designService: selectedDesignServices
+        ? selectedDesignServices.serviceProviderName
+        : null,
+      mediaService: selectedPhotoVideoServices
+        ? selectedPhotoVideoServices.serviceProviderName
+        : null,
       capacity,
-      totalPrice
+      totalPrice,
     };
     try {
-      const response = await axios.post("http://localhost:8080/globalcontroller/bookprivateorder", formData);
+      const response = await axios.post(
+        "http://localhost:8080/globalcontroller/bookprivateorder",
+        formData
+      );
       console.log("Form submitted successfully:", response);
       // Optionally, perform any further actions after successful form submission
     } catch (error) {
@@ -180,6 +182,7 @@ const PrivateEventBooking = () => {
         )
         .then((response) => {
           setVenues(response.data);
+          console.log(response.data);
         })
         .catch((error) => {
           console.error("Error fetching cities:", error);
@@ -193,7 +196,7 @@ const PrivateEventBooking = () => {
         try {
           const caterersResponse = await axios.get(
             `http://localhost:8080/globalcontroller/caterers/${encodeURIComponent(
-              selectedVenue.venueName
+              selectedVenue.venueId
             )}`
           );
           setCaterers(caterersResponse.data);
@@ -212,7 +215,7 @@ const PrivateEventBooking = () => {
         try {
           const mediasResponse = await axios.get(
             `http://localhost:8080/globalcontroller/medias/${encodeURIComponent(
-              selectedVenue.venueName
+              selectedVenue.venueId
             )}`
           );
           setMedias(mediasResponse.data);
@@ -230,7 +233,7 @@ const PrivateEventBooking = () => {
         try {
           const designsResponse = await axios.get(
             `http://localhost:8080/globalcontroller/designs/${encodeURIComponent(
-              selectedVenue.venueName
+              selectedVenue.venueId
             )}`
           );
           setDesigns(designsResponse.data);
@@ -253,26 +256,41 @@ const PrivateEventBooking = () => {
     }
   };
   const handleStateChange = (event) => {
-    setSelectedState(event.target.value);
+    const selectedStateId = event.target.value;
+    const selectedState = states.find(
+      (state) => state.stateId === parseInt(selectedStateId)
+    );
+    console.log(selectedState);
+    setSelectedState(selectedState.stateId);
+    setSelectedStateName(selectedState.stateName);
     setSelectedCity("");
     setSelectedVenue("");
   };
 
   const handleCityChange = (event) => {
-    setSelectedCity(event.target.value);
+    const selectedCityId = event.target.value;
+    const selectedCity = cities.find(
+      (city) => city.cityId === parseInt(selectedCityId)
+    );
+    console.log(selectedCity);
+    setSelectedCity(selectedCity.cityId);
+    setSelectedCityName(selectedCity.cityName);
     setSelectedVenue("");
   };
 
   const handleVenueChange = (event) => {
-    const selectedVenueName = event.target.value;
+    const selectedVenueId = event.target.value;
+    console.log(`Selected Venue ID: ${selectedVenueId}`); // Log the selected venue ID
     const foundVenue = venues.find(
-      (venue) => venue.venueName === selectedVenueName
+      (venue) => venue.venueId === parseInt(selectedVenueId)
     );
+    console.log(`Found Venue: ${JSON.stringify(foundVenue)}`); // Log the found venue details
     setSelectedVenue(foundVenue);
     setCateringFacility("");
     setdesignAndPhotoFacility("");
     checkFormValidity();
   };
+
   const handleCateringChange = (event) => {
     const cateringValue = event.target.value;
     setCateringFacility(cateringValue);
@@ -303,17 +321,17 @@ const PrivateEventBooking = () => {
     }
   }, [selectedVenue]);
   const selectedCatererChange = (event) => {
-    const catererName = event.target.value;
+    const catererId = event.target.value;
     const selectedCaterer = caterers.find(
-      (caterer) => caterer.serviceName === catererName
+      (caterer) => caterer.catererId.toString() === catererId
     );
     setSelectedCaterer(selectedCaterer);
     setCatererPrice(selectedCaterer.price); // Set the caterer price
   };
   const selectedDesignChange = (event) => {
-    const designerName = event.target.value;
+    const designerId = event.target.value;
     const selectedDesign = designs.find(
-      (design) => design.serviceProviderName === designerName
+      (design) => design.id.toString() === designerId
     );
     console.log(selectedDesign);
     setSelectedDesignServices(selectedDesign);
@@ -321,9 +339,9 @@ const PrivateEventBooking = () => {
     setDesignPrice(selectedDesign.price);
   };
   const selectedMediaChange = (event) => {
-    const mediaName = event.target.value;
+    const mediaId = event.target.value;
     const selectedMedia = medias.find(
-      (media) => media.serviceProviderName === mediaName
+      (media) => media.mediaId.toString() === mediaId
     );
     console.log(selectedMedia);
     setSelectedPhotoVideoServices(selectedMedia);
@@ -457,7 +475,7 @@ const PrivateEventBooking = () => {
                 />
                 <div className="event-select facilities">
                   <label htmlFor="eventType">Select Event Type:</label>
-                  <select id="eventType" name="eventType" >
+                  <select id="eventType" name="eventType">
                     <option value="">Select Event Type</option>
                     {eventTypes.map((eventType) => (
                       <option
@@ -478,7 +496,7 @@ const PrivateEventBooking = () => {
                   >
                     <option value="">Select State</option>
                     {states.map((state) => (
-                      <option key={state.stateName} value={state.stateName}>
+                      <option key={state.stateId} value={state.stateId}>
                         {state.stateName}
                       </option>
                     ))}
@@ -494,7 +512,7 @@ const PrivateEventBooking = () => {
                     >
                       <option value="">Select City</option>
                       {cities.map((city) => (
-                        <option key={city.cityName} value={city.cityName}>
+                        <option key={city.cityId} value={city.cityId}>
                           {city.cityName}
                         </option>
                       ))}
@@ -507,11 +525,11 @@ const PrivateEventBooking = () => {
                     <select
                       id="venue"
                       onChange={handleVenueChange}
-                      value={selectedVenue ? selectedVenue.venueName : ""}
+                      value={selectedVenue ? selectedVenue.venueId : ""}
                     >
                       <option value="">Select Venue</option>
                       {venues.map((venue) => (
-                        <option key={venue.venueName} value={venue.venueName}>
+                        <option key={venue.venueId} value={venue.venueId}>
                           {venue.venueName}
                         </option>
                       ))}
@@ -615,15 +633,15 @@ const PrivateEventBooking = () => {
                         <label>Select Caterer:</label>
                         <select
                           value={
-                            selectedCaterer ? selectedCaterer.serviceName : ""
+                            selectedCaterer ? selectedCaterer.catererId : ""
                           }
                           onChange={selectedCatererChange}
                         >
                           <option value="">Select Caterer</option>
                           {caterers.map((caterer) => (
                             <option
-                              key={caterer.serviceName}
-                              value={caterer.serviceName}
+                              key={caterer.catererId}
+                              value={caterer.catererId}
                             >
                               {caterer.serviceName}
                             </option>
@@ -667,17 +685,14 @@ const PrivateEventBooking = () => {
                         <select
                           value={
                             selectedDesignServices
-                              ? selectedDesignServices.serviceProviderName
+                              ? selectedDesignServices.id
                               : ""
                           }
                           onChange={selectedDesignChange}
                         >
                           <option value="">Select Design Service</option>
                           {designs.map((design) => (
-                            <option
-                              key={design.serviceProviderName}
-                              value={design.serviceProviderName}
-                            >
+                            <option key={design.id} value={design.id}>
                               {design.serviceProviderName}
                             </option>
                           ))}
@@ -691,7 +706,7 @@ const PrivateEventBooking = () => {
                         <select
                           value={
                             selectedPhotoVideoServices
-                              ? selectedPhotoVideoServices.serviceProviderName
+                              ? selectedPhotoVideoServices.mediaId
                               : ""
                           }
                           onChange={selectedMediaChange}
@@ -699,8 +714,8 @@ const PrivateEventBooking = () => {
                           <option value="">Select Media Service</option>
                           {medias.map((photoVideoService) => (
                             <option
-                              key={photoVideoService.serviceProviderName}
-                              value={photoVideoService.serviceProviderName}
+                              key={photoVideoService.mediaId}
+                              value={photoVideoService.mediaId}
                             >
                               {photoVideoService.serviceProviderName}
                             </option>

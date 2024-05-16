@@ -85,8 +85,25 @@ const Register = () => {
   
       const token = response.data.token;
       localStorage.setItem("token", token);
-      window.location.reload();
-      window.location.href = "/";
+      Swal.fire({
+        icon: "success",
+        title: "You have been successfully registered",
+        confirmButtonText: "OK",
+        width: "500px",
+        customClass: {
+          container: "custom-swal-container",
+          popup: "custom-swal-popup",
+          title: "custom-swal-title",
+          text: "custom-swal-content",
+          footer: "custom-swal-footer",
+          confirmButton: "custom-swal-confirm-button",
+        },
+      }).then((result) => {
+        if (result.isConfirmed || result.isDismissed) {
+          window.location.reload();
+          window.location.href = "/";
+        }
+      });
     } catch (error) {
       if (error.response && error.response.status === 400) {
         Swal.fire({

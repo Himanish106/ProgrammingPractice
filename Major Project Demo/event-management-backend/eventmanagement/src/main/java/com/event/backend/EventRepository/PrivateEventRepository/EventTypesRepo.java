@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.event.backend.Entity.PrivateEventBooking.EventTypes;
 
 @Repository
-public interface EventTypesRepo extends JpaRepository<EventTypes,String> {
+public interface EventTypesRepo extends JpaRepository<EventTypes, Long> {
     
 }

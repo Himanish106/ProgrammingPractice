@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 import com.event.backend.Entity.PrivateEventBooking.City;
 
 @Repository
-public interface CityRepository extends JpaRepository<City, String> {
-    List<City> findByState_StateName(String stateName);
+public interface CityRepository extends JpaRepository<City, Long> {
+    List<City> findByState_StateId(Long stateId);
 }

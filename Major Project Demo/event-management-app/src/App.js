@@ -19,6 +19,12 @@ import ProtectedRegister from "./Components/Subcomponents/Register/ProtectedRegi
 import ProtectedPrivateBooking from "./Components/Subcomponents/EventBooking/ProtectPrivateBooking";
 import ProtectedPublicBooking from "./Components/Subcomponents/EventBooking/ProtectPublicBooking";
 import PublicOrderTable from "./Components/Subcomponents/Admin/PublicOrderTable";
+import StateTable from "./Components/Subcomponents/Admin/StateTable";
+import CityTable from "./Components/Subcomponents/Admin/CityTable";
+import VenueTable from "./Components/Subcomponents/Admin/VenueTable";
+import MediaTable from "./Components/Subcomponents/Admin/MediaTable";
+import CatererTable from "./Components/Subcomponents/Admin/CatererTable";
+import DesignTable from "./Components/Subcomponents/Admin/DesignTable";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -61,6 +67,12 @@ function App() {
           <Route exact path="/forgetotp" element={<ForgetPasswordOTP />} />
           <Route exact path="/resetpassword" element={<ResetPassword />} />
           <Route exact path="/upload" element={<PublicOrderTable />} />
+          <Route exact path="/statetable" element={<StateTable />} />
+          <Route exact path="/cities/:stateId" element={<CityTable />} />
+          <Route exact path="/venues/:cityId" element={<VenueTable />} />
+          <Route exact path="/medias/:venueId" element={<MediaTable />} />
+          <Route exact path="/caterers/:venueId" element={<CatererTable />} />
+          <Route exact path="/designers/:venueId" element={<DesignTable />} />
         </Routes>
         )}
         <Footer />

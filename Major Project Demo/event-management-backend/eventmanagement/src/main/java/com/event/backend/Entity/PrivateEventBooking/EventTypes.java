@@ -1,6 +1,8 @@
 package com.event.backend.Entity.PrivateEventBooking;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,5 +18,7 @@ import lombok.ToString;
 @Entity
 public class EventTypes {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long eventId;
     public String eventType;
 }

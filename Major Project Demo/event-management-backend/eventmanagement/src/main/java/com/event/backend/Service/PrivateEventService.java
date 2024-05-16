@@ -1,6 +1,7 @@
 package com.event.backend.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,8 @@ import com.event.backend.EventRepository.PrivateEventRepository.MediaRepository;
 import com.event.backend.EventRepository.PrivateEventRepository.PrivateOrderRepository;
 import com.event.backend.EventRepository.PrivateEventRepository.StateRepository;
 import com.event.backend.EventRepository.PrivateEventRepository.VenueRepository;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class PrivateEventService {
@@ -61,66 +64,151 @@ public class PrivateEventService {
         return stateRepository.save(state);
     }
 
+    public State getStateById(Long id) {
+        Optional<State> stateOptional = stateRepository.findById(id);
+        return stateOptional.orElse(null);
+    }
+
+    public State updateState(State state) {
+        return stateRepository.save(state);
+    }
+
     public List<State> getAllStates() {
         return stateRepository.findAll();
     }
 
-    public City createCity(String stateName, City city) {
-        State state = stateRepository.findById(stateName)
+    @Transactional
+    public void deleteState(Long stateId) {
+        stateRepository.deleteById(stateId);
+    }
+    
+    public City createCity(Long id, City city) {
+        State state = stateRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("State not found"));
         city.setState(state);
         return cityRepository.save(city);
     }
 
-    public List<City> getCitiesByState(String stateName) {
-        return cityRepository.findByState_StateName(stateName);
+    public City getCityByName(Long cityId){
+        Optional<City> cityOptional = cityRepository.findById(cityId);
+        return cityOptional.orElse(null);
     }
 
-    public Venue createVenue(String cityName, Venue venue) {
-        City city = cityRepository.findById(cityName)
+    public City updateCity(City city){
+        return cityRepository.save(city);
+    }
+
+
+    public List<City> getCitiesByState(Long stateName) {
+        return cityRepository.findByState_StateId(stateName);
+    }
+
+    @Transactional
+    public void deleteCity(Long cityId) {
+        cityRepository.deleteById(cityId);
+    }
+
+    public Venue createVenue(Long cityId, Venue venue) {
+        City city = cityRepository.findById(cityId)
                 .orElseThrow(() -> new RuntimeException("City not found"));
         venue.setCity(city);
         return venueRepository.save(venue);
     }
 
-    public List<Venue> getVenuesByCity(String cityName) {
-        return venueRepository.findByCity_CityName(cityName);
+    public List<Venue> getVenuesByCity(Long cityName) {
+        return venueRepository.findByCity_CityId(cityName);
     }
 
-    public Caterer createCaterer(String venueName, Caterer caterer) {
-        Venue venue = venueRepository.findById(venueName)
+    public Venue getVenueByName(Long venueId){
+        Optional<Venue> venueOptional = venueRepository.findById(venueId);
+        return venueOptional.orElse(null);
+    }
+
+    public Venue updateVenue(Venue venue){
+        return venueRepository.save(venue);
+    }
+
+    @Transactional
+    public void deleteVenue(Long venueId) {
+        venueRepository.deleteById(venueId);
+    }
+
+    public Caterer createCaterer(Long venueId, Caterer caterer) {
+        Venue venue = venueRepository.findById(venueId)
                 .orElseThrow(() -> new RuntimeException("Venue not found"));
         caterer.setVenue(venue);
         return catererRepository.save(caterer);
     }
 
-    public List<Caterer> getCaterersByVenue(String venueName) {
-        return catererRepository.findByVenue_VenueName(venueName);
+    public List<Caterer> getCaterersByVenue(Long venueName) {
+        return catererRepository.findByVenue_VenueId(venueName);
     }
 
-    public Media createMedia(String venueName, Media media) {
-        Venue venue = venueRepository.findById(venueName)
+    public Caterer getCatererByName(Long catererId){
+        Optional<Caterer> catererOptional = catererRepository.findById(catererId);
+        return catererOptional.orElse(null);
+    }
+
+    public Caterer updateCaterer(Caterer caterer){
+        return catererRepository.save(caterer);
+    }
+
+    @Transactional
+    public void deleteCaterer(Long catererId) {
+        catererRepository.deleteById(catererId);
+    }
+
+    public Media createMedia(Long venueId, Media media) {
+        Venue venue = venueRepository.findById(venueId)
                 .orElseThrow(() -> new RuntimeException("Venue not found"));
         media.setVenue(venue);
         return mediaRepository.save(media);
     }
 
-    public List<Media> getMediasByVenue(String venueName) {
-        return mediaRepository.findByVenue_VenueName(venueName);
+    public List<Media> getMediasByVenue(Long venueName) {
+        return mediaRepository.findByVenue_VenueId(venueName);
     }
 
-    public Design createDesign(String venueName, Design design) {
-        Venue venue = venueRepository.findById(venueName)
+    public Media getMediaByName(Long mediaId){
+        Optional<Media> mediaOptional = mediaRepository.findById(mediaId);
+        return mediaOptional.orElse(null);
+    }
+
+    public Media updateMedia(Media media){
+        return mediaRepository.save(media);
+    }
+
+    @Transactional
+    public void deleteMedia(Long mediaId) {
+        mediaRepository.deleteById(mediaId);
+    }
+
+    public Design createDesign(Long venueId, Design design) {
+        Venue venue = venueRepository.findById(venueId)
                 .orElseThrow(() -> new RuntimeException("Venue not found"));
         design.setVenue(venue);
         return designRepository.save(design);
     }
 
-    public List<Design> getDesignsByVenue(String venueName) {
-        return designRepository.findByVenue_VenueName(venueName);
+    public List<Design> getDesignsByVenue(Long venueName) {
+        return designRepository.findByVenue_VenueId(venueName);
     }
 
-    public PrivateOrder savePrivateEventBooking(PrivateOrder privateOrder){
-      return privateOrderRepository.save(privateOrder);
+    public Design getDesignByName(Long designId){
+        Optional<Design> designOptional = designRepository.findById(designId);
+        return designOptional.orElse(null);
+    }
+
+    public Design updateDesign(Design design){
+        return designRepository.save(design);
+    }
+
+    @Transactional
+    public void deleteDesign(Long designId) {
+        designRepository.deleteById(designId);
+    }
+
+    public PrivateOrder savePrivateEventBooking(PrivateOrder privateOrder) {
+        return privateOrderRepository.save(privateOrder);
     }
 }

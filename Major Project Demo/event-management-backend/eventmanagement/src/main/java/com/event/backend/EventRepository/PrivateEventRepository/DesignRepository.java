@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.event.backend.Entity.PrivateEventBooking.Design;
 
 @Repository
-public interface DesignRepository extends JpaRepository<Design, String> {
-    List<Design> findByVenue_VenueName(String venueName);
+public interface DesignRepository extends JpaRepository<Design, Long> {
+    List<Design> findByVenue_VenueId(Long venueId);
 }

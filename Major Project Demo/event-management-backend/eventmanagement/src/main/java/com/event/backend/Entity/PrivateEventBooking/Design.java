@@ -1,6 +1,8 @@
 package com.event.backend.Entity.PrivateEventBooking;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -18,9 +20,11 @@ import lombok.ToString;
 @Entity
 public class Design {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long designId;
     private String serviceProviderName;
     private double price;
     @ManyToOne
-    @JoinColumn(name = "venue_name")
+    @JoinColumn(name = "venue_id")
     private Venue venue;
 }
