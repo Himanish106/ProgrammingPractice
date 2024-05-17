@@ -71,7 +71,7 @@ public class EventService {
         return contactUsRepo.save(contactUs);
     }
 
-    public List<ContactUs> geContactUs(){
+    public List<ContactUs> getContactUs(){
         return contactUsRepo.findAll();
     }
 

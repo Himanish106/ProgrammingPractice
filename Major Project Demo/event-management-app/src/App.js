@@ -27,6 +27,7 @@ import CatererTable from "./Components/Subcomponents/Admin/CatererTable";
 import DesignTable from "./Components/Subcomponents/Admin/DesignTable";
 import EventTypes from "./Components/Subcomponents/Admin/EventTypes";
 import UserTable from "./Components/Subcomponents/Admin/UserTable";
+import ContactTable from "./Components/Subcomponents/Admin/ContactTable";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -71,6 +72,7 @@ function App() {
           <Route exact path="/upload" element={<PublicOrderTable />} />
           <Route exact path="/privateeventtable" element={<EventTypes />} />
           <Route exact path="/usertable" element={<UserTable />} />
+          <Route exact path="/contacttable" element={<ContactTable />} />
           <Route exact path="/statetable" element={<StateTable />} />
           <Route exact path="/cities/:stateId" element={<CityTable />} />
           <Route exact path="/venues/:cityId" element={<VenueTable />} />
