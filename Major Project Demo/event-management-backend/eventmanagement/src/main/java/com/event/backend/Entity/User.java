@@ -29,6 +29,7 @@ public class User implements UserDetails {
     private String lastName;
     private String email;
     private String password;
+    private Long contact;
     private Role role;
     private String otp;
 

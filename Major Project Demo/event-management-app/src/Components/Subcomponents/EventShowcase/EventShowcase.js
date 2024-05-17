@@ -125,7 +125,7 @@ const EventShowcase = () => {
                       </Link>
                     </div>
                   </div>
-                  <h1 className="event-head">{publicOrder.event_type}</h1>
+                  <h1 className="event-head">{publicOrder.eventType}</h1>
                   <div className="event-details">
                     <h3 className="event-location-head">
                       Location : &nbsp;

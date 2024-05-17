@@ -25,6 +25,8 @@ import VenueTable from "./Components/Subcomponents/Admin/VenueTable";
 import MediaTable from "./Components/Subcomponents/Admin/MediaTable";
 import CatererTable from "./Components/Subcomponents/Admin/CatererTable";
 import DesignTable from "./Components/Subcomponents/Admin/DesignTable";
+import EventTypes from "./Components/Subcomponents/Admin/EventTypes";
+import UserTable from "./Components/Subcomponents/Admin/UserTable";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -67,6 +69,8 @@ function App() {
           <Route exact path="/forgetotp" element={<ForgetPasswordOTP />} />
           <Route exact path="/resetpassword" element={<ResetPassword />} />
           <Route exact path="/upload" element={<PublicOrderTable />} />
+          <Route exact path="/privateeventtable" element={<EventTypes />} />
+          <Route exact path="/usertable" element={<UserTable />} />
           <Route exact path="/statetable" element={<StateTable />} />
           <Route exact path="/cities/:stateId" element={<CityTable />} />
           <Route exact path="/venues/:cityId" element={<VenueTable />} />

@@ -60,6 +60,20 @@ public class PrivateEventService {
         return privateEventRepo.findAll();
     }
 
+    public EventTypes getEventById(Long eventId) {
+        Optional<EventTypes> eventOptional = privateEventRepo.findById(eventId);
+        return eventOptional.orElse(null);
+    }
+
+    public EventTypes updateEvent(EventTypes eventType) {
+        return privateEventRepo.save(eventType);
+    }
+
+    @Transactional
+    public void deleteEvent(Long eventId) {
+        privateEventRepo.deleteById(eventId);
+    }
+
     public State createState(State state) {
         return stateRepository.save(state);
     }
@@ -81,7 +95,7 @@ public class PrivateEventService {
     public void deleteState(Long stateId) {
         stateRepository.deleteById(stateId);
     }
-    
+
     public City createCity(Long id, City city) {
         State state = stateRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("State not found"));
@@ -89,15 +103,14 @@ public class PrivateEventService {
         return cityRepository.save(city);
     }
 
-    public City getCityByName(Long cityId){
+    public City getCityByName(Long cityId) {
         Optional<City> cityOptional = cityRepository.findById(cityId);
         return cityOptional.orElse(null);
     }
 
-    public City updateCity(City city){
+    public City updateCity(City city) {
         return cityRepository.save(city);
     }
-
 
     public List<City> getCitiesByState(Long stateName) {
         return cityRepository.findByState_StateId(stateName);
@@ -119,12 +132,12 @@ public class PrivateEventService {
         return venueRepository.findByCity_CityId(cityName);
     }
 
-    public Venue getVenueByName(Long venueId){
+    public Venue getVenueByName(Long venueId) {
         Optional<Venue> venueOptional = venueRepository.findById(venueId);
         return venueOptional.orElse(null);
     }
 
-    public Venue updateVenue(Venue venue){
+    public Venue updateVenue(Venue venue) {
         return venueRepository.save(venue);
     }
 
@@ -144,12 +157,12 @@ public class PrivateEventService {
         return catererRepository.findByVenue_VenueId(venueName);
     }
 
-    public Caterer getCatererByName(Long catererId){
+    public Caterer getCatererByName(Long catererId) {
         Optional<Caterer> catererOptional = catererRepository.findById(catererId);
         return catererOptional.orElse(null);
     }
 
-    public Caterer updateCaterer(Caterer caterer){
+    public Caterer updateCaterer(Caterer caterer) {
         return catererRepository.save(caterer);
     }
 
@@ -169,12 +182,12 @@ public class PrivateEventService {
         return mediaRepository.findByVenue_VenueId(venueName);
     }
 
-    public Media getMediaByName(Long mediaId){
+    public Media getMediaByName(Long mediaId) {
         Optional<Media> mediaOptional = mediaRepository.findById(mediaId);
         return mediaOptional.orElse(null);
     }
 
-    public Media updateMedia(Media media){
+    public Media updateMedia(Media media) {
         return mediaRepository.save(media);
     }
 
@@ -194,12 +207,12 @@ public class PrivateEventService {
         return designRepository.findByVenue_VenueId(venueName);
     }
 
-    public Design getDesignByName(Long designId){
+    public Design getDesignByName(Long designId) {
         Optional<Design> designOptional = designRepository.findById(designId);
         return designOptional.orElse(null);
     }
 
-    public Design updateDesign(Design design){
+    public Design updateDesign(Design design) {
         return designRepository.save(design);
     }
 

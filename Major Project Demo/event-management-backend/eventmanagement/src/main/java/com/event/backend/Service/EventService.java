@@ -1,5 +1,6 @@
 package com.event.backend.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -48,6 +49,10 @@ public class EventService {
         return eventRepository.save(user);
     }
 
+    public List<User> getUsers(){
+        return eventRepository.findUsersByRoleUser(Role.USER);
+    }
+
     public String findFirstNameByEmail(String email) {
         return eventRepository.findFirstNameByEmail(email);
     }
@@ -57,9 +62,17 @@ public class EventService {
         return feedbackRepository.save(feedback);
     }
 
+    public List<Feedback> getFeedback(){
+        return feedbackRepository.findAll();
+    }
+
     public ContactUs saveContactUs(ContactUs contactUs) {
         contactUs.setId(UUID.randomUUID().toString());
         return contactUsRepo.save(contactUs);
+    }
+
+    public List<ContactUs> geContactUs(){
+        return contactUsRepo.findAll();
     }
 
     public boolean sendOTPByEmail(String email){

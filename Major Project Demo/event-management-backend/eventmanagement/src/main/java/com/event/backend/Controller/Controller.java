@@ -84,6 +84,12 @@ public class Controller {
         }
     }
 
+    @GetMapping("/users")
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> users = eventService.getUsers();
+        return ResponseEntity.ok().body(users);
+    }
+
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> loginUser(@RequestBody AuthenticationRequest request) {
         this.doAuthenticate(request.getEmail(), request.getPassword());
@@ -170,6 +176,25 @@ public class Controller {
     public ResponseEntity<List<EventTypes>> getAllEvents() {
         List<EventTypes> events = privateEventService.getEventTypes();
         return ResponseEntity.ok().body(events);
+    }
+
+    @PutMapping("/privateevents/{eventId}")
+    public ResponseEntity<EventTypes> updateEventTypes(@PathVariable Long eventId,
+            @RequestBody EventTypes updatedEventTypes) {
+        EventTypes eventTypes = privateEventService.getEventById(eventId);
+        if (eventTypes != null) {
+            eventTypes.setEventType(updatedEventTypes.getEventType());
+            privateEventService.updateEvent(eventTypes);
+            return ResponseEntity.ok(eventTypes);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/privateevents/{eventId}")
+    public ResponseEntity<Void> deleteEvents(@PathVariable Long eventId) {
+        privateEventService.deleteEvent(eventId);
+        return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/states")

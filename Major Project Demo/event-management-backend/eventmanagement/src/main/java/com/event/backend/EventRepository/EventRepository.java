@@ -1,5 +1,6 @@
 package com.event.backend.EventRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,6 +16,8 @@ public interface EventRepository extends JpaRepository<User, String> {
 
     public Optional<User> findByEmail(String email);
     User findByRole(Role role);
+    @Query("SELECT u FROM User u WHERE u.role = :role")
+    List<User> findUsersByRoleUser(@Param("role") Role role);
    @Query("SELECT u.firstName FROM User u WHERE u.email = :email")
     String findFirstNameByEmail(@Param("email") String email);
    

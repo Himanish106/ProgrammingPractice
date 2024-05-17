@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import "../../CSS/Register.css";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -8,6 +8,8 @@ const Register = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [contact, setContact] = useState("");
+  const [contactLength, setContactLength] = useState(true);
   const [containsNumberFirst, setContainsNumberFirst] = useState(false);
   const [containsNumberLast, setContainsNumberLast] = useState(false);
   const [containsSpecialCharFirst, setContainsSpecialCharFirst] =
@@ -47,6 +49,17 @@ const Register = () => {
       );
     }
   };
+  const handleContactChange = (event) => {
+    const contact = event.target.value;
+    const userContactLength = contact.length;
+    setContact(contact);
+    if (userContactLength > 10) {
+      setContactLength(false);
+    } else {
+      setContactLength(true);
+    }
+  };
+
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -74,15 +87,19 @@ const Register = () => {
   };
   const handleRegistration = async (event) => {
     event.preventDefault();
-  
+
     try {
-      const response = await axios.post("http://localhost:8080/globalcontroller/register", {
-        firstName,
-        lastName,
-        email,
-        password,
-      });
-  
+      const response = await axios.post(
+        "http://localhost:8080/globalcontroller/register",
+        {
+          firstName,
+          lastName,
+          email,
+          password,
+          contact,
+        }
+      );
+
       const token = response.data.token;
       localStorage.setItem("token", token);
       Swal.fire({
@@ -107,35 +124,35 @@ const Register = () => {
     } catch (error) {
       if (error.response && error.response.status === 400) {
         Swal.fire({
-          icon: 'error',
-          title: 'You are already registered !! \nPlease Login',
-          text: 'Please Login or try with a different email',
-          width: '500px',
-          heightAuto:false,
+          icon: "error",
+          title: "You are already registered !! \nPlease Login",
+          text: "Please Login or try with a different email",
+          width: "500px",
+          heightAuto: false,
           customClass: {
-            container: 'custom-swal-container',
-            popup: 'custom-swal-popup',
-            title: 'custom-swal-title',
-            text: 'custom-swal-content',
-            footer: 'custom-swal-footer',
-            confirmButton: 'custom-swal-confirm-button'
-          }
-        })      
+            container: "custom-swal-container",
+            popup: "custom-swal-popup",
+            title: "custom-swal-title",
+            text: "custom-swal-content",
+            footer: "custom-swal-footer",
+            confirmButton: "custom-swal-confirm-button",
+          },
+        });
       } else {
         Swal.fire({
-          icon: 'error',
-          title: 'Registration Failed !! \nPlease try again',
-          width: '500px',
-          heightAuto:false,
+          icon: "error",
+          title: "Registration Failed !! \nPlease try again",
+          width: "500px",
+          heightAuto: false,
           customClass: {
-            container: 'custom-swal-container',
-            popup: 'custom-swal-popup',
-            title: 'custom-swal-title',
-            text: 'custom-swal-content',
-            footer: 'custom-swal-footer',
-            confirmButton: 'custom-swal-confirm-button'
-          }
-        })      
+            container: "custom-swal-container",
+            popup: "custom-swal-popup",
+            title: "custom-swal-title",
+            text: "custom-swal-content",
+            footer: "custom-swal-footer",
+            confirmButton: "custom-swal-confirm-button",
+          },
+        });
       }
     }
   };
@@ -144,6 +161,8 @@ const Register = () => {
     lastName === "" ||
     email === "" ||
     password === "" ||
+    contact === "" ||
+    contactLength === false ||
     containsNumberFirst ||
     containsNumberLast ||
     containsSpecialCharFirst ||
@@ -220,6 +239,22 @@ const Register = () => {
                 <p className="name-error">Email is not valid</p>
               )}
             </div>
+            <div className="field">
+              <label htmlFor="contact">Contact No</label>
+              <input
+                type="number"
+                placeholder="Enter Your Contact Number"
+                value={contact}
+                onChange={handleContactChange}
+                style={{ textTransform: "none" }}
+              />
+              {contactLength === false && (
+                <p className="name-error">
+                  Number should not be greater than 10
+                </p>
+              )}
+            </div>
+
             <div className="field password-field">
               <label htmlFor="Password">Password</label>
               <input

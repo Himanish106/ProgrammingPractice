@@ -35,6 +35,7 @@ public class EventmanagementApplication {
 			user.setEmail("admin@gmail.com");
 			user.setFirstName("Himanish");
 			user.setLastName("Das");
+			user.setContact(9073889463L);
 			user.setPassword(passwordEncoder.encode("admin")); // Encode it to fix the error
 			user.setRole(Role.ADMIN);
 			eventRepository.save(user);
