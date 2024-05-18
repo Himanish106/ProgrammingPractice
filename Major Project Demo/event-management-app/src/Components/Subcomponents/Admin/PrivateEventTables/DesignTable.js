@@ -105,15 +105,16 @@ const DesignTable = () => {
   return (
     <div>
       <Button onClick={() => window.history.back()}>Back to Venues</Button>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} className="table-container">
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Service Name</TableCell>
-              <TableCell>Price</TableCell>
+              <TableCell className="cell-head-font">Service Name</TableCell>
+              <TableCell className="cell-head-font">Price</TableCell>
+              <TableCell className="cell-head-font">Actions</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody className="table-body">
             {designers.map((designer) => (
               <TableRow key={designer.designId}>
                 <TableCell>
@@ -122,6 +123,7 @@ const DesignTable = () => {
                       editDesigners[designer.designId]?.serviceProviderName ??
                       ""
                     }
+                    InputProps={{ className: "cell-field-font" }}
                     onChange={(e) =>
                       handleInputChange(
                         designer.designId,
@@ -134,6 +136,7 @@ const DesignTable = () => {
                 <TableCell>
                   <TextField
                     value={editDesigners[designer.designId]?.price ?? ""}
+                    InputProps={{ className: "cell-field-font" }}
                     onChange={(e) =>
                       handleInputChange(
                         designer.designId,
@@ -144,10 +147,10 @@ const DesignTable = () => {
                   />
                 </TableCell>
                 <TableCell>
-                  <Button onClick={() => handleEditDesigner(designer.designId)}>
+                  <Button onClick={() => handleEditDesigner(designer.designId)} className="button-styles">
                     Save
                   </Button>
-                  <Button onClick={() => handleDeleteDesign(designer.designId)}>
+                  <Button onClick={() => handleDeleteDesign(designer.designId)} className="button-styles">
                     Delete
                   </Button>
                 </TableCell>
@@ -158,6 +161,7 @@ const DesignTable = () => {
                 <TextField
                   placeholder="New designer"
                   value={newDesigners.serviceProviderName}
+                  InputProps={{ className: "cell-field-font" }}
                   onChange={(e) =>
                     handlenewDesignersChange(
                       "serviceProviderName",
@@ -170,13 +174,14 @@ const DesignTable = () => {
                 <TextField
                   placeholder="Price"
                   value={newDesigners.price}
+                  InputProps={{ className: "cell-field-font" }}
                   onChange={(e) =>
                     handlenewDesignersChange("price", e.target.value)
                   }
                 />
               </TableCell>
               <TableCell>
-                <Button onClick={handleAddDesigner}>Add</Button>
+                <Button onClick={handleAddDesigner} className="button-styles">Add</Button>
               </TableCell>
             </TableRow>
           </TableBody>

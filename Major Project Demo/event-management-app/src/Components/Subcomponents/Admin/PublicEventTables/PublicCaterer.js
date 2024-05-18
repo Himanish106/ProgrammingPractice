@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import { useParams } from "react-router-dom";
 
-const CatererTable = () => {
+const PublicCatererTable = () => {
   const { venueId } = useParams();
   const [caterers, setCaterers] = useState([]);
   const [newCaterer, setNewCaterers] = useState({
@@ -29,7 +29,7 @@ const CatererTable = () => {
   const fetchCaterers = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/globalcontroller/caterers/${venueId}`
+        `http://localhost:8080/privateeventcontroller/publiccaterers/${venueId}`
       );
       setCaterers(response.data);
       const initialEditState = {};
@@ -48,7 +48,7 @@ const CatererTable = () => {
     ) {
       try {
         const response = await axios.post(
-          `http://localhost:8080/globalcontroller/caterers/${venueId}`,
+          `http://localhost:8080/privateeventcontroller/publiccaterers/${venueId}`,
           newCaterer
         );
         console.log(response.data)
@@ -70,7 +70,7 @@ const CatererTable = () => {
     if (updatedCaterer) {
       try {
         await axios.put(
-          `http://localhost:8080/globalcontroller/caterers/${catererId}`,
+          `http://localhost:8080/privateeventcontroller/publiccaterers/${catererId}`,
           updatedCaterer
         );
         fetchCaterers();
@@ -81,7 +81,7 @@ const CatererTable = () => {
   };
 
   const handleDeleteCaterer = async (catererId) => {
-    await axios.delete(`http://localhost:8080/globalcontroller/caterers/${catererId}`);
+    await axios.delete(`http://localhost:8080/privateeventcontroller/publiccaterers/${catererId}`);
     fetchCaterers();
 };
 
@@ -105,20 +105,22 @@ const CatererTable = () => {
   return (
     <div>
       <Button onClick={() => window.history.back()}>Back to Venues</Button>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} className="table-container">
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Service Name</TableCell>
-              <TableCell>Price</TableCell>
+              <TableCell className="cell-head-font">Service Name</TableCell>
+              <TableCell className="cell-head-font">Price</TableCell>
+              <TableCell className="cell-head-font">Actions</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody className="table-body">
             {caterers.map((caterer) => (
               <TableRow key={caterer.catererId}>
                 <TableCell>
                   <TextField
                     value={editCaterers[caterer.catererId]?.serviceName ?? ""}
+                    InputProps={{ className: "cell-field-font" }}
                     onChange={(e) =>
                       handleInputChange(
                         caterer.catererId,
@@ -131,16 +133,17 @@ const CatererTable = () => {
                 <TableCell>
                   <TextField
                     value={editCaterers[caterer.catererId]?.price ?? ""}
+                    InputProps={{ className: "cell-field-font" }}
                     onChange={(e) =>
                       handleInputChange(caterer.catererId, "price", e.target.value)
                     }
                   />
                 </TableCell>
                 <TableCell>
-                  <Button onClick={() => handleEditCaterer(caterer.catererId)}>
+                  <Button onClick={() => handleEditCaterer(caterer.catererId)} className="button-styles">
                     Save
                   </Button>
-                  <Button onClick={() => handleDeleteCaterer(caterer.catererId)}>
+                  <Button onClick={() => handleDeleteCaterer(caterer.catererId)} className="button-styles">
                     Delete
                   </Button>
                 </TableCell>
@@ -151,6 +154,7 @@ const CatererTable = () => {
                 <TextField
                   placeholder="New Caterer"
                   value={newCaterer.serviceName}
+                  InputProps={{ className: "cell-field-font" }}
                   onChange={(e) =>
                     handleNewCatererChange("serviceName", e.target.value)
                   }
@@ -160,13 +164,14 @@ const CatererTable = () => {
                 <TextField
                   placeholder="Price"
                   value={newCaterer.price}
+                  InputProps={{ className: "cell-field-font" }}
                   onChange={(e) =>
                     handleNewCatererChange("price", e.target.value)
                   }
                 />
               </TableCell>
               <TableCell>
-                <Button onClick={handleAddCaterer}>Add</Button>
+                <Button onClick={handleAddCaterer} className="button-styles">Add</Button>
               </TableCell>
             </TableRow>
           </TableBody>
@@ -176,4 +181,4 @@ const CatererTable = () => {
   );
 };
 
-export default CatererTable;
+export default PublicCatererTable;

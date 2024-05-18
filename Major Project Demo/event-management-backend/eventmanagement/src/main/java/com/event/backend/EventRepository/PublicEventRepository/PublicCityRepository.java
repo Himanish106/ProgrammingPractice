@@ -10,6 +10,6 @@ import com.event.backend.Entity.PublicEventBooking.PublicCity;
 
 
 @Repository
-public interface PublicCityRepository extends JpaRepository<PublicCity, String> {
-    List<PublicCity> findByState_StateName(String stateName);
+public interface PublicCityRepository extends JpaRepository<PublicCity, Long> {
+    List<PublicCity> findByState_StateId(Long stateId);
 }

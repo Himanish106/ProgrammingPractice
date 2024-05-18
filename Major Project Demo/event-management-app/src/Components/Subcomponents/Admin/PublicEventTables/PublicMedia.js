@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import { useParams } from "react-router-dom";
 
-const MediaTable = () => {
+const PublicMediaTable = () => {
   const { venueId } = useParams();
   const [medias, setMedias] = useState([]);
   const [newMedia, setNewMedia] = useState({
@@ -29,7 +29,7 @@ const MediaTable = () => {
   const fetchMedias = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/globalcontroller/medias/${venueId}`
+        `http://localhost:8080/privateeventcontroller/publicmedias/${venueId}`
       );
       setMedias(response.data);
       const initialEditState = {};
@@ -48,7 +48,7 @@ const MediaTable = () => {
     ) {
       try {
         const response = await axios.post(
-          `http://localhost:8080/globalcontroller/medias/${venueId}`,
+          `http://localhost:8080/privateeventcontroller/publicmedias/${venueId}`,
           newMedia
         );
         console.log(response.data)
@@ -70,7 +70,7 @@ const MediaTable = () => {
     if (updatedVenue) {
       try {
         await axios.put(
-          `http://localhost:8080/globalcontroller/medias/${mediaId}`,
+          `http://localhost:8080/privateeventcontroller/publicmedias/${mediaId}`,
           updatedVenue
         );
         fetchMedias();
@@ -80,7 +80,7 @@ const MediaTable = () => {
     }
   };
   const handleDeleteMedia = async (mediaId) => {
-    await axios.delete(`http://localhost:8080/globalcontroller/medias/${mediaId}`);
+    await axios.delete(`http://localhost:8080/privateeventcontroller/publicmedias/${mediaId}`);
     fetchMedias();
 };
   const handleInputChange = (mediaId, field, value) => {
@@ -103,20 +103,22 @@ const MediaTable = () => {
   return (
     <div>
       <Button onClick={() => window.history.back()}>Back to Venues</Button>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} className="table-container">
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Service Name</TableCell>
-              <TableCell>Price</TableCell>
+              <TableCell className="cell-head-font">Service Name</TableCell>
+              <TableCell className="cell-head-font">Price</TableCell>
+              <TableCell className="cell-head-font">Actions</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody className="table-body">
             {medias.map((media) => (
               <TableRow key={media.mediaId}>
                 <TableCell>
                   <TextField
                     value={editMedias[media.mediaId]?.serviceProviderName ?? ""}
+                    InputProps={{ className: "cell-field-font" }}
                     onChange={(e) =>
                       handleInputChange(
                         media.mediaId,
@@ -129,16 +131,17 @@ const MediaTable = () => {
                 <TableCell>
                   <TextField
                     value={editMedias[media.mediaId]?.price ?? ""}
+                    InputProps={{ className: "cell-field-font" }}
                     onChange={(e) =>
                       handleInputChange(media.mediaId, "price", e.target.value)
                     }
                   />
                 </TableCell>
                 <TableCell>
-                  <Button onClick={() => handleEditVenue(media.mediaId)}>
+                  <Button onClick={() => handleEditVenue(media.mediaId)} className="button-styles">
                     Save
                   </Button>
-                  <Button onClick={() => handleDeleteMedia(media.mediaId)}>
+                  <Button onClick={() => handleDeleteMedia(media.mediaId)} className="button-styles">
                     Delete
                   </Button>
                 </TableCell>
@@ -149,6 +152,7 @@ const MediaTable = () => {
                 <TextField
                   placeholder="New Media"
                   value={newMedia.serviceProviderName}
+                  InputProps={{ className: "cell-field-font" }}
                   onChange={(e) =>
                     handleNewMediaChange("serviceProviderName", e.target.value)
                   }
@@ -158,13 +162,14 @@ const MediaTable = () => {
                 <TextField
                   placeholder="Price"
                   value={newMedia.price}
+                  InputProps={{ className: "cell-field-font" }}
                   onChange={(e) =>
                     handleNewMediaChange("price", e.target.value)
                   }
                 />
               </TableCell>
               <TableCell>
-                <Button onClick={handleAddMedia}>Add</Button>
+                <Button onClick={handleAddMedia} className="button-styles">Add</Button>
               </TableCell>
             </TableRow>
           </TableBody>
@@ -174,4 +179,4 @@ const MediaTable = () => {
   );
 };
 
-export default MediaTable;
+export default PublicMediaTable;

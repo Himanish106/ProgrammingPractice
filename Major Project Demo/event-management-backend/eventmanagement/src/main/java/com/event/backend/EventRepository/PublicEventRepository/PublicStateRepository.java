@@ -8,6 +8,6 @@ import com.event.backend.Entity.PublicEventBooking.PublicState;
 
 
 @Repository
-public interface PublicStateRepository extends JpaRepository<PublicState, String> {
+public interface PublicStateRepository extends JpaRepository<PublicState, Long> {
 
 }

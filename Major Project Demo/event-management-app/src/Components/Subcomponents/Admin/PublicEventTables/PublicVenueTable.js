@@ -12,8 +12,9 @@ import {
   Paper,
 } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
-
-const VenueTable = () => {
+import "../../../../Global Files/global.css"
+import "../../../CSS/StateTable.css"
+const PublicVenueTable = () => {
   const { cityId } = useParams();
   const [venues, setVenues] = useState([]);
   const [newVenue, setNewVenue] = useState({
@@ -32,7 +33,7 @@ const VenueTable = () => {
   const fetchVenues = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/globalcontroller/venues/${cityId}`
+        `http://localhost:8080/privateeventcontroller/publicvenues/${cityId}`
       );
       setVenues(response.data);
       // Initialize edit state for each venue
@@ -56,7 +57,7 @@ const VenueTable = () => {
     ) {
       try {
         const response = await axios.post(
-          `http://localhost:8080/globalcontroller/venues/${cityId}`,
+          `http://localhost:8080/privateeventcontroller/publicvenues/${cityId}`,
           newVenue
         );
         setVenues([...venues, response.data]);
@@ -80,7 +81,7 @@ const VenueTable = () => {
     if (updatedVenue) {
       try {
         await axios.put(
-          `http://localhost:8080/globalcontroller/venues/${venueId}`,
+          `http://localhost:8080/privateeventcontroller/publicvenues/${venueId}`,
           updatedVenue
         );
         fetchVenues();
@@ -91,7 +92,7 @@ const VenueTable = () => {
   };
 
   const handleDeleteVenue = async (venueId) => {
-    await axios.delete(`http://localhost:8080/globalcontroller/venues/${venueId}`);
+    await axios.delete(`http://localhost:8080/privateeventcontroller/publicvenues/${venueId}`);
     fetchVenues();
 };
 
@@ -115,24 +116,29 @@ const VenueTable = () => {
   return (
     <div>
       <Button onClick={() => window.history.back()}>Back to Cities</Button>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} className="table-container">
         <Table>
           <TableHead>
-            <TableRow>
-              <TableCell>Venue Name</TableCell>
-              <TableCell>Capacity</TableCell>
-              <TableCell>Location</TableCell>
-              <TableCell>Price</TableCell>
-              <TableCell>Contact</TableCell>
-              <TableCell>Actions</TableCell>
+            <TableRow sx={{ width: "1200px" }}>
+              <TableCell className="cell-head-font">Venue</TableCell>
+              <TableCell className="cell-head-font">Capacity</TableCell>
+              <TableCell className="cell-head-font">Location</TableCell>
+              <TableCell className="cell-head-font">Price</TableCell>
+              <TableCell className="cell-head-font">Contact</TableCell>
+              <TableCell className="cell-head-font">Save</TableCell>
+              <TableCell className="cell-head-font">Medias</TableCell>
+              <TableCell className="cell-head-font">Caterers</TableCell>
+              <TableCell className="cell-head-font">Designs</TableCell>
+              <TableCell className="cell-head-font">Delete</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody className="table-body">
             {venues.map((venue) => (
               <TableRow key={venue.venueId}>
-                <TableCell>
+                <TableCell style={{ minWidth: "300px", maxWidth: "600px" }}>
                   <TextField
                     value={editVenues[venue.venueId]?.venueName ?? ""}
+                    InputProps={{ className: "cell-field-font" }}
                     onChange={(e) =>
                       handleInputChange(
                         venue.venueId,
@@ -145,6 +151,7 @@ const VenueTable = () => {
                 <TableCell>
                   <TextField
                     value={editVenues[venue.venueId]?.capacity ?? ""}
+                    InputProps={{ className: "cell-field-font" }}
                     onChange={(e) =>
                       handleInputChange(
                         venue.venueId,
@@ -154,9 +161,10 @@ const VenueTable = () => {
                     }
                   />
                 </TableCell>
-                <TableCell>
+                <TableCell style={{ minWidth: "300px", maxWidth: "600px" }}>
                   <TextField
                     value={editVenues[venue.venueId]?.location ?? ""}
+                    InputProps={{ className: "cell-field-font" }}
                     onChange={(e) =>
                       handleInputChange(
                         venue.venueId,
@@ -166,17 +174,19 @@ const VenueTable = () => {
                     }
                   />
                 </TableCell>
-                <TableCell>
+                <TableCell style={{ minWidth: "200px", maxWidth: "400px" }}>
                   <TextField
                     value={editVenues[venue.venueId]?.price ?? ""}
+                    InputProps={{ className: "cell-field-font" }}
                     onChange={(e) =>
                       handleInputChange(venue.venueId, "price", e.target.value)
                     }
                   />
                 </TableCell>
-                <TableCell>
+                <TableCell style={{ minWidth: "250px", maxWidth: "400px" }}>
                   <TextField
                     value={editVenues[venue.venueId]?.contact ?? ""}
+                    InputProps={{ className: "cell-field-font" }}
                     onChange={(e) =>
                       handleInputChange(
                         venue.venueId,
@@ -187,27 +197,27 @@ const VenueTable = () => {
                   />
                 </TableCell>
                 <TableCell>
-                  <Button onClick={() => handleEditVenue(venue.venueId)}>
+                  <Button onClick={() => handleEditVenue(venue.venueId)} className="button-styles">
                     Save
                   </Button>
                 </TableCell>
                 <TableCell>
-                  <Button component={Link} to={`/medias/${venue.venueId}`}>
+                  <Button component={Link} to={`/publicmedias/${venue.venueId}`} className="button-styles">
                     View Medias
                   </Button>
                 </TableCell>
                 <TableCell>
-                  <Button component={Link} to={`/caterers/${venue.venueId}`}>
+                  <Button component={Link} to={`/publiccaterers/${venue.venueId}`} className="button-styles">
                     View Caterer
                   </Button>
                 </TableCell>
-                <TableCell>
-                  <Button component={Link} to={`/designers/${venue.venueId}`}>
+                <TableCell style={{ minWidth: "150px", maxWidth: "210px" }}>
+                  <Button component={Link} to={`/publicdesigners/${venue.venueId}`} className="button-styles">
                     View Designers
                   </Button>
                 </TableCell>
                 <TableCell>
-                  <Button onClick={() => handleDeleteVenue(venue.venueId)}>
+                  <Button onClick={() => handleDeleteVenue(venue.venueId)} className="button-styles">
                     Delete
                   </Button>
                 </TableCell>
@@ -218,6 +228,7 @@ const VenueTable = () => {
                 <TextField
                   placeholder="New Venue"
                   value={newVenue.venueName}
+                  InputProps={{ className: "cell-field-font" }}
                   onChange={(e) =>
                     handleNewVenueChange("venueName", e.target.value)
                   }
@@ -227,6 +238,7 @@ const VenueTable = () => {
                 <TextField
                   placeholder="Capacity"
                   value={newVenue.capacity}
+                  InputProps={{ className: "cell-field-font" }}
                   onChange={(e) =>
                     handleNewVenueChange("capacity", e.target.value)
                   }
@@ -236,6 +248,7 @@ const VenueTable = () => {
                 <TextField
                   placeholder="Location"
                   value={newVenue.location}
+                  InputProps={{ className: "cell-field-font" }}
                   onChange={(e) =>
                     handleNewVenueChange("location", e.target.value)
                   }
@@ -245,6 +258,7 @@ const VenueTable = () => {
                 <TextField
                   placeholder="Price"
                   value={newVenue.price}
+                  InputProps={{ className: "cell-field-font" }}
                   onChange={(e) =>
                     handleNewVenueChange("price", e.target.value)
                   }
@@ -254,13 +268,14 @@ const VenueTable = () => {
                 <TextField
                   placeholder="Contact"
                   value={newVenue.contact}
+                  InputProps={{ className: "cell-field-font" }}
                   onChange={(e) =>
                     handleNewVenueChange("contact", e.target.value)
                   }
                 />
               </TableCell>
               <TableCell>
-                <Button onClick={handleAddVenue}>Add</Button>
+                <Button onClick={handleAddVenue} className="button-styles">Add</Button>
               </TableCell>
             </TableRow>
           </TableBody>
@@ -270,4 +285,4 @@ const VenueTable = () => {
   );
 };
 
-export default VenueTable;
+export default PublicVenueTable;

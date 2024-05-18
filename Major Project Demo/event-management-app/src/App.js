@@ -18,16 +18,24 @@ import ProtectedContactUs from "./Components/Subcomponents/ContactUs/ProtectedCo
 import ProtectedRegister from "./Components/Subcomponents/Register/ProtectedRegister";
 import ProtectedPrivateBooking from "./Components/Subcomponents/EventBooking/ProtectPrivateBooking";
 import ProtectedPublicBooking from "./Components/Subcomponents/EventBooking/ProtectPublicBooking";
-import PublicOrderTable from "./Components/Subcomponents/Admin/PublicOrderTable";
-import StateTable from "./Components/Subcomponents/Admin/StateTable";
-import CityTable from "./Components/Subcomponents/Admin/CityTable";
-import VenueTable from "./Components/Subcomponents/Admin/VenueTable";
-import MediaTable from "./Components/Subcomponents/Admin/MediaTable";
-import CatererTable from "./Components/Subcomponents/Admin/CatererTable";
-import DesignTable from "./Components/Subcomponents/Admin/DesignTable";
-import EventTypes from "./Components/Subcomponents/Admin/EventTypes";
+import PublicOrderTable from "./Components/Subcomponents/Admin/PublicEventTables/PublicOrderTable";
 import UserTable from "./Components/Subcomponents/Admin/UserTable";
+import StateTable from "./Components/Subcomponents/Admin/PrivateEventTables/StateTable";
+import CityTable from "./Components/Subcomponents/Admin/PrivateEventTables/CityTable";
+import VenueTable from "./Components/Subcomponents/Admin/PrivateEventTables/VenueTable";
+import MediaTable from "./Components/Subcomponents/Admin/PrivateEventTables/MediaTable";
+import CatererTable from "./Components/Subcomponents/Admin/PrivateEventTables/CatererTable";
+import DesignTable from "./Components/Subcomponents/Admin/PrivateEventTables/DesignTable";
+import EventTypes from "./Components/Subcomponents/Admin/PrivateEventTables/EventTypes";
+import PublicStateTable from "./Components/Subcomponents/Admin/PublicEventTables/PublicStateTable";
+import PublicCityTable from "./Components/Subcomponents/Admin/PublicEventTables/PublicCityTable";
+import PublicVenueTable from "./Components/Subcomponents/Admin/PublicEventTables/PublicVenueTable";
+import PublicMediaTable from "./Components/Subcomponents/Admin/PublicEventTables/PublicMedia";
+import PublicCatererTable from "./Components/Subcomponents/Admin/PublicEventTables/PublicCaterer";
+import PublicDesignTable from "./Components/Subcomponents/Admin/PublicEventTables/PublicDesigners";
+import PublicEventTypes from "./Components/Subcomponents/Admin/PublicEventTables/PublicEventTypes";
 import ContactTable from "./Components/Subcomponents/Admin/ContactTable";
+
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -71,14 +79,21 @@ function App() {
           <Route exact path="/resetpassword" element={<ResetPassword />} />
           <Route exact path="/upload" element={<PublicOrderTable />} />
           <Route exact path="/privateeventtable" element={<EventTypes />} />
+          <Route exact path="/publiceventtable" element={<PublicEventTypes />} />
           <Route exact path="/usertable" element={<UserTable />} />
           <Route exact path="/contacttable" element={<ContactTable />} />
           <Route exact path="/statetable" element={<StateTable />} />
+          <Route exact path="/publicstatetable" element={<PublicStateTable />} />
           <Route exact path="/cities/:stateId" element={<CityTable />} />
+          <Route exact path="/publiccities/:stateId" element={<PublicCityTable />} />
           <Route exact path="/venues/:cityId" element={<VenueTable />} />
+          <Route exact path="/publicvenues/:cityId" element={<PublicVenueTable />} />
           <Route exact path="/medias/:venueId" element={<MediaTable />} />
+          <Route exact path="/publicmedias/:venueId" element={<PublicMediaTable />} />
           <Route exact path="/caterers/:venueId" element={<CatererTable />} />
+          <Route exact path="/publiccaterers/:venueId" element={<PublicCatererTable />} />
           <Route exact path="/designers/:venueId" element={<DesignTable />} />
+          <Route exact path="/publicdesigners/:venueId" element={<PublicDesignTable />} />
         </Routes>
         )}
         <Footer />

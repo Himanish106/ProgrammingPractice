@@ -1,4 +1,4 @@
-// src/components/CityTable.js
+// src/components/PublicCityTable.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
 
-const CityTable = () => {
+const PublicCityTable = () => {
   const { stateId } = useParams();
   const [cities, setCities] = useState([]);
   const [newCityName, setNewCityName] = useState("");
@@ -26,7 +26,7 @@ const CityTable = () => {
 
   const fetchCities = async () => {
     const response = await axios.get(
-      `http://localhost:8080/globalcontroller/cities/${stateId}`
+      `http://localhost:8080/privateeventcontroller/publiccities/${stateId}`
     );
     setCities(response.data);
   };
@@ -34,7 +34,7 @@ const CityTable = () => {
   const handleAddCity = async () => {
     if (newCityName) {
       const response = await axios.post(
-        `http://localhost:8080/globalcontroller/cities/${stateId}`,
+        `http://localhost:8080/privateeventcontroller/publiccities/${stateId}`,
         { cityName: newCityName }
       );
       setCities([...cities, response.data]);
@@ -47,7 +47,7 @@ const CityTable = () => {
     if (updatedCityName) {
       const updatedCity = { ...city, cityName: updatedCityName };
       await axios.put(
-        `http://localhost:8080/globalcontroller/cities/${city.cityId}`,
+        `http://localhost:8080/privateeventcontroller/publiccities/${city.cityId}`,
         updatedCity
       );
       fetchCities();
@@ -55,7 +55,7 @@ const CityTable = () => {
     }
   };
   const handleDeleteCity = async (cityId) => {
-    await axios.delete(`http://localhost:8080/globalcontroller/cities/${cityId}`);
+    await axios.delete(`http://localhost:8080/privateeventcontroller/publiccities/${cityId}`);
     fetchCities();
 };
   const handleInputChange = (cityId, value) => {
@@ -65,27 +65,28 @@ const CityTable = () => {
   return (
     <div>
       <Button onClick={() => window.history.back()}>Back to States</Button>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} className='table-container'>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>City Name</TableCell>
-              <TableCell>Actions</TableCell>
+              <TableCell className='cell-head-font'>City Name</TableCell>
+              <TableCell className='cell-head-font'>Actions</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody className='table-body'>
             {cities.map((city) => (
               <TableRow key={city.cityId}>
                 <TableCell>
                   <TextField
                     value={editCityNames[city.cityId] || city.cityName}
                     onChange={(e) => handleInputChange(city.cityId, e.target.value)}
+                    InputProps={{ className: 'cell-field-font' }}
                   />
                 </TableCell>
                 <TableCell>
-                  <Button onClick={() => handleEditCity(city)}>Edit</Button>
-                  <Button onClick={() => handleDeleteCity(city.cityId)}>Delete</Button>
-                  <Button component={Link} to={`/venues/${city.cityId}`}>
+                  <Button onClick={() => handleEditCity(city)} className="button-styles">Edit</Button>
+                  <Button onClick={() => handleDeleteCity(city.cityId)} className="button-styles">Delete</Button>
+                  <Button component={Link} to={`/publicvenues/${city.cityId}`} className="button-styles">
                     View Venues
                   </Button>
                 </TableCell>
@@ -97,10 +98,11 @@ const CityTable = () => {
                   placeholder="New City"
                   value={newCityName}
                   onChange={(e) => setNewCityName(e.target.value)}
+                  InputProps={{ className: 'cell-field-font' }}
                 />
               </TableCell>
               <TableCell>
-                <Button onClick={handleAddCity}>Add</Button>
+                <Button onClick={handleAddCity} className="button-styles">Add</Button>
               </TableCell>
             </TableRow>
           </TableBody>
@@ -110,4 +112,4 @@ const CityTable = () => {
   );
 };
 
-export default CityTable;
+export default PublicCityTable;

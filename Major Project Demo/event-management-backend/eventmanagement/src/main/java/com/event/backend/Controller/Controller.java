@@ -64,10 +64,7 @@ public class Controller {
     @PostMapping("/register")
     public ResponseEntity<Map<String, String>> saveUser(@RequestBody User user) {
         try {
-            // Attempt to save the user
             User savedUser = eventService.saveUser(user);
-
-            // If user is successfully saved, generate token and return response
             UserDetails userDetails = savedUser;
             String token = jwtHelper.generateToken(userDetails);
             Map<String, String> responseBody = new HashMap<>();
@@ -77,7 +74,6 @@ public class Controller {
             responseBody.put("token", token);
             return ResponseEntity.ok(responseBody);
         } catch (RuntimeException e) {
-            // If an exception occurs (e.g., user already exists), return error response
             Map<String, String> errorResponse = new HashMap<>();
             errorResponse.put("error", e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);

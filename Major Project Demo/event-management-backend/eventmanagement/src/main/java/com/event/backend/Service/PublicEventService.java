@@ -7,7 +7,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.event.backend.Entity.PublicEventBooking.PublicCaterer;
 import com.event.backend.Entity.PublicEventBooking.PublicCity;
 import com.event.backend.Entity.PublicEventBooking.PublicDesign;
@@ -25,10 +24,12 @@ import com.event.backend.EventRepository.PublicEventRepository.PublicOrderReposi
 import com.event.backend.EventRepository.PublicEventRepository.PublicStateRepository;
 import com.event.backend.EventRepository.PublicEventRepository.PublicVenueRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class PublicEventService {
     @Autowired
-    private PublicEventTypesRepo privateEventRepo;
+    private PublicEventTypesRepo publicEventTypesRepo;
 
     @Autowired
     private PublicStateRepository stateRepository;
@@ -51,78 +52,177 @@ public class PublicEventService {
     @Autowired
     private PublicOrderRepository publicOrderRepository;
 
-    public PublicEventTypes createEvents(PublicEventTypes events) {
-        return privateEventRepo.save(events);
+    public PublicEventTypes createPublicEvents(PublicEventTypes events) {
+        return publicEventTypesRepo.save(events);
     }
 
-    public List<PublicEventTypes> getEventTypes() {
-        return privateEventRepo.findAll();
+    public List<PublicEventTypes> getPublicEventTypes() {
+        return publicEventTypesRepo.findAll();
     }
 
-    public PublicState createState(PublicState state) {
+    public PublicEventTypes getPublicEventById(Long eventId) {
+        Optional<PublicEventTypes> eventOptional = publicEventTypesRepo.findById(eventId);
+        return eventOptional.orElse(null);
+    }
+
+    public PublicEventTypes updatePublicEvent(PublicEventTypes eventType) {
+        return publicEventTypesRepo.save(eventType);
+    }
+
+    public PublicState createPublicState(PublicState state) {
         return stateRepository.save(state);
     }
 
-    public List<PublicState> getAllStates() {
+    @Transactional
+    public void deletePublicEvent(Long eventId) {
+        publicEventTypesRepo.deleteById(eventId);
+    }
+
+    public PublicState getPublicStateById(Long id) {
+        Optional<PublicState> stateOptional = stateRepository.findById(id);
+        return stateOptional.orElse(null);
+    }
+
+    public PublicState updatePublicState(PublicState state) {
+        return stateRepository.save(state);
+    }
+
+    public List<PublicState> getAllPublicStates() {
         return stateRepository.findAll();
     }
 
-    public PublicCity createCity(String stateName, PublicCity city) {
-        PublicState state = stateRepository.findById(stateName)
+    @Transactional
+    public void deletePublicState(Long stateId) {
+        stateRepository.deleteById(stateId);
+    }
+
+    public PublicCity createPublicCity(Long id, PublicCity city) {
+        PublicState state = stateRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("State not found"));
         city.setState(state);
         return cityRepository.save(city);
     }
 
-    public List<PublicCity> getCitiesByState(String stateName) {
-        return cityRepository.findByState_StateName(stateName);
+    public List<PublicCity> getPublicCitiesByState(Long stateName) {
+        return cityRepository.findByState_StateId(stateName);
     }
 
-    public PublicVenue createVenue(String cityName, PublicVenue venue) {
-        PublicCity city = cityRepository.findById(cityName)
+    public PublicCity getPublicCityByName(Long cityId) {
+        Optional<PublicCity> cityOptional = cityRepository.findById(cityId);
+        return cityOptional.orElse(null);
+    }
+
+    public PublicCity updatePublicCity(PublicCity city) {
+        return cityRepository.save(city);
+    }
+
+    @Transactional
+    public void deletePublicCity(Long cityId) {
+        cityRepository.deleteById(cityId);
+    }
+
+    public PublicVenue createPublicVenue(Long cityId, PublicVenue venue) {
+        PublicCity city = cityRepository.findById(cityId)
                 .orElseThrow(() -> new RuntimeException("City not found"));
         venue.setCity(city);
         return venueRepository.save(venue);
     }
 
-    public List<PublicVenue> getVenuesByCity(String cityName) {
-        return venueRepository.findByCity_CityName(cityName);
+    public List<PublicVenue> getPublicVenuesByCity(Long cityId) {
+        return venueRepository.findByCity_CityId(cityId);
     }
 
-    public PublicCaterer createCaterer(String venueName, PublicCaterer caterer) {
-        PublicVenue venue = venueRepository.findById(venueName)
+    public PublicVenue getPublicVenueByName(Long venueId) {
+        Optional<PublicVenue> venueOptional = venueRepository.findById(venueId);
+        return venueOptional.orElse(null);
+    }
+
+    public PublicVenue updatePublicVenue(PublicVenue venue) {
+        return venueRepository.save(venue);
+    }
+
+    @Transactional
+    public void deletePublicVenue(Long venueId) {
+        venueRepository.deleteById(venueId);
+    }
+
+    public PublicCaterer createPublicCaterer(Long venueId, PublicCaterer caterer) {
+        PublicVenue venue = venueRepository.findById(venueId)
                 .orElseThrow(() -> new RuntimeException("Venue not found"));
         caterer.setVenue(venue);
         return catererRepository.save(caterer);
     }
 
-    public List<PublicCaterer> getCaterersByVenue(String venueName) {
-        return catererRepository.findByVenue_VenueName(venueName);
+    public List<PublicCaterer> getCaterersByVenue(Long venueId) {
+        return catererRepository.findByVenue_VenueId(venueId);
     }
 
-    public PublicMedia createMedia(String venueName, PublicMedia media) {
-        PublicVenue venue = venueRepository.findById(venueName)
+    public PublicCaterer getPublicCatererByName(Long catererId) {
+        Optional<PublicCaterer> catererOptional = catererRepository.findById(catererId);
+        return catererOptional.orElse(null);
+    }
+
+    public PublicCaterer updatePublicCaterer(PublicCaterer caterer) {
+        return catererRepository.save(caterer);
+    }
+
+    @Transactional
+    public void deletePublicCaterer(Long catererId) {
+        catererRepository.deleteById(catererId);
+    }
+
+    public PublicMedia createPublicMedia(Long venueId, PublicMedia media) {
+        PublicVenue venue = venueRepository.findById(venueId)
                 .orElseThrow(() -> new RuntimeException("Venue not found"));
         media.setVenue(venue);
         return mediaRepository.save(media);
     }
 
-    public List<PublicMedia> getMediasByVenue(String venueName) {
-        return mediaRepository.findByVenue_VenueName(venueName);
+    public List<PublicMedia> getPublicMediasByVenue(Long venueId) {
+        return mediaRepository.findByVenue_VenueId(venueId);
     }
 
-    public PublicDesign createDesign(String venueName, PublicDesign design) {
-        PublicVenue venue = venueRepository.findById(venueName)
+    public PublicMedia getPublicMediaByName(Long mediaId) {
+        Optional<PublicMedia> mediaOptional = mediaRepository.findById(mediaId);
+        return mediaOptional.orElse(null);
+    }
+
+    public PublicMedia updatePublicMedia(PublicMedia media) {
+        return mediaRepository.save(media);
+    }
+
+    @Transactional
+    public void deletePublicMedia(Long mediaId) {
+        mediaRepository.deleteById(mediaId);
+    }
+
+    public PublicDesign createDesign(Long venueId, PublicDesign design) {
+        PublicVenue venue = venueRepository.findById(venueId)
                 .orElseThrow(() -> new RuntimeException("Venue not found"));
         design.setVenue(venue);
         return designRepository.save(design);
     }
 
-    public List<PublicDesign> getDesignsByVenue(String venueName) {
-        return designRepository.findByVenue_VenueName(venueName);
+    public List<PublicDesign> getDesignsByVenue(Long venueId) {
+        return designRepository.findByVenue_VenueId(venueId);
     }
-    public PublicOrder savePrivateEventBooking(PublicOrder publicOrder){
-      return publicOrderRepository.save(publicOrder);
+
+    public PublicDesign getPublicDesignByName(Long designId) {
+        Optional<PublicDesign> designOptional = designRepository.findById(designId);
+        return designOptional.orElse(null);
+    }
+
+    public PublicDesign updatePublicDesign(PublicDesign design) {
+        return designRepository.save(design);
+    }
+
+    @Transactional
+    public void deletePublicDesign(Long designId) {
+        designRepository.deleteById(designId);
+    }
+
+    public PublicOrder savePrivateEventBooking(PublicOrder publicOrder) {
+        return publicOrderRepository.save(publicOrder);
     }
 
     public List<PublicOrder> getAllPublicOrders() {
@@ -141,24 +241,22 @@ public class PublicEventService {
         publicOrderRepository.deleteById(id);
     }
 
-
     public PublicOrder addImageToPublicOrder(Long publicOrderId, MultipartFile file) throws IOException {
         Optional<PublicOrder> optionalPublicOrder = publicOrderRepository.findById(publicOrderId);
         if (optionalPublicOrder.isPresent()) {
             PublicOrder publicOrder = optionalPublicOrder.get();
-            publicOrder.setData(file.getBytes()); 
+            publicOrder.setData(file.getBytes());
             return publicOrderRepository.save(publicOrder);
         } else {
             throw new IllegalArgumentException("Public order not found with ID: " + publicOrderId);
         }
     }
 
-    // Method to update an existing public order with image data
     public PublicOrder updatePublicOrderWithImage(Long publicOrderId, MultipartFile file) throws IOException {
         Optional<PublicOrder> optionalPublicOrder = publicOrderRepository.findById(publicOrderId);
         if (optionalPublicOrder.isPresent()) {
             PublicOrder publicOrder = optionalPublicOrder.get();
-            publicOrder.setData(file.getBytes()); 
+            publicOrder.setData(file.getBytes());
             return publicOrderRepository.save(publicOrder);
         } else {
             throw new IllegalArgumentException("Public order not found with ID: " + publicOrderId);

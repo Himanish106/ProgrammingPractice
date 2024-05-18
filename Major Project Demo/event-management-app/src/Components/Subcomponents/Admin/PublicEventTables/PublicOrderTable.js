@@ -17,7 +17,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ImageIcon from "@mui/icons-material/Image";
-
+import "../../../../Global Files/global.css"
+import "../../../CSS/StateTable.css"
 const PublicOrderTable = () => {
   const [publicOrders, setPublicOrders] = useState([]);
 
@@ -63,63 +64,63 @@ const PublicOrderTable = () => {
       <Typography variant="h4" gutterBottom>
         Public Orders
       </Typography>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} className="table-container">
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}>Event Type</TableCell>
-              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }}>Email</TableCell>
-              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}>State</TableCell>
-              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}>City</TableCell>
-              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }}>Venue Name</TableCell>
-              <TableCell style={{ minWidth: 200, whiteSpace: "nowrap" }}>Event Description</TableCell>
-              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }}>Event Date</TableCell>
-              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}>Catering</TableCell>
-              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}>Caterer</TableCell>
-              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }}>Design and Media</TableCell>
-              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}>Design</TableCell>
-              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}>Media</TableCell>
-              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }}>Onsite Management</TableCell>
-              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }}>Advertising</TableCell>
-              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}>Capacity</TableCell>
-              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }}>Total Price</TableCell>
-              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}>Image</TableCell>
-              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}>Action</TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Event Type</TableCell>
+              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }}  className="cell-head-font">Email</TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">State</TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">City</TableCell>
+              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }}  className="cell-head-font">Venue Name</TableCell>
+              <TableCell style={{ minWidth: 200, whiteSpace: "nowrap" }}  className="cell-head-font">Event Description</TableCell>
+              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }}  className="cell-head-font">Event Date</TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Catering</TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Caterer</TableCell>
+              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }}  className="cell-head-font">Design and Media</TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Design</TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Media</TableCell>
+              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }}  className="cell-head-font">Onsite Management</TableCell>
+              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }}  className="cell-head-font">Advertising</TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Capacity</TableCell>
+              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }}  className="cell-head-font">Total Price</TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Image</TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Action</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody className="table-body">
             {publicOrders.map((publicOrder) => (
               <TableRow key={publicOrder.id}>
-                <TableCell style={{textTransform:"none"}}>{publicOrder.email}</TableCell>
-                <TableCell>{publicOrder.eventType}</TableCell>
-                <TableCell>{publicOrder.state}</TableCell>
-                <TableCell>{publicOrder.city}</TableCell>
-                <TableCell>{publicOrder.venueName}</TableCell>
-                <TableCell>{publicOrder.eventDescription}</TableCell>
-                <TableCell>{formatDate(publicOrder.eventDate)}</TableCell>
-                <TableCell>{publicOrder.cateringFacility}</TableCell>
-                <TableCell>{publicOrder.caterer}</TableCell>
-                <TableCell>{publicOrder.designAndMediaFacility}</TableCell>
-                <TableCell>{publicOrder.designService}</TableCell>
-                <TableCell>{publicOrder.mediaService}</TableCell>
-                <TableCell>{publicOrder.onsiteManagementFacility}</TableCell>
-                <TableCell>{publicOrder.advertisingFacility}</TableCell>
-                <TableCell>{publicOrder.capacity}</TableCell>
-                <TableCell>{publicOrder.totalPrice}</TableCell>
+                <TableCell style={{textTransform:"none"}} className="cell-field-font" >{publicOrder.email}</TableCell>
+                <TableCell className="cell-field-font">{publicOrder.eventType}</TableCell>
+                <TableCell className="cell-field-font">{publicOrder.state}</TableCell>
+                <TableCell className="cell-field-font">{publicOrder.city}</TableCell>
+                <TableCell className="cell-field-font">{publicOrder.venueName}</TableCell>
+                <TableCell className="cell-field-font">{publicOrder.eventDescription}</TableCell>
+                <TableCell className="cell-field-font">{formatDate(publicOrder.eventDate)}</TableCell>
+                <TableCell className="cell-field-font">{publicOrder.cateringFacility}</TableCell>
+                <TableCell className="cell-field-font">{publicOrder.caterer}</TableCell>
+                <TableCell className="cell-field-font">{publicOrder.designAndMediaFacility}</TableCell>
+                <TableCell className="cell-field-font">{publicOrder.designService}</TableCell>
+                <TableCell className="cell-field-font">{publicOrder.mediaService}</TableCell>
+                <TableCell className="cell-field-font">{publicOrder.onsiteManagementFacility}</TableCell>
+                <TableCell className="cell-field-font">{publicOrder.advertisingFacility}</TableCell>
+                <TableCell className="cell-field-font">{publicOrder.capacity}</TableCell>
+                <TableCell className="cell-field-font">{publicOrder.totalPrice}</TableCell>
                 <TableCell>
                   {publicOrder.data ? (
                     <Tooltip title="Image Uploaded">
-                      <CheckCircleIcon color="success" />
+                      <CheckCircleIcon color="success" style={{fontSize: "2rem"}} />
                     </Tooltip>
                   ) : (
                     <Tooltip title="No Image Uploaded">
-                      <ImageIcon color="disabled" />
+                      <ImageIcon  style={{ color: "red", fontSize: "2rem"}} />
                     </Tooltip>
                   )}
                 </TableCell>
                 <TableCell>
                   <IconButton
-                    color="error"
+                   color="error"
                     onClick={() => deletePublicOrder(publicOrder.id)}
                   >
                     <DeleteIcon />

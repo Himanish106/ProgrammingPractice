@@ -9,6 +9,6 @@ import com.event.backend.Entity.PublicEventBooking.PublicVenue;
 
 
 @Repository
-public interface PublicVenueRepository extends JpaRepository<PublicVenue, String> {
-    List<PublicVenue> findByCity_CityName(String cityName);
+public interface PublicVenueRepository extends JpaRepository<PublicVenue, Long> {
+    List<PublicVenue> findByCity_CityId(Long cityId);
 }

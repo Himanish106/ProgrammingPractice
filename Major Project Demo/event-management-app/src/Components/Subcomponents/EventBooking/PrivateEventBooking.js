@@ -331,7 +331,7 @@ const PrivateEventBooking = () => {
   const selectedDesignChange = (event) => {
     const designerId = event.target.value;
     const selectedDesign = designs.find(
-      (design) => design.id.toString() === designerId
+      (design) => design.designId.toString() === designerId
     );
     console.log(selectedDesign);
     setSelectedDesignServices(selectedDesign);
@@ -685,14 +685,14 @@ const PrivateEventBooking = () => {
                         <select
                           value={
                             selectedDesignServices
-                              ? selectedDesignServices.id
+                              ? selectedDesignServices.designId
                               : ""
                           }
                           onChange={selectedDesignChange}
                         >
                           <option value="">Select Design Service</option>
                           {designs.map((design) => (
-                            <option key={design.id} value={design.id}>
+                            <option key={design.designId} value={design.designId}>
                               {design.serviceProviderName}
                             </option>
                           ))}

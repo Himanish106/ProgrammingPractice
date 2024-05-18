@@ -16,8 +16,10 @@ const PublicEventBooking = () => {
   }, []);
   const [eventTypes, setEventTypes] = useState([]);
   const [selectedState, setSelectedState] = useState("");
+  const [selectedStateName, setSelectedStateName] = useState("");
   const [states, setStates] = useState([]);
   const [selectedCity, setSelectedCity] = useState("");
+  const [selectedCityName, setSelectedCityName] = useState("");
   const [cities, setCities] = useState([]);
   const [selectedVenue, setSelectedVenue] = useState("");
   const [venues, setVenues] = useState([]);
@@ -82,7 +84,7 @@ const PublicEventBooking = () => {
   }, []);
   useEffect(() => {
     axios
-      .get("http://localhost:8080/privateeventcontroller/states")
+      .get("http://localhost:8080/privateeventcontroller/publicstates")
       .then((response) => {
         setStates(response.data);
       })
@@ -94,7 +96,7 @@ const PublicEventBooking = () => {
     if (selectedState) {
       axios
         .get(
-          `http://localhost:8080/privateeventcontroller/cities/${encodeURIComponent(
+          `http://localhost:8080/privateeventcontroller/publiccities/${encodeURIComponent(
             selectedState
           )}`
         )
@@ -110,7 +112,7 @@ const PublicEventBooking = () => {
     if (selectedCity) {
       axios
         .get(
-          `http://localhost:8080/privateeventcontroller/venues/${encodeURIComponent(
+          `http://localhost:8080/privateeventcontroller/publicvenues/${encodeURIComponent(
             selectedCity
           )}`
         )
@@ -128,8 +130,8 @@ const PublicEventBooking = () => {
       const fetchCaterers = async () => {
         try {
           const caterersResponse = await axios.get(
-            `http://localhost:8080/privateeventcontroller/caterers/${encodeURIComponent(
-              selectedVenue.venueName
+            `http://localhost:8080/privateeventcontroller/publiccaterers/${encodeURIComponent(
+              selectedVenue.venueId
             )}`
           );
           setCaterers(caterersResponse.data);
@@ -147,8 +149,8 @@ const PublicEventBooking = () => {
       const fetchDesigns = async () => {
         try {
           const designsResponse = await axios.get(
-            `http://localhost:8080/privateeventcontroller/designs/${encodeURIComponent(
-              selectedVenue.venueName
+            `http://localhost:8080/privateeventcontroller/publicdesigns/${encodeURIComponent(
+              selectedVenue.venueId
             )}`
           );
           setDesigns(designsResponse.data);
@@ -165,8 +167,8 @@ const PublicEventBooking = () => {
       const fetchMedias = async () => {
         try {
           const mediasResponse = await axios.get(
-            `http://localhost:8080/privateeventcontroller/medias/${encodeURIComponent(
-              selectedVenue.venueName
+            `http://localhost:8080/privateeventcontroller/publicmedias/${encodeURIComponent(
+              selectedVenue.venueId
             )}`
           );
           setMedias(mediasResponse.data);
@@ -184,30 +186,44 @@ const PublicEventBooking = () => {
     }
   }, [selectedVenue]);
   const handleStateChange = (event) => {
-    setSelectedState(event.target.value);
+    const selectedStateId = event.target.value;
+    const selectedState = states.find(
+      (state) => state.stateId === parseInt(selectedStateId)
+    );
+    console.log(selectedState);
+    setSelectedState(selectedState.stateId);
+    setSelectedStateName(selectedState.stateName);
     setSelectedCity("");
-    setSelectedVenue(null);
+    setSelectedVenue("");
   };
 
   const handleCityChange = (event) => {
-    setSelectedCity(event.target.value);
-    setSelectedVenue(null);
+    const selectedCityId = event.target.value;
+    const selectedCity = cities.find(
+      (city) => city.cityId === parseInt(selectedCityId)
+    );
+    console.log(selectedCity);
+    setSelectedCity(selectedCity.cityId);
+    setSelectedCityName(selectedCity.cityName);
+    setSelectedVenue("");
   };
 
    const handleVenueChange = (event) => {
-    const selectedVenueName = event.target.value;
+    const selectedVenueId = event.target.value;
+    console.log(`Selected Venue ID: ${selectedVenueId}`); // Log the selected venue ID
     const foundVenue = venues.find(
-      (venue) => venue.venueName === selectedVenueName
+      (venue) => venue.venueId === parseInt(selectedVenueId)
     );
+    console.log(`Found Venue: ${JSON.stringify(foundVenue)}`); // Log the found venue details
     setSelectedVenue(foundVenue);
     setCateringFacility("");
     setdesignAndPhotoFacility("");
     checkFormValidity();
   };
   const selectedCatererChange = (event) => {
-    const catererName = event.target.value;
+    const catererId = event.target.value;
     const selectedCaterer = caterers.find(
-      (caterer) => caterer.serviceName === catererName
+      (caterer) => caterer.catererId.toString() === catererId
     );
     setSelectedCaterer(selectedCaterer);
     setCatererPrice(selectedCaterer.price); // Set the caterer price
@@ -225,9 +241,9 @@ const PublicEventBooking = () => {
     checkFormValidity();
   };
   const selectedDesignChange = (event) => {
-    const designerName = event.target.value;
+    const designerId = event.target.value;
     const selectedDesign = designs.find(
-      (design) => design.serviceProviderName === designerName
+      (design) => design.designId.toString() === designerId
     );
     console.log(selectedDesign);
     setSelectedDesignServices(selectedDesign);
@@ -235,9 +251,9 @@ const PublicEventBooking = () => {
     setDesignPrice(selectedDesign.price);
   };
   const selectedMediaChange = (event) => {
-    const mediaName = event.target.value;
+    const mediaId = event.target.value;
     const selectedMedia = medias.find(
-      (media) => media.serviceProviderName === mediaName
+      (media) => media.mediaId.toString() === mediaId
     );
     console.log(selectedMedia);
     setSelectedPhotoVideoServices(selectedMedia);
@@ -334,8 +350,8 @@ const PublicEventBooking = () => {
     const formData = {
       email: userEmail,
       eventType: document.getElementById("eventType").value,
-      state: selectedState,
-      city: selectedCity,
+      state: selectedStateName,
+      city: selectedCityName,
       venueName: selectedVenue ? selectedVenue.venueName : null,
       eventDescription: inputMessage,
       eventDate: selectedDate,
@@ -486,7 +502,7 @@ const PublicEventBooking = () => {
                   >
                     <option value="">Select State</option>
                     {states.map((state) => (
-                      <option key={state.stateName} value={state.stateName}>
+                      <option key={state.stateId} value={state.stateId}>
                         {state.stateName}
                       </option>
                     ))}
@@ -502,7 +518,7 @@ const PublicEventBooking = () => {
                     >
                       <option value="">Select City</option>
                       {cities.map((city) => (
-                        <option key={city.cityName} value={city.cityName}>
+                        <option key={city.cityId} value={city.cityId}>
                           {city.cityName}
                         </option>
                       ))}
@@ -515,11 +531,11 @@ const PublicEventBooking = () => {
                     <select
                       id="venue"
                       onChange={handleVenueChange}
-                      value={selectedVenue ? selectedVenue.venueName : ""}
+                      value={selectedVenue ? selectedVenue.venueId : ""}
                     >
                       <option value="">Select Venue</option>
                       {venues.map((venue) => (
-                        <option key={venue.venueName} value={venue.venueName}>
+                        <option key={venue.venueId} value={venue.venueId}>
                           {venue.venueName}
                         </option>
                       ))}
@@ -623,15 +639,15 @@ const PublicEventBooking = () => {
                         <label>Select Caterer:</label>
                         <select
                           value={
-                            selectedCaterer ? selectedCaterer.serviceName : ""
+                            selectedCaterer ? selectedCaterer.catererId : ""
                           }
                           onChange={selectedCatererChange}
                         >
                           <option value="">Select Caterer</option>
                           {caterers.map((caterer) => (
                             <option
-                              key={caterer.serviceName}
-                              value={caterer.serviceName}
+                              key={caterer.catererId}
+                              value={caterer.catererId}
                             >
                               {caterer.serviceName}
                             </option>
@@ -675,7 +691,7 @@ const PublicEventBooking = () => {
                         <select
                           value={
                             selectedDesignServices
-                              ? selectedDesignServices.serviceProviderName
+                              ? selectedDesignServices.designId
                               : ""
                           }
                           onChange={selectedDesignChange}
@@ -683,8 +699,8 @@ const PublicEventBooking = () => {
                           <option value="">Select Design Service</option>
                           {designs.map((design) => (
                             <option
-                              key={design.serviceProviderName}
-                              value={design.serviceProviderName}
+                              key={design.designId}
+                              value={design.designId}
                             >
                               {design.serviceProviderName}
                             </option>
@@ -699,7 +715,7 @@ const PublicEventBooking = () => {
                         <select
                           value={
                             selectedPhotoVideoServices
-                              ? selectedPhotoVideoServices.serviceProviderName
+                              ? selectedPhotoVideoServices.mediaId
                               : ""
                           }
                           onChange={selectedMediaChange}
@@ -707,8 +723,8 @@ const PublicEventBooking = () => {
                           <option value="">Select Media Service</option>
                           {medias.map((photoVideoService) => (
                             <option
-                              key={photoVideoService.serviceProviderName}
-                              value={photoVideoService.serviceProviderName}
+                              key={photoVideoService.mediaId}
+                              value={photoVideoService.mediaId}
                             >
                               {photoVideoService.serviceProviderName}
                             </option>

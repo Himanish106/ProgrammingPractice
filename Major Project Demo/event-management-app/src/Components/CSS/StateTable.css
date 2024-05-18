@@ -1,0 +1,26 @@
+.table-container{
+    padding-top: 13rem;
+    background-color: #222222f6 !important;
+}
+
+.table-container .cell-head-font{
+    font-size: 3rem;
+    color: var(--emphasis-text);
+}
+.table-container .table-body .cell-field-font{
+    font-size: 1.9rem !important;
+    color: var(--text-color);
+}
+.button-styles {
+    font-size: 1rem !important; 
+    background-color: #666 !important; 
+    color: white !important;
+    margin: 0 5px !important; 
+    border-radius: 0.5rem;
+    transition: all 0.3s ease-in-out !important;
+}
+
+.button-styles:hover {
+    background-color: #4e4c4ca1 !important;
+    transform: scale(1.05) !important;
+}

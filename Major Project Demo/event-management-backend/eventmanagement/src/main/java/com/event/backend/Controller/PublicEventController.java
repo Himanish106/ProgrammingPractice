@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.event.backend.Entity.PublicEventBooking.PublicCaterer;
 import com.event.backend.Entity.PublicEventBooking.PublicCity;
 import com.event.backend.Entity.PublicEventBooking.PublicDesign;
@@ -39,88 +38,227 @@ public class PublicEventController {
 
     @PostMapping("/publiceventadd")
     public ResponseEntity<PublicEventTypes> createPublicEvent(@RequestBody PublicEventTypes eventTypes) {
-        PublicEventTypes event = publicEventService.createEvents(eventTypes);
+        PublicEventTypes event = publicEventService.createPublicEvents(eventTypes);
         return ResponseEntity.status(HttpStatus.CREATED).body(event);
     }
 
     @GetMapping("/publiceventdisplay")
     public ResponseEntity<List<PublicEventTypes>> getAllEvents() {
-        List<PublicEventTypes> events = publicEventService.getEventTypes();
+        List<PublicEventTypes> events = publicEventService.getPublicEventTypes();
         return ResponseEntity.ok().body(events);
     }
 
-    @PostMapping("/states")
+    @PutMapping("/publicevents/{eventId}")
+    public ResponseEntity<PublicEventTypes> updatePublicEventTypes(@PathVariable Long eventId,
+            @RequestBody PublicEventTypes updatedPublicEventTypes) {
+        PublicEventTypes eventTypes = publicEventService.getPublicEventById(eventId);
+        if (eventTypes != null) {
+            eventTypes.setEventType(updatedPublicEventTypes.getEventType());
+            publicEventService.updatePublicEvent(eventTypes);
+            return ResponseEntity.ok(eventTypes);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/publicevents/{eventId}")
+    public ResponseEntity<Void> deletePublicEvents(@PathVariable Long eventId) {
+        publicEventService.deletePublicEvent(eventId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/publicstates")
     public ResponseEntity<PublicState> createState(@RequestBody PublicState state) {
-        PublicState createdState = publicEventService.createState(state);
+        PublicState createdState = publicEventService.createPublicState(state);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdState);
     }
 
-    @GetMapping("/states")
+    @GetMapping("/publicstates")
     public ResponseEntity<List<PublicState>> getAllStates() {
-        List<PublicState> states = publicEventService.getAllStates();
+        List<PublicState> states = publicEventService.getAllPublicStates();
         return ResponseEntity.ok().body(states);
     }
 
-    @PostMapping("/cities/{stateName}")
-    public ResponseEntity<PublicCity> createCity(@PathVariable String stateName, @RequestBody PublicCity city) {
-        PublicCity createdCity = publicEventService.createCity(stateName, city);
+    @PutMapping("/publicstates/{stateId}")
+    public ResponseEntity<PublicState> updatePublicState(@PathVariable Long stateId,
+            @RequestBody PublicState updatedPublicState) {
+        PublicState state = publicEventService.getPublicStateById(stateId);
+        if (state != null) {
+            state.setStateName(updatedPublicState.getStateName());
+            publicEventService.updatePublicState(state);
+            return ResponseEntity.ok(state);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/publicstates/{stateId}")
+    public ResponseEntity<Void> deletePublicState(@PathVariable Long stateId) {
+        publicEventService.deletePublicState(stateId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/publiccities/{stateId}")
+    public ResponseEntity<PublicCity> createCity(@PathVariable Long stateId, @RequestBody PublicCity city) {
+        PublicCity createdCity = publicEventService.createPublicCity(stateId, city);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdCity);
     }
 
-    @GetMapping("/cities/{stateName}")
-    public ResponseEntity<List<PublicCity>> getCitiesByStateId(@PathVariable String stateName) {
-        List<PublicCity> cities = publicEventService.getCitiesByState(stateName);
+    @GetMapping("/publiccities/{stateId}")
+    public ResponseEntity<List<PublicCity>> getPublicCitiesByStateId(@PathVariable Long stateId) {
+        List<PublicCity> cities = publicEventService.getPublicCitiesByState(stateId);
         System.out.println(cities);
         return ResponseEntity.ok().body(cities);
     }
 
-    @PostMapping("/venues/{cityName}")
-    public ResponseEntity<PublicVenue> createVenue(@PathVariable String cityName, @RequestBody PublicVenue venue) {
-        PublicVenue createdVenue = publicEventService.createVenue(cityName, venue);
+    @PutMapping("/publiccities/{cityId}")
+    public ResponseEntity<PublicCity> updatePublicCity(@PathVariable Long cityId, @RequestBody PublicCity updatedCity) {
+        PublicCity city = publicEventService.getPublicCityByName(cityId);
+        if (city != null) {
+            city.setCityName(updatedCity.getCityName());
+            publicEventService.updatePublicCity(city);
+            return ResponseEntity.ok(city);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/publiccities/{cityId}")
+    public ResponseEntity<Void> deletePublicCity(@PathVariable Long cityId) {
+        publicEventService.deletePublicCity(cityId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/publicvenues/{cityId}")
+    public ResponseEntity<PublicVenue> createPublicVenue(@PathVariable Long cityId, @RequestBody PublicVenue venue) {
+        PublicVenue createdVenue = publicEventService.createPublicVenue(cityId, venue);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdVenue);
     }
 
-    @GetMapping("/venues/{cityName}")
-    public ResponseEntity<List<PublicVenue>> getVenuesByCityId(@PathVariable String cityName) {
-        List<PublicVenue> venues = publicEventService.getVenuesByCity(cityName);
+    @GetMapping("/publicvenues/{cityId}")
+    public ResponseEntity<List<PublicVenue>> getPublicVenuesByCityId(@PathVariable Long cityId) {
+        List<PublicVenue> venues = publicEventService.getPublicVenuesByCity(cityId);
         return ResponseEntity.ok().body(venues);
     }
 
-    @PostMapping("/caterers/{venueName}")
-    public ResponseEntity<PublicCaterer> createCaterer(@PathVariable String venueName,
+    @DeleteMapping("/publicvenues/{venueId}")
+    public ResponseEntity<Void> deletePublicVenue(@PathVariable Long venueId) {
+        publicEventService.deletePublicVenue(venueId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/publicvenues/{venueId}")
+    public ResponseEntity<PublicVenue> updatePublicVenue(@PathVariable Long venueId,
+            @RequestBody PublicVenue updatedVenue) {
+        PublicVenue venue = publicEventService.getPublicVenueByName(venueId);
+        if (venue != null) {
+            venue.setVenueName(updatedVenue.getVenueName());
+            venue.setCapacity(updatedVenue.getCapacity());
+            venue.setContact(updatedVenue.getContact());
+            venue.setLocation(updatedVenue.getLocation());
+            venue.setPrice(updatedVenue.getPrice());
+            publicEventService.updatePublicVenue(venue);
+            return ResponseEntity.ok(venue);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping("/publiccaterers/{venueId}")
+    public ResponseEntity<PublicCaterer> createPublicCaterer(@PathVariable Long venueId,
             @RequestBody PublicCaterer caterer) {
-        PublicCaterer createdCaterer = publicEventService.createCaterer(venueName, caterer);
+        PublicCaterer createdCaterer = publicEventService.createPublicCaterer(venueId, caterer);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdCaterer);
     }
 
-    @GetMapping("/caterers/{venueName}")
-    public ResponseEntity<List<PublicCaterer>> getCaterersByVenueId(@PathVariable String venueName) {
-        List<PublicCaterer> caterers = publicEventService.getCaterersByVenue(venueName);
+    @GetMapping("/publiccaterers/{venueId}")
+    public ResponseEntity<List<PublicCaterer>> getPublicCaterersByVenueId(@PathVariable Long venueId) {
+        List<PublicCaterer> caterers = publicEventService.getCaterersByVenue(venueId);
         return ResponseEntity.ok().body(caterers);
     }
 
-    @PostMapping("/medias/{venueName}")
-    public ResponseEntity<PublicMedia> createMedia(@PathVariable String venueName, @RequestBody PublicMedia media) {
-        PublicMedia createdMedia = publicEventService.createMedia(venueName, media);
+    @PutMapping("/publiccaterers/{catererId}")
+    public ResponseEntity<PublicCaterer> updatePublicCaterer(@PathVariable Long catererId,
+            @RequestBody PublicCaterer updatedCaterer) {
+        PublicCaterer caterer = publicEventService.getPublicCatererByName(catererId);
+        if (caterer != null) {
+            caterer.setServiceName(updatedCaterer.getServiceName());
+            caterer.setPrice(updatedCaterer.getPrice());
+            publicEventService.updatePublicCaterer(caterer);
+            return ResponseEntity.ok(caterer);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/publiccaterers/{catererId}")
+    public ResponseEntity<Void> deletePublicCaterer(@PathVariable Long catererId) {
+        publicEventService.deletePublicCaterer(catererId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/publicmedias/{venueId}")
+    public ResponseEntity<PublicMedia> createMedia(@PathVariable Long venueId, @RequestBody PublicMedia media) {
+        PublicMedia createdMedia = publicEventService.createPublicMedia(venueId, media);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdMedia);
     }
 
-    @GetMapping("/medias/{venueName}")
-    public ResponseEntity<List<PublicMedia>> getMediaByVenueId(@PathVariable String venueName) {
-        List<PublicMedia> media = publicEventService.getMediasByVenue(venueName);
+    @GetMapping("/publicmedias/{venueId}")
+    public ResponseEntity<List<PublicMedia>> getMediaByVenueId(@PathVariable Long venueId) {
+        List<PublicMedia> media = publicEventService.getPublicMediasByVenue(venueId);
         return ResponseEntity.ok().body(media);
     }
 
-    @PostMapping("/designs/{venueName}")
-    public ResponseEntity<PublicDesign> createMedia(@PathVariable String venueName, @RequestBody PublicDesign design) {
-        PublicDesign createdDesign = publicEventService.createDesign(venueName, design);
+    @PutMapping("/publicmedias/{mediaId}")
+    public ResponseEntity<PublicMedia> updatePublicMedia(@PathVariable Long mediaId,
+            @RequestBody PublicMedia updatedMedia) {
+        PublicMedia media = publicEventService.getPublicMediaByName(mediaId);
+        if (media != null) {
+            media.setServiceProviderName(updatedMedia.getServiceProviderName());
+            media.setPrice(updatedMedia.getPrice());
+            publicEventService.updatePublicMedia(media);
+            return ResponseEntity.ok(media);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/publicmedias/{mediaId}")
+    public ResponseEntity<Void> deletePublicMedia(@PathVariable Long mediaId) {
+        publicEventService.deletePublicMedia(mediaId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/publicdesigns/{venueId}")
+    public ResponseEntity<PublicDesign> createMedia(@PathVariable Long venueId, @RequestBody PublicDesign design) {
+        PublicDesign createdDesign = publicEventService.createDesign(venueId, design);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdDesign);
     }
 
-    @GetMapping("/designs/{venueName}")
-    public ResponseEntity<List<PublicDesign>> getDesignByVenueId(@PathVariable String venueName) {
-        List<PublicDesign> designs = publicEventService.getDesignsByVenue(venueName);
+    @GetMapping("/publicdesigns/{venueId}")
+    public ResponseEntity<List<PublicDesign>> getDesignByVenueId(@PathVariable Long venueId) {
+        List<PublicDesign> designs = publicEventService.getDesignsByVenue(venueId);
         return ResponseEntity.ok().body(designs);
+    }
+
+    @PutMapping("/publicdesigns/{designId}")
+    public ResponseEntity<PublicDesign> updateDesign(@PathVariable Long designId,
+            @RequestBody PublicDesign updatedDesign) {
+        PublicDesign design = publicEventService.getPublicDesignByName(designId);
+        if (design != null) {
+            design.setServiceProviderName(updatedDesign.getServiceProviderName());
+            design.setPrice(updatedDesign.getPrice());
+            publicEventService.updatePublicDesign(design);
+            return ResponseEntity.ok(design);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/publicdesigns/{designId}")
+    public ResponseEntity<Void> deleteDesign(@PathVariable Long designId) {
+        publicEventService.deletePublicDesign(designId);
+        return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/bookpublicorder")
@@ -163,6 +301,5 @@ public class PublicEventController {
         PublicOrder updatedPublicOrder = publicEventService.updatePublicOrderWithImage(publicOrderId, file);
         return new ResponseEntity<>(updatedPublicOrder, HttpStatus.OK);
     }
-
 
 }

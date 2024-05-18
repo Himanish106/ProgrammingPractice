@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button, TextField, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import { Link } from 'react-router-dom';
-
+import "../../../../Global Files/global.css"
+import "../../../CSS/StateTable.css"
 const StateTable = () => {
     const [states, setStates] = useState([]);
     const [newStateName, setNewStateName] = useState('');
@@ -48,27 +49,28 @@ const StateTable = () => {
     };
 
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} className='table-container'>
             <Table>
                 <TableHead>
                     <TableRow>
-                        <TableCell>State Name</TableCell>
-                        <TableCell>Actions</TableCell>
+                        <TableCell className='cell-head-font'>States</TableCell>
+                        <TableCell className='cell-head-font'>Actions</TableCell>
                     </TableRow>
                 </TableHead>
-                <TableBody>
+                <TableBody className='table-body'>
                     {states.map((state) => (
                         <TableRow key={state.stateId}>
                             <TableCell>
                                 <TextField
                                     value={editStateNames[state.stateId] || state.stateName}
                                     onChange={(e) => handleInputChange(state.stateId, e.target.value)} // Pass state id as argument
+                                    InputProps={{ className: 'cell-field-font' }}
                                 />
                             </TableCell>
                             <TableCell>
-                                <Button onClick={() => handleEditState(state)}>Edit</Button>
-                                <Button onClick={() => handleDeleteState(state.stateId)}>Delete</Button>
-                                <Button component={Link} to={`/cities/${state.stateId}`}>View Cities</Button>
+                                <Button onClick={() => handleEditState(state)} className="button-styles">Edit</Button>
+                                <Button onClick={() => handleDeleteState(state.stateId)} className="button-styles">Delete</Button>
+                                <Button component={Link} to={`/cities/${state.stateId}`} className="button-styles">View Cities</Button>
                             </TableCell>
                         </TableRow>
                     ))}
@@ -78,10 +80,11 @@ const StateTable = () => {
                                 placeholder="New State"
                                 value={newStateName}
                                 onChange={(e) => setNewStateName(e.target.value)}
+                                InputProps={{ className: 'cell-field-font' }}
                             />
                         </TableCell>
                         <TableCell>
-                            <Button onClick={handleAddState}>Add</Button>
+                            <Button onClick={handleAddState} className="button-styles">Add</Button>
                         </TableCell>
                     </TableRow>
                 </TableBody>
