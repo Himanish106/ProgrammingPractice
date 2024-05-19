@@ -302,4 +302,11 @@ public class PublicEventController {
         return new ResponseEntity<>(updatedPublicOrder, HttpStatus.OK);
     }
 
+    @PutMapping("/{publicOrderId}/ticketprice")
+    public ResponseEntity<PublicOrder> updateTicketPrice(
+            @PathVariable Long publicOrderId,
+            @RequestParam("ticket") double ticket) {
+        PublicOrder updatedPublicOrder = publicEventService.updateTicketPrice(publicOrderId, ticket);
+        return new ResponseEntity<>(updatedPublicOrder, HttpStatus.OK);
+    }
 }

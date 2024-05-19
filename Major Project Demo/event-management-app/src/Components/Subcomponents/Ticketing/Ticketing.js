@@ -6,7 +6,6 @@ import { CirclesWithBar } from "react-loader-spinner";
 import Swal from "sweetalert2";
 import { jwtDecode } from "jwt-decode";
 
-
 const Ticketing = () => {
   const { eventId } = useParams();
   const termsAndConditions = [
@@ -32,18 +31,21 @@ const Ticketing = () => {
   const [date, setEventDate] = useState("");
   const [state, setEventState] = useState("");
   const [venueName, setVenueName] = useState("");
-  const [cost, setTotalCost] = useState("");
+  const [cost, setTotalCost] = useState(0);
   const submitForm = async () => {
     const formData = {
       email: userEmail,
       venue: venueName,
       state: state,
       date: date,
-      noOfPersons:ticketCount,
-      paidPrice:cost
+      noOfPersons: ticketCount,
+      paidPrice: cost,
     };
     try {
-      const response = await axios.post("http://localhost:8080/ticketing/postinfo", formData);
+      const response = await axios.post(
+        "http://localhost:8080/ticketing/postinfo",
+        formData
+      );
       console.log("Form submitted successfully:", response);
     } catch (error) {
       console.error(error);
@@ -57,11 +59,10 @@ const Ticketing = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const pricePerPerson = 800;
   useEffect(() => {
-    const totalPrice = ticketCount * pricePerPerson;
+    const totalPrice = ticketCount * eventDetails.ticketPrice;
     setTotalCost(totalPrice);
-  }, [ticketCount, pricePerPerson]);
+  }, [ticketCount, eventDetails]);
 
   const handleAddTicket = () => {
     if (ticketCount < 5) {
@@ -127,7 +128,7 @@ const Ticketing = () => {
     try {
       const options = {
         key: "rzp_test_ks17mztWozd2AM",
-        amount: ticketCount * pricePerPerson * 100,
+        amount: cost * 100,
         currency: "INR",
         name: "Event Vista",
         description: "Private Event Booking",
@@ -220,7 +221,7 @@ const Ticketing = () => {
                     {formatDate(eventDetails?.eventDate)}
                   </p>
                   <p className="ticket-price">
-                    Ticket Price : &#8377; 800/person
+                    Ticket Price : &#8377; {eventDetails?.ticketPrice}/person
                   </p>
                   <div className="slot-book">
                     <form className="ticket-form" onSubmit={handlePayment}>

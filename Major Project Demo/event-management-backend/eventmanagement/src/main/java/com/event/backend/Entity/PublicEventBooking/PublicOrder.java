@@ -39,6 +39,7 @@ public class PublicOrder {
     private String designService;
     private String mediaService;
     private int capacity;
+    private double ticketPrice;
     private double totalPrice;
     private String email;
     @Lob

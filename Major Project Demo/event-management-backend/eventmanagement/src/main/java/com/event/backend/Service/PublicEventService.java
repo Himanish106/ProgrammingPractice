@@ -262,4 +262,15 @@ public class PublicEventService {
             throw new IllegalArgumentException("Public order not found with ID: " + publicOrderId);
         }
     }
+
+    public PublicOrder updateTicketPrice(Long publicOrderId, double ticketPrice) {
+        Optional<PublicOrder> optionalPublicOrder = publicOrderRepository.findById(publicOrderId);
+        if (optionalPublicOrder.isPresent()) {
+            PublicOrder publicOrder = optionalPublicOrder.get();
+            publicOrder.setTicketPrice(ticketPrice);
+            return publicOrderRepository.save(publicOrder);
+        } else {
+            throw new IllegalArgumentException("Public order not found with ID: " + publicOrderId);
+        }
+    }
 }
