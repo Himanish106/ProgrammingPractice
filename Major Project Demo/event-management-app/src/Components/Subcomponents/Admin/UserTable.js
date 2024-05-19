@@ -10,7 +10,8 @@ import {
   Paper,
   Typography,
 } from '@mui/material';
-
+import "../../../Global Files/global.css"
+import "../../CSS/StateTable.css"
 const UserTable = () => {
   const [users, setUsers] = useState([]);
 
@@ -33,23 +34,23 @@ const UserTable = () => {
       <Typography variant="h4" gutterBottom>
         Users
       </Typography>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} className="table-container">
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>First Name</TableCell>
-              <TableCell>Last Name</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Contact</TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">First Name</TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Last Name</TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Email</TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Contact</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody className="table-body">
             {users.map((user) => (
               <TableRow key={user.id}>
-                <TableCell>{user.firstName}</TableCell>
-                <TableCell>{user.lastName}</TableCell>
-                <TableCell style={{textTransform : "none"}}>{user.email}</TableCell>
-                <TableCell>{user.contact}</TableCell>
+                <TableCell className="cell-field-font">{user.firstName}</TableCell>
+                <TableCell className="cell-field-font">{user.lastName}</TableCell>
+                <TableCell style={{textTransform : "none"}} className="cell-field-font">{user.email}</TableCell>
+                <TableCell className="cell-field-font">{user.contact}</TableCell>
               </TableRow>
             ))}
           </TableBody>

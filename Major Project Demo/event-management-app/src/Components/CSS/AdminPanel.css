@@ -1,0 +1,49 @@
+.admin-parent-container{
+    background-color: var(--background-col);
+    min-height: 140vh;
+}
+.admin-container {
+    width: 1200px;
+    height: 6rem;
+    margin: 0 auto;
+    padding-top: 13rem;
+}
+.admin-container .admin-sections {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.admin-btn {
+    padding: 80px;
+    display:block;
+    width: 100%;
+    font-size: 2rem;
+    transition: all 0.3s ease-in-out;
+    background-color: rgba(19, 18, 18, 0.589);
+    color: var(--text-color);
+        margin-bottom: 4rem;
+}
+.admin-btn:hover{
+    color: red;
+    background-color: black;
+}
+.admin-symbol{
+    font-size: 2.5rem;
+    padding-bottom: 1rem;
+    color: var( --emphasis-text);
+}
+@media (max-width: 778px) {
+    .admin-container {
+        padding-top: 17rem;
+        width: 400px;
+        height: 1300px;
+        margin-bottom: 5rem;
+    }
+    .admin-container .admin-sections {
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}

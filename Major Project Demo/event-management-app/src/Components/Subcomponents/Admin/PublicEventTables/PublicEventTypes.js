@@ -78,20 +78,21 @@ const PublicEventTypes = () => {
             <TableCell className="cell-head-font">Actions</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody className="table-body">
           {events.map((event) => (
             <TableRow key={event.eventId}>
               <TableCell>
                 <TextField
                   value={editEventNames[event.eventId] || event.eventType}
+                  InputProps={{ className: "cell-field-font" }}
                   onChange={(e) =>
                     handleInputChange(event.eventId, e.target.value)
                   }
                 />
               </TableCell>
               <TableCell>
-                <Button onClick={() => handleEditEvents(event)}>Edit</Button>
-                <Button onClick={() => handleDeleteEvents(event.eventId)}>
+                <Button onClick={() => handleEditEvents(event)} className="button-styles">Edit</Button>
+                <Button onClick={() => handleDeleteEvents(event.eventId)} className="button-styles">
                   Delete
                 </Button>
               </TableCell>
@@ -102,11 +103,12 @@ const PublicEventTypes = () => {
               <TextField
                 placeholder="New event"
                 value={newEventName}
+                InputProps={{ className: "cell-field-font" }}
                 onChange={(e) => setNewEventName(e.target.value)}
               />
             </TableCell>
             <TableCell>
-              <Button onClick={handleAddEvents}>Add</Button>
+              <Button onClick={handleAddEvents} className="button-styles">Add</Button>
             </TableCell>
           </TableRow>
         </TableBody>

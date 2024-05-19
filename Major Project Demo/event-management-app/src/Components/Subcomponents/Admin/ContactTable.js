@@ -54,7 +54,7 @@ const ContactTable = () => {
               <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Last Name</TableCell>
               <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Email</TableCell>
               <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Contact</TableCell>
-              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Message</TableCell>  `1`
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Message</TableCell> 
               <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Actions</TableCell>
             </TableRow>
           </TableHead>

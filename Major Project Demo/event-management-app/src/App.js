@@ -38,6 +38,10 @@ import ContactTable from "./Components/Subcomponents/Admin/ContactTable";
 import PrivateOrderTable from "./Components/Subcomponents/Admin/PrivateEventTables/PrivateOrderTable";
 import TicketInfoTable from "./Components/Subcomponents/Admin/TicketingInfoTable";
 import FeedbackTable from "./Components/Subcomponents/Admin/FeedbackTable";
+import AdminPanel from "./Components/Subcomponents/Admin/AdminPanel";
+import EventTableSelection from "./Components/Subcomponents/Admin/EventTableSelection";
+import EventLocations from "./Components/Subcomponents/Admin/EventLocations";
+import EventOrders from "./Components/Subcomponents/Admin/EventOrders";
 
 
 function App() {
@@ -80,6 +84,7 @@ function App() {
           <Route exact path="/forgetemail" element={<ForgetPasswordEmail />} />
           <Route exact path="/forgetotp" element={<ForgetPasswordOTP />} />
           <Route exact path="/resetpassword" element={<ResetPassword />} />
+          <Route exact path="/adminpanel" element={<AdminPanel />} />
           <Route exact path="/upload" element={<PublicOrderTable />} />
           <Route exact path="/privateupload" element={<PrivateOrderTable />} />
           <Route exact path="/privateeventtable" element={<EventTypes />} />
@@ -100,6 +105,9 @@ function App() {
           <Route exact path="/designers/:venueId" element={<DesignTable />} />
           <Route exact path="/publicdesigners/:venueId" element={<PublicDesignTable />} />
           <Route exact path="/ticketinfotable" element={<TicketInfoTable />} />
+          <Route exact path="/eventtableselection" element={<EventTableSelection />} />
+          <Route exact path="/eventlocations" element={<EventLocations />} />
+          <Route exact path="/eventorders" element={<EventOrders />} />
         </Routes>
         )}
         <Footer />
