@@ -35,6 +35,9 @@ import PublicCatererTable from "./Components/Subcomponents/Admin/PublicEventTabl
 import PublicDesignTable from "./Components/Subcomponents/Admin/PublicEventTables/PublicDesigners";
 import PublicEventTypes from "./Components/Subcomponents/Admin/PublicEventTables/PublicEventTypes";
 import ContactTable from "./Components/Subcomponents/Admin/ContactTable";
+import PrivateOrderTable from "./Components/Subcomponents/Admin/PrivateEventTables/PrivateOrderTable";
+import TicketInfoTable from "./Components/Subcomponents/Admin/TicketingInfoTable";
+import FeedbackTable from "./Components/Subcomponents/Admin/FeedbackTable";
 
 
 function App() {
@@ -78,10 +81,12 @@ function App() {
           <Route exact path="/forgetotp" element={<ForgetPasswordOTP />} />
           <Route exact path="/resetpassword" element={<ResetPassword />} />
           <Route exact path="/upload" element={<PublicOrderTable />} />
+          <Route exact path="/privateupload" element={<PrivateOrderTable />} />
           <Route exact path="/privateeventtable" element={<EventTypes />} />
           <Route exact path="/publiceventtable" element={<PublicEventTypes />} />
           <Route exact path="/usertable" element={<UserTable />} />
           <Route exact path="/contacttable" element={<ContactTable />} />
+          <Route exact path="/feedbacktable" element={<FeedbackTable />} />
           <Route exact path="/statetable" element={<StateTable />} />
           <Route exact path="/publicstatetable" element={<PublicStateTable />} />
           <Route exact path="/cities/:stateId" element={<CityTable />} />
@@ -94,6 +99,7 @@ function App() {
           <Route exact path="/publiccaterers/:venueId" element={<PublicCatererTable />} />
           <Route exact path="/designers/:venueId" element={<DesignTable />} />
           <Route exact path="/publicdesigners/:venueId" element={<PublicDesignTable />} />
+          <Route exact path="/ticketinfotable" element={<TicketInfoTable />} />
         </Routes>
         )}
         <Footer />

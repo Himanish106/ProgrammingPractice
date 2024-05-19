@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.event.backend.Entity.TicketingInfo;
 import com.event.backend.EventRepository.TicketingInfoRepo;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class TicketingService {
     @Autowired
@@ -21,6 +23,7 @@ public class TicketingService {
         return ticketingInfoRepo.findAll();
     }
 
+    @Transactional
     public void deleteTicketingInfo(Long id) {
         ticketingInfoRepo.deleteById(id);
     }

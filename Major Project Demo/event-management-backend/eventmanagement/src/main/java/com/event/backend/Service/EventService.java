@@ -18,6 +18,8 @@ import com.event.backend.EventRepository.FeedbackRepository;
 import com.event.backend.Service.OTP.EmailSenderService;
 import com.event.backend.Service.OTP.OTPService;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class EventService {
     @Autowired
@@ -65,7 +67,10 @@ public class EventService {
     public List<Feedback> getFeedback(){
         return feedbackRepository.findAll();
     }
-
+    @Transactional
+    public void deleteFeedback(String id){
+        feedbackRepository.deleteById(id);
+    }
     public ContactUs saveContactUs(ContactUs contactUs) {
         contactUs.setId(UUID.randomUUID().toString());
         return contactUsRepo.save(contactUs);
@@ -73,6 +78,11 @@ public class EventService {
 
     public List<ContactUs> getContactUs(){
         return contactUsRepo.findAll();
+    }
+
+    @Transactional
+    public void deleteContact(String id){
+        contactUsRepo.deleteById(id);
     }
 
     public boolean sendOTPByEmail(String email){

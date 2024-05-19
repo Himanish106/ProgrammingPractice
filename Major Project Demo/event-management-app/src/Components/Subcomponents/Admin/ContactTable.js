@@ -9,8 +9,11 @@ import {
   TableRow,
   Paper,
   Typography,
+  IconButton,
 } from '@mui/material';
-
+import DeleteIcon from "@mui/icons-material/Delete";
+import "../../../Global Files/global.css"
+import "../../CSS/StateTable.css"
 const ContactTable = () => {
   const [contacts,setContacts] = useState([]);
 
@@ -28,30 +31,49 @@ const ContactTable = () => {
     fetchContacts();
   }, []);
 
+  const deleteContact = async (id) => {
+    try {
+      await axios.delete(`http://localhost:8080/user/deletecontact/${id}`);
+      // After deletion, fetch updated public orders
+      fetchContacts();
+    } catch (error) {
+      console.error("Error deleting public order:", error);
+    }
+  };
+
   return (
     <div>
       <Typography variant="h4" gutterBottom>
         Contacts
       </Typography>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} className="table-container">
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>First Name</TableCell>
-              <TableCell>Last Name</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Contact</TableCell>
-              <TableCell>Message</TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">First Name</TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Last Name</TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Email</TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Contact</TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Message</TableCell>  `1`
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Actions</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody className="table-body">
             {contacts.map((contact) => (
               <TableRow key={contact.id}>
-                <TableCell>{contact.firstName}</TableCell>
-                <TableCell>{contact.lastName}</TableCell>
-                <TableCell style={{textTransform : "none"}}>{contact.email}</TableCell>
-                <TableCell>{contact.contact}</TableCell>
-                <TableCell>{contact.message}</TableCell>
+                <TableCell  className="cell-field-font">{contact.firstName}</TableCell>
+                <TableCell  className="cell-field-font">{contact.lastName}</TableCell>
+                <TableCell style={{textTransform : "none"}}  className="cell-field-font">{contact.email}</TableCell>
+                <TableCell  className="cell-field-font">{contact.contact}</TableCell>
+                <TableCell  className="cell-field-font">{contact.message}</TableCell>
+                <TableCell>
+                  <IconButton
+                   color="error"
+                    onClick={() => deleteContact(contact.id)}          
+                  >
+                    <DeleteIcon style={{fontSize: "2rem"}} />
+                  </IconButton>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

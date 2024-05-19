@@ -224,4 +224,13 @@ public class PrivateEventService {
     public PrivateOrder savePrivateEventBooking(PrivateOrder privateOrder) {
         return privateOrderRepository.save(privateOrder);
     }
+
+    @Transactional
+    public void deletePrivateOrder(Long id){
+        privateOrderRepository.deleteById(id);
+    }
+
+    public List<PrivateOrder> getAllPrivateOrders(){
+        return privateOrderRepository.findAll();
+    }
 }
