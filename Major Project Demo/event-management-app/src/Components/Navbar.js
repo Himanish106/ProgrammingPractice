@@ -7,13 +7,15 @@ import Swal from "sweetalert2";
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
   const [firstName, setFirstName] = useState("");
-
+  const [role, setRole] = useState("");
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       const decodedToken = jwtDecode(token);
-      const userFirstName = decodedToken.firstName; // Assuming the first name is stored in the token as "firstName"
+      const userFirstName = decodedToken.firstName;
+      const userRole = decodedToken.role;
       setFirstName(userFirstName);
+      setRole(userRole);
     }
   }, []);
 
@@ -23,19 +25,19 @@ const Navbar = () => {
 
   const handleLogout = () => {
     Swal.fire({
-      icon: 'warning',
+      icon: "warning",
       title: "Are you sure you want to logout?",
       showCancelButton: true,
       confirmButtonText: "Yes",
       cancelButtonText: "No",
-      width: '500px',
-          heightAuto:false,
-          customClass: {
-            popup: 'logout-alert-popup',
-            title: 'custom-swal2-title',
-            confirmButton: 'swal2-confirm',
-            cancelButton: '.swal2-cancel'
-          }
+      width: "500px",
+      heightAuto: false,
+      customClass: {
+        popup: "logout-alert-popup",
+        title: "custom-swal2-title",
+        confirmButton: "swal2-confirm",
+        cancelButton: ".swal2-cancel",
+      },
     }).then((result) => {
       if (result.isConfirmed) {
         localStorage.removeItem("token");
@@ -51,38 +53,78 @@ const Navbar = () => {
         <span>Event</span> Vista
       </Link>
       <nav className={`navbar ${isActive ? "active" : ""}`}>
-        <span>
-          <Link to="/">Home</Link>
-        </span>
-        <span>
-          <Link to="/about">About</Link>
-        </span>
-        <span>
-          <Link to="/feedback">Feedback</Link>
-        </span>
-        <span>
-          <Link to="/eventshowcase">Events</Link>
-        </span>
-        <span>
-          <Link to="/contact">Contact</Link>
-        </span>
         {localStorage.getItem("token") ? (
           <>
-           <span>
-           <Link to="/profile">Welcome {firstName}</Link>   {/* Display first name */}
-            </span>
-            <span onClick={handleLogout}><Link to="#">Logout</Link></span>
+            {role === "ADMIN" ? (
+              <>
+                <span>
+                  <Link to="/adminpanel">Admin Panel</Link>
+                </span>
+                <span>
+                  <Link to="/profile">Welcome {firstName}</Link>
+                </span>
+                <span onClick={handleLogout}>
+                  <Link to="#">Logout</Link>
+                </span>
+              </>
+            ) : (
+              <>
+                <span>
+                  <Link to="/">Home</Link>
+                </span>
+                <span>
+                  <Link to="/about">About</Link>
+                </span>
+                <span>
+                  <Link to="/feedback">Feedback</Link>
+                </span>
+                <span>
+                  <Link to="/eventshowcase">Events</Link>
+                </span>
+                <span>
+                  <Link to="/contact">Contact</Link>
+                </span>
+                <span>
+                  <Link to="/profile">Welcome {firstName}</Link>
+                </span>
+                <span onClick={handleLogout}>
+                  <Link to="#">Logout</Link>
+                </span>
+                <span className="event-btn-margin">
+                  <Link to="/eventselection" className="event-btn">
+                    Plan an Event
+                  </Link>
+                </span>
+              </>
+            )}
           </>
         ) : (
-          <span>
-            <Link to="/login">Login</Link>
-          </span>
+          <>
+            <span>
+              <Link to="/">Home</Link>
+            </span>
+            <span>
+              <Link to="/about">About</Link>
+            </span>
+            <span>
+              <Link to="/feedback">Feedback</Link>
+            </span>
+            <span>
+              <Link to="/eventshowcase">Events</Link>
+            </span>
+            <span>
+              <Link to="/contact">Contact</Link>
+            </span>
+            <span>
+              <Link to="/login">Login</Link>
+            </span>
+            <span className="event-btn-margin">
+              <Link to="/eventselection" className="event-btn">
+                Plan an Event
+              </Link>
+            </span>
+          </>
         )}
-        <span className="event-btn-margin">
-          <Link to="/eventselection" className="event-btn">
-            Plan an Event
-          </Link>
-        </span>
       </nav>
       <div
         id="menu-bar"

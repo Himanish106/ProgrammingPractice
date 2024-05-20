@@ -32,6 +32,7 @@ const Ticketing = () => {
   const [state, setEventState] = useState("");
   const [venueName, setVenueName] = useState("");
   const [cost, setTotalCost] = useState(0);
+
   const submitForm = async () => {
     const formData = {
       email: userEmail,
@@ -51,6 +52,7 @@ const Ticketing = () => {
       console.error(error);
     }
   };
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -60,8 +62,10 @@ const Ticketing = () => {
   }, []);
 
   useEffect(() => {
-    const totalPrice = ticketCount * eventDetails.ticketPrice;
-    setTotalCost(totalPrice);
+    if (eventDetails) {
+      const totalPrice = ticketCount * eventDetails.ticketPrice;
+      setTotalCost(totalPrice);
+    }
   }, [ticketCount, eventDetails]);
 
   const handleAddTicket = () => {
@@ -144,7 +148,7 @@ const Ticketing = () => {
           submitForm();
           Swal.fire({
             icon: "success",
-            title: "Payment successfull!",
+            title: "Payment successful!",
             confirmButtonText: "OK",
             width: "500px",
             customClass: {

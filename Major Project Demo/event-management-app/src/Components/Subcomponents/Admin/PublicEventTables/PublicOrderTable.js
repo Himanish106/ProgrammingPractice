@@ -162,7 +162,7 @@ const PublicOrderTable = () => {
                     style={{ fontSize: "2rem" }}
                     onClick={() => deletePublicOrder(publicOrder.id)}
                   >
-                    <DeleteIcon />
+                    <DeleteIcon style={{ fontSize: "2rem" }} />
                   </IconButton>
                   <label htmlFor={`file-input-${publicOrder.id}`}>
                     <input

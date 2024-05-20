@@ -143,7 +143,7 @@ const EventShowcase = () => {
                     </p>
                     <p className="event-rate">
                       Ticket Rates : &nbsp;
-                      <span className="loc-color">&#8377; 900/person</span>
+                      <span className="loc-color">&#8377; {publicOrder.ticketPrice}/person</span>
                     </p>
                   </div>
                   <Link to={`/ticketbooking/${publicOrder.id}`} className="btn book-btn">

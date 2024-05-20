@@ -4,6 +4,7 @@ import "../../CSS/Login.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { jwtDecode } from "jwt-decode";
 const Loginform = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -45,15 +46,21 @@ const Loginform = () => {
       if (response.data && response.data.jwt) {
         const token = response.data.jwt;
         localStorage.setItem("token", token);
-        window.location.reload();
-        window.location.href = "/";
+        const decodedToken = jwtDecode(token);
+        const userRole = decodedToken.role;
+  
+        if (userRole === "ADMIN") {
+          window.location.href = "/adminpanel";
+        } else {
+          window.location.href = "/";
+        }
       } else {
         Swal.fire({
           icon: 'error',
           title: 'Credentials Invalid !! \nPlease try again',
           text: 'Please check the entered details and try again',
           width: '500px',
-          heightAuto:false,
+          heightAuto: false,
           customClass: {
             container: 'custom-swal-container',
             popup: 'custom-swal-popup',
@@ -62,7 +69,7 @@ const Loginform = () => {
             footer: 'custom-swal-footer',
             confirmButton: 'custom-swal-confirm-button'
           }
-        })        
+        });
       }
     } catch (error) {
       if (error.response && error.response.status === 401) {
@@ -77,7 +84,7 @@ const Loginform = () => {
           title: 'Credentials Invalid !! \nPlease try again',
           text: 'Please check the entered details and try again',
           width: '500px',
-          heightAuto:false,
+          heightAuto: false,
           customClass: {
             container: 'custom-swal-container',
             popup: 'custom-swal-popup',
@@ -86,7 +93,7 @@ const Loginform = () => {
             footer: 'custom-swal-footer',
             confirmButton: 'custom-swal-confirm-button'
           }
-        })   
+        });
       }
     }
   };
