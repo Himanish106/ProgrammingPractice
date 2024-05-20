@@ -54,6 +54,7 @@ const TicketInfoTable = () => {
           <TableHead>
             <TableRow>
               <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Email</TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Event Type</TableCell>
               <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }}  className="cell-head-font">Date</TableCell>
               <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">No of Persons</TableCell>
               <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }}  className="cell-head-font">Paid Price</TableCell>
@@ -66,6 +67,7 @@ const TicketInfoTable = () => {
             {ticketingInfo.map((ticketinfo) => (
               <TableRow key={ticketinfo.id}>
                 <TableCell style={{textTransform:"none"}} className="cell-field-font" >{ticketinfo.email}</TableCell>
+                <TableCell className="cell-field-font">{ticketinfo.eventName}</TableCell>
                 <TableCell className="cell-field-font">{ticketinfo.date}</TableCell>
                 <TableCell className="cell-field-font">{ticketinfo.noOfPersons}</TableCell>
                 <TableCell className="cell-field-font">{ticketinfo.paidPrice}</TableCell>

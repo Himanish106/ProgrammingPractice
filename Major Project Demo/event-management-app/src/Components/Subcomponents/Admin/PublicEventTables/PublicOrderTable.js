@@ -88,8 +88,8 @@ const PublicOrderTable = () => {
         <Table>
           <TableHead>
             <TableRow>
+            <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }} className="cell-head-font">Email</TableCell>
               <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">Event Type</TableCell>
-              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }} className="cell-head-font">Email</TableCell>
               <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">State</TableCell>
               <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">City</TableCell>
               <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }} className="cell-head-font">Venue Name</TableCell>

@@ -35,6 +35,7 @@ const Ticketing = () => {
 
   const submitForm = async () => {
     const formData = {
+      eventName:eventDetails.eventType,
       email: userEmail,
       venue: venueName,
       state: state,
