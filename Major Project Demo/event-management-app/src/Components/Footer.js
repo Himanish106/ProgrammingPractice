@@ -27,7 +27,7 @@ const Footer = () => {
       <h3>contact info</h3>
       <a href="#"><i className="fas fa-phone" />+123-456-7890</a>
       <a href="#"><i className="fas fa-phone" />+098-765-4312</a>
-      <a href="#" className="small"><i className="fas fa-envelope" />eventvista@gmail.com</a>
+      <a href="#" className="small"><i className="fas fa-envelope" />eventvista83@gmail.com</a>
       <a href="#">
         <i className="fas fa-map-marker-alt">&nbsp; Kolkata, India - 700057</i>
       </a>

@@ -150,7 +150,7 @@ const ContactUs = () => {
               <div className="company-details">
                 <i className="far fa-envelope fa-solid fa-3x" />
                 <p>
-                  <strong>Email: &nbsp;</strong>eventvista22@gmail.com
+                  <strong>Email: &nbsp;</strong>eventvista83@gmail.com
                 </p>
               </div>
               <div className="company-details">

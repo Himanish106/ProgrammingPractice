@@ -5,6 +5,7 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.util.Matrix;
 
 import java.awt.Color;
 import java.io.ByteArrayOutputStream;
@@ -20,6 +21,7 @@ public class PDFGenerator {
                 document.addPage(page);
 
                 try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
+                    drawWatermark(contentStream, page);
                     float titleX = 100;
                     float titleY = 700;
                     contentStream.beginText();
@@ -84,5 +86,31 @@ public class PDFGenerator {
             e.printStackTrace();
             throw new RuntimeException("Failed to generate PDF", e);
         }
+    }
+      private static void drawWatermark(PDPageContentStream contentStream, PDPage page) throws IOException {
+        String watermarkText = "Event Vista";
+
+        // Set up the font and size for the watermark
+        contentStream.setFont(PDType1Font.HELVETICA_BOLD, 100);
+        contentStream.setNonStrokingColor(new Color(200, 200, 200, 50)); // Light grey with some transparency
+
+        // Get the dimensions of the page
+        float pageWidth = page.getMediaBox().getWidth();
+        float pageHeight = page.getMediaBox().getHeight();
+
+        // Calculate the width of the watermark text
+        float textWidth = (PDType1Font.HELVETICA_BOLD.getStringWidth(watermarkText) / 1000) * 60;
+
+        // Create a transformation matrix for rotation and positioning
+        float offsetX = (pageWidth - textWidth) / 2;
+        float offsetY = pageHeight / 2 - 120;
+
+        Matrix transform = Matrix.getRotateInstance(Math.toRadians(45), offsetX, offsetY);
+
+        // Apply the transformation and write the text
+        contentStream.beginText();
+        contentStream.setTextMatrix(transform);
+        contentStream.showText(watermarkText);
+        contentStream.endText();
     }
 }
