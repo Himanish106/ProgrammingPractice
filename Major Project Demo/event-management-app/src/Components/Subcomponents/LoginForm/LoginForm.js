@@ -17,6 +17,27 @@ const Loginform = () => {
 
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    const profileUpdated = localStorage.getItem("profileUpdated");
+    if (profileUpdated) {
+      Swal.fire({
+        icon: "success",
+        title: "Profile has been successfully updated. Please login again.",
+        confirmButtonText: "OK",
+        width: "500px",
+        customClass: {
+          container: "custom-swal-container",
+          popup: "custom-swal-popup",
+          title: "custom-swal-title",
+          text: "custom-swal-content",
+          footer: "custom-swal-footer",
+          confirmButton: "custom-swal-confirm-button",
+        },
+      });
+      localStorage.removeItem("profileUpdated"); // Remove the flag
+    }
+  }, []);
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -42,13 +63,13 @@ const Loginform = () => {
           password,
         }
       );
-  
+
       if (response.data && response.data.jwt) {
         const token = response.data.jwt;
         localStorage.setItem("token", token);
         const decodedToken = jwtDecode(token);
         const userRole = decodedToken.role;
-  
+
         if (userRole === "ADMIN") {
           window.location.href = "/adminpanel";
         } else {
@@ -56,43 +77,43 @@ const Loginform = () => {
         }
       } else {
         Swal.fire({
-          icon: 'error',
-          title: 'Credentials Invalid !! \nPlease try again',
-          text: 'Please check the entered details and try again',
-          width: '500px',
+          icon: "error",
+          title: "Credentials Invalid !! \nPlease try again",
+          text: "Please check the entered details and try again",
+          width: "500px",
           heightAuto: false,
           customClass: {
-            container: 'custom-swal-container',
-            popup: 'custom-swal-popup',
-            title: 'custom-swal-title',
-            text: 'custom-swal-content',
-            footer: 'custom-swal-footer',
-            confirmButton: 'custom-swal-confirm-button'
-          }
+            container: "custom-swal-container",
+            popup: "custom-swal-popup",
+            title: "custom-swal-title",
+            text: "custom-swal-content",
+            footer: "custom-swal-footer",
+            confirmButton: "custom-swal-confirm-button",
+          },
         });
       }
     } catch (error) {
       if (error.response && error.response.status === 401) {
         Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Login failed. Please try again.',
+          icon: "error",
+          title: "Oops...",
+          text: "Login failed. Please try again.",
         });
       } else {
         Swal.fire({
-          icon: 'error',
-          title: 'Credentials Invalid !! \nPlease try again',
-          text: 'Please check the entered details and try again',
-          width: '500px',
+          icon: "error",
+          title: "Credentials Invalid !! \nPlease try again",
+          text: "Please check the entered details and try again",
+          width: "500px",
           heightAuto: false,
           customClass: {
-            container: 'custom-swal-container',
-            popup: 'custom-swal-popup',
-            title: 'custom-swal-title',
-            content: 'custom-swal-content',
-            footer: 'custom-swal-footer',
-            confirmButton: 'custom-swal-confirm-button'
-          }
+            container: "custom-swal-container",
+            popup: "custom-swal-popup",
+            title: "custom-swal-title",
+            content: "custom-swal-content",
+            footer: "custom-swal-footer",
+            confirmButton: "custom-swal-confirm-button",
+          },
         });
       }
     }

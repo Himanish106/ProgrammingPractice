@@ -55,6 +55,7 @@ public class JWTHelper {
         claims.put("email", user.getEmail());
         claims.put("firstName", user.getFirstName());
         claims.put("lastName", user.getLastName());
+        claims.put("contact", user.getContact());
         claims.put("role", user.getRole().name()); // Assuming Role is an Enum
         // Add other user data as needed
         

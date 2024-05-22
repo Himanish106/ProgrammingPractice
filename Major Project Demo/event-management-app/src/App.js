@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
@@ -42,7 +42,7 @@ import AdminPanel from "./Components/Subcomponents/Admin/AdminPanel";
 import EventTableSelection from "./Components/Subcomponents/Admin/EventTableSelection";
 import EventLocations from "./Components/Subcomponents/Admin/EventLocations";
 import EventOrders from "./Components/Subcomponents/Admin/EventOrders";
-
+import Profile from "./Components/Subcomponents/ProfilePage/ProfilePage";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -61,54 +61,103 @@ function App() {
         {isLoading ? (
           <Loader isLoading={isLoading} />
         ) : (
-        <Routes>
-          <Route exact path="/" element={<HomePage />} />
-          <Route exact path="/about" element={<AboutUs />} />
-          <Route exact path="/contact" element={<ProtectedContactUs />} />
-          <Route exact path="/feedback" element={<ProtectedFeedback />} />
-          <Route exact path="/register" element={<ProtectedRegister />} />
-          <Route exact path="/eventselection" element={<EventSelection />} />
-          <Route
-            exact
-            path="/privateeventbooking"
-            element={<ProtectedPrivateBooking />}
-          />
-          <Route
-            exact
-            path="/publiceventbooking"
-            element={<ProtectedPublicBooking />}
-          />
-          <Route exact path="/eventshowcase" element={<EventShowcase />} />
-          <Route exact path="/ticketbooking/:eventId" element={<Ticketing />} />
-          <Route exact path="/login" element={<ProtectedLogin/>} />
-          <Route exact path="/forgetemail" element={<ForgetPasswordEmail />} />
-          <Route exact path="/forgetotp" element={<ForgetPasswordOTP />} />
-          <Route exact path="/resetpassword" element={<ResetPassword />} />
-          <Route exact path="/adminpanel" element={<AdminPanel />} />
-          <Route exact path="/upload" element={<PublicOrderTable />} />
-          <Route exact path="/privateupload" element={<PrivateOrderTable />} />
-          <Route exact path="/privateeventtable" element={<EventTypes />} />
-          <Route exact path="/publiceventtable" element={<PublicEventTypes />} />
-          <Route exact path="/usertable" element={<UserTable />} />
-          <Route exact path="/contacttable" element={<ContactTable />} />
-          <Route exact path="/feedbacktable" element={<FeedbackTable />} />
-          <Route exact path="/statetable" element={<StateTable />} />
-          <Route exact path="/publicstatetable" element={<PublicStateTable />} />
-          <Route exact path="/cities/:stateId" element={<CityTable />} />
-          <Route exact path="/publiccities/:stateId" element={<PublicCityTable />} />
-          <Route exact path="/venues/:cityId" element={<VenueTable />} />
-          <Route exact path="/publicvenues/:cityId" element={<PublicVenueTable />} />
-          <Route exact path="/medias/:venueId" element={<MediaTable />} />
-          <Route exact path="/publicmedias/:venueId" element={<PublicMediaTable />} />
-          <Route exact path="/caterers/:venueId" element={<CatererTable />} />
-          <Route exact path="/publiccaterers/:venueId" element={<PublicCatererTable />} />
-          <Route exact path="/designers/:venueId" element={<DesignTable />} />
-          <Route exact path="/publicdesigners/:venueId" element={<PublicDesignTable />} />
-          <Route exact path="/ticketinfotable" element={<TicketInfoTable />} />
-          <Route exact path="/eventtableselection" element={<EventTableSelection />} />
-          <Route exact path="/eventlocations" element={<EventLocations />} />
-          <Route exact path="/eventorders" element={<EventOrders />} />
-        </Routes>
+          <Routes>
+            <Route exact path="/" element={<HomePage />} />
+            <Route exact path="/about" element={<AboutUs />} />
+            <Route exact path="/contact" element={<ProtectedContactUs />} />
+            <Route exact path="/feedback" element={<ProtectedFeedback />} />
+            <Route exact path="/register" element={<ProtectedRegister />} />
+            <Route exact path="/eventselection" element={<EventSelection />} />
+            <Route
+              exact
+              path="/privateeventbooking"
+              element={<ProtectedPrivateBooking />}
+            />
+            <Route
+              exact
+              path="/publiceventbooking"
+              element={<ProtectedPublicBooking />}
+            />
+            <Route exact path="/eventshowcase" element={<EventShowcase />} />
+            <Route
+              exact
+              path="/ticketbooking/:eventId"
+              element={<Ticketing />}
+            />
+            <Route exact path="/login" element={<ProtectedLogin />} />
+            <Route
+              exact
+              path="/forgetemail"
+              element={<ForgetPasswordEmail />}
+            />
+            <Route exact path="/forgetotp" element={<ForgetPasswordOTP />} />
+            <Route exact path="/resetpassword" element={<ResetPassword />} />
+            <Route exact path="/adminpanel" element={<AdminPanel />} />
+            <Route exact path="/upload" element={<PublicOrderTable />} />
+            <Route
+              exact
+              path="/privateupload"
+              element={<PrivateOrderTable />}
+            />
+            <Route exact path="/privateeventtable" element={<EventTypes />} />
+            <Route
+              exact
+              path="/publiceventtable"
+              element={<PublicEventTypes />}
+            />
+            <Route exact path="/usertable" element={<UserTable />} />
+            <Route exact path="/contacttable" element={<ContactTable />} />
+            <Route exact path="/feedbacktable" element={<FeedbackTable />} />
+            <Route exact path="/statetable" element={<StateTable />} />
+            <Route
+              exact
+              path="/publicstatetable"
+              element={<PublicStateTable />}
+            />
+            <Route exact path="/cities/:stateId" element={<CityTable />} />
+            <Route
+              exact
+              path="/publiccities/:stateId"
+              element={<PublicCityTable />}
+            />
+            <Route exact path="/venues/:cityId" element={<VenueTable />} />
+            <Route
+              exact
+              path="/publicvenues/:cityId"
+              element={<PublicVenueTable />}
+            />
+            <Route exact path="/medias/:venueId" element={<MediaTable />} />
+            <Route
+              exact
+              path="/publicmedias/:venueId"
+              element={<PublicMediaTable />}
+            />
+            <Route exact path="/caterers/:venueId" element={<CatererTable />} />
+            <Route
+              exact
+              path="/publiccaterers/:venueId"
+              element={<PublicCatererTable />}
+            />
+            <Route exact path="/designers/:venueId" element={<DesignTable />} />
+            <Route
+              exact
+              path="/publicdesigners/:venueId"
+              element={<PublicDesignTable />}
+            />
+            <Route
+              exact
+              path="/ticketinfotable"
+              element={<TicketInfoTable />}
+            />
+            <Route
+              exact
+              path="/eventtableselection"
+              element={<EventTableSelection />}
+            />
+            <Route exact path="/eventlocations" element={<EventLocations />} />
+            <Route exact path="/eventorders" element={<EventOrders />} />
+            <Route exact path="/profile" element={<Profile />} />
+          </Routes>
         )}
         <Footer />
       </Router>

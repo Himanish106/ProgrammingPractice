@@ -51,12 +51,29 @@ public class EventService {
         return eventRepository.save(user);
     }
 
-    public List<User> getUsers(){
+    public List<User> getUsers() {
         return eventRepository.findUsersByRoleUser(Role.USER);
+    }
+
+    public User updateUser(String email, User updatedUser) {
+        User existingUser = eventRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        existingUser.setFirstName(updatedUser.getFirstName());
+        existingUser.setLastName(updatedUser.getLastName());
+        existingUser.setContact(updatedUser.getContact());
+        return eventRepository.save(existingUser);
     }
 
     public String findFirstNameByEmail(String email) {
         return eventRepository.findFirstNameByEmail(email);
+    }
+
+    public String findLastNameByEmail(String email) {
+        return eventRepository.findLastNameByEmail(email);
+    }
+
+    public Long findContactByEmail(String email) {
+        return eventRepository.findContactByEmail(email);
     }
 
     public Feedback saveFeedback(Feedback feedback) {
@@ -64,33 +81,35 @@ public class EventService {
         return feedbackRepository.save(feedback);
     }
 
-    public List<Feedback> getFeedback(){
+    public List<Feedback> getFeedback() {
         return feedbackRepository.findAll();
     }
+
     @Transactional
-    public void deleteFeedback(String id){
+    public void deleteFeedback(String id) {
         feedbackRepository.deleteById(id);
     }
+
     public ContactUs saveContactUs(ContactUs contactUs) {
         contactUs.setId(UUID.randomUUID().toString());
         return contactUsRepo.save(contactUs);
     }
 
-    public List<ContactUs> getContactUs(){
+    public List<ContactUs> getContactUs() {
         return contactUsRepo.findAll();
     }
 
     @Transactional
-    public void deleteContact(String id){
+    public void deleteContact(String id) {
         contactUsRepo.deleteById(id);
     }
 
-    public boolean sendOTPByEmail(String email){
-        Optional<User> optionalUser=eventRepository.findByEmail(email);
-        if(optionalUser.isPresent()){
+    public boolean sendOTPByEmail(String email) {
+        Optional<User> optionalUser = eventRepository.findByEmail(email);
+        if (optionalUser.isPresent()) {
             User user = optionalUser.get();
 
-            String otp=otpService.generateOTP();
+            String otp = otpService.generateOTP();
 
             emailSenderService.sendOTP(user.getEmail(), otp);
 
@@ -99,8 +118,7 @@ public class EventService {
             eventRepository.save(user);
 
             return true;
-        }
-        else{
+        } else {
             return false;
         }
 

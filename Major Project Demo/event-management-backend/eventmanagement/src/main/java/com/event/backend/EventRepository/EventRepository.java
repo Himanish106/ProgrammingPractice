@@ -15,12 +15,23 @@ import com.event.backend.Entity.User;
 public interface EventRepository extends JpaRepository<User, String> {
 
     public Optional<User> findByEmail(String email);
+
+    Optional<User> findById(String id);
+
     User findByRole(Role role);
+
     @Query("SELECT u FROM User u WHERE u.role = :role")
     List<User> findUsersByRoleUser(@Param("role") Role role);
-   @Query("SELECT u.firstName FROM User u WHERE u.email = :email")
+
+    @Query("SELECT u.firstName FROM User u WHERE u.email = :email")
     String findFirstNameByEmail(@Param("email") String email);
-   
+
+    @Query("SELECT u.lastName FROM User u WHERE u.email = :email")
+    String findLastNameByEmail(@Param("email") String email);
+
+    @Query("SELECT u.contact FROM User u WHERE u.email = :email")
+    Long findContactByEmail(@Param("email") String email);
+
     @Query("SELECT u FROM User u WHERE u.otp = :otp")
     Optional<User> findByOtp(@Param("otp") String otp);
 

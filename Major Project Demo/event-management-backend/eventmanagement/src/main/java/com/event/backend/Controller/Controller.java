@@ -1,5 +1,6 @@
 package com.event.backend.Controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,6 +45,8 @@ import com.event.backend.Security.JWTHelper;
 import com.event.backend.Service.EventService;
 import com.event.backend.Service.PrivateEventService;
 
+import jakarta.mail.MessagingException;
+
 @RequestMapping(value = "/globalcontroller")
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -73,8 +76,30 @@ public class Controller {
             Map<String, String> responseBody = new HashMap<>();
             responseBody.put("email", savedUser.getEmail());
             responseBody.put("firstName", savedUser.getFirstName());
+            responseBody.put("lastName", savedUser.getLastName());
+            responseBody.put("contact", savedUser.getContact().toString());
             responseBody.put("role", savedUser.getRole().name());
             responseBody.put("token", token);
+            return ResponseEntity.ok(responseBody);
+        } catch (RuntimeException e) {
+            Map<String, String> errorResponse = new HashMap<>();
+            errorResponse.put("error", e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+        }
+    }
+
+    @PutMapping("/users/{email}")
+    public ResponseEntity<Map<String, String>> updateUser(
+            @PathVariable String email, @RequestBody User updatedUser) {
+        try {
+            User savedUser = eventService.updateUser(email, updatedUser);
+            Map<String, String> responseBody = new HashMap<>();
+            responseBody.put("id", savedUser.getId());
+            responseBody.put("email", savedUser.getEmail());
+            responseBody.put("firstName", savedUser.getFirstName());
+            responseBody.put("lastName", savedUser.getLastName());
+            responseBody.put("contact", savedUser.getContact().toString());
+            responseBody.put("role", savedUser.getRole().name());
             return ResponseEntity.ok(responseBody);
         } catch (RuntimeException e) {
             Map<String, String> errorResponse = new HashMap<>();
@@ -93,11 +118,16 @@ public class Controller {
     public ResponseEntity<AuthenticationResponse> loginUser(@RequestBody AuthenticationRequest request) {
         this.doAuthenticate(request.getEmail(), request.getPassword());
         UserDetails userDetails = detailsService.loadUserByUsername(request.getEmail());
+        
         String firstName = eventService.findFirstNameByEmail(request.getEmail());
+        String lastName = eventService.findLastNameByEmail(request.getEmail());
+        Long contact = eventService.findContactByEmail(request.getEmail());
         Map<String, Object> claims = new HashMap<>();
         claims.put("email", userDetails.getUsername());
-        if (firstName != null) {
+        if (firstName != null && lastName != null && contact != null) {
             claims.put("firstName", firstName);
+            claims.put("lastName", lastName);
+            claims.put("contact", contact);
         }
         String role = userDetails.getAuthorities().stream()
                 .findFirst() // Assuming there's only one authority per user
@@ -105,7 +135,8 @@ public class Controller {
                 .orElse(null);
         claims.put("role", role);
         String token = this.jwtHelper.generateTokenWithClaims(claims);
-        AuthenticationResponse response = new AuthenticationResponse(token, userDetails.getUsername(), firstName);
+        AuthenticationResponse response = new AuthenticationResponse(token, userDetails.getUsername(), firstName,
+                lastName, contact);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
@@ -385,9 +416,16 @@ public class Controller {
 
     @PostMapping("/bookprivateorder")
     public ResponseEntity<PrivateOrder> privateOrder(@RequestBody PrivateOrder privateOrder) {
-        PrivateOrder order = privateEventService.savePrivateEventBooking(privateOrder);
-        return ResponseEntity.status(HttpStatus.CREATED).body(order);
+        try{
+            privateEventService.handlePostPrivateOrder(privateOrder);
+            return ResponseEntity.status(HttpStatus.CREATED).body(privateOrder);
+        }
+        catch(IOException | MessagingException e){
+            e.printStackTrace();
+             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
+
     @GetMapping("/allorder")
     public ResponseEntity<List<PrivateOrder>> getAllPrivateOrders() {
         List<PrivateOrder> privateOrders = privateEventService.getAllPrivateOrders();

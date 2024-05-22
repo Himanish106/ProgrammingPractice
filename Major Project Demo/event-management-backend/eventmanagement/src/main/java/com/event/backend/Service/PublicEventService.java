@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
 import com.event.backend.Entity.PublicEventBooking.PublicCaterer;
 import com.event.backend.Entity.PublicEventBooking.PublicCity;
 import com.event.backend.Entity.PublicEventBooking.PublicDesign;
@@ -23,7 +24,10 @@ import com.event.backend.EventRepository.PublicEventRepository.PublicMediaReposi
 import com.event.backend.EventRepository.PublicEventRepository.PublicOrderRepository;
 import com.event.backend.EventRepository.PublicEventRepository.PublicStateRepository;
 import com.event.backend.EventRepository.PublicEventRepository.PublicVenueRepository;
+import com.event.backend.Service.SendingPDF.PDFEmailService;
+import com.event.backend.Utility.PublicPDFGenerator;
 
+import jakarta.mail.MessagingException;
 import jakarta.transaction.Transactional;
 
 @Service
@@ -51,6 +55,9 @@ public class PublicEventService {
 
     @Autowired
     private PublicOrderRepository publicOrderRepository;
+
+    @Autowired
+    private PDFEmailService pdfEmailService;
 
     public PublicEventTypes createPublicEvents(PublicEventTypes events) {
         return publicEventTypesRepo.save(events);
@@ -225,6 +232,13 @@ public class PublicEventService {
         return publicOrderRepository.save(publicOrder);
     }
 
+    public void handlePostPublicOrder(PublicOrder privateOrder) throws IOException, MessagingException {
+        savePrivateEventBooking(privateOrder);
+        byte[] pdfData = PublicPDFGenerator.generateReceiptPDF(privateOrder);
+        pdfEmailService.sendEmailWithAttachment(privateOrder.getEmail(), "Your Booking Confirmation",
+                "Here is your booking confirmation.", pdfData, "booking.pdf");
+    }
+
     public List<PublicOrder> getAllPublicOrders() {
         return publicOrderRepository.findAll();
     }
@@ -236,6 +250,8 @@ public class PublicEventService {
     public PublicOrder savePublicOrder(PublicOrder publicOrder) {
         return publicOrderRepository.save(publicOrder);
     }
+
+
 
     public void deletePublicOrder(Long id) {
         publicOrderRepository.deleteById(id);

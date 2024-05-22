@@ -1,11 +1,11 @@
 package com.event.backend.Service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.event.backend.Entity.PrivateEventBooking.Caterer;
 import com.event.backend.Entity.PrivateEventBooking.City;
 import com.event.backend.Entity.PrivateEventBooking.Design;
@@ -22,7 +22,10 @@ import com.event.backend.EventRepository.PrivateEventRepository.MediaRepository;
 import com.event.backend.EventRepository.PrivateEventRepository.PrivateOrderRepository;
 import com.event.backend.EventRepository.PrivateEventRepository.StateRepository;
 import com.event.backend.EventRepository.PrivateEventRepository.VenueRepository;
+import com.event.backend.Service.SendingPDF.PDFEmailService;
+import com.event.backend.Utility.PrivatePDFGenerator;
 
+import jakarta.mail.MessagingException;
 import jakarta.transaction.Transactional;
 
 @Service
@@ -51,6 +54,9 @@ public class PrivateEventService {
 
     @Autowired
     private PrivateOrderRepository privateOrderRepository;
+
+    @Autowired
+    private PDFEmailService pdfEmailService;
 
     public EventTypes createEvents(EventTypes events) {
         return privateEventRepo.save(events);
@@ -225,12 +231,19 @@ public class PrivateEventService {
         return privateOrderRepository.save(privateOrder);
     }
 
+    public void handlePostPrivateOrder(PrivateOrder privateOrder) throws IOException, MessagingException {
+        savePrivateEventBooking(privateOrder);
+        byte[] pdfData = PrivatePDFGenerator.generateReceiptPDF(privateOrder);
+        pdfEmailService.sendEmailWithAttachment(privateOrder.getEmail(), "Your Booking Confirmation",
+                "Here is your booking confirmation.", pdfData, "booking.pdf");
+    }
+
     @Transactional
-    public void deletePrivateOrder(Long id){
+    public void deletePrivateOrder(Long id) {
         privateOrderRepository.deleteById(id);
     }
 
-    public List<PrivateOrder> getAllPrivateOrders(){
+    public List<PrivateOrder> getAllPrivateOrders() {
         return privateOrderRepository.findAll();
     }
 }

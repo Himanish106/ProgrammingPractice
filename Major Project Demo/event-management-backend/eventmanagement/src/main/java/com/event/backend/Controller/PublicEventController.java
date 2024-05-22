@@ -28,6 +28,8 @@ import com.event.backend.Entity.PublicEventBooking.PublicState;
 import com.event.backend.Entity.PublicEventBooking.PublicVenue;
 import com.event.backend.Service.PublicEventService;
 
+import jakarta.mail.MessagingException;
+
 @RequestMapping(value = "/privateeventcontroller")
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -261,11 +263,19 @@ public class PublicEventController {
         return ResponseEntity.noContent().build();
     }
 
+
     @PostMapping("/bookpublicorder")
-    public ResponseEntity<PublicOrder> privateOrder(@RequestBody PublicOrder publicOrder) {
-        PublicOrder order = publicEventService.savePrivateEventBooking(publicOrder);
-        return ResponseEntity.status(HttpStatus.CREATED).body(order);
+    public ResponseEntity<PublicOrder> publicOrder(@RequestBody PublicOrder publicOrder) {
+        try{
+            publicEventService.handlePostPublicOrder(publicOrder);
+            return ResponseEntity.status(HttpStatus.CREATED).body(publicOrder);
+        }
+        catch(IOException | MessagingException e){
+            e.printStackTrace();
+             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
+       
 
     @GetMapping("/allorder")
     public ResponseEntity<List<PublicOrder>> getAllPublicOrders() {
