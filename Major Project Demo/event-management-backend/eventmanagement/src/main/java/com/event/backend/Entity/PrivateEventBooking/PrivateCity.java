@@ -22,15 +22,15 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class City {
+public class PrivateCity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long cityId;
     private String cityName;
     @ManyToOne
     @JoinColumn(name = "state_id")
-    private State state;
+    private PrivateState state;
     @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("city")
-    private List<Venue> venues;
+    private List<PrivateVenue> venues;
 }

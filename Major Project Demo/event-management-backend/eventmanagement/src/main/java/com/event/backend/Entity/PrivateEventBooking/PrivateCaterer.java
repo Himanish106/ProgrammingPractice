@@ -16,7 +16,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Caterer {
+public class PrivateCaterer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long catererId;
@@ -24,5 +24,5 @@ public class Caterer {
     private double price;
     @ManyToOne
     @JoinColumn(name = "venue_id")
-    private Venue venue;
+    private PrivateVenue venue;
 }

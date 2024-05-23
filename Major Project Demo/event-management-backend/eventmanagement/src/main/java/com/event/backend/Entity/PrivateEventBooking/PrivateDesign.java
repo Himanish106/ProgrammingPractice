@@ -10,19 +10,21 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Entity
-public class Media {
+public class PrivateDesign {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long mediaId;
+    private Long designId;
     private String serviceProviderName;
     private double price;
     @ManyToOne
     @JoinColumn(name = "venue_id")
-    private Venue venue;
+    private PrivateVenue venue;
 }

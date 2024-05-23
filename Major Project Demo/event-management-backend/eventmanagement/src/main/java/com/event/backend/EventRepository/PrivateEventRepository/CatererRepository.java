@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.event.backend.Entity.PrivateEventBooking.Caterer;
+import com.event.backend.Entity.PrivateEventBooking.PrivateCaterer;
 
 @Repository
-public interface CatererRepository extends JpaRepository<Caterer, Long> {
-     List<Caterer> findByVenue_VenueId(Long venueId);
+public interface CatererRepository extends JpaRepository<PrivateCaterer, Long> {
+     List<PrivateCaterer> findByVenue_VenueId(Long venueId);
 }

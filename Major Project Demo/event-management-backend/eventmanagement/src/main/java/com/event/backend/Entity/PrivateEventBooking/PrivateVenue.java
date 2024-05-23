@@ -22,7 +22,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Venue {
+public class PrivateVenue {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long venueId;
@@ -33,17 +33,17 @@ public class Venue {
     private Long contact;
     @ManyToOne
     @JoinColumn(name = "city_id")
-    private City city;
+    private PrivateCity city;
 
     @OneToMany(mappedBy = "venue", cascade = CascadeType.ALL, orphanRemoval = true)
      @JsonIgnoreProperties("venue")
-    private List<Design> designs;
+    private List<PrivateDesign> designs;
 
     @OneToMany(mappedBy = "venue", cascade = CascadeType.ALL, orphanRemoval = true)
      @JsonIgnoreProperties("venue")
-    private List<Media> medias;
+    private List<PrivateMedia> medias;
 
     @OneToMany(mappedBy = "venue", cascade = CascadeType.ALL, orphanRemoval = true)
      @JsonIgnoreProperties("venue")
-    private List<Caterer> caterers;
+    private List<PrivateCaterer> caterers;
 }

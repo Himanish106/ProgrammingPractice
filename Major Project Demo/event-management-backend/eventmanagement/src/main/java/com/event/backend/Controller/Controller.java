@@ -25,14 +25,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.event.backend.Entity.User;
-import com.event.backend.Entity.PrivateEventBooking.Caterer;
-import com.event.backend.Entity.PrivateEventBooking.City;
-import com.event.backend.Entity.PrivateEventBooking.Design;
-import com.event.backend.Entity.PrivateEventBooking.EventTypes;
-import com.event.backend.Entity.PrivateEventBooking.Media;
+import com.event.backend.Entity.PrivateEventBooking.PrivateCaterer;
+import com.event.backend.Entity.PrivateEventBooking.PrivateCity;
+import com.event.backend.Entity.PrivateEventBooking.PrivateDesign;
+import com.event.backend.Entity.PrivateEventBooking.PrivateEventTypes;
+import com.event.backend.Entity.PrivateEventBooking.PrivateMedia;
 import com.event.backend.Entity.PrivateEventBooking.PrivateOrder;
-import com.event.backend.Entity.PrivateEventBooking.State;
-import com.event.backend.Entity.PrivateEventBooking.Venue;
+import com.event.backend.Entity.PrivateEventBooking.PrivateState;
+import com.event.backend.Entity.PrivateEventBooking.PrivateVenue;
 import com.event.backend.RequestResponse.AuthenticationEnteredOTP;
 import com.event.backend.RequestResponse.AuthenticationOTPRequest;
 import com.event.backend.RequestResponse.AuthenticationRequest;
@@ -194,21 +194,21 @@ public class Controller {
     }
 
     @PostMapping("/privateeventadd")
-    public ResponseEntity<EventTypes> createEvent(@RequestBody EventTypes eventTypes) {
-        EventTypes event = privateEventService.createEvents(eventTypes);
+    public ResponseEntity<PrivateEventTypes> createEvent(@RequestBody PrivateEventTypes eventTypes) {
+        PrivateEventTypes event = privateEventService.createEvents(eventTypes);
         return ResponseEntity.status(HttpStatus.CREATED).body(event);
     }
 
     @GetMapping("/privateeventdisplay")
-    public ResponseEntity<List<EventTypes>> getAllEvents() {
-        List<EventTypes> events = privateEventService.getEventTypes();
+    public ResponseEntity<List<PrivateEventTypes>> getAllEvents() {
+        List<PrivateEventTypes> events = privateEventService.getEventTypes();
         return ResponseEntity.ok().body(events);
     }
 
     @PutMapping("/privateevents/{eventId}")
-    public ResponseEntity<EventTypes> updateEventTypes(@PathVariable Long eventId,
-            @RequestBody EventTypes updatedEventTypes) {
-        EventTypes eventTypes = privateEventService.getEventById(eventId);
+    public ResponseEntity<PrivateEventTypes> updateEventTypes(@PathVariable Long eventId,
+            @RequestBody PrivateEventTypes updatedEventTypes) {
+        PrivateEventTypes eventTypes = privateEventService.getEventById(eventId);
         if (eventTypes != null) {
             eventTypes.setEventType(updatedEventTypes.getEventType());
             privateEventService.updateEvent(eventTypes);
@@ -225,20 +225,20 @@ public class Controller {
     }
 
     @PostMapping("/states")
-    public ResponseEntity<State> createState(@RequestBody State state) {
-        State createdState = privateEventService.createState(state);
+    public ResponseEntity<PrivateState> createState(@RequestBody PrivateState state) {
+        PrivateState createdState = privateEventService.createState(state);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdState);
     }
 
     @GetMapping("/states")
-    public ResponseEntity<List<State>> getAllStates() {
-        List<State> states = privateEventService.getAllStates();
+    public ResponseEntity<List<PrivateState>> getAllStates() {
+        List<PrivateState> states = privateEventService.getAllStates();
         return ResponseEntity.ok().body(states);
     }
 
     @PutMapping("/states/{stateId}")
-    public ResponseEntity<State> updateState(@PathVariable Long stateId, @RequestBody State updatedState) {
-        State state = privateEventService.getStateById(stateId);
+    public ResponseEntity<PrivateState> updateState(@PathVariable Long stateId, @RequestBody PrivateState updatedState) {
+        PrivateState state = privateEventService.getStateById(stateId);
         if (state != null) {
             state.setStateName(updatedState.getStateName());
             privateEventService.updateState(state);
@@ -255,20 +255,20 @@ public class Controller {
     }
 
     @PostMapping("/cities/{stateId}")
-    public ResponseEntity<City> createCity(@PathVariable Long stateId, @RequestBody City city) {
-        City createdCity = privateEventService.createCity(stateId, city);
+    public ResponseEntity<PrivateCity> createCity(@PathVariable Long stateId, @RequestBody PrivateCity city) {
+        PrivateCity createdCity = privateEventService.createCity(stateId, city);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdCity);
     }
 
     @GetMapping("/cities/{stateId}")
-    public ResponseEntity<List<City>> getCitiesByStateId(@PathVariable Long stateId) {
-        List<City> cities = privateEventService.getCitiesByState(stateId);
+    public ResponseEntity<List<PrivateCity>> getCitiesByStateId(@PathVariable Long stateId) {
+        List<PrivateCity> cities = privateEventService.getCitiesByState(stateId);
         return ResponseEntity.ok().body(cities);
     }
 
     @PutMapping("/cities/{cityId}")
-    public ResponseEntity<City> updateCity(@PathVariable Long cityId, @RequestBody City updatedCity) {
-        City city = privateEventService.getCityByName(cityId);
+    public ResponseEntity<PrivateCity> updateCity(@PathVariable Long cityId, @RequestBody PrivateCity updatedCity) {
+        PrivateCity city = privateEventService.getCityByName(cityId);
         if (city != null) {
             city.setCityName(updatedCity.getCityName());
             privateEventService.updateCity(city);
@@ -285,14 +285,14 @@ public class Controller {
     }
 
     @PostMapping("/venues/{cityId}")
-    public ResponseEntity<Venue> createVenue(@PathVariable Long cityId, @RequestBody Venue venue) {
-        Venue createdVenue = privateEventService.createVenue(cityId, venue);
+    public ResponseEntity<PrivateVenue> createVenue(@PathVariable Long cityId, @RequestBody PrivateVenue venue) {
+        PrivateVenue createdVenue = privateEventService.createVenue(cityId, venue);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdVenue);
     }
 
     @GetMapping("/venues/{cityId}")
-    public ResponseEntity<List<Venue>> getVenuesByCityId(@PathVariable Long cityId) {
-        List<Venue> venues = privateEventService.getVenuesByCity(cityId);
+    public ResponseEntity<List<PrivateVenue>> getVenuesByCityId(@PathVariable Long cityId) {
+        List<PrivateVenue> venues = privateEventService.getVenuesByCity(cityId);
         return ResponseEntity.ok().body(venues);
     }
 
@@ -303,8 +303,8 @@ public class Controller {
     }
 
     @PutMapping("/venues/{venueId}")
-    public ResponseEntity<Venue> updateVenue(@PathVariable Long venueId, @RequestBody Venue updatedVenue) {
-        Venue venue = privateEventService.getVenueByName(venueId);
+    public ResponseEntity<PrivateVenue> updateVenue(@PathVariable Long venueId, @RequestBody PrivateVenue updatedVenue) {
+        PrivateVenue venue = privateEventService.getVenueByName(venueId);
         if (venue != null) {
             venue.setVenueName(updatedVenue.getVenueName());
             venue.setCapacity(updatedVenue.getCapacity());
@@ -319,14 +319,14 @@ public class Controller {
     }
 
     @PostMapping("/caterers/{venueId}")
-    public ResponseEntity<Caterer> createCaterer(@PathVariable Long venueId, @RequestBody Caterer caterer) {
-        Caterer createdCaterer = privateEventService.createCaterer(venueId, caterer);
+    public ResponseEntity<PrivateCaterer> createCaterer(@PathVariable Long venueId, @RequestBody PrivateCaterer caterer) {
+        PrivateCaterer createdCaterer = privateEventService.createCaterer(venueId, caterer);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdCaterer);
     }
 
     @PutMapping("/caterers/{catererId}")
-    public ResponseEntity<Caterer> updateCaterer(@PathVariable Long catererId, @RequestBody Caterer updatedCaterer) {
-        Caterer caterer = privateEventService.getCatererByName(catererId);
+    public ResponseEntity<PrivateCaterer> updateCaterer(@PathVariable Long catererId, @RequestBody PrivateCaterer updatedCaterer) {
+        PrivateCaterer caterer = privateEventService.getCatererByName(catererId);
         if (caterer != null) {
             caterer.setServiceName(updatedCaterer.getServiceName());
             caterer.setPrice(updatedCaterer.getPrice());
@@ -338,8 +338,8 @@ public class Controller {
     }
 
     @GetMapping("/caterers/{venueId}")
-    public ResponseEntity<List<Caterer>> getCaterersByVenueId(@PathVariable Long venueId) {
-        List<Caterer> caterers = privateEventService.getCaterersByVenue(venueId);
+    public ResponseEntity<List<PrivateCaterer>> getCaterersByVenueId(@PathVariable Long venueId) {
+        List<PrivateCaterer> caterers = privateEventService.getCaterersByVenue(venueId);
         return ResponseEntity.ok().body(caterers);
     }
 
@@ -350,20 +350,20 @@ public class Controller {
     }
 
     @PostMapping("/medias/{venueId}")
-    public ResponseEntity<Media> createMedia(@PathVariable Long venueId, @RequestBody Media media) {
-        Media createdMedia = privateEventService.createMedia(venueId, media);
+    public ResponseEntity<PrivateMedia> createMedia(@PathVariable Long venueId, @RequestBody PrivateMedia media) {
+        PrivateMedia createdMedia = privateEventService.createMedia(venueId, media);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdMedia);
     }
 
     @GetMapping("/medias/{venueId}")
-    public ResponseEntity<List<Media>> getMediaByVenueId(@PathVariable Long venueId) {
-        List<Media> media = privateEventService.getMediasByVenue(venueId);
+    public ResponseEntity<List<PrivateMedia>> getMediaByVenueId(@PathVariable Long venueId) {
+        List<PrivateMedia> media = privateEventService.getMediasByVenue(venueId);
         return ResponseEntity.ok().body(media);
     }
 
     @PutMapping("/medias/{mediaId}")
-    public ResponseEntity<Media> updateMedia(@PathVariable Long mediaId, @RequestBody Media updatedMedia) {
-        Media media = privateEventService.getMediaByName(mediaId);
+    public ResponseEntity<PrivateMedia> updateMedia(@PathVariable Long mediaId, @RequestBody PrivateMedia updatedMedia) {
+        PrivateMedia media = privateEventService.getMediaByName(mediaId);
         if (media != null) {
             media.setServiceProviderName(updatedMedia.getServiceProviderName());
             media.setPrice(updatedMedia.getPrice());
@@ -381,20 +381,20 @@ public class Controller {
     }
 
     @PostMapping("/designs/{venueId}")
-    public ResponseEntity<Design> createMedia(@PathVariable Long venueId, @RequestBody Design design) {
-        Design createdDesign = privateEventService.createDesign(venueId, design);
+    public ResponseEntity<PrivateDesign> createMedia(@PathVariable Long venueId, @RequestBody PrivateDesign design) {
+        PrivateDesign createdDesign = privateEventService.createDesign(venueId, design);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdDesign);
     }
 
     @GetMapping("/designs/{venueId}")
-    public ResponseEntity<List<Design>> getDesignByVenueId(@PathVariable Long venueId) {
-        List<Design> designs = privateEventService.getDesignsByVenue(venueId);
+    public ResponseEntity<List<PrivateDesign>> getDesignByVenueId(@PathVariable Long venueId) {
+        List<PrivateDesign> designs = privateEventService.getDesignsByVenue(venueId);
         return ResponseEntity.ok().body(designs);
     }
 
     @PutMapping("/designs/{designId}")
-    public ResponseEntity<Design> updateDesign(@PathVariable Long designId, @RequestBody Design updatedDesign) {
-        Design design = privateEventService.getDesignByName(designId);
+    public ResponseEntity<PrivateDesign> updateDesign(@PathVariable Long designId, @RequestBody PrivateDesign updatedDesign) {
+        PrivateDesign design = privateEventService.getDesignByName(designId);
         if (design != null) {
             design.setServiceProviderName(updatedDesign.getServiceProviderName());
             design.setPrice(updatedDesign.getPrice());
