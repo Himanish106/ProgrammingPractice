@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { CirclesWithBar } from "react-loader-spinner";
 import "../../CSS/EventShowcase.css";
-import venueData from "../../../Global Files/statesandlocations.json";
 import "../../CSS/PrivateEventBooking.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -10,7 +9,7 @@ const EventShowcase = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedState, setSelectedState] = useState("");
   const [publicOrders, setPublicOrders] = useState([]);
-
+  const [states, setStates] = useState([]);
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -19,6 +18,16 @@ const EventShowcase = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/privateeventcontroller/publicstates")
+      .then((response) => {
+        setStates(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching states:", error);
+      });
+  }, []);
   const handleStateChange = (event) => {
     setSelectedState(event.target.value);
   };
@@ -52,8 +61,8 @@ const EventShowcase = () => {
   };
 
   const filteredOrders = selectedState
-    ? publicOrders.filter((order) => order.state === selectedState)
-    : publicOrders;
+  ? publicOrders.filter((order) => order.state === selectedState)
+  : publicOrders;
 
   return (
     <>
@@ -99,9 +108,9 @@ const EventShowcase = () => {
               onChange={handleStateChange}
             >
               <option value="">Select State to view events</option>
-              {Object.keys(venueData).map((state) => (
-                <option key={state} value={state}>
-                  {state}
+              {states.map((state) => (
+                <option key={state.stateId} value={state.stateName}>
+                  {state.stateName}
                 </option>
               ))}
             </select>
@@ -143,10 +152,15 @@ const EventShowcase = () => {
                     </p>
                     <p className="event-rate">
                       Ticket Rates : &nbsp;
-                      <span className="loc-color">&#8377; {publicOrder.ticketPrice}/person</span>
+                      <span className="loc-color">
+                        &#8377; {publicOrder.ticketPrice}/person
+                      </span>
                     </p>
                   </div>
-                  <Link to={`/ticketbooking/${publicOrder.id}`} className="btn book-btn">
+                  <Link
+                    to={`/ticketbooking/${publicOrder.id}`}
+                    className="btn book-btn"
+                  >
                     Book Tickets Now
                   </Link>
                 </div>

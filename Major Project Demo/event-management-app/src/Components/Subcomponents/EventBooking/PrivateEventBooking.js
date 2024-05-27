@@ -130,10 +130,8 @@ const PrivateEventBooking = () => {
         formData
       );
       console.log("Form submitted successfully:", response);
-      // Optionally, perform any further actions after successful form submission
     } catch (error) {
       console.error(error);
-      // Handle any errors during form submission
     }
   };
   useEffect(() => {
@@ -646,7 +644,6 @@ const PrivateEventBooking = () => {
                               {caterer.serviceName}
                             </option>
                           ))}
-                          <option value="Leave Upon Us">Leave Upon Us</option>
                         </select>
                       </div>
                     )}
@@ -696,7 +693,6 @@ const PrivateEventBooking = () => {
                               {design.serviceProviderName}
                             </option>
                           ))}
-                          <option value="Leave Upon Us">Leave Upon Us</option>
                         </select>
                       </div>
                     )}
@@ -720,7 +716,6 @@ const PrivateEventBooking = () => {
                               {photoVideoService.serviceProviderName}
                             </option>
                           ))}
-                          <option value="Leave Upon Us">Leave Upon Us</option>
                         </select>
                       </div>
                     )}
