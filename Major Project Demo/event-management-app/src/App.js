@@ -43,6 +43,7 @@ import EventTableSelection from "./Components/Subcomponents/Admin/EventTableSele
 import EventLocations from "./Components/Subcomponents/Admin/EventLocations";
 import EventOrders from "./Components/Subcomponents/Admin/EventOrders";
 import Profile from "./Components/Subcomponents/ProfilePage/ProfilePage";
+import ProtectedAdminRoute from "./Components/Subcomponents/Admin/ProtectedAdminRoute";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -92,70 +93,128 @@ function App() {
             />
             <Route exact path="/forgetotp" element={<ForgetPasswordOTP />} />
             <Route exact path="/resetpassword" element={<ResetPassword />} />
-            <Route exact path="/adminpanel" element={<AdminPanel />} />
-            <Route exact path="/upload" element={<PublicOrderTable />} />
+            <Route
+              exact
+              path="/adminpanel"
+              element={<ProtectedAdminRoute element={<AdminPanel />} />}
+            />
+            <Route
+              exact
+              path="/upload"
+              element={<ProtectedAdminRoute element={<PublicOrderTable />} />}
+            />
             <Route
               exact
               path="/privateupload"
-              element={<PrivateOrderTable />}
+              element={<ProtectedAdminRoute element={<PrivateOrderTable />} />}
             />
-            <Route exact path="/privateeventtable" element={<EventTypes />} />
+            <Route
+              exact
+              path="/privateeventtable"
+              element={<ProtectedAdminRoute element={<EventTypes />} />}
+            />
             <Route
               exact
               path="/publiceventtable"
-              element={<PublicEventTypes />}
+              element={<ProtectedAdminRoute element={<PublicEventTypes />} />}
             />
-            <Route exact path="/usertable" element={<UserTable />} />
-            <Route exact path="/contacttable" element={<ContactTable />} />
-            <Route exact path="/feedbacktable" element={<FeedbackTable />} />
-            <Route exact path="/statetable" element={<StateTable />} />
+            <Route
+              exact
+              path="/usertable"
+              element={<ProtectedAdminRoute element={<UserTable />} />}
+            />
+            <Route
+              exact
+              path="/contacttable"
+              element={<ProtectedAdminRoute element={<ContactTable />} />}
+            />
+            <Route
+              exact
+              path="/feedbacktable"
+              element={<ProtectedAdminRoute element={<FeedbackTable />} />}
+            />
+            <Route
+              exact
+              path="/statetable"
+              element={<ProtectedAdminRoute element={<StateTable />} />}
+            />
             <Route
               exact
               path="/publicstatetable"
-              element={<PublicStateTable />}
+              element={<ProtectedAdminRoute element={<PublicStateTable />} />}
             />
-            <Route exact path="/cities/:stateId" element={<CityTable />} />
+            <Route
+              exact
+              path="/cities/:stateId"
+              element={<ProtectedAdminRoute element={<CityTable />} />}
+            />
             <Route
               exact
               path="/publiccities/:stateId"
-              element={<PublicCityTable />}
+              element={<ProtectedAdminRoute element={<PublicCityTable />} />}
             />
-            <Route exact path="/venues/:cityId" element={<VenueTable />} />
+            <Route
+              exact
+              path="/venues/:cityId"
+              element={<ProtectedAdminRoute element={<VenueTable />} />}
+            />
             <Route
               exact
               path="/publicvenues/:cityId"
-              element={<PublicVenueTable />}
+              element={<ProtectedAdminRoute element={<PublicVenueTable />} />}
             />
-            <Route exact path="/medias/:venueId" element={<MediaTable />} />
+            <Route
+              exact
+              path="/medias/:venueId"
+              element={<ProtectedAdminRoute element={<MediaTable />} />}
+            />
             <Route
               exact
               path="/publicmedias/:venueId"
-              element={<PublicMediaTable />}
+              element={<ProtectedAdminRoute element={<PublicMediaTable />} />}
             />
-            <Route exact path="/caterers/:venueId" element={<CatererTable />} />
+            <Route
+              exact
+              path="/caterers/:venueId"
+              element={<ProtectedAdminRoute element={<CatererTable />} />}
+            />
             <Route
               exact
               path="/publiccaterers/:venueId"
-              element={<PublicCatererTable />}
+              element={<ProtectedAdminRoute element={<PublicCatererTable />} />}
             />
-            <Route exact path="/designers/:venueId" element={<DesignTable />} />
+            <Route
+              exact
+              path="/designers/:venueId"
+              element={<ProtectedAdminRoute element={<DesignTable />} />}
+            />
             <Route
               exact
               path="/publicdesigners/:venueId"
-              element={<PublicDesignTable />}
+              element={<ProtectedAdminRoute element={<PublicDesignTable />} />}
             />
             <Route
               exact
               path="/ticketinfotable"
-              element={<TicketInfoTable />}
+              element={<ProtectedAdminRoute element={<TicketInfoTable />} />}
             />
             <Route
               exact
               path="/eventtableselection"
-              element={<EventTableSelection />}
+              element={
+                <ProtectedAdminRoute element={<EventTableSelection />} />
+              }
             />
-            <Route exact path="/eventlocations" element={<EventLocations />} />
-            <Route exact path="/eventorders" element={<EventOrders />} />
+            <Route
+              exact
+              path="/eventlocations"
+              element={<ProtectedAdminRoute element={<EventLocations />} />}
+            />
+            <Route
+              exact
+              path="/eventorders"
+              element={<ProtectedAdminRoute element={<EventOrders />} />}
+            />
             <Route exact path="/profile" element={<Profile />} />
           </Routes>
         )}
