@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { CirclesWithBar } from "react-loader-spinner";
 import "../../CSS/PrivateEventBooking.css";
-import privateImg from "../../Images/PrivateEventLogo.jpg";
+import privateImg from "../../Images/Public Events_transparent.png";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import Swal from "sweetalert2";
