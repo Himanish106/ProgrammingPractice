@@ -18,10 +18,10 @@ import img4 from "../../Images/home4.jpg";
 import img5 from "../../Images/home5.jpg";
 import img6 from "../../Images/home6.jpg";
 
-function MySwiper() {
+function MySwiper({ headingRef }) {
   return (
     <section className="container">
-      <h1 className="heading">
+      <h1 className="heading" id="heading" ref={headingRef}>
         Captured <span className="heading-imp">Moments</span> Collective
       </h1>
       <Swiper

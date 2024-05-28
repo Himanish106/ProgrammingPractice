@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { CirclesWithBar } from "react-loader-spinner";
 import IntroSection from "./IntroSection";
 import MySwiper from "./Swiper";
@@ -26,6 +26,14 @@ const HomePage = () => {
 
     return () => clearTimeout(timer);
   }, []);
+
+  const headingRef = useRef(null);
+
+  const scrollToHeading = () => {
+    if (headingRef.current) {
+      headingRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <>
     {isLoading ? (
@@ -56,8 +64,8 @@ const HomePage = () => {
         </div>
       ) : (
         <>
-      <IntroSection />
-      <MySwiper />
+      <IntroSection scrollToHeading={scrollToHeading} />
+      <MySwiper headingRef={headingRef} />
       <About />
       <Service />
       <Contact />

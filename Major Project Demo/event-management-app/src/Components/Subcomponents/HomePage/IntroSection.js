@@ -1,5 +1,5 @@
 import React from "react";
-const IntroSection = () => {
+const IntroSection = ({ scrollToHeading }) => {
   return (
     <section className="header-caption home-bg">
       <div className="head-caption">
@@ -10,7 +10,7 @@ const IntroSection = () => {
           </p>
         </div>
         <div className="explore-btn">
-          <button className="btn">Explore Us</button>
+          <button className="btn" onClick={scrollToHeading}>Explore Us</button>
         </div>
       </div>
     </section>
