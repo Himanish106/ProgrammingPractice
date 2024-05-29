@@ -50,14 +50,13 @@ public class JWTHelper {
     }
 
     public String generateToken(UserDetails userDetails) {
-        User user = (User) userDetails; // Assuming UserDetails is an instance of your User class
+        User user = (User) userDetails; 
         Map<String, Object> claims = new HashMap<>();
         claims.put("email", user.getEmail());
         claims.put("firstName", user.getFirstName());
         claims.put("lastName", user.getLastName());
         claims.put("contact", user.getContact());
-        claims.put("role", user.getRole().name()); // Assuming Role is an Enum
-        // Add other user data as needed
+        claims.put("role", user.getRole().name()); 
         
         return doGenerateToken(claims, userDetails.getUsername());
     }

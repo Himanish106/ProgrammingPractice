@@ -139,7 +139,13 @@ const EventShowcase = () => {
                     <h3 className="event-location-head">
                       Location : &nbsp;
                       <span className="loc-color" style={{ fontWeight: 500 }}>
-                        {publicOrder.state},{publicOrder.venueName}
+                        {publicOrder.state},{publicOrder.city}
+                      </span>
+                    </h3>
+                    <h3 className="event-location-head">
+                      Venue : &nbsp;
+                      <span className="loc-color" style={{ fontWeight: 500 }}>
+                      {publicOrder.venueName}
                       </span>
                     </h3>
                     <p className="event-date">

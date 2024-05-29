@@ -127,7 +127,7 @@ public class Controller {
             claims.put("contact", contact);
         }
         String role = userDetails.getAuthorities().stream()
-                .findFirst() // Assuming there's only one authority per user
+                .findFirst()
                 .map(GrantedAuthority::getAuthority)
                 .orElse(null);
         claims.put("role", role);
@@ -182,8 +182,6 @@ public class Controller {
         if (email == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid or mismatched email in token");
         }
-
-        // Reset the password for the email extracted from the token
         boolean passwordReset = eventService.resetPassword(email, resetPasswordRequest.getPassword());
 
         if (passwordReset) {

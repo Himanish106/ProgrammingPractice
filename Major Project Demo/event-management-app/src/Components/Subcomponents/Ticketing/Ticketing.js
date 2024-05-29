@@ -123,7 +123,7 @@ const Ticketing = () => {
     const month = parseInt(dateParts[1]);
     const day = parseInt(dateParts[2]);
 
-    const date = new Date(year, month - 1, day); // Months are 0-indexed in JavaScript
+    const date = new Date(year, month - 1, day);
     const options = { year: "numeric", month: "long", day: "numeric" };
     return date.toLocaleDateString("en-US", options);
   };
