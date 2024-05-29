@@ -24,12 +24,18 @@ import "../../../CSS/StateTable.css";
 const PublicOrderTable = () => {
   const [publicOrders, setPublicOrders] = useState([]);
   const [ticketPrice, setTicketPrice] = useState({});
-  
+
   // Function to fetch public orders from the backend
   const fetchPublicOrders = async () => {
     try {
       const response = await axios.get("http://localhost:8080/privateeventcontroller/allorder");
       setPublicOrders(response.data);
+      // Initialize ticketPrice state with fetched data
+      const initialTicketPrices = response.data.reduce((acc, order) => {
+        acc[order.id] = order.ticketPrice;
+        return acc;
+      }, {});
+      setTicketPrice(initialTicketPrices);
     } catch (error) {
       console.error("Error fetching public orders:", error);
     }
@@ -50,7 +56,7 @@ const PublicOrderTable = () => {
   const updateTicketPrice = async (id) => {
     try {
       await axios.put(`http://localhost:8080/privateeventcontroller/${id}/ticketprice`, null, {
-        params: { ticket: ticketPrice[id] }
+        params: { ticket: ticketPrice[id] },
       });
       // After update, fetch updated public orders
       fetchPublicOrders();
@@ -60,7 +66,10 @@ const PublicOrderTable = () => {
   };
 
   const handleTicketPriceChange = (id, value) => {
-    setTicketPrice({ ...ticketPrice, [id]: value });
+    setTicketPrice((prevTicketPrice) => ({
+      ...prevTicketPrice,
+      [id]: value,
+    }));
   };
 
   const formatDate = (dateString) => {
@@ -88,31 +97,71 @@ const PublicOrderTable = () => {
         <Table>
           <TableHead>
             <TableRow>
-            <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }} className="cell-head-font">Email</TableCell>
-              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">Event Type</TableCell>
-              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">State</TableCell>
-              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">City</TableCell>
-              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }} className="cell-head-font">Venue Name</TableCell>
-              <TableCell style={{ minWidth: 200, whiteSpace: "nowrap" }} className="cell-head-font">Event Description</TableCell>
-              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }} className="cell-head-font">Event Date</TableCell>
-              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">Catering</TableCell>
-              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">Caterer</TableCell>
-              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }} className="cell-head-font">Design and Media</TableCell>
-              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">Design</TableCell>
-              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">Media</TableCell>
-              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }} className="cell-head-font">Onsite Management</TableCell>
-              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }} className="cell-head-font">Advertising</TableCell>
-              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">Capacity</TableCell>
-              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }} className="cell-head-font">Total Price</TableCell>
-              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">Ticket Price</TableCell>
-              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">Image</TableCell>
-              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">Action</TableCell>
+              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }} className="cell-head-font">
+                Email
+              </TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">
+                Event Type
+              </TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">
+                State
+              </TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">
+                City
+              </TableCell>
+              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }} className="cell-head-font">
+                Venue Name
+              </TableCell>
+              <TableCell style={{ minWidth: 200, whiteSpace: "nowrap" }} className="cell-head-font">
+                Event Description
+              </TableCell>
+              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }} className="cell-head-font">
+                Event Date
+              </TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">
+                Catering
+              </TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">
+                Caterer
+              </TableCell>
+              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }} className="cell-head-font">
+                Design and Media
+              </TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">
+                Design
+              </TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">
+                Media
+              </TableCell>
+              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }} className="cell-head-font">
+                Onsite Management
+              </TableCell>
+              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }} className="cell-head-font">
+                Advertising
+              </TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">
+                Capacity
+              </TableCell>
+              <TableCell style={{ minWidth: 150, whiteSpace: "nowrap" }} className="cell-head-font">
+                Total Price
+              </TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">
+                Ticket Price
+              </TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">
+                Image
+              </TableCell>
+              <TableCell style={{ minWidth: 100, whiteSpace: "nowrap" }} className="cell-head-font">
+                Action
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody className="table-body">
             {publicOrders.map((publicOrder) => (
               <TableRow key={publicOrder.id}>
-                <TableCell className="cell-field-font" style={{textTransform:"none"}}>{publicOrder.email}</TableCell>
+                <TableCell className="cell-field-font" style={{ textTransform: "none" }}>
+                  {publicOrder.email}
+                </TableCell>
                 <TableCell className="cell-field-font">{publicOrder.eventType}</TableCell>
                 <TableCell className="cell-field-font">{publicOrder.state}</TableCell>
                 <TableCell className="cell-field-font">{publicOrder.city}</TableCell>
@@ -130,10 +179,10 @@ const PublicOrderTable = () => {
                 <TableCell className="cell-field-font">{publicOrder.totalPrice}</TableCell>
                 <TableCell className="cell-field-font">
                   <TextField
-                    value={ticketPrice[publicOrder.id] || publicOrder.ticketPrice}
+                    value={ticketPrice[publicOrder.id] || ""}
                     onChange={(e) => handleTicketPriceChange(publicOrder.id, e.target.value)}
                     type="number"
-                    InputProps={{ className: 'cell-field-font' }}
+                    InputProps={{ className: "cell-field-font" }}
                   />
                   <Button
                     onClick={() => updateTicketPrice(publicOrder.id)}
