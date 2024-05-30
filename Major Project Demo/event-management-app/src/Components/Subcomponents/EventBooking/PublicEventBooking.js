@@ -185,27 +185,35 @@ const PublicEventBooking = () => {
       setVenuePrice(selectedVenue.price);
     }
   }, [selectedVenue]);
+
   const handleStateChange = (event) => {
     const selectedStateId = event.target.value;
-    const selectedState = states.find(
-      (state) => state.stateId === parseInt(selectedStateId)
-    );
-    console.log(selectedState);
-    setSelectedState(selectedState.stateId);
-    setSelectedStateName(selectedState.stateName);
-    setSelectedCity("");
-    setSelectedVenue("");
+    if (selectedStateId === "") {
+      setSelectedState("");
+      setSelectedCity("");
+      setSelectedVenue("");
+    } else {
+      const selectedState = states.find(
+        (state) => state.stateId === parseInt(selectedStateId)
+      );
+      setSelectedState(selectedState.stateId);
+      setSelectedStateName(selectedState.stateName);
+      setSelectedCity("");
+      setSelectedVenue("");
+    }
   };
-
   const handleCityChange = (event) => {
     const selectedCityId = event.target.value;
-    const selectedCity = cities.find(
-      (city) => city.cityId === parseInt(selectedCityId)
-    );
-    console.log(selectedCity);
-    setSelectedCity(selectedCity.cityId);
-    setSelectedCityName(selectedCity.cityName);
-    setSelectedVenue("");
+    if (selectedCityId === "") {
+      setSelectedCity("");
+      setSelectedVenue("");
+    } else {
+      const selectedCity = cities.find(
+        (city) => city.cityId === parseInt(selectedCityId)
+      );
+      setSelectedCity(selectedCity.cityId);
+      setSelectedCityName(selectedCity.cityName);
+    }
   };
 
    const handleVenueChange = (event) => {
@@ -222,12 +230,18 @@ const PublicEventBooking = () => {
   };
   const selectedCatererChange = (event) => {
     const catererId = event.target.value;
-    const selectedCaterer = caterers.find(
-      (caterer) => caterer.catererId.toString() === catererId
-    );
-    setSelectedCaterer(selectedCaterer);
-    setCatererPrice(selectedCaterer.price); // Set the caterer price
+    if (catererId === "") {
+      setSelectedCaterer("");
+      setCatererPrice(0);
+    } else {
+      const selectedCaterer = caterers.find(
+        (caterer) => caterer.catererId.toString() === catererId
+      );
+      setSelectedCaterer(selectedCaterer);
+      setCatererPrice(selectedCaterer.price); 
+    }
   };
+  
   const handleCateringChange = (event) => {
     const cateringValue = event.target.value;
     setCateringFacility(cateringValue);
@@ -242,24 +256,32 @@ const PublicEventBooking = () => {
   };
   const selectedDesignChange = (event) => {
     const designerId = event.target.value;
-    const selectedDesign = designs.find(
-      (design) => design.designId.toString() === designerId
-    );
-    console.log(selectedDesign);
-    setSelectedDesignServices(selectedDesign);
-    console.log(selectedDesign.price);
-    setDesignPrice(selectedDesign.price);
+    if (designerId === "") {
+      setSelectedDesignServices("");
+      setDesignPrice(0);
+    } else {
+      const selectedDesign = designs.find(
+        (design) => design.designId.toString() === designerId
+      );
+      setSelectedDesignServices(selectedDesign);
+      setDesignPrice(selectedDesign.price);
+    }
   };
+  
   const selectedMediaChange = (event) => {
     const mediaId = event.target.value;
-    const selectedMedia = medias.find(
-      (media) => media.mediaId.toString() === mediaId
-    );
-    console.log(selectedMedia);
-    setSelectedPhotoVideoServices(selectedMedia);
-    console.log(selectedMedia.price);
-    setMediaPrice(selectedMedia.price);
+    if (mediaId === "") {
+      setSelectedPhotoVideoServices("");
+      setMediaPrice(0);
+    } else {
+      const selectedMedia = medias.find(
+        (media) => media.mediaId.toString() === mediaId
+      );
+      setSelectedPhotoVideoServices(selectedMedia);
+      setMediaPrice(selectedMedia.price);
+    }
   };
+  
   const handleAdvertisingChange = (event) => {
     setAdvertising(event.target.value);
 
@@ -652,7 +674,6 @@ const PublicEventBooking = () => {
                               {caterer.serviceName}
                             </option>
                           ))}
-                          <option value="Leave Upon Us">Leave Upon Us</option>
                         </select>
                       </div>
                     )}
@@ -705,7 +726,6 @@ const PublicEventBooking = () => {
                               {design.serviceProviderName}
                             </option>
                           ))}
-                          <option value="Leave Upon Us">Leave Upon Us</option>
                         </select>
                       </div>
                     )}
@@ -729,7 +749,6 @@ const PublicEventBooking = () => {
                               {photoVideoService.serviceProviderName}
                             </option>
                           ))}
-                          <option value="Leave Upon Us">Leave Upon Us</option>
                         </select>
                       </div>
                     )}
