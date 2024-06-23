@@ -52,6 +52,54 @@ public class LinkedList {
         size++;
     }
 
+    public int deleteFirst() {
+        int val = head.value;
+        head = head.next;
+        if (head == null) {
+            tail = null;
+        }
+        size--;
+        return val;
+    }
+
+    public int deleteLast() {
+        if (size <= 1) {
+            return deleteFirst();
+        }
+        Node secondLast = getNode(size - 2);
+        int val = tail.value;
+        tail = secondLast;
+        tail.next = null;
+        size--;
+        return val;
+    }
+
+    public int deleteFromPosition(int index) throws IndexOutOfBoundsException {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("Max Size is : " + size + ". Please enter within range");
+        }
+        if (index == 0) {
+            return deleteFirst();
+        }
+        if (index == size - 1) {
+            return deleteLast();
+        }
+
+        Node prev = getNode(index - 1);
+        int val = prev.next.value;
+        prev.next = prev.next.next;
+        size--;
+        return val;
+    }
+
+    private Node getNode(int index) {
+        Node node = head;
+        for (int i = 0; i < index; i++) {
+            node = node.next;
+        }
+        return node;
+    }
+
     public void displayList() {
         Node temp = head;
         System.out.println();

@@ -17,5 +17,18 @@ public class Main01 {
             e.printStackTrace();
         }
         list.displayList();
+        // System.out.println(list.deleteFirst());
+        // System.out.println(list.deleteLast());
+        try {
+            int val = list.deleteFromPosition(3);
+            System.out.println(val);
+        } catch (SizeNotExistException e) {
+            e.printStackTrace();
+        }
+
+        list.displayList();
+
+        System.out.println(list.findNode(15));
+
     }
 }

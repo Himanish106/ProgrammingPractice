@@ -62,6 +62,63 @@ public class Basic_LinkedLists01 {
         size++;
     }
 
+    public int deleteFirst() {
+        int val = head.value;
+        head = head.next;
+        if (head == null) {
+            tail = null;
+        }
+        size--;
+        return val;
+    }
+
+    public int deleteLast() {
+        if (size <= 1) {
+            return deleteFirst();
+        }
+        Node secondLast = get(size - 2);
+        int val = tail.value;
+        tail = secondLast;
+        tail.next = null;
+        return val;
+    }
+
+    public int deleteFromPosition(int index) throws SizeNotExistException {
+        if (index < 0 || index > size) {
+            throw new SizeNotExistException("Max Size is: " + size + ". Please enter within range");
+        }
+        if (index == 0) {
+            return deleteFirst();
+        }
+        if (index == size) {
+            return deleteLast();
+        }
+
+        Node prev = get(index - 1);
+        int val = prev.next.value;
+        prev.next = prev.next.next;
+        return val;
+    }
+
+    public Node findNode(int value) {
+        Node node = head;
+        while (node != null) {
+            if (node.value == value) {
+                return node;
+            }
+            node = node.next;
+        }
+        return null;
+    }
+
+    public Node get(int index) {
+        Node node = head;
+        for (int i = 0; i < index; i++) {
+            node = node.next;
+        }
+        return node;
+    }
+
     public void displayList() {
         Node temp = head;
         while (temp != null) {
